@@ -1,0 +1,65 @@
+name: trevor-web
+recipe: pantheon
+config:
+  framework: wordpress
+  xdebug: true
+  site: trevor-web
+  id: b60ba3a2-cd76-4e32-9990-a5b89450ec59
+  edge: false
+proxy:
+  appserver_nginx:
+    - trevor-web.lndo.site
+  mailhog:
+    - trevor-mailhog.lndo.site
+  phpmyadmin:
+    - trevor-phpmyadmin.lndo.site
+  node:
+    - trevor-node.lndo.site:3000
+events:
+  pre-start:
+    - appserver: composer --working-dir=source/plugin install
+    - appserver: composer --working-dir=source/theme install
+    - node: npm install
+  pre-rebuild:
+    - appserver: rm -rf source/plugin/lib
+    - appserver: rm -rf source/theme/lib
+    - node: rm -rf node_modules
+services:
+  node:
+    type: node:12
+    port: 3000
+    build:
+      - npm install
+    command: npm start
+    app_mount: false
+    overrides:
+      volumes:
+        - ./source:/app:delegated
+      environment:
+        CI: 'true' # required to keep webpack-dev-server running
+        WDS_SOCKET_HOST: trevor-node.lndo.site
+  mailhog:
+    type: mailhog:v1.0.0
+    portforward: false
+    hogfrom:
+      - appserver
+  phpmyadmin:
+    type: phpmyadmin:5.0
+    hosts:
+      - database
+  appserver:
+    overrides:
+      volumes:
+        - ./source/plugin:/app/web/wp-content/plugins/trevor
+        - ./source/theme:/app/web/wp-content/themes/trevor
+tooling:
+  composer: disabled
+  composer-plugin:
+    service: appserver
+    cmd: /usr/local/bin/composer --working-dir=source/plugin
+  composer-theme:
+    service: appserver
+    cmd: /usr/local/bin/composer --working-dir=source/theme
+  npm:
+    service: node
+    cmd: npm
