@@ -16,27 +16,28 @@ proxy:
   node:
     - trevor-node.lndo.site:3000
 events:
-  pre-start:
-    - appserver: composer --working-dir=source/plugin install
-    - appserver: composer --working-dir=source/theme install
-    - node: npm install
-    - fontcustom: /app/lando/fontcustom/entrypoint.sh all
   pre-rebuild:
     - appserver: rm -rf source/plugin/lib
     - appserver: rm -rf source/theme/lib
     - node: rm -rf node_modules
   pre-push:
     - node: sh /app/scripts/pre-push-node.sh
-    - fontcustom: sh /app/scripts/pre-push-fontcustom.sh
   post-push:
     - node: sh /app/scripts/post-push-node.sh
-    - fontcustom: sh /app/scripts/post-push-fontcustom.sh
 services:
   node:
     type: node:12
     port: 3000
+    build_as_root:
+      - apt-get update -y && apt-get install -y zlib1g-dev fontforge ruby ruby-dev
+      - mkdir -p /tmp/fc
+      - cd /tmp/fc && git clone https://github.com/bramstein/sfnt2woff-zopfli.git sfnt2woff-zopfli && cd sfnt2woff-zopfli && make && mv sfnt2woff-zopfli /usr/local/bin/sfnt2woff
+      - cd /tmp/fc && git clone --recursive https://github.com/google/woff2.git && cd woff2 && make clean all && mv woff2_compress /usr/local/bin/ && mv woff2_decompress /usr/local/bin/
+      - gem install fontcustom
+      - rm -rf /tmp/fc
     build:
       - npm install
+      - /app/lando/fontcustom/entrypoint.sh all
     command: npm start
     app_mount: false
     overrides:
@@ -45,19 +46,6 @@ services:
       environment:
         CI: 'true' # required to keep webpack-dev-server running
         WDS_SOCKET_HOST: trevor-node.lndo.site
-  fontcustom:
-    type: ruby:2.5
-    scanner: false
-    app_mount: false
-    build_as_root:
-      - apt-get update -y && apt-get install -y zlib1g-dev fontforge
-      - mkdir -p /tmp/fc
-      - cd /tmp/fc && git clone https://github.com/bramstein/sfnt2woff-zopfli.git sfnt2woff-zopfli && cd sfnt2woff-zopfli && make && mv sfnt2woff-zopfli /usr/local/bin/sfnt2woff
-      - cd /tmp/fc && git clone --recursive https://github.com/google/woff2.git && cd woff2 && make clean all && mv woff2_compress /usr/local/bin/ && mv woff2_decompress /usr/local/bin/
-      - gem install fontcustom
-    overrides:
-      volumes:
-        - ./source:/app:delegated
   mailhog:
     type: mailhog:v1.0.0
     portforward: false
@@ -68,6 +56,9 @@ services:
     hosts:
       - database
   appserver:
+    build:
+      - composer --working-dir=source/plugin install
+      - composer --working-dir=source/theme install
     overrides:
       environment:
         MEDIA_DEV_PATH_PREFIX: 'http://trevor-node.lndo.site/'
@@ -89,5 +80,5 @@ tooling:
     service: node
     cmd: npm
   ifonts:
-    service: fontcustom
+    service: node
     cmd: /app/lando/fontcustom/entrypoint.sh
