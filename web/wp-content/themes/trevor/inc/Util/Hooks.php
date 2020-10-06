@@ -29,11 +29,9 @@ class Hooks {
 		add_filter( 'language_attributes', [ self::class, 'language_attributes' ], 10, 1 );
 
 		# Custom Nav Menu Item Fields
-		add_action( 'wp_nav_menu_item_custom_fields', [ self::class, 'wp_nav_menu_item_custom_fields' ], 10, 5 );
-		add_action( 'wp_nav_menu_item_custom_fields_customize_template', [
-			self::class,
-			'wp_nav_menu_item_custom_fields_customize_template'
-		], 10, 0 );
+		add_action( 'wp_nav_menu_item_custom_fields', [ self::class, 'wp_nav_menu_item_custom_fields' ], 10, 1 );
+		add_action( 'wp_update_nav_menu_item', [ self::class, 'wp_update_nav_menu_item' ], 10, 2 );
+		add_filter( 'nav_menu_item_title', [ self::class, 'nav_menu_item_title' ], 10, 4 );
 	}
 
 	/**
@@ -44,7 +42,7 @@ class Hooks {
 	public static function init(): void {
 		# Register Nav Menu(s)
 		register_nav_menus( [
-			'header-menu' => __( 'Header Menu' ),
+				'header-menu' => __( 'Header Menu' ),
 		] );
 	}
 
@@ -56,21 +54,21 @@ class Hooks {
 	public static function wp_enqueue_scripts(): void {
 		# Theme's frontend JS package
 		wp_enqueue_script(
-			self::NAME_PREFIX . 'theme-frontend-main',
-			TREVOR_THEME_STATIC_URL . '/js/frontend.js',
-			[ 'jquery' ],
-			\TrevorWP\Theme\VERSION,
-			true
+				self::NAME_PREFIX . 'theme-frontend-main',
+				TREVOR_THEME_STATIC_URL . '/js/frontend.js',
+				[ 'jquery' ],
+				\TrevorWP\Theme\VERSION,
+				true
 		);
 
 		# Main style file
 		if ( ! TREVOR_ON_DEV ) {
 			wp_enqueue_style(
-				self::NAME_PREFIX . 'theme-frontend',
-				TREVOR_THEME_STATIC_URL . '/css/frontend.css',
-				[],
-				\TrevorWP\Theme\VERSION,
-				'all'
+					self::NAME_PREFIX . 'theme-frontend',
+					TREVOR_THEME_STATIC_URL . '/css/frontend.css',
+					[],
+					\TrevorWP\Theme\VERSION,
+					'all'
 			);
 		}
 	}
@@ -81,13 +79,22 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 	 */
 	public static function admin_enqueue_scripts(): void {
+		# Admin JS
+		wp_enqueue_script(
+				self::NAME_PREFIX . 'theme-admin-main',
+				TREVOR_THEME_STATIC_URL . '/js/admin.js',
+				[ 'jquery' ],
+				\TrevorWP\Theme\VERSION,
+				true
+		);
+
 		# Admin Style
 		if ( ! constant( 'TREVOR_ON_DEV' ) ) {
 			wp_enqueue_style(
-				self::NAME_PREFIX . 'theme-admin-main',
-				TREVOR_THEME_STATIC_URL . '/css/admin.css',
-				[],
-				\TrevorWP\Theme\VERSION,
+					self::NAME_PREFIX . 'theme-admin-main',
+					TREVOR_THEME_STATIC_URL . '/css/admin.css',
+					[],
+					\TrevorWP\Theme\VERSION,
 			);
 		}
 	}
@@ -173,14 +180,63 @@ class Hooks {
 	 *
 	 * @link https://developer.wordpress.org/reference/hooks/wp_nav_menu_item_custom_fields/
 	 */
-	public static function wp_nav_menu_item_custom_fields( int $item_id, \WP_Post $item, int $depth, \stdClass $args, int $id ) {
+	public static function wp_nav_menu_item_custom_fields( int $item_id ) {
+		$val = get_post_meta( $item_id, Meta::KEY_MENU_ITEM_SUBTITLE, true );
+		?>
+		<p class="description description-wide trevor-custom-menu-item-subtitle">
+			<label for="edit-menu-item-subtitle-<?= esc_attr( $item_id ) ?>">
+				Subtitle<br>
+				<input type="text"
+					   id="edit-menu-item-subtitle-<?= esc_attr( $item_id ) ?>"
+					   class="widefat edit-menu-item-subtitle"
+					   name="menu-item-subtitle[<?= esc_attr( $item_id ) ?>]"
+					   value="<?= esc_attr( $val ) ?>">
+			</label>
+		</p>
+		<?php
 	}
 
 	/**
-	 * Fires at the end of the form field template for nav menu items in the customizer.
+	 * Fires after a navigation menu item has been updated.
 	 *
-	 * @link https://developer.wordpress.org/reference/hooks/wp_nav_menu_item_custom_fields_customize_template/
+	 * @param int $menu_id
+	 * @param int $menu_item_db_id
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/wp_update_nav_menu_item/
 	 */
-	public static function wp_nav_menu_item_custom_fields_customize_template() {
+	public static function wp_update_nav_menu_item( int $menu_id, int $menu_item_db_id ): void {
+		$val = $_POST['menu-item-subtitle'][ $menu_item_db_id ];
+
+		if ( empty( $val ) ) {
+			delete_post_meta( $menu_item_db_id, Meta::KEY_MENU_ITEM_SUBTITLE );
+		} else {
+			update_post_meta( $menu_item_db_id, Meta::KEY_MENU_ITEM_SUBTITLE, sanitize_text_field( $val ) );
+		}
+	}
+
+	/**
+	 * Filters a menu item’s title.
+	 *
+	 * @param string $title The menu item's title.
+	 * @param \WP_Post $item The current menu item.
+	 * @param \stdClass $args An object of wp_nav_menu() arguments.
+	 * @param int $depth Depth of menu item. Used for padding.
+	 *
+	 * @return string
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/nav_menu_item_title/
+	 */
+	public static function nav_menu_item_title( string $title, \WP_Post $item, \stdClass $args, int $depth ): string {
+		if ( $depth == 1 ) {
+			$title = "<span class='title-wrap'>{$title}</span>";
+
+			$subtitle = get_post_meta( $item->ID, Meta::KEY_MENU_ITEM_SUBTITLE, true );
+
+			if ( ! empty( $subtitle ) ) {
+				$title .= '<div class="subtitle">' . esc_html( $subtitle ) . '</div>';
+			}
+		}
+
+		return $title;
 	}
 }

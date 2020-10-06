@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"admin.css"}
+{"version":3,"sources":["/app/src/theme/css/admin/_nav-menus.scss"],"names":[],"mappings":"AAAA,mEAGG,YAAa,CAHhB,sFAQE,aAAc","file":"admin.css","sourcesContent":["body.nav-menus-php {\n  #menu-to-edit {\n\t.trevor-custom-menu-item-subtitle {\n\t  display: none;\n\t}\n\n\t.menu-item-depth-1 {\n\t  .trevor-custom-menu-item-subtitle {\n\t\tdisplay: block;\n\t  }\n\t}\n  }\n}\n"]}

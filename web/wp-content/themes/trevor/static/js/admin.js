@@ -1,2 +1,2 @@
-(this.webpackJsonptrevor=this.webpackJsonptrevor||[]).push([[6],{3:function(o,n,s){console.log("Working!!!")}},[[3,0]]]);
+(this.webpackJsonptrevor=this.webpackJsonptrevor||[]).push([[6],{0:function(o,e){o.exports=jQuery},7:function(o,e,t){"use strict";t.r(e);var n=t(0),i=t.n(n);console.log(123),wp&&wp.customize&&(console.log(345),wp.customize.bind("ready",(function(){i()("#customize-controls").on("keyup",(function(o){var e=o.target,t=i()(e);t.is(".customize-control-nav_menu_item input.edit-menu-item-subtitle")&&console.log(t)}))}))),console.log("Working!!! theme admin")}},[[7,0]]]);
 //# sourceMappingURL=admin.js.map
