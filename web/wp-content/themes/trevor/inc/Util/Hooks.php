@@ -1,6 +1,7 @@
 <?php namespace TrevorWP\Theme\Util;
 
 use TrevorWP\Theme\Customizer;
+use TrevorWP\Util\StaticFiles;
 
 /**
  * Theme Hooks
@@ -61,8 +62,16 @@ class Hooks {
 				true
 		);
 
-		# Main style file
-		if ( ! TREVOR_ON_DEV ) {
+		# Frontend style
+		if ( TREVOR_ON_DEV ) {
+			wp_enqueue_script(
+					self::NAME_PREFIX . 'theme-frontend-css',
+					TREVOR_THEME_STATIC_URL . '/css/frontend.js',
+					[ StaticFiles::NAME_JS_RUNTIME ],
+					\TrevorWP\Theme\VERSION,
+					false
+			);
+		} else {
 			wp_enqueue_style(
 					self::NAME_PREFIX . 'theme-frontend',
 					TREVOR_THEME_STATIC_URL . '/css/frontend.css',
@@ -89,12 +98,21 @@ class Hooks {
 		);
 
 		# Admin Style
-		if ( ! constant( 'TREVOR_ON_DEV' ) ) {
+		if ( TREVOR_ON_DEV ) {
+			wp_enqueue_script(
+					self::NAME_PREFIX . 'theme-admin-css',
+					TREVOR_THEME_STATIC_URL . '/css/admin.js',
+					[ StaticFiles::NAME_JS_RUNTIME ],
+					\TrevorWP\Theme\VERSION,
+					false
+			);
+		} else {
 			wp_enqueue_style(
-					self::NAME_PREFIX . 'theme-admin-main',
+					self::NAME_PREFIX . 'theme-admin',
 					TREVOR_THEME_STATIC_URL . '/css/admin.css',
 					[],
 					\TrevorWP\Theme\VERSION,
+					'all'
 			);
 		}
 	}
@@ -173,10 +191,6 @@ class Hooks {
 	 * Fires just before the move buttons of a nav menu item in the menu editor.
 	 *
 	 * @param int $item_id Menu item ID.
-	 * @param \WP_Post $item Menu item data object.
-	 * @param int $depth Depth of menu item. Used for padding.
-	 * @param \stdClass $args An object of menu item arguments.
-	 * @param int $id Nav menu ID.
 	 *
 	 * @link https://developer.wordpress.org/reference/hooks/wp_nav_menu_item_custom_fields/
 	 */
@@ -227,9 +241,10 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/nav_menu_item_title/
 	 */
 	public static function nav_menu_item_title( string $title, \WP_Post $item, \stdClass $args, int $depth ): string {
-		if ( $depth == 1 ) {
-			$title = "<span class='title-wrap'>{$title}</span>";
-
+		$title = "<span class='title-wrap'>{$title}</span>";
+		if ( $depth == 0 ) {
+			$title .= '<span class="submenu-icon trevor-ti-angle-down-solid"></span>';
+		} elseif ( $depth == 1 ) {
 			$subtitle = get_post_meta( $item->ID, Meta::KEY_MENU_ITEM_SUBTITLE, true );
 
 			if ( ! empty( $subtitle ) ) {
