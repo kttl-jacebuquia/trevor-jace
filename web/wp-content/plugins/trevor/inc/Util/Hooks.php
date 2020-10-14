@@ -82,7 +82,7 @@ class Hooks {
 	}
 
 	public static function autocomplete_test() {
-		$term = @$_POST['term'];
+		$term = @$_GET['term'];
 
 		$client = \SolrPower_Api::get_instance()->get_solr();
 
@@ -98,6 +98,10 @@ class Hooks {
 		$spellcheck->setCollate( true );
 		$spellcheck->setExtendedResults( true );
 		$spellcheck->setCollateExtendedResults( true );
+		$spellcheck->setMaxCollationEvaluations( 10 );
+		$spellcheck->setMaxCollations( 10 );
+		$spellcheck->setMaxCollationTries( 10 );
+//		$spellcheck->getOnlyMorePopular(true);
 
 		// this executes the query and returns the result
 		$resultset        = $client->select( $query );

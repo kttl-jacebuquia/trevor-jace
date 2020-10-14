@@ -84,8 +84,9 @@ class Post_Rank_Column {
 	 * @see register_hooks()
 	 */
 	public static function pre_get_posts( \WP_Query $query ): void {
-		$screen = get_current_screen();
-		if ( ! $screen || $screen->id != self::SCREEN_ID_EDIT_POST ) {
+		global $current_screen;
+
+		if ( ! isset( $current_screen ) || $current_screen->id != self::SCREEN_ID_EDIT_POST ) {
 			return;
 		}
 

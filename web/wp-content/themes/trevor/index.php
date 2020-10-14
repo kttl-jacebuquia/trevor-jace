@@ -6,28 +6,6 @@
 		<input type="text" placeholder="Auto Complete Test" class="border p-2 w-full" id="input-search">
 	</div>
 
-	<script>
-		<?php
-		$ac_options = [
-				'source' => admin_url( 'admin-ajax.php?action=autocomplete-test' )
-		];
-		?>
-		jQuery(function ($) {
-			$('#input-search').autocomplete({
-				source: function (request, response) {
-					$.post('<?= esc_js( admin_url( 'admin-ajax.php?action=autocomplete-test' ) ); ?>', request, function (resp) {
-						console.log(request.term, resp);
-
-						response(resp.suggestions.length ? resp.suggestions[resp.suggestions.length - 1].words.map(function (word) {
-							return word.word
-						}) : []);
-					});
-				}
-			});
-		});
-	</script>
-
-
 	<?php
 	if ( have_posts() ) {
 		while ( have_posts() ) {

@@ -14,6 +14,7 @@
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<link rel="profile" href="https://gmpg.org/xfn/11">
+	<meta name="ac-ajax-url" content="<?= admin_url( 'admin-ajax.php?action=autocomplete-test' ) ?>"/>
 	<?php wp_head(); ?>
 	<?= Customizer\External_Scripts::get_val( Customizer\External_Scripts::SETTING_HEAD_BTM ) ?>
 </head>
