@@ -4,4 +4,4 @@ api_version: 1
 php_version: 7.3
 web_docroot: true
 protected_web_paths:
-  - /README.md
+  - /wp-content/plugins/trevor/private

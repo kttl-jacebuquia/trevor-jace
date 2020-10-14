@@ -1,5 +1,8 @@
 <?php namespace TrevorWP\Util;
 
+use TrevorWP\Admin;
+use TrevorWP\Jobs\Jobs;
+
 class Hooks {
 	/**
 	 * Print buffer for admin_footer hook.
@@ -23,6 +26,16 @@ class Hooks {
 	static public $admin_notices = [];
 
 	/**
+	 * List of admin page controllers.
+	 *
+	 * @var string[]
+	 */
+	static protected $_admin_page_controllers = [
+			Admin\Classy::class,
+			Admin\Google::class
+	];
+
+	/**
 	 * Registers all hooks
 	 */
 	public static function register_all() {
@@ -31,14 +44,38 @@ class Hooks {
 
 		# Print footer
 		add_action( 'wp_footer', [ self::class, 'wp_footer' ] );
-		add_action( 'admin_footer', [ self::class, 'admin_footer' ], 10, 0 );
-
-		# Admin notices
-		add_action( 'admin_notices', [ self::class, 'admin_notices' ] );
 
 		# Register & Enqueue Scripts
-		add_action( 'admin_enqueue_scripts', [ StaticFiles::class, 'register_admin' ], 10, 1 );
 		add_action( 'wp_enqueue_scripts', [ StaticFiles::class, 'register_frontend' ], 10, 0 );
+
+		# Prints GA Post Events Tracker
+		add_action( 'wp_footer', [ self::class, 'print_post_event_tracker' ], PHP_INT_MAX, 0 );
+
+		# Google OAuth Return
+		add_action( 'wp_ajax_trevor-g-return', [ Google_API::class, 'handle_return_page' ], 10, 0 );
+
+		# Recurring Job Hooks
+		add_action( 'init', [ Jobs::class, 'register_hooks' ], 10, 0 );
+
+		if ( is_admin() ) {
+			# Scripts
+			add_action( 'admin_enqueue_scripts', [ self::class, 'admin_enqueue_scripts' ], 1, 1 );
+			add_action( 'admin_enqueue_scripts', [ StaticFiles::class, 'register_admin' ], 10, 1 );
+
+			# Footer
+			add_action( 'admin_footer', [ self::class, 'admin_footer' ], 10, 0 );
+
+			# Admin Notices
+			add_action( 'admin_notices', [ self::class, 'admin_notices' ] );
+
+			# Admin Pages
+			foreach ( self::$_admin_page_controllers as $admin_page_cls ) {
+				add_action( 'admin_menu', [ $admin_page_cls, 'register' ], 10, 0 );
+			}
+
+			# Admin Post Columns
+			Admin\Post_Rank_Column::register_hooks();
+		}
 	}
 
 	/**
@@ -92,10 +129,58 @@ class Hooks {
 			?>
 			<script>
 				jQuery(function () {
-					trevorwp.utils.notices.add("<?=esc_js( $notice['msg'] );?>", {class: "<?=esc_js( $notice['class'] );?>"})
+					TrevorWP.utils.notices.add("<?=esc_js( $notice['msg'] );?>", {class: "<?=esc_js( $notice['class'] );?>"})
 				});
 			</script>
 			<?php
 		}
+	}
+
+	/**
+	 * Enqueue scripts for all admin pages.
+	 *
+	 * @param string $hook_suffix
+	 *
+	 * https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
+	 */
+	public static function admin_enqueue_scripts( string $hook_suffix ): void {
+		$js_ns = [
+				'screen'    => [
+						'hook_suffix' => esc_js( $hook_suffix )
+				],
+				'common'    => new \stdClass(),
+				'utils'     => new \stdClass(),
+				'adminApps' => new \stdClass(),
+		];
+		?>
+		<script>window.TrevorWP = <?= json_encode( $js_ns )?>;</script>
+		<?php
+	}
+
+	/**
+	 * Prints the post tracking code.
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/wp_footer/
+	 */
+	public static function print_post_event_tracker(): void {
+		if ( ! is_single() || ! ( $post = get_post() ) ) {
+			return;
+		}
+
+		$env = Tools::get_env();
+
+		$event_label = implode( '#', [ $post->ID, $post->post_name ] );
+		$args        = [
+				'event'          => 'post_event',
+				'eventCategory'  => "view_post_{$env}",
+				'eventAction'    => 'view_post',
+				'eventLabel'     => $event_label,
+				'nonInteraction' => true,
+		];
+		?>
+		<script>
+			window.dataLayer && window.dataLayer.push(<?= json_encode( $args )?>);
+		</script>
+		<?php
 	}
 }
