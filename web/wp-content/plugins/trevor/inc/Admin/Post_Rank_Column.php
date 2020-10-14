@@ -93,6 +93,7 @@ class Post_Rank_Column {
 			$query->set( 'orderby', 'meta_value' );
 			$query->set( 'meta_key', Post::KEY_POPULARITY_RANK );
 			$query->set( 'meta_type', 'numeric' );
+			// FIXME: Find a way to include NULLs
 
 			# Reverse ordering
 			$query->set( 'order', $query->get( 'order' ) == 'asc' ? 'desc' : 'asc' );

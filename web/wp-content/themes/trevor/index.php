@@ -18,7 +18,7 @@
 					$.post('<?= esc_js( admin_url( 'admin-ajax.php?action=autocomplete-test' ) ); ?>', request, function (resp) {
 						console.log(request.term, resp);
 
-						response(resp.suggestions.length ? resp.suggestions[0].words.map(function (word) {
+						response(resp.suggestions.length ? resp.suggestions[resp.suggestions - 1].words.map(function (word) {
 							return word.word
 						}) : []);
 					});
