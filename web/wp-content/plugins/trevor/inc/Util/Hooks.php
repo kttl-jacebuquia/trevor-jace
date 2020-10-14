@@ -76,6 +76,59 @@ class Hooks {
 			# Admin Post Columns
 			Admin\Post_Rank_Column::register_hooks();
 		}
+
+		add_action( 'wp_ajax_autocomplete-test', [ self::class, 'autocomplete_test' ], 10, 0 );
+		add_action( 'wp_ajax_nopriv_autocomplete-test', [ self::class, 'autocomplete_test' ], 10, 0 );
+	}
+
+	public static function autocomplete_test() {
+		$term = @$_POST['term'];
+
+		$client = \SolrPower_Api::get_instance()->get_solr();
+
+		// get a select query instance
+		$query = $client->createSelect();
+		$query->setRows( 0 );
+
+		// add spellcheck settings
+		$spellcheck = $query->getSpellcheck();
+		$spellcheck->setQuery( $term );
+		$spellcheck->setCount( 10 );
+		$spellcheck->setBuild( true );
+		$spellcheck->setCollate( true );
+		$spellcheck->setExtendedResults( true );
+		$spellcheck->setCollateExtendedResults( true );
+
+// this executes the query and returns the result
+		$resultset        = $client->select( $query );
+		$spellcheckResult = $resultset->getSpellcheck();
+
+		$response = [
+				'correctlySpelled' => $spellcheckResult->getCorrectlySpelled(),
+				'suggestions'      => [],
+				'collations'       => []
+		];
+
+		foreach ( $spellcheckResult as $suggestion ) {
+			$response['suggestions'][] = [
+					'numFound'          => $suggestion->getNumFound(),
+					'startOffset'       => $suggestion->getStartOffset(),
+					'endOffset'         => $suggestion->getEndOffset(),
+					'originalFrequency' => $suggestion->getOriginalFrequency(),
+					'words'             => $suggestion->getWords()
+			];
+		}
+
+		$collations = $spellcheckResult->getCollations();
+		foreach ( $collations as $collation ) {
+			$response['collations'][] = [
+					'query'       => $collation->getQuery(),
+					'hits'        => $collation->getHits(),
+					'corrections' => $collation->getCorrections()
+			];
+		}
+
+		wp_send_json( $response );
 	}
 
 	/**

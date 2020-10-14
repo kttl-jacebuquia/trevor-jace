@@ -62,6 +62,10 @@ class Hooks {
 				true
 		);
 
+		// todo: remove
+		wp_enqueue_script('jquery-ui-autocomplete');
+		wp_enqueue_style('jquery-ui-theme', 'https://code.jquery.com/ui/1.11.4/themes/cupertino/jquery-ui.css');
+
 		# Frontend style
 		if ( TREVOR_ON_DEV ) {
 			wp_enqueue_script(
