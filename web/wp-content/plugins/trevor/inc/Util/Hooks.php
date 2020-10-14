@@ -99,7 +99,7 @@ class Hooks {
 		$spellcheck->setExtendedResults( true );
 		$spellcheck->setCollateExtendedResults( true );
 
-// this executes the query and returns the result
+		// this executes the query and returns the result
 		$resultset        = $client->select( $query );
 		$spellcheckResult = $resultset->getSpellcheck();
 
