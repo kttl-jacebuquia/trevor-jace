@@ -1,6 +1,6 @@
 <?php namespace TrevorWP\Jobs;
 
-use TrevorWP\Ranks\Post;
+use TrevorWP\Ranks;
 use TrevorWP\Util\Log;
 
 class Jobs {
@@ -10,6 +10,7 @@ class Jobs {
 	const NAME_UPDATE_POST_STATS = self::NAME_PREFIX . 'update_post_stats';
 	const NAME_PROCESS_POST_STATS_PAGE = self::NAME_PREFIX . 'process_post_stats_page';
 	const NAME_UPDATE_POST_RANKS = self::NAME_PREFIX . 'update_post_ranks';
+	const NAME_UPDATE_TAXONOMY_RANKS = self::NAME_PREFIX . 'update_taxonomy_ranks';
 
 	/**
 	 * @var array[] Recurring event jobs.
@@ -25,7 +26,8 @@ class Jobs {
 	 */
 	static $SINGLE = [
 		self::NAME_PROCESS_POST_STATS_PAGE => [ GA_Results::class, 'get_the_post_stats_report_page' ],
-		self::NAME_UPDATE_POST_RANKS       => [ Post::class, 'update_post_type_ranks' ]
+		self::NAME_UPDATE_POST_RANKS       => [ Ranks\Post::class, 'update_post_type_ranks' ],
+		self::NAME_UPDATE_TAXONOMY_RANKS   => [ Ranks\Taxonomy::class, 'update_ranks' ],
 	];
 
 	/**

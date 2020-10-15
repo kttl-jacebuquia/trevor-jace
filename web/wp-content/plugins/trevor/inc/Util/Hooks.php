@@ -2,6 +2,7 @@
 
 use TrevorWP\Admin;
 use TrevorWP\Jobs\Jobs;
+use TrevorWP\Ranks;
 
 class Hooks {
 	/**
@@ -79,6 +80,9 @@ class Hooks {
 
 		add_action( 'wp_ajax_autocomplete-test', [ self::class, 'autocomplete_test' ], 10, 0 );
 		add_action( 'wp_ajax_nopriv_autocomplete-test', [ self::class, 'autocomplete_test' ], 10, 0 );
+
+		# Custom Hooks
+		add_action( 'trevor_post_ranks_updated', [ self::class, 'trevor_post_ranks_updated' ], 10, 1 );
 	}
 
 	public static function autocomplete_test() {
@@ -98,9 +102,9 @@ class Hooks {
 		$spellcheck->setCollate( true );
 		$spellcheck->setExtendedResults( true );
 		$spellcheck->setCollateExtendedResults( true );
-		$spellcheck->setMaxCollationEvaluations( 10 );
-		$spellcheck->setMaxCollations( 10 );
-		$spellcheck->setMaxCollationTries( 10 );
+		$spellcheck->setMaxCollationEvaluations( 20 );
+		$spellcheck->setMaxCollations( 20 );
+		$spellcheck->setMaxCollationTries( 5 );
 //		$spellcheck->getOnlyMorePopular(true);
 
 		// this executes the query and returns the result
@@ -239,5 +243,19 @@ class Hooks {
 			window.dataLayer && window.dataLayer.push(<?= json_encode( $args )?>);
 		</script>
 		<?php
+	}
+
+	/**
+	 * @param string $post_type
+	 * @see Ranks\Post::update_ranks()
+	 */
+	public static function trevor_post_ranks_updated( string $post_type ): void {
+		switch ( $post_type ) {
+			case 'post':
+				wp_schedule_single_event( time(), Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ 'post_tag', $post_type ] );
+				wp_schedule_single_event( time() + 60, Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ 'category', $post_type ] );
+				break;
+		}
+
 	}
 }

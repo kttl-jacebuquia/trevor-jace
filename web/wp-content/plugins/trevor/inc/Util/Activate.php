@@ -1,7 +1,7 @@
 <?php namespace TrevorWP\Util;
 
-use TrevorWP\Jobs\Jobs;
 use TrevorWP\Main;
+use TrevorWP\Jobs\Jobs;
 
 class Activate {
 	/**
@@ -25,7 +25,10 @@ class Activate {
 		Log::info( 'Plugin upgrade successful.', compact( 'version' ) );
 	}
 
-	protected static function _update_options() {
+	/**
+	 * Overwrites some wp options
+	 */
+	protected static function _update_options(): void {
 		# Medium Size
 		update_option( 'medium_size_w', 720 );// Allowed max width
 		update_option( 'medium_size_h', 9999 );

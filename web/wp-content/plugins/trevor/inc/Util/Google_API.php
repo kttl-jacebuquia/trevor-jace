@@ -59,7 +59,7 @@ class Google_API {
 	public static function has_token(): bool {
 		$token = self::get_token();
 
-		return is_array( $token ) && ! empty( $token['access_token'] );
+		return is_array( $token ) && ! empty( $token );
 	}
 
 	/**

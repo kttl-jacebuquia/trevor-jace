@@ -2,6 +2,7 @@
 
 use TrevorWP\Exception\Internal;
 use TrevorWP\Meta\Post;
+use TrevorWP\Options;
 use TrevorWP\Util\Google_API;
 use TrevorWP\Util\Log;
 
@@ -29,12 +30,17 @@ class GA_Results {
 	 * @throws \Google_Exception
 	 */
 	public static function get_the_post_stats_report_page( $page_token = null ): int {
+		$view_id = get_option( Options\Google::KEY_GA_VIEW_ID );
+		if ( empty( $view_id ) ) {
+			Log::warning( 'GA View Id is missing.' );
+
+			return 0;
+		}
+
 		$client = Google_API::get_client( true );
 
 		// Create an authorized analytics service object.
 		$analytics = new \Google_Service_AnalyticsReporting( $client );
-
-		$VIEW_ID = "230878866"; // TODO: Get this from options
 
 		// Create the DateRange object.
 		$dateRange7 = new \Google_Service_AnalyticsReporting_DateRange();
@@ -80,7 +86,7 @@ class GA_Results {
 
 		// Create the ReportRequest object.
 		$request = new \Google_Service_AnalyticsReporting_ReportRequest();
-		$request->setViewId( $VIEW_ID );
+		$request->setViewId( $view_id );
 		$request->setDateRanges( [ $dateRange7, $dateRange30 ] );
 		$request->setDimensions( array( $browser ) );
 		$request->setMetrics( array( $sessions ) );
@@ -180,16 +186,18 @@ class GA_Results {
 		}
 
 		if ( $page_token = $report->getNextPageToken() ) {
+			// Schedule the next page for processing
 			wp_schedule_single_event(
 				time() + self::POST_STATS_REPORT_NEXT_PAGE_COOLING,
 				Jobs::NAME_PROCESS_POST_STATS_PAGE,
 				[ $page_token ]
 			);
 		} else {
+			// Report finished, schedule the job for post rank calculation
 			wp_schedule_single_event(
 				time(),
 				Jobs::NAME_UPDATE_POST_RANKS,
-				[ $post_type, $post_status ]
+				[ $post_type ]
 			);
 		}
 
