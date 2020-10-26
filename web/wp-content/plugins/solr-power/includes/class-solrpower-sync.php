@@ -270,7 +270,6 @@ class SolrPower_Sync {
 			}
 			$doc->setField( 'post_name', $post_info->post_name );
 			$doc->setField( 'post_title', $post_info->post_title );
-			$doc->setField( 'post_title_raw', $post_info->post_title );
 			$doc->setField( 'post_content', strip_tags( $post_info->post_content ) );
 			$doc->setField( 'comment_count', $numcomments );
 			if ( isset( $auth_info->display_name ) ) {
