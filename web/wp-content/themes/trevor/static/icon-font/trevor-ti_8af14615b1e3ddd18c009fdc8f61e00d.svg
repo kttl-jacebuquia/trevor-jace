@@ -1,0 +1,57 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<!--
+2020-10-26: Created with FontForge (http://fontforge.org)
+-->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata>
+Created by FontForge 20170812 at Mon Oct 26 16:32:23 2020
+ By node
+
+</metadata>
+<defs>
+<font id="trevor-ti" horiz-adv-x="512" >
+  <font-face 
+    font-family="trevor-ti"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="512"
+    panose-1="2 0 5 3 0 0 0 0 0 0"
+    ascent="448"
+    descent="-64"
+    bbox="0 -64 512.25 448"
+    underline-thickness="25.6"
+    underline-position="-51.2"
+    unicode-range="U+0020-F109"
+  />
+    <missing-glyph />
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
+ />
+    <glyph glyph-name="facebook-f-brands" unicode="&#xf102;" horiz-adv-x="274" 
+d="M256 160h-74v-224h-101v224h-81v93h81v70c0 80 48 125 121 125c35 0 72 -6 72 -6v-79h-40c-40 0 -52 -25 -52 -50v-60h88z" />
+    <glyph glyph-name="share-alt-solid" unicode="&#xf109;" horiz-adv-x="448" 
+d="M352 128c53 0 96 -43 96 -96s-43 -96 -96 -96s-96 43 -96 96v0c0 6 1 15 2 21l-102 64c-16 -13 -37 -21 -60 -21c-53 0 -96 43 -96 96s43 96 96 96c23 0 44 -8 60 -21l102 64c-1 7 -2 14 -2 21c0 53 43 96 96 96s96 -43 96 -96s-43 -96 -96 -96c-23 0 -44 8 -60 21
+l-102 -64c1 -6 2 -15 2 -21s-1 -15 -2 -21l102 -64c16 13 37 21 60 21z" />
+    <glyph glyph-name="search-solid" unicode="&#xf108;" 
+d="M505 5c9 -9 9 -25 0 -34l-28 -28c-9 -9 -25 -9 -34 0l-100 100c-4 4 -7 11 -7 17v16c-35 -28 -80 -44 -128 -44c-115 0 -208 93 -208 208s93 208 208 208s208 -93 208 -208c0 -48 -16 -93 -44 -128h16c6 0 13 -3 17 -7zM208 112c71 0 128 57 128 128s-57 128 -128 128
+s-128 -57 -128 -128s57 -128 128 -128z" />
+    <glyph glyph-name="external-link-alt-solid" unicode="&#xf106;" 
+d="M432 128c9 0 16 -7 16 -16v-128c0 -26 -22 -48 -48 -48h-352c-26 0 -48 22 -48 48v352c0 26 22 48 48 48h160c9 0 16 -7 16 -16v-32c0 -9 -7 -16 -16 -16h-144v-320h320v112c0 9 7 16 16 16h32zM488 448c13 0 24 -11 24 -24v-128c0 -22 -26 -32 -41 -17l-36 36l-243 -244
+c-4 -4 -11 -7 -17 -7s-13 3 -17 7l-23 23c-4 4 -7 11 -7 17s3 13 7 17l244 243l-36 36c-15 15 -4 41 17 41h128z" />
+    <glyph glyph-name="share-solid" unicode="&#xf107;" 
+d="M504 258c11 -10 11 -26 0 -36l-176 -152c-15 -13 -40 -3 -40 18v88c-155 -2 -222 -41 -177 -186c5 -16 -14 -28 -28 -18c-44 32 -83 93 -83 154c0 152 127 184 288 186v80c0 21 25 31 40 18z" />
+    <glyph glyph-name="bars-solid" unicode="&#xf101;" horiz-adv-x="448" 
+d="M16 316c-9 0 -16 7 -16 16v40c0 9 7 16 16 16h416c9 0 16 -7 16 -16v-40c0 -9 -7 -16 -16 -16h-416zM16 156c-9 0 -16 7 -16 16v40c0 9 7 16 16 16h416c9 0 16 -7 16 -16v-40c0 -9 -7 -16 -16 -16h-416zM16 -4c-9 0 -16 7 -16 16v40c0 9 7 16 16 16h416c9 0 16 -7 16 -16
+v-40c0 -9 -7 -16 -16 -16h-416z" />
+    <glyph glyph-name="arrow-right-solid" unicode="&#xf104;" horiz-adv-x="448" 
+d="M190 381l23 22c9 9 25 9 34 0l194 -194c9 -9 9 -25 0 -34l-194 -194c-9 -9 -25 -9 -34 0l-23 22c-10 10 -9 25 1 34l120 115h-287c-13 0 -24 11 -24 24v32c0 13 11 24 24 24h287l-120 115c-10 9 -11 24 -1 34z" />
+    <glyph glyph-name="angle-down-solid" unicode="&#xf103;" horiz-adv-x="320" 
+d="M143 96l-136 136c-9 9 -9 25 0 34l23 22c9 9 25 9 34 0l96 -96l96 96c9 9 25 9 34 0l23 -22c9 -9 9 -25 0 -34l-136 -136c-9 -9 -25 -9 -34 0z" />
+    <glyph glyph-name="download-solid" unicode="&#xf105;" 
+d="M216 448h80c13 0 24 -11 24 -24v-168h88c18 0 27 -21 14 -34l-152 -152c-8 -8 -20 -8 -28 0l-152 152c-13 13 -4 34 14 34h88v168c0 13 11 24 24 24zM512 72v-112c0 -13 -11 -24 -24 -24h-464c-13 0 -24 11 -24 24v112c0 13 11 24 24 24h147l49 -49c20 -20 52 -20 72 0
+l49 49h147c13 0 24 -11 24 -24zM388 -16c0 11 -9 20 -20 20s-20 -9 -20 -20s9 -20 20 -20s20 9 20 20zM452 -16c0 11 -9 20 -20 20s-20 -9 -20 -20s9 -20 20 -20s20 9 20 20z" />
+    <glyph glyph-name="twitter-brands" unicode="&#xf100;" 
+d="M459 296c0 -5 1 -8 1 -13c0 -139 -106 -299 -299 -299c-59 0 -115 17 -161 47c8 -1 16 -1 25 -1c49 0 95 17 131 45c-46 1 -85 30 -98 72c6 -1 12 -1 19 -1c9 0 19 1 28 3c-48 10 -84 52 -84 103v2c14 -8 30 -13 47 -14c-28 19 -47 52 -47 88c0 19 6 37 15 53
+c52 -64 129 -105 216 -110c-2 8 -2 16 -2 24c0 58 46 105 104 105c30 0 58 -13 77 -33c24 5 47 13 67 25c-8 -24 -24 -45 -46 -58c21 2 41 9 60 17c-14 -21 -33 -40 -53 -55z" />
+  </font>
+</defs></svg>

@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2020-10-15: Created with FontForge (http://fontforge.org)
+2020-10-26: Created with FontForge (http://fontforge.org)
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170812 at Thu Oct 15 22:18:15 2020
+Created by FontForge 20170812 at Mon Oct 26 16:32:24 2020
  By node
 
 </metadata>
@@ -19,10 +19,10 @@ Created by FontForge 20170812 at Thu Oct 15 22:18:15 2020
     panose-1="2 0 5 3 0 0 0 0 0 0"
     ascent="448"
     descent="-64"
-    bbox="0 -56 512 440"
+    bbox="-0.22862 -64.2286 640.229 448.229"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F102"
+    unicode-range="U+0020-F103"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " 
@@ -38,5 +38,8 @@ d="M488 186c0 -142 -97 -242 -240 -242c-137 0 -248 111 -248 248s111 248 248 248c6
     <glyph glyph-name="twitter-brands" unicode="&#xf100;" horiz-adv-x="512" 
 d="M459 296c0 -5 1 -8 1 -13c0 -139 -106 -299 -299 -299c-59 0 -115 17 -161 47c8 -1 16 -1 25 -1c49 0 95 17 131 45c-46 1 -85 30 -98 72c6 -1 12 -1 19 -1c9 0 19 1 28 3c-48 10 -84 52 -84 103v2c14 -8 30 -13 47 -14c-28 19 -47 52 -47 88c0 19 6 37 15 53
 c52 -64 129 -105 216 -110c-2 8 -2 16 -2 24c0 58 46 105 104 105c30 0 58 -13 77 -33c24 5 47 13 67 25c-8 -24 -24 -45 -46 -58c21 2 41 9 60 17c-14 -21 -33 -40 -53 -55z" />
+    <glyph glyph-name="hands-helping-solid" unicode="&#xf103;" horiz-adv-x="640" 
+d="M488 256c13 0 24 -11 24 -24v-48c0 -13 -11 -24 -24 -24h-8v-64c0 -18 -14 -32 -32 -32h-16c0 -35 -29 -64 -64 -64h-137l-103 -60c-15 -9 -35 -3 -44 12l-80 139c-9 15 -3 34 12 43l80 46v48c0 22 12 43 31 55l65 39v-122c0 -40 32 -72 72 -72s72 32 72 72v56h152z
+M636 293c9 -15 3 -34 -12 -43l-80 -46v28c0 31 -25 56 -56 56h-184v-88c0 -22 -18 -40 -40 -40s-40 18 -40 40v126c0 11 6 21 15 27l34 21c10 6 21 10 33 10h103l103 60c15 9 35 3 44 -12z" />
   </font>
 </defs></svg>
