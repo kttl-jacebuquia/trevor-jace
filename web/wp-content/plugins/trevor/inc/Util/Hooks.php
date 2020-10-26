@@ -98,14 +98,21 @@ class Hooks {
 	}
 
 	public static function highlight_search(): void {
-		$term = @$_GET['term'];
+		$term = (string) @$_GET['term'];
+
+		$term_parts = explode( ' ', $term );
+		$term_parts = array_map( function ( $term_part ) {
+			return addslashes( rtrim( $term_part, '~' ) ) . '~';
+		}, $term_parts );
+
+		$term = implode( ' ', $term_parts );
 
 
 		$client = \SolrPower_Api::get_instance()->get_solr();
 
 		// get a select query instance
 		$query = $client->createSelect();
-		$query->setQuery( $aa = '"' . addslashes( $term ) . '"~2' );
+		$query->setQuery( $term );
 		$query->setFields( [ 'ID', 'post_title' ] );
 
 		// get highlighting component and apply settings
@@ -161,7 +168,7 @@ class Hooks {
 		// add spellcheck settings
 		$spellcheck = $query->getSpellcheck();
 		$spellcheck->setQuery( $term );
-		$spellcheck->setCount( 20 );
+		$spellcheck->setCount( 10 );
 		$spellcheck->setBuild( true );
 		$spellcheck->setCollate( true );
 		$spellcheck->setExtendedResults( true );
@@ -177,19 +184,19 @@ class Hooks {
 
 		$response = [
 				'correctlySpelled' => $spellcheckResult->getCorrectlySpelled(),
-				'suggestions'      => [],
+//				'suggestions'      => [],
 				'collations'       => []
 		];
 
-		foreach ( $spellcheckResult as $suggestion ) {
-			$response['suggestions'][] = [
-					'numFound'          => $suggestion->getNumFound(),
-					'startOffset'       => $suggestion->getStartOffset(),
-					'endOffset'         => $suggestion->getEndOffset(),
-					'originalFrequency' => $suggestion->getOriginalFrequency(),
-					'words'             => $suggestion->getWords()
-			];
-		}
+//		foreach ( $spellcheckResult as $suggestion ) {
+//			$response['suggestions'][] = [
+//					'numFound'          => $suggestion->getNumFound(),
+//					'startOffset'       => $suggestion->getStartOffset(),
+//					'endOffset'         => $suggestion->getEndOffset(),
+//					'originalFrequency' => $suggestion->getOriginalFrequency(),
+//					'words'             => $suggestion->getWords()
+//			];
+//		}
 
 		$collations = $spellcheckResult->getCollations();
 		foreach ( $collations as $collation ) {
