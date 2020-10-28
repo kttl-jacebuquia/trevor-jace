@@ -2,6 +2,7 @@
 
 use \Solarium\QueryType\Update\Query\Document\Document as SolariumDocument;
 use TrevorWP\Admin;
+use TrevorWP\Jobs\GA_Results;
 use TrevorWP\Jobs\Jobs;
 use TrevorWP\Ranks;
 use TrevorWP\CPT;
@@ -174,9 +175,9 @@ class Hooks {
 		$spellcheck->setExtendedResults( true );
 		$spellcheck->setCollateExtendedResults( true );
 		$spellcheck->setMaxCollationEvaluations( 100 );
-		$spellcheck->setMaxCollations( 5 );
+		$spellcheck->setMaxCollations( 2 );
 		$spellcheck->setMaxCollationTries( 100 );
-		$spellcheck->getOnlyMorePopular( true );
+		$spellcheck->getOnlyMorePopular( false );
 
 		// this executes the query and returns the result
 		$resultset        = $client->select( $query );
@@ -297,19 +298,17 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/wp_footer/
 	 */
 	public static function print_post_event_tracker(): void {
-		if ( ! is_single() || ! ( $post = get_post() ) ) {
+		if ( ! is_singular( GA_Results::POST_TYPES ) || ! ( $post = get_post() ) ) {
 			return;
 		}
 
 		$env  = Tools::get_env();
 		$wait = absint( get_option( Options\Google::KEY_GA_PAGE_VIEW_TO, Options\Google::DEFAULTS[ Options\Google::KEY_GA_PAGE_VIEW_TO ] ) ) * 1000;
-
-		$event_label = implode( '#', [ $post->ID, $post->post_name ] );
-		$args        = [
+		$args = [
 				'event'          => 'post_event',
 				'eventCategory'  => "view_post_{$env}",
-				'eventAction'    => "view_{$post->post_type}",
-				'eventLabel'     => $event_label,
+				'eventAction'    => $post->post_type,
+				'eventLabel'     => implode( '#', [ $post->ID, $post->post_name ] ),
 				'nonInteraction' => true,
 		];
 		?>
@@ -329,13 +328,18 @@ class Hooks {
 	 * @see Ranks\Post::update_ranks()
 	 */
 	public static function trevor_post_ranks_updated( string $post_type ): void {
-		switch ( $post_type ) {
-			case 'post':
-				wp_schedule_single_event( time(), Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ 'post_tag', $post_type ] );
-				wp_schedule_single_event( time() + 60, Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ 'category', $post_type ] );
-				break;
+		$rules = [
+				'post'                 => [ 'post_tag', 'category' ],
+				CPT\Support::POST_TYPE => [ CPT\Support::TAXONOMY_CATEGORY, CPT\Support::TAXONOMY_TAG ]
+		];
+
+		if ( ! array_key_exists( $post_type, $rules ) ) {
+			return;
 		}
 
+		foreach ( $rules[ $post_type ] as $idx => $tax ) {
+			wp_schedule_single_event( time() + ( $idx * 10 ), Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ $tax, $post_type ] );
+		}
 	}
 
 	/**

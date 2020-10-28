@@ -7,6 +7,7 @@ use TrevorWP\Main;
  */
 class Support {
 	const POST_TYPE = Main::POST_TYPE_PREFIX . 'support';
+//	const POST_TYPE_BLOG =
 	const PERMALINK_BASE = 'support';
 
 	/* Taxonomies */

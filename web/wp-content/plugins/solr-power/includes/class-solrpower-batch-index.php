@@ -82,7 +82,7 @@ class SolrPower_Batch_Index {
 		$defaults         = array(
 			'post_status'    => SolrPower::get_post_statuses(),
 			'post_type'      => SolrPower::get_post_types(),
-			'posts_per_page' => 50,
+			'posts_per_page' => 100,
 		);
 		$clean_query_args = array();
 		foreach ( $defaults as $key => $value ) {

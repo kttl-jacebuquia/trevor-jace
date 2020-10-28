@@ -78,6 +78,10 @@ $is_support = Is::support();
 					'container_class' => 'main-menu-container',
 					'theme_location'  => $is_support ? 'header-support' : 'header-organization'
 			] ); ?>
+
+			<button class="search-button w-10 h-10 self-end ml-5 mb-2 text-white rounded-full bg-blue-dark hidden md:block">
+				<i class="trevor-ti-search-solid"></i>
+			</button>
 		</div>
 		<?php if ( $is_support ) { ?>
 			<div class="top-bar-floor">

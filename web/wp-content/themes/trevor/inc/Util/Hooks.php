@@ -33,6 +33,9 @@ class Hooks {
 		add_action( 'wp_nav_menu_item_custom_fields', [ self::class, 'wp_nav_menu_item_custom_fields' ], 10, 1 );
 		add_action( 'wp_update_nav_menu_item', [ self::class, 'wp_update_nav_menu_item' ], 10, 2 );
 		add_filter( 'nav_menu_item_title', [ self::class, 'nav_menu_item_title' ], 10, 4 );
+
+		# Admin Bar
+		add_action( 'admin_bar_init', [ self::class, 'admin_bar_init' ], 10, 0 );
 	}
 
 	/**
@@ -265,5 +268,33 @@ class Hooks {
 		}
 
 		return $title;
+	}
+
+	/**
+	 * Fires after WP_Admin_Bar is initialized.
+	 *
+	 * https://developer.wordpress.org/reference/hooks/admin_bar_init/
+	 */
+	public static function admin_bar_init(): void {
+		/**
+		 * @see _admin_bar_bump_cb()
+		 */
+		add_action( 'wp_head', function () {
+			?>
+			<style>
+				html,
+				* html body {
+					height: calc(100% - 32px);
+				}
+
+				@media screen and ( max-width: 782px ) {
+					html,
+					* html body {
+						height: calc(100% - 46px);
+					}
+				}
+			</style>
+			<?php
+		}, PHP_INT_MAX, 0 );
 	}
 }
