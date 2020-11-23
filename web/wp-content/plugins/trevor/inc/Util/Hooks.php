@@ -91,7 +91,6 @@ class Hooks {
 		add_action( 'trevor_post_ranks_updated', [ self::class, 'trevor_post_ranks_updated' ], 10, 1 );
 
 		# Post Links
-		add_filter( 'post_type_link', [ self::class, 'post_type_link' ], PHP_INT_MAX, 2 );
 		add_filter( 'post_type_archive_link', [ self::class, 'post_type_archive_link' ], PHP_INT_MAX, 2 );
 
 		# Solr Index
@@ -218,7 +217,8 @@ class Hooks {
 	 */
 	public static function init(): void {
 		# Post Types
-		CPT\Support::init();
+		CPT\Support_Resource::init();
+		CPT\Support_Post::init();
 	}
 
 	/**
@@ -329,8 +329,11 @@ class Hooks {
 	 */
 	public static function trevor_post_ranks_updated( string $post_type ): void {
 		$rules = [
-				'post'                 => [ 'post_tag', 'category' ],
-				CPT\Support::POST_TYPE => [ CPT\Support::TAXONOMY_CATEGORY, CPT\Support::TAXONOMY_TAG ]
+				'post'                          => [ 'post_tag', 'category' ],
+				CPT\Support_Resource::POST_TYPE => [
+						CPT\Support_Resource::TAXONOMY_CATEGORY,
+						CPT\Support_Resource::TAXONOMY_TAG
+				]
 		];
 
 		if ( ! array_key_exists( $post_type, $rules ) ) {
@@ -339,26 +342,6 @@ class Hooks {
 
 		foreach ( $rules[ $post_type ] as $idx => $tax ) {
 			wp_schedule_single_event( time() + ( $idx * 10 ), Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ $tax, $post_type ] );
-		}
-	}
-
-	/**
-	 * Filters the permalink for a post of a custom post type.
-	 *
-	 * @param string $post_link The post's permalink.
-	 * @param \WP_Post $post The post in question.
-	 *
-	 * @return string
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/post_type_link/
-	 */
-
-	public static function post_type_link( string $post_link, \WP_Post $post ): string {
-		switch ( $post->post_type ) {
-			case CPT\Support::POST_TYPE:
-				return home_url( "support/{$post->ID}-{$post->post_name}" );
-			default:
-				return $post_link;
 		}
 	}
 
@@ -374,8 +357,8 @@ class Hooks {
 	 */
 	public static function post_type_archive_link( string $link, string $post_type ): string {
 		switch ( $post_type ) {
-			case CPT\Support::POST_TYPE:
-				return home_url( CPT\Support::PERMALINK_BASE . "/" );
+			case CPT\Support_Resource::POST_TYPE:
+				return home_url( CPT\Support_Resource::PERMALINK_BASE . "/" );
 			default:
 				return $link;
 		}

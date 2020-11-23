@@ -55,7 +55,7 @@ $is_support = Is::support();
 	<div class="top-bar-inner">
 		<div class="container top-bar-ceil">
 			<ul class="switcher">
-				<li><a href="<?= esc_attr( get_post_type_archive_link( \TrevorWP\CPT\Support::POST_TYPE ) ) ?>"
+				<li><a href="<?= esc_attr( get_post_type_archive_link( \TrevorWP\CPT\Support_Resource::POST_TYPE ) ) ?>"
 					   class="<?= $is_support ? 'active' : '' ?>">Support Center</a></li>
 				<li><a href="<?= esc_attr( get_home_url() ) ?>"
 					   class="<?= $is_support ? '' : 'active' ?>">The Organization</a></li>

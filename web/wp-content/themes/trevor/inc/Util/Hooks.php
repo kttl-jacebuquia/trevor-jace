@@ -36,6 +36,9 @@ class Hooks {
 
 		# Admin Bar
 		add_action( 'admin_bar_init', [ self::class, 'admin_bar_init' ], 10, 0 );
+
+		# Excerpt Length
+		add_filter( 'excerpt_length', [ self::class, 'excerpt_length' ], 10, 1 );
 	}
 
 	/**
@@ -273,7 +276,7 @@ class Hooks {
 	/**
 	 * Fires after WP_Admin_Bar is initialized.
 	 *
-	 * https://developer.wordpress.org/reference/hooks/admin_bar_init/
+	 * @link https://developer.wordpress.org/reference/hooks/admin_bar_init/
 	 */
 	public static function admin_bar_init(): void {
 		/**
@@ -296,5 +299,16 @@ class Hooks {
 			</style>
 			<?php
 		}, PHP_INT_MAX, 0 );
+	}
+
+	/**
+	 * @param $length
+	 *
+	 * @return int
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/excerpt_length/
+	 */
+	public static function excerpt_length( int $length ): int {
+		return $length;
 	}
 }

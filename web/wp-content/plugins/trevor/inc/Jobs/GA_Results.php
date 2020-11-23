@@ -1,6 +1,6 @@
 <?php namespace TrevorWP\Jobs;
 
-use TrevorWP\CPT\Support;
+use TrevorWP\CPT\Support_Resource;
 use TrevorWP\Exception\Internal;
 use TrevorWP\Meta\Post;
 use TrevorWP\Options;
@@ -13,7 +13,7 @@ class GA_Results {
 	const POST_STATS_REPORT_NEXT_PAGE_COOLING = 20; // seconds; API is restricted to a maximum of 10 requests per second per user.
 	const POST_TYPES = [
 		'post',
-		Support::POST_TYPE
+		Support_Resource::POST_TYPE
 	];
 
 	/**
