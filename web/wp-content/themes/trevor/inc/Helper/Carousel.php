@@ -75,7 +75,12 @@ class Carousel {
 						],
 						1024 => [
 								'slidesPerView'  => 3,
-								'spaceBetween'   => 27,
+								'spaceBetween'   => 30,
+								'centeredSlides' => false,
+						],
+						1400 => [
+								'slidesPerView'  => 4,
+								'spaceBetween'   => 30,
 								'centeredSlides' => false,
 						]
 				]
