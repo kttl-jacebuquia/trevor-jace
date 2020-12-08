@@ -11,7 +11,7 @@ $others = array_merge(
 		get_posts( [
 				'numberposts' => 2,
 				'exclude'     => get_the_ID(),
-				'post_type'   => TrevorWP\CPT\Support_Post::POST_TYPE,
+				'post_type'   => TrevorWP\CPT\RC\Post::POST_TYPE,
 				'orderby'     => 'rand'
 		] )
 );

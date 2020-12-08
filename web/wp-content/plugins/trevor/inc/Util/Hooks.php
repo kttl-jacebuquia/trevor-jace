@@ -90,9 +90,6 @@ class Hooks {
 		# Custom Hooks
 		add_action( 'trevor_post_ranks_updated', [ self::class, 'trevor_post_ranks_updated' ], 10, 1 );
 
-		# Post Links
-		add_filter( 'post_type_archive_link', [ self::class, 'post_type_archive_link' ], PHP_INT_MAX, 2 );
-
 		# Solr Index
 		add_filter( 'solr_build_document', [ self::class, 'solr_build_document' ], 10, 2 );
 	}
@@ -216,9 +213,13 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/init/
 	 */
 	public static function init(): void {
-		# Post Types
-		CPT\Support_Resource::init();
-		CPT\Support_Post::init();
+		# Resource Center Post Types
+		CPT\RC\RC_Object::init_all();
+
+		# Disable solr on rest api queries
+		foreach ( array_merge( CPT\RC\RC_Object::$ALL_POST_TYPES, [ 'post', 'page' ] ) as $post_type ) {
+			add_filter( "rest_{$post_type}_query", [ self::class, 'rest_post_type_query' ], 1, 1 );
+		}
 	}
 
 	/**
@@ -276,16 +277,36 @@ class Hooks {
 	 *
 	 * @param string $hook_suffix
 	 *
-	 * https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
+	 * @link https://developer.wordpress.org/reference/hooks/admin_enqueue_scripts/
 	 */
 	public static function admin_enqueue_scripts( string $hook_suffix ): void {
+		$post_types = array_fill_keys( array_merge( [ CPT\Post::POST_TYPE ], CPT\RC\RC_Object::$ALL_POST_TYPES ), [] );
+		foreach ( $post_types as $post_type => &$pt_data ) {
+			$obj              = get_post_type_object( $post_type );
+			$pt_data['label'] = $obj->label;
+		}
+
+		$taxonomies = array_fill_keys( [
+				'post_tag',
+				'category',
+				CPT\RC\RC_Object::TAXONOMY_CATEGORY,
+				CPT\RC\RC_Object::TAXONOMY_TAG
+		], [] );
+		foreach ( $taxonomies as $taxonomy => &$tax_data ) {
+			$obj               = get_taxonomy( $taxonomy );
+			$tax_data['label'] = $obj->label;
+		}
+
 		$js_ns = [
 				'screen'    => [
 						'hook_suffix' => esc_js( $hook_suffix )
 				],
-				'common'    => new \stdClass(),
 				'utils'     => new \stdClass(),
 				'adminApps' => new \stdClass(),
+				'common'    => [
+						'post_types' => $post_types,
+						'taxonomies' => $taxonomies
+				],
 		];
 		?>
 		<script>window.TrevorWP = <?= json_encode( $js_ns )?>;</script>
@@ -328,13 +349,11 @@ class Hooks {
 	 * @see Ranks\Post::update_ranks()
 	 */
 	public static function trevor_post_ranks_updated( string $post_type ): void {
-		$rules = [
-				'post'                          => [ 'post_tag', 'category' ],
-				CPT\Support_Resource::POST_TYPE => [
-						CPT\Support_Resource::TAXONOMY_CATEGORY,
-						CPT\Support_Resource::TAXONOMY_TAG
-				]
-		];
+		$rules = [ 'post' => [ 'post_tag', 'category' ] ]
+				 + array_fill_keys( CPT\RC\RC_Object::$PUBLIC_POST_TYPES, [
+						CPT\RC\RC_Object::TAXONOMY_CATEGORY,
+						CPT\RC\RC_Object::TAXONOMY_TAG
+				] );
 
 		if ( ! array_key_exists( $post_type, $rules ) ) {
 			return;
@@ -342,25 +361,6 @@ class Hooks {
 
 		foreach ( $rules[ $post_type ] as $idx => $tax ) {
 			wp_schedule_single_event( time() + ( $idx * 10 ), Jobs::NAME_UPDATE_TAXONOMY_RANKS, [ $tax, $post_type ] );
-		}
-	}
-
-	/**
-	 * Filters the post type archive permalink.
-	 *
-	 * @param string $link
-	 * @param string $post_type
-	 *
-	 * @return string
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/post_type_archive_link/
-	 */
-	public static function post_type_archive_link( string $link, string $post_type ): string {
-		switch ( $post_type ) {
-			case CPT\Support_Resource::POST_TYPE:
-				return home_url( CPT\Support_Resource::PERMALINK_BASE . "/" );
-			default:
-				return $link;
 		}
 	}
 
@@ -374,5 +374,21 @@ class Hooks {
 		$doc->addField( 'post_title_t', $post_info->post_title );
 
 		return $doc;
+	}
+
+	/**
+	 * Filters the query arguments for a request.
+	 *
+	 * @param array $args
+	 *
+	 * @return array
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/rest_this-post_type_query/
+	 */
+	public static function rest_post_type_query( array $args ): array {
+		$args['solr_integrate'] = false;
+		Tools::disable_solr();
+
+		return $args;
 	}
 }

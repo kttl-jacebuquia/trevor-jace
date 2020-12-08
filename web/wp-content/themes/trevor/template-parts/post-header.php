@@ -6,9 +6,9 @@ use \TrevorWP\Ranks;
 $has_thumbnail = has_post_thumbnail();
 
 // TODO: Will be there more than one categories?
-$categories = Ranks\Taxonomy::get_object_terms_ordered( get_post(), TrevorWP\CPT\Support_Resource::TAXONOMY_CATEGORY );
+$categories = Ranks\Taxonomy::get_object_terms_ordered( get_post(), TrevorWP\CPT\RC\RC_Object::TAXONOMY_CATEGORY );
 $first_cat  = empty( $categories ) ? null : reset( $categories );
-$tags       = Ranks\Taxonomy::get_object_terms_ordered( get_post(), TrevorWP\CPT\Support_Resource::TAXONOMY_TAG );
+$tags       = Ranks\Taxonomy::get_object_terms_ordered( get_post(), TrevorWP\CPT\RC\RC_Object::TAXONOMY_TAG );
 ?>
 
 <div class="post-header">
@@ -24,9 +24,9 @@ $tags       = Ranks\Taxonomy::get_object_terms_ordered( get_post(), TrevorWP\CPT
 			</h1>
 
 			<div class="sharing">
-				<i class="share-icon trevor-ti-facebook-f-brands"></i>
-				<i class="share-icon trevor-ti-twitter-brands"></i>
-				<i class="share-icon trevor-ti-share-alt-solid"></i>
+				<i class="share-icon trevor-ti-facebook"></i>
+				<i class="share-icon trevor-ti-twitter"></i>
+				<i class="share-icon trevor-ti-share-others"></i>
 			</div>
 
 			<div class="post-length"><?php /* TODO: Get this dynamically  */ ?>

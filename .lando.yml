@@ -46,6 +46,7 @@ services:
       environment:
         CI: 'true' # required to keep webpack-dev-server running
         WDS_SOCKET_HOST: trevor-node.lndo.site
+        NODE_OPTIONS: --max-old-space-size=4096 # fixes FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory
   mailhog:
     type: mailhog:v1.0.0
     portforward: false
