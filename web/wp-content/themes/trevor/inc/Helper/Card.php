@@ -24,13 +24,13 @@ class Card {
 			$_class    .= ' bg-full'; // Full img bg
 			$title_top = 'Guide';
 
-			$desc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'; // TODO; Fix here
+			$desc = get_the_excerpt( $post );
 		} elseif ( $post_type == CPT\RC\Article::POST_TYPE ) {
 			$categories = Ranks\Taxonomy::get_object_terms_ordered( $post, RC_Object::TAXONOMY_CATEGORY );
 			$first_cat  = empty( $categories ) ? null : reset( $categories );
 			$title_top  = $first_cat ? $first_cat->name : null;
 
-			$desc = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'; // TODO; Fix here
+			$desc = get_the_excerpt( $post );
 
 		} elseif ( in_array( $post_type, [ CPT\RC\Post::POST_TYPE, CPT\Post::POST_TYPE ] ) ) {
 			$title_top = 'Blog';
@@ -67,8 +67,7 @@ class Card {
 				<?php if ( ! empty( $tags ) ) { ?>
 					<div class="tags-box">
 						<?php foreach ( $tags as $tag ) { ?>
-							<a href="<?= get_term_link( $tag ) ?>"
-							   class="tag-box" rel="tag"
+							<a href="<?= get_term_link( $tag ) ?>" class="tag-box"
 							><?= $tag->name ?></a>
 						<?php } ?>
 					</div>

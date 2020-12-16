@@ -2,6 +2,7 @@
 
 use DateTime;
 use DateTimeZone;
+use TrevorWP\CPT\RC\RC_Object;
 use Twig;
 use TrevorWP\Exception;
 use TrevorWP\Main;
@@ -835,6 +836,13 @@ class Tools {
 		}
 
 		return $path;
+	}
+
+	/**
+	 * @return array
+	 */
+	public static function get_public_post_types(): array {
+		return array_merge( [ \TrevorWP\CPT\Post::POST_TYPE ], RC_Object::$PUBLIC_POST_TYPES );
 	}
 
 	/**

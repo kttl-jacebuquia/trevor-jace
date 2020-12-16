@@ -21,12 +21,21 @@ class Carousel {
 
 		if ( $options['print_js'] ) {
 			add_action( 'wp_footer', function () use ( $options ) {
-				self::print_js( "#{$options['id']} .carousel-full-width-wrap" );
+				self::print_js( "#{$options['id']} .carousel-full-width-wrap", [
+						'noMobile' => $options['noMobile'] ?? null,
+				] );
 			}, PHP_INT_MAX >> 2, 0 );
 		}
 
+		# Extra Classes
+		$ext_cls = [];
+		if ( $options['noMobile'] ) {
+			$ext_cls[] = 'no-mobile';
+		}
+
 		ob_start(); ?>
-		<div class="container mx-auto mt-5 mb-20" id="<?= esc_attr( $id ) ?>">
+		<div class="container mx-auto mt-5 mb-20 posts-carousel <?= implode( ' ', $ext_cls ) ?>"
+			 id="<?= esc_attr( $id ) ?>">
 			<h2 class="text-2xl text-white font-bold <?= $options['title_cls']; ?>"><?= esc_html( $options['title'] ) ?></h2>
 			<p class="text-lg text-white text-left mb-5 <?= $options['title_cls']; ?>"><?= esc_html( $options['subtitle'] ) ?></p>
 
@@ -54,6 +63,7 @@ class Carousel {
 	}
 
 	public static function print_js( string $base_selector, array $options = [] ): void {
+		//FIXME; https://medium.com/@networkaaron/swiper-how-to-destroy-swiper-on-min-width-breakpoints-a947491ddec8
 		$options = array_merge( [
 				'slidesPerView'  => 'auto',
 				'spaceBetween'   => 30,
@@ -87,7 +97,25 @@ class Carousel {
 		], $options );
 		?>
 		<script>
-			new trevorWP.vendors.Swiper('<?= esc_js( $base_selector )?> .carousel-container', <?= json_encode( $options )?>);
+			(function () {
+				var swiper;
+
+				function init() {
+					if (!swiper || swiper.destroyed) {
+						swiper = new trevorWP.vendors.Swiper('<?= esc_js( $base_selector )?> .carousel-container', <?= json_encode( $options )?>);
+					}
+				}
+
+				<?php if(! empty( $options['noMobile'] )){ ?>
+				jQuery(function () {
+					trevorWP.matchMedia.onlyMobile(function () {
+						swiper && swiper.destroy();
+					}, init);
+				})
+				<?php }else{ ?>
+				init();
+				<?php } ?>
+			})();
 		</script>
 		<?php
 	}

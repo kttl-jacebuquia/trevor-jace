@@ -17,6 +17,15 @@ $featured_cats    = get_terms( [
 
 $featured_post_ids = wp_parse_id_list( Customizer\Resource_Center::get_val( Customizer\Resource_Center::SETTING_HOME_FEATURED ) );
 $used_post_ids     = [];
+
+
+// ---
+
+$is_search = is_search();
+
+error_log( '123' );
+
+
 ?>
 
 <?php if ( ! is_paged() ) { ?>
@@ -32,8 +41,8 @@ $used_post_ids     = [];
 					  style="--tw-rotate: -1deg; font-size: 44px; line-height: 54px;">with knowledge.</span>
 			</h1>
 
-			<div class="my-10 lg:w-4/6 mx-auto ">
-				<?= '<form role="search" method="get" class="search-form" action="' . esc_url( get_post_type_archive_link( \TrevorWP\CPT\RC\Guide::POST_TYPE ) . 'search' ) . '">
+			<div class="my-10 lg:w-4/6 mx-auto">
+				<?= '<form role="search" method="get" class="search-form" action="' . esc_url( home_url( \TrevorWP\CPT\RC\RC_Object::PERMALINK_BASE ) ) . '">
 				<label>
 					<span class="sr-only">Search for:</span>
 					<input type="search" class="search-field p-4 w-full rounded-lg" placeholder="What do you want to learn about?" value="' . get_search_query( true ) . '" name="s" />
@@ -52,8 +61,14 @@ $used_post_ids     = [];
 				<?php } ?>
 			</div>
 
-			<div class="mt-8 animate-bounce">
+			<div class="mt-8 animate-bounce hidden md:block">
 				<i class="trevor-ti-chevron-down text-4xl text-white"></i>
+			</div>
+
+			<div class="mt-8 md:fixed md:bottom-10 md:right-10 z-10">
+				<a href="#"
+				   class="py-2 px-6 rounded-full border-2 border-orange bg-orange text-white font-bold font-px22 leading-px22 tracking-em001 shadow-2xl">Reach
+					a Counselor</a>
 			</div>
 		</div>
 	</div>
@@ -77,6 +92,7 @@ echo Helper\Carousel::posts( $trending_posts, [
 		'title'     => 'Trending',
 		'subtitle'  => 'Explore the latest articles, resources, and guides.',
 		'title_cls' => 'text-center',
+		'noMobile'  => true
 ] );
 
 foreach ( $featured_cats as $cat ) {
