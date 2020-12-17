@@ -17,7 +17,7 @@ class Header {
 	const ALL_TYPES = [
 			self::TYPE_SPLIT,
 			self::TYPE_FULL,
-//			self::TYPE_HORIZONTAL, TODO: Add the horizontal header type
+			self::TYPE_HORIZONTAL,
 			self::TYPE_TEXT_ONLY,
 	];
 
