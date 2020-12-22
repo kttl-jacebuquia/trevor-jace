@@ -29,7 +29,7 @@ class Carousel {
 
 		# Extra Classes
 		$ext_cls = [];
-		if ( $options['noMobile'] ) {
+		if ( ! empty( $options['noMobile'] ) ) {
 			$ext_cls[] = 'no-mobile';
 		}
 

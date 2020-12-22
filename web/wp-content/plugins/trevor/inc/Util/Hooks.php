@@ -1,5 +1,7 @@
 <?php namespace TrevorWP\Util;
 
+use WP_Post;
+use TrevorWP\Block;
 use \Solarium\QueryType\Update\Query\Document\Document as SolariumDocument;
 use TrevorWP\Admin;
 use TrevorWP\Jobs\GA_Results;
@@ -102,6 +104,9 @@ class Hooks {
 
 		# Admin Blocks Data
 		add_filter( 'trevor_editor_blocks_data', [ self::class, 'trevor_editor_blocks_data' ], 10, 1 );
+
+		# Post Save for Blocks
+		add_action( 'save_post', [ self::class, 'save_post_blocks' ], PHP_INT_MAX, 2 );
 	}
 
 	public static function highlight_search(): void {
@@ -381,11 +386,11 @@ class Hooks {
 
 	/**
 	 * @param SolariumDocument $doc Generated Solr document.
-	 * @param \WP_Post $post_info Original post object.
+	 * @param WP_Post $post_info Original post object.
 	 *
 	 * @see \SolrPower_Sync::build_document()
 	 */
-	public static function solr_build_document( SolariumDocument $doc, \WP_Post $post_info ): SolariumDocument {
+	public static function solr_build_document( SolariumDocument $doc, WP_Post $post_info ): SolariumDocument {
 		$doc->addField( 'post_title_t', $post_info->post_title );
 
 		return $doc;
@@ -419,4 +424,40 @@ class Hooks {
 
 		return array_merge( $data, Post::get_editor_config( $post ) );
 	}
+
+	/**
+	 * Fires once a post has been saved.
+	 *
+	 * @param int $post_id
+	 * @param WP_Post $post
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/save_post/
+	 */
+	public static function save_post_blocks( int $post_id, WP_Post $post ): void {
+		$blocks = parse_blocks( $post->post_content );
+
+		/** @var Block\Post_Save_Handler[] $map */
+		$map = [
+				Block\Core_Heading::BLOCK_NAME => Block\Core_Heading::class,
+		];
+
+		$states = array_fill_keys( array_keys( $map ), [] );
+
+		foreach ( $blocks as $block ) {
+			if ( ! array_key_exists( $block_name = $block['blockName'], $map ) ) {
+				continue;
+			}
+
+			call_user_func_array( [ $map[ $block_name ], 'save_post' ], [
+					$block,
+					$post,
+					&$states[ $block_name ]
+			] );
+		}
+
+		foreach ( $map as $block_name => $cls ) {
+			call_user_func_array( [ $cls, 'save_post_finalize' ], [ $post, &$states[ $block_name ] ] );
+		}
+	}
+
 }
