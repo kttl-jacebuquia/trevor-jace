@@ -127,7 +127,7 @@ class Thumbnail {
 			}
 
 			if ( $prev ) {
-				$class[] = 'hidden';
+				$class[] = 'hidden'; // tips for the tailwindcss md:hidden lg:hidden md:block lg:block
 				$class[] = $screen . ( empty( $screen ) ? '' : ':' ) . 'block';
 			}
 
