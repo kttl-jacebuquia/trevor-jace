@@ -134,6 +134,9 @@ class Hooks {
 		$query->setQuery( $term );
 		$query->setFields( [ 'ID', 'post_title' ] );
 
+		$aa = "post_type:(".implode(" OR ", CPT\RC\RC_Object::$ALL_POST_TYPES).")";
+		$query->createFilterQuery('post_types')->setQuery($aa);
+
 		// get highlighting component and apply settings
 		$hl = $query->getHighlighting();
 		$hl->setFields( [ 'post_title_t', 'post_content' ] );
