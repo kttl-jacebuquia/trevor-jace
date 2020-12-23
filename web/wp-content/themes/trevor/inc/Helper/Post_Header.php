@@ -1,44 +1,73 @@
 <?php namespace TrevorWP\Theme\Helper;
 
-use TrevorWP\CPT\RC\Article;
-use TrevorWP\CPT\RC\Guide;
-use TrevorWP\CPT\RC\RC_Object;
-use TrevorWP\Ranks\Taxonomy;
+use TrevorWP\CPT;
+use TrevorWP\Main;
 use TrevorWP\Meta;
 use TrevorWP\Util\Tools;
 
-class Header {
+/**
+ * Post Header Helper
+ */
+class Post_Header {
 	/* Types */
 	const TYPE_SPLIT = 'split';
 	const TYPE_FULL = 'full';
 	const TYPE_HORIZONTAL = 'horizontal';
 	const TYPE_SQUARE = 'square';
 	const TYPE_TEXT_ONLY = 'text_only';
-
 	const ALL_TYPES = [
 			self::TYPE_SPLIT,
 			self::TYPE_FULL,
 			self::TYPE_HORIZONTAL,
+			self::TYPE_SQUARE,
 			self::TYPE_TEXT_ONLY,
 	];
 
-	const DEFAULT_TYPE = self::TYPE_TEXT_ONLY;
-
-	static protected $_config = [
-			self::TYPE_SPLIT      => [ 'name' => 'Split' ],
-			self::TYPE_FULL       => [ 'name' => 'Full Bleed' ],
-			self::TYPE_HORIZONTAL => [ 'name' => 'Horizontal' ],
-			self::TYPE_SQUARE     => [ 'name' => 'Square' ],
-			self::TYPE_TEXT_ONLY  => [ 'name' => 'Text Only' ],
+	/* Colors */
+	const CLR_WHITE = 'white';
+	const CLR_LIGHT_GRAY = 'gray-light';
+	const CLR_INDIGO = 'indigo';
+	const BG_COLORS = [
+			self::CLR_LIGHT_GRAY => [ 'name' => 'Light Gray', 'color' => '#F3F3F7' ],
+			self::CLR_INDIGO     => [ 'name' => 'Indigo', 'color' => '#101066' ],
+	];
+	const BG_CLR_2_TXT_CLR = [
+			self::CLR_LIGHT_GRAY => self::CLR_INDIGO,
+			self::CLR_INDIGO     => self::CLR_WHITE
 	];
 
-	public static function post( \WP_Post $post, array $options = [] ): string {
+	/* Settings */
+	const SETTINGS = [
+			self::TYPE_SPLIT      => [ 'name' => 'Split' ],
+			self::TYPE_FULL       => [ 'name' => 'Full Bleed', 'validate' => [ 'image-horizontal' ] ],
+			self::TYPE_HORIZONTAL => [ 'name' => 'Horizontal', 'validate' => [ 'image-horizontal' ] ],
+			self::TYPE_SQUARE     => [ 'name' => 'Square', 'validate' => [ 'image-square' ] ],
+			self::TYPE_TEXT_ONLY  => [ 'name' => 'Text Only', 'supports' => [ 'bg-color' ] ],
+	];
+
+	/* Defaults */
+	const DEFAULT_TYPE = self::TYPE_TEXT_ONLY;
+	const DEFAULT_BG_COLOR = self::CLR_INDIGO;
+
+	/**
+	 * Renders the post header.
+	 *
+	 * @param \WP_Post $post
+	 * @param array $options
+	 *
+	 * @return string
+	 */
+	public static function render( \WP_Post $post, array $options = [] ): string {
 		$type = $options['type'] = self::get_header_type( $post );
 		$cls  = [ 'post-header', "type-${type}" ];
 
 		# BG Color
-		if ( $type == self::TYPE_TEXT_ONLY && ! empty( $bg_clr = get_post_meta( $post->ID, Meta\Post::KEY_HEADER_BG_CLR, true ) ) ) {
-			$cls[] = "bg-{$bg_clr}";
+		if ( self::supports_bg_color( $post ) ) {
+			list( $bg_color, $txt_color ) = self::get_bg_color( $post );
+			$cls[] = "bg-{$bg_color}";
+			$cls[] = "text-{$txt_color}";
+		} else {
+			$cls[] = 'text-white';
 		}
 
 		ob_start(); ?>
@@ -63,18 +92,15 @@ class Header {
 	protected static function _render_thumbnail( \WP_Post $post, array &$options = [] ): ?string {
 		$variants = [];
 		switch ( $options['type'] ) {
-			case self::TYPE_TEXT_ONLY:
-				return '<div class="w-full h-full bg-violet"></div>';
 			case self::TYPE_SQUARE:
 				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_SQUARE );
 				break;
 			case self::TYPE_FULL:
 			case self::TYPE_HORIZONTAL:
-				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_VERTICAL );
+				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_VERTICAL, Thumbnail::SIZE_MD );
 				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_MD, Thumbnail::TYPE_HORIZONTAL );
 				break;
 			case self::TYPE_SPLIT:
-			default:
 				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_VERTICAL );
 				break;
 		}
@@ -89,21 +115,25 @@ class Header {
 	 * @return string
 	 */
 	protected static function _render_content_area( \WP_Post $post, array &$options = [] ): string {
-		# Title Top
-		$title_top = null;
-		if ( $post->post_type == Guide::POST_TYPE ) {
+		$title_top = $title_btm = $external_url = null;
+		$hide_tags = false;
+
+		# By post type
+		if ( $post->post_type == CPT\RC\Guide::POST_TYPE ) {
 			$title_top = 'Guide';
-		} else if ( $post->post_type == Article::POST_TYPE ) {
-			$categories = Taxonomy::get_object_terms_ordered( $post, RC_Object::TAXONOMY_CATEGORY );
-			$first_cat  = empty( $categories ) ? null : reset( $categories );
-			$title_top  = $first_cat ? $first_cat->name : null;
+		} elseif ( in_array( $post->post_type, Main::BLOG_POST_TYPES ) ) {
+			$title_top = 'Blog';
+		} elseif ( $post->post_type == CPT\RC\External::POST_TYPE ) {
+			$hide_tags    = true;
+			$external_url = CPT\RC\External::obj_get_url( $post->ID );
 		}
 
-		# Title Bottom
-		$title_btm = null;
+		if ( empty( $title_top ) && ! empty( $main_cat = Meta\Post::get_main_category( $post ) ) ) {
+			$title_top = $main_cat->name;
+		}
 
 		/* Blogs doesn't have excerpt */
-		if ( ! in_array( $post->post_type, [ \TrevorWP\CPT\RC\Post::POST_TYPE, \TrevorWP\CPT\Post::POST_TYPE ] ) ) {
+		if ( ! in_array( $post->post_type, Main::BLOG_POST_TYPES ) ) {
 			$title_btm = nl2br( esc_html( $post->post_excerpt ) );
 		}
 
@@ -111,13 +141,12 @@ class Header {
 		$mid_row = [];
 
 		## Article Length
-		$len_ind = get_post_meta( $post->ID, Meta\Post::KEY_LENGTH_IND, true );
-		if ( ! empty( $len_ind ) ) {
-			$mid_row[] = '<div class="length-indicator">' . esc_html( $len_ind ) . "</div>";
+		if ( ! empty( $len_ind = Content_Length::post( $post ) ) ) {
+			$mid_row[] = '<div class="length-indicator"> Article Length: ' . esc_html( $len_ind ) . "</div>";
 		}
 
 		## Sharing Box
-		if ( ! empty( get_post_meta( $post->ID, Meta\Post::KEY_HEADER_SNOW_SHARE, true ) ) ) {
+		if ( Meta\Post::can_show_share_box( $post->ID ) ) {
 			ob_start(); ?>
 			<div class="sharing-box">
 				<a target="_blank"
@@ -143,7 +172,7 @@ class Header {
 		}
 
 		# Tags
-		$tags = get_the_terms( $post, Tools::get_post_tag_tax( $post ) );
+		$tags = $hide_tags ? [] : get_the_terms( $post, Tools::get_post_tag_tax( $post ) );
 
 		ob_start(); ?>
 		<div class="post-header-content">
@@ -155,12 +184,13 @@ class Header {
 				<div class="title-btm"><?= $title_btm ?></div>
 			<?php } ?>
 
-			<?php if ( ! empty( $mid_row ) ) { ?>
+			<?php if ( $mid_row_count = count( $mid_row ) ) { ?>
 				<div class="mid-row">
-					<?php foreach ( $mid_row as $col ) { ?>
+					<?php foreach ( $mid_row as $idx => $col ) { ?>
 						<div class="mid-row-col">
 							<?= $col ?>
 						</div>
+						<?= $mid_row_count - $idx > 1 ? '<div class="mid-row-v-separator"></div>' : '' ?>
 					<?php } ?>
 				</div>
 			<?php } ?>
@@ -171,6 +201,16 @@ class Header {
 						<a href="<?= get_term_link( $tag ) ?>"
 						   class="tag-box" rel="tag"><?= $tag->name ?></a>
 					<?php } ?>
+				</div>
+			<?php } ?>
+
+			<?php if ( ! empty( $external_url ) ) { ?>
+				<div class="link-out-wrap">
+					<a class="link-out"
+					   href="<?= esc_url( $external_url ) ?>"
+					   rel="noopener noreferrer nofollow"
+					   target="_blank">Visit Site</a>
+					<i class="trevor-ti-link-out"></i>
 				</div>
 			<?php } ?>
 		</div>
@@ -193,11 +233,32 @@ class Header {
 	}
 
 	/**
-	 * @param string $header_type
+	 * @param \WP_Post $post
 	 *
-	 * @return array|string[]
+	 * @return array [$bg_color, $text_color]
 	 */
-	public static function get_config_of( string $header_type ): array {
-		return self::$_config[ $header_type ] ?? [];
+	public static function get_bg_color( \WP_Post $post ): array {
+		$bg_color = get_post_meta( $post->ID, Meta\Post::KEY_HEADER_BG_CLR, true );
+
+		# Fallback
+		if ( empty( $bg_color ) || ! array_key_exists( $bg_color, self::BG_COLORS ) ) {
+			$bg_color = self::DEFAULT_BG_COLOR;
+		}
+
+		$txt_color = self::BG_CLR_2_TXT_CLR[ $bg_color ];
+
+		return [ $bg_color, $txt_color ];
+	}
+
+	/**
+	 * @param \WP_Post $post
+	 *
+	 * @return bool
+	 */
+	public static function supports_bg_color( \WP_Post $post ): bool {
+		$type     = self::get_header_type( $post );
+		$settings = self::SETTINGS[ $type ];
+
+		return ! empty( $settings['supports'] ) && in_array( 'bg-color', $settings['supports'] );
 	}
 }

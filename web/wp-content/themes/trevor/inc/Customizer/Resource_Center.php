@@ -29,7 +29,7 @@ class Resource_Center extends Abstract_Customizer {
 	const SETTING_HOME_CARD_NUM = self::SETTING_HOME_PREFIX . 'card_num';
 	const PREFIX_SETTING_HOME_CAT_POSTS = self::SETTING_HOME_PREFIX . 'cat_posts_';
 
-	/* All Default */
+	/* All Defaults */
 	const DEFAULTS = [
 		self::SETTING_HOME_CARD_NUM => 10,
 	];

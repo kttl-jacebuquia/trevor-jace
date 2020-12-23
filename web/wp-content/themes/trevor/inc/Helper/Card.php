@@ -8,24 +8,32 @@ class Card {
 	public static function post( $post, array $options = [] ): string {
 		$post          = get_post( $post );
 		$options       = array_merge( [
-				'class'     => '', // Additional classes
-				'num_words' => 100, // for the description
+				'class'     => [], // Additional classes
+				'num_words' => 100, // for description
 		], $options );
 		$post_type     = get_post_type( $post );
 		$has_thumbnail = has_post_thumbnail( $post );
 		$_class        = &$options['class'];
 
 		# Default class
-		$_class .= " card-post";
+		$_class[] = 'card-post';
+
+		$title_top = $title_btm = $desc = $icon_cls = null;
 
 		# Determine the type
-		$title_top = $desc = null;
-
-		if ( $post_type == CPT\RC\Guide::POST_TYPE ) {
-			$_class    .= ' bg-full'; // Full img bg
+		if ( $post_type == CPT\RC\Glossary::POST_TYPE ) {
+			$title_top = 'Glossary';
+			$title_btm = $post->post_excerpt;
+			$desc      = $post->post_content;
+		} elseif ( $post_type == CPT\RC\External::POST_TYPE ) {
+			$title_top = 'Resource';
+			$desc      = $post->post_excerpt;
+			$_class[]  = 'bg-full'; // Full img bg
+			$icon_cls  = 'trevor-ti-link-out';
+		} elseif ( $post_type == CPT\RC\Guide::POST_TYPE ) {
 			$title_top = 'Guide';
-
-			$desc = $post->post_excerpt;
+			$desc      = $post->post_excerpt;
+			$_class[]  = 'bg-full'; // Full img bg
 		} elseif ( $post_type == CPT\RC\Article::POST_TYPE ) {
 			$categories = Ranks\Taxonomy::get_object_terms_ordered( $post, RC_Object::TAXONOMY_CATEGORY );
 			$first_cat  = empty( $categories ) ? null : reset( $categories );
@@ -51,6 +59,10 @@ class Card {
 			<?php } ?>
 
 			<div class="card-content">
+				<?php if ( ! empty( $icon_cls ) ) { ?>
+					<div class="icon-wrap"><i class="<?= esc_attr( $icon_cls ) ?>"></i></div>
+				<?php } ?>
+
 				<?php if ( ! empty( $title_top ) ) { ?>
 					<div class="title_top uppercase"><?= $title_top ?></div>
 				<?php } ?>
@@ -60,11 +72,15 @@ class Card {
 					   class="stretched-link"><?= get_the_title( $post ); ?></a>
 				</h3>
 
-				<?php if ( ! empty( $desc ) ) { ?>
-					<div class="post-desc"><?= wp_trim_words( $desc, $options['num_words'] ) ?></div>
+				<?php if ( ! empty( $title_btm ) ) { ?>
+					<div class="title-btm"><?= esc_html( $title_btm ) ?></div>
 				<?php } ?>
 
-				<div class="flex-1"></div>
+				<?php if ( ! empty( $desc ) ) { ?>
+					<div class="post-desc"><?= esc_html( wp_trim_words( $desc, $options['num_words'] ) ) ?></div>
+				<?php } else { ?>
+					<div class="flex-1"></div>
+				<?php } ?>
 
 				<?php if ( ! empty( $tags ) ) { ?>
 					<div class="tags-box">

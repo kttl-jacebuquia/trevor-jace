@@ -1,12 +1,13 @@
 <?php namespace TrevorWP\Util;
 
+use TrevorWP\Main;
 use WP_Post;
 use TrevorWP\Block;
 use \Solarium\QueryType\Update\Query\Document\Document as SolariumDocument;
 use TrevorWP\Admin;
 use TrevorWP\Jobs\GA_Results;
 use TrevorWP\Jobs\Jobs;
-use TrevorWP\Meta\Post;
+use TrevorWP\Meta;
 use TrevorWP\Ranks;
 use TrevorWP\CPT;
 use TrevorWP\Options;
@@ -70,6 +71,9 @@ class Hooks {
 			add_action( 'admin_enqueue_scripts', [ self::class, 'admin_enqueue_scripts' ], 1, 1 );
 			add_action( 'admin_enqueue_scripts', [ StaticFiles::class, 'register_admin' ], 10, 1 );
 
+			# Header
+			add_action( 'admin_head', [ self::class, 'admin_head' ], 10, 0 );
+
 			# Footer
 			add_action( 'admin_footer', [ self::class, 'admin_footer' ], 10, 0 );
 
@@ -100,13 +104,16 @@ class Hooks {
 		CPT\RC\RC_Object::construct();
 
 		# Post Meta
-		Post::register_all();
+		Meta\Post::register_all();
 
 		# Admin Blocks Data
 		add_filter( 'trevor_editor_blocks_data', [ self::class, 'trevor_editor_blocks_data' ], 10, 1 );
 
 		# Post Save for Blocks
 		add_action( 'save_post', [ self::class, 'save_post_blocks' ], PHP_INT_MAX, 2 );
+
+		# Wrap Singular Post Blocks
+		add_filter( 'the_content', [ self::class, 'the_content' ], 8, 1 );
 	}
 
 	public static function highlight_search(): void {
@@ -263,13 +270,27 @@ class Hooks {
 	}
 
 	/**
+	 * Fires in head section for all admin pages.
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/admin_head/
+	 */
+	public static function admin_head(): void {
+		$screen = get_current_screen();
+
+		if ( $screen->is_block_editor && in_array( $screen->post_type, Tools::get_public_post_types() ) ) { ?>
+			<script>
+				Object.assign(window.TrevorWP.screen, {editorBlocksData: <?=json_encode( apply_filters( 'trevor_editor_blocks_data', [] ) )?>})
+			</script>
+			<?php
+		}
+	}
+
+	/**
 	 * Print scripts or data before the default footer scripts.
 	 *
 	 * @link https://developer.wordpress.org/reference/hooks/admin_footer/
 	 */
 	static public function admin_footer(): void {
-		$screen = get_current_screen();
-
 		# Print buffer
 		foreach ( self::$admin_footer_buffer as $line ) {
 			echo $line;
@@ -280,13 +301,6 @@ class Hooks {
 				jQuery(function () {
 					TrevorWP.utils.notices.add("<?=esc_js( $notice['msg'] );?>", {class: "<?=esc_js( $notice['class'] );?>"})
 				});
-			</script>
-			<?php
-		}
-
-		if ( $screen->is_block_editor && in_array( $screen->post_type, Tools::get_public_post_types() ) ) { ?>
-			<script>
-				Object.assign(window.TrevorWP.screen, {editorBlocksData: <?=json_encode( apply_filters( 'trevor_editor_blocks_data', [] ) )?>})
 			</script>
 			<?php
 		}
@@ -422,7 +436,11 @@ class Hooks {
 			return $data;
 		}
 
-		return array_merge( $data, Post::get_editor_config( $post ) );
+		# Post Taxonomies
+		$data['catTax'] = Tools::get_post_category_tax( $post );
+		$data['tagTax'] = Tools::get_post_category_tax( $post );
+
+		return array_merge( $data, Meta\Post::get_editor_config( $post ) );
 	}
 
 	/**
@@ -458,6 +476,31 @@ class Hooks {
 		foreach ( $map as $block_name => $cls ) {
 			call_user_func_array( [ $cls, 'save_post_finalize' ], [ $post, &$states[ $block_name ] ] );
 		}
+	}
+
+	/**
+	 * Wraps content blocks with the grid wrapper and leaves custom blocks to add their owns.
+	 *
+	 * @param string $content
+	 *
+	 * @return string Rendered content.
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/the_content/
+	 */
+	public static function the_content( string $content ): string {
+		if ( is_singular( Tools::get_public_post_types() ) || is_page() && in_the_loop() && is_main_query() ) {
+			/**
+			 * Disables wpautop for this post. Otherwise it replaces new lines with p element.
+			 * @see do_blocks()
+			 */
+			$priority = has_filter( 'the_content', 'wpautop' );
+			if ( false !== $priority && doing_filter( 'the_content' ) && has_blocks( $content ) ) {
+				remove_filter( 'the_content', 'wpautop', $priority );
+				add_filter( 'the_content', '_restore_wpautop_hook', $priority + 1 );
+			}
+		}
+
+		return $content;
 	}
 
 }
