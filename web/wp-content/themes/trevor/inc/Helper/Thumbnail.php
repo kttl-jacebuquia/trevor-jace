@@ -171,4 +171,5 @@ class Thumbnail {
 	}
 
 
+	// TODO: FIND a way for variant <-> multiple image variations, it is important for the RC home heros
 }
