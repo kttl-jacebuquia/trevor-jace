@@ -39,7 +39,7 @@ class Resource_Center extends Abstract_Customizer {
 	/* All Defaults */
 	const DEFAULTS = [
 		self::SETTING_HOME_CARD_NUM             => 10,
-		self::SETTING_PAGINATION_TAX_ARCHIVE    => 12,
+		self::SETTING_PAGINATION_TAX_ARCHIVE    => 6,
 		self::SETTING_PAGINATION_SEARCH_RESULTS => 6,
 	];
 
@@ -108,6 +108,7 @@ class Resource_Center extends Abstract_Customizer {
 			'allow_order' => true,
 			'label'       => 'Featured Posts',
 			'post_type'   => CPT\RC\RC_Object::$PUBLIC_POST_TYPES,
+			'description' => 'Suggested post count: 3'
 		] ) );
 
 		## Categories
