@@ -102,7 +102,7 @@ class Post_Header {
 				break;
 			case self::TYPE_FULL:
 			case self::TYPE_HORIZONTAL:
-				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_VERTICAL, Thumbnail::SIZE_MD );
+				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_SM, Thumbnail::TYPE_VERTICAL );
 				$variants[] = Thumbnail::variant( Thumbnail::SCREEN_MD, Thumbnail::TYPE_HORIZONTAL );
 				break;
 			case self::TYPE_SPLIT:
