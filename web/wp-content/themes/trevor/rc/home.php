@@ -69,8 +69,9 @@ $featured_word = Helper\Posts::get_one_from_list(
 				<h2 class="font-semibold text-white text-px14 leading-px18 tracking-em001 mb-2 md:tracking-px05 lg:font-bold lg:text-px16 lg:leading-px20">
 					RESOURCE CENTER
 				</h2>
-				<h1 class="heading-lg-tilted text-white">
-					<span>Connection starts</span> <tilt>with knowledge.</tilt>
+				<h1 class="heading-lg-tilted text-white has-block-tilt">
+					<span>Connection starts</span>
+					<tilt>with knowledge.</tilt>
 				</h1>
 
 				<div class="my-8 mx-auto md:px-8 md:my-6 lg:w-9/12 lg:px-0">
@@ -84,7 +85,7 @@ $featured_word = Helper\Posts::get_one_from_list(
 
 				<div class="flex flex-wrap justify-center mt-4">
 					<?php foreach ( $featured_cats as $cat ) { ?>
-						<a href="<?= esc_url( "#cat-{$cat->slug}" ) ?>"
+						<a href="<?= get_term_link( $cat ) ?>"
 						   class="rounded-full py-1 px-5 bg-violet mx-2 mb-3 text-white">
 							<?= esc_html( $cat->name ); ?>
 						</a>
@@ -114,7 +115,11 @@ foreach ( array_slice( $cat_rows, 0, 2 ) as $cat_carousel ) {
 	echo $cat_carousel;
 } ?>
 
+
+
+
 <?php # Guide
+
 if ( $featured_guide ) {
 	$root_cls = [
 			'text-white',
@@ -134,7 +139,11 @@ if ( $featured_guide ) {
 	<a class="stretched-link underline font-semibold tracking-px05 text-px20 leading-px26 lg:text-px20 lg:leading-px26"
 	   href="<?= get_the_permalink( $featured_guide ) ?>">Read Guide</a>
 	<?php $context = ob_get_clean();
-	echo Helper\Hero::img_bg( get_post_thumbnail_id( $featured_guide ), $context, [ 'root_cls' => $root_cls ] );
+	echo Helper\Hero::img_bg( Helper\Thumbnail::get_post_imgs(
+			$featured_guide->ID,
+			Helper\Thumbnail::variant( Helper\Thumbnail::SCREEN_SM, Helper\Thumbnail::TYPE_VERTICAL, Helper\Thumbnail::SIZE_MD ),
+			Helper\Thumbnail::variant( Helper\Thumbnail::SCREEN_MD, Helper\Thumbnail::TYPE_HORIZONTAL, Helper\Thumbnail::SIZE_LG ),
+	), $context, [ 'root_cls' => $root_cls ] );
 }
 ?>
 
@@ -172,7 +181,16 @@ if ( $featured_word ) {
 	</p>
 	<?php $context = ob_get_clean();
 	echo Helper\Hero::img_bg(
-			intval( Customizer\Resource_Center::get_val( Customizer\Resource_Center::SETTING_HOME_GLOSSARY_BG_IMG ) ),
+			[
+					[
+							intval( Customizer\Resource_Center::get_val( Customizer\Resource_Center::SETTING_HOME_GLOSSARY_BG_IMG_V ) ),
+							Helper\Thumbnail::variant( Helper\Thumbnail::SCREEN_SM, Helper\Thumbnail::TYPE_VERTICAL ),
+					],
+					[
+							intval( Customizer\Resource_Center::get_val( Customizer\Resource_Center::SETTING_HOME_GLOSSARY_BG_IMG ) ),
+							Helper\Thumbnail::variant( Helper\Thumbnail::SCREEN_LG, Helper\Thumbnail::TYPE_HORIZONTAL ),
+					]
+			],
 			$context,
 			[
 					'root_cls'    => $root_cls,
