@@ -41,9 +41,10 @@ foreach ( $featured_cats as $cat ) {
 	] );
 
 	$cat_rows[]    = Helper\Carousel::posts( $cat_posts, [
-			'id'       => "cat-{$cat->slug}",
-			'title'    => '<a href="' . get_term_link( $cat ) . '">' . esc_html( $cat->name ) . '</a>',
-			'subtitle' => $cat->description,
+			'id'               => "cat-{$cat->slug}",
+			'title'            => '<a href="' . get_term_link( $cat ) . '">' . esc_html( $cat->name ) . '</a>',
+			'subtitle'         => $cat->description,
+			'hide_cat_eyebrow' => true,
 	] );
 	$used_post_ids = array_merge( $used_post_ids, wp_list_pluck( $cat_posts, 'ID' ) );
 }
@@ -83,10 +84,10 @@ $featured_word = Helper\Posts::get_one_from_list(
 
 				<p class="text-white md:mt-8 md:mb-5">Browse a topic or check out what’s trending.</p>
 
-				<div class="flex flex-wrap justify-center mt-4">
+				<div class="flex flex-wrap justify-center mt-4 -mx-8 md:mx-auto">
 					<?php foreach ( $featured_cats as $cat ) { ?>
 						<a href="<?= get_term_link( $cat ) ?>"
-						   class="rounded-full py-1 px-5 bg-violet mx-2 mb-3 text-white">
+						   class="rounded-full py-1 px-3 bg-violet mx-1 mb-3 text-white md:px-5">
 							<?= esc_html( $cat->name ); ?>
 						</a>
 					<?php } ?>
