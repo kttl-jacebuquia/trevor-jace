@@ -66,7 +66,7 @@ $featured_word = Helper\Posts::get_one_from_list(
 <?php if ( ! is_paged() ) { ?>
 	<main id="site-content" role="main" class="site-content">
 		<div class="container mx-auto text-center site-content-inner mt-8 md:mt-0 md:mb-8">
-			<div class="mx-auto mb-10 md:mt-10 lg:w-4/6">
+			<div class="mx-auto mb-10 md:mt-10 lg:w-4/6 lg:mt-16">
 				<h2 class="font-semibold text-white text-px14 leading-px18 tracking-em001 mb-2 md:tracking-px05 lg:font-bold lg:text-px16 lg:leading-px20">
 					RESOURCE CENTER
 				</h2>
@@ -82,7 +82,7 @@ $featured_word = Helper\Posts::get_one_from_list(
 					</form>
 				</div>
 
-				<p class="text-white md:mt-8 md:mb-5">Browse a topic or check out what’s trending.</p>
+				<p class="text-white font-medium text-base leading-px22 tracking-em001 md:text-px18 md:leading-px24 md:mt-8 md:mb-5 lg:text-px20 lg:tracking-px05 lg:mb-6">Browse a topic or check out what’s trending.</p>
 
 				<div class="flex flex-wrap justify-center mt-4 -mx-8 md:mx-auto">
 					<?php foreach ( $featured_cats as $cat ) { ?>
@@ -125,10 +125,13 @@ if ( $featured_guide ) {
 	$root_cls = [
 			'text-white',
 			'h-px600',
-			'my-10',
+			'mt-10',
+			'mb-24',
+			'mb-32',
 			'md:h-px490',
 			'md:justify-center',
 			'lg:h-px737',
+			'lg:mb-48',
 	];
 
 	ob_start(); ?>
@@ -137,7 +140,7 @@ if ( $featured_guide ) {
 		   href="<?= esc_url( get_term_link( $main_cat ) ) ?>"><?= esc_html( $main_cat->name ) ?></a>
 	<?php } ?>
 	<h2 class="text-px32 leading-px42 font-semibold mb-5 lg:text-60 lg:leading-70"><?= strip_tags( $featured_guide->post_excerpt, '<tilt>' ); ?></h2>
-	<a class="stretched-link underline font-semibold tracking-px05 text-px20 leading-px26 lg:text-px20 lg:leading-px26"
+	<a class="stretched-link border-b font-semibold tracking-px05 text-px20 leading-px26 lg:text-px20 lg:leading-px26"
 	   href="<?= get_the_permalink( $featured_guide ) ?>">Read Guide</a>
 	<?php $context = ob_get_clean();
 	echo Helper\Hero::img_bg( Helper\Thumbnail::get_post_imgs(
