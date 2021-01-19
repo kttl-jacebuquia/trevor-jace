@@ -60,41 +60,24 @@ abstract class Get_Involved_Object {
 	 */
 	public static function init(): void {
 		# Rewrites
-		## Ending Conversion Therapy
-		add_rewrite_rule( self::PERMALINK_ECT . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE => 1,
-				self::QV_ECT  => 1,
-			] ), 'top' );
-
-		## Volunteer
-		add_rewrite_rule( self::PERMALINK_VOLUNTEER . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE      => 1,
-				self::QV_VOLUNTEER => 1,
-			] ), 'top' );
-
-		## Partner With Us
-		add_rewrite_rule( self::PERMALINK_PARTNER_W_US . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE         => 1,
-				self::QV_PARTNER_W_US => 1,
-			] ), 'top' );
-
-		## Corporate Partnerships
-		add_rewrite_rule( self::PERMALINK_CORP_PARTNERSHIPS . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE              => 1,
-				self::QV_CORP_PARTNERSHIPS => 1,
-			] ), 'top' );
-
-		## Institutional Grants
-		add_rewrite_rule( self::PERMALINK_INSTITUTIONAL_GRANTS . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE                 => 1,
-				self::QV_INSTITUTIONAL_GRANTS => 1,
-			] ), 'top' );
-
-		## Events
-		add_rewrite_rule( self::PERMALINK_EVENTS . '/?$', 'index.php?' . http_build_query( [
-				self::QV_BASE   => 1,
-				self::QV_EVENTS => 1,
-			] ), 'top' );
+		## Single Pages
+		foreach (
+			[
+				[ self::PERMALINK_ECT, self::QV_ECT ],
+				[ self::PERMALINK_VOLUNTEER, self::QV_VOLUNTEER ],
+				[ self::PERMALINK_PARTNER_W_US, self::QV_PARTNER_W_US ],
+				[ self::PERMALINK_CORP_PARTNERSHIPS, self::QV_CORP_PARTNERSHIPS ],
+				[ self::PERMALINK_INSTITUTIONAL_GRANTS, self::QV_INSTITUTIONAL_GRANTS ],
+				[ self::PERMALINK_EVENTS, self::QV_EVENTS ],
+			] as list(
+			$regex, $qv
+		)
+		) {
+			add_rewrite_rule( $regex . '/?$', 'index.php?' . http_build_query( [
+					self::QV_BASE => 1,
+					$qv           => 1,
+				] ), 'top' );
+		}
 
 		## Main Page
 		add_rewrite_rule(
