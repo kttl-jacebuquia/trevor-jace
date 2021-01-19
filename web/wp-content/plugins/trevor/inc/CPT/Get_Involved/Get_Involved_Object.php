@@ -3,7 +3,13 @@
 
 use TrevorWP\Main;
 
+/**
+ * Abstract Get Involved Object
+ */
 abstract class Get_Involved_Object {
+	/* Flags */
+	const IS_PUBLIC = true;
+
 	/* Post Types */
 	const POST_TYPE_PREFIX = Main::POST_TYPE_PREFIX . 'gi_';
 
@@ -12,11 +18,21 @@ abstract class Get_Involved_Object {
 	const QV_MAIN_LP = self::QV_BASE . '_main_lp';
 	const QV_ECT = self::QV_BASE . '_ect'; // Ending Conversion Therapy
 	const QV_VOLUNTEER = self::QV_BASE . '_volunteer'; // Ending Conversion Therapy
+	const QV_BILL = self::QV_BASE . '_bill';
+	const QV_LETTER = self::QV_BASE . '_letter';
+	const QV_PARTNER_W_US = self::QV_BASE . 'partner_w_us';
+	const QV_CORP_PARTNERSHIPS = self::QV_BASE . 'corp_partnerships';
+	const QV_INSTITUTIONAL_GRANTS = self::QV_BASE . 'institutional_grants';
+	const QV_EVENTS = self::QV_BASE . 'events';
 
 	/* Permalinks */
 	const PERMALINK_BASE = 'get-involved';
 	const PERMALINK_ECT = self::PERMALINK_BASE . '/' . 'ending-conversion-therapy';
 	const PERMALINK_VOLUNTEER = self::PERMALINK_BASE . '/' . 'volunteer';
+	const PERMALINK_PARTNER_W_US = self::PERMALINK_BASE . '/' . 'partner-with-us';
+	const PERMALINK_CORP_PARTNERSHIPS = self::PERMALINK_BASE . '/' . 'corporate-partnerships';
+	const PERMALINK_INSTITUTIONAL_GRANTS = self::PERMALINK_BASE . '/' . 'institutional-grants';
+	const PERMALINK_EVENTS = self::PERMALINK_BASE . '/' . 'events';
 
 	/* Collections */
 	const _ALL_ = [];
@@ -56,6 +72,30 @@ abstract class Get_Involved_Object {
 				self::QV_VOLUNTEER => 1,
 			] ), 'top' );
 
+		## Partner With Us
+		add_rewrite_rule( self::PERMALINK_PARTNER_W_US . '/?$', 'index.php?' . http_build_query( [
+				self::QV_BASE         => 1,
+				self::QV_PARTNER_W_US => 1,
+			] ), 'top' );
+
+		## Corporate Partnerships
+		add_rewrite_rule( self::PERMALINK_CORP_PARTNERSHIPS . '/?$', 'index.php?' . http_build_query( [
+				self::QV_BASE              => 1,
+				self::QV_CORP_PARTNERSHIPS => 1,
+			] ), 'top' );
+
+		## Institutional Grants
+		add_rewrite_rule( self::PERMALINK_INSTITUTIONAL_GRANTS . '/?$', 'index.php?' . http_build_query( [
+				self::QV_BASE                 => 1,
+				self::QV_INSTITUTIONAL_GRANTS => 1,
+			] ), 'top' );
+
+		## Events
+		add_rewrite_rule( self::PERMALINK_EVENTS . '/?$', 'index.php?' . http_build_query( [
+				self::QV_BASE   => 1,
+				self::QV_EVENTS => 1,
+			] ), 'top' );
+
 		## Main Page
 		add_rewrite_rule(
 			self::PERMALINK_BASE . '/?$',
@@ -83,6 +123,12 @@ abstract class Get_Involved_Object {
 			self::QV_MAIN_LP,
 			self::QV_ECT,
 			self::QV_VOLUNTEER,
+			self::QV_BILL,
+			self::QV_LETTER,
+			self::QV_PARTNER_W_US,
+			self::QV_CORP_PARTNERSHIPS,
+			self::QV_INSTITUTIONAL_GRANTS,
+			self::QV_EVENTS,
 		] );
 	}
 
