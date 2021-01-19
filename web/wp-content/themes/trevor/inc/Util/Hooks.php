@@ -66,12 +66,15 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/wp_enqueue_scripts/
 	 */
 	public static function wp_enqueue_scripts(): void {
+		// FIXME: This should change only on deployments
+		$GLOBALS['trevor_theme_static_ver'] = WP_DEBUG ? uniqid( \TrevorWP\Theme\VERSION . '-' ) : \TrevorWP\Theme\VERSION;
+
 		# Theme's frontend JS package
 		wp_enqueue_script(
 				self::NAME_PREFIX . 'theme-frontend-main',
 				TREVOR_THEME_STATIC_URL . '/js/frontend.js',
 				[ 'jquery' ],
-				\TrevorWP\Theme\VERSION,
+				$GLOBALS['trevor_theme_static_ver'],
 				true
 		);
 
@@ -88,7 +91,7 @@ class Hooks {
 					self::NAME_PREFIX . 'theme-frontend-css',
 					TREVOR_THEME_STATIC_URL . '/css/frontend.js',
 					[ StaticFiles::NAME_JS_RUNTIME ],
-					\TrevorWP\Theme\VERSION,
+					$GLOBALS['trevor_theme_static_ver'],
 					false
 			);
 		} else {
@@ -96,7 +99,7 @@ class Hooks {
 					self::NAME_PREFIX . 'theme-frontend',
 					TREVOR_THEME_STATIC_URL . '/css/frontend.css',
 					[],
-					\TrevorWP\Theme\VERSION,
+					$GLOBALS['trevor_theme_static_ver'],
 					'all'
 			);
 		}
@@ -333,13 +336,19 @@ class Hooks {
 				if ( $wp_query->is_search() ) {
 					$template = locate_template( 'rc/search.php', false );
 				}
-			} else # RC: Get Help
-				if ( ! empty( $wp_query->get( CPT\RC\RC_Object::QV_GET_HELP ) ) ) {
-					$template = locate_template( 'rc/get-help.php', false );
-				} else # RC: Trevor Space
-					if ( ! empty( $wp_query->get( CPT\RC\RC_Object::QV_TREVORSPACE ) ) ) {
-						$template = locate_template( 'rc/trevor-space.php', false );
-					}
+			}
+		} # RC: Get Help
+		else if ( ! empty( $wp_query->get( CPT\RC\RC_Object::QV_GET_HELP ) ) ) {
+			$template = locate_template( 'rc/get-help.php', false );
+		} # RC: Trevor Space
+		else if ( ! empty( $wp_query->get( CPT\RC\RC_Object::QV_TREVORSPACE ) ) ) {
+			$template = locate_template( 'rc/trevor-space.php', false );
+		} # Get Involved: Ending Conversion Therapy
+		else if ( ! empty( $wp_query->get( CPT\Get_Involved\Get_Involved_Object::QV_ECT ) ) ) {
+			$template = locate_template( 'get-involved/ending-conversion-therapy.php', false );
+		} # Get Involved: Volunteer
+		else if ( ! empty( $wp_query->get( CPT\Get_Involved\Get_Involved_Object::QV_VOLUNTEER ) ) ) {
+			$template = locate_template( 'get-involved/volunteer.php', false );
 		}
 
 		return $template;

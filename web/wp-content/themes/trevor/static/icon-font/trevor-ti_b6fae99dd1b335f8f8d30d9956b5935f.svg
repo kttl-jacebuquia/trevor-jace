@@ -5,7 +5,7 @@
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170812 at Tue Jan 19 14:14:37 2021
+Created by FontForge 20170812 at Tue Jan 19 21:08:28 2021
  By node
 
 </metadata>
@@ -22,7 +22,7 @@ Created by FontForge 20170812 at Tue Jan 19 14:14:37 2021
     bbox="-0.5 -67 629 450"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F115"
+    unicode-range="U+0020-F117"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
@@ -55,6 +55,8 @@ d="M135 -38c-54 0 -104 33 -125 83s-10 108 29 147l58 57l38 -38l-57 -57c-20 -20 -2
 s-30 51 -58 58s-58 -1 -78 -22l-57 -57l-38 38l57 58c53 52 138 51 190 -1s53 -137 1 -190l-58 -57v0z" />
     <glyph glyph-name="caret-down" unicode="&#xf102;" horiz-adv-x="481" 
 d="M199 152c23 -25 61 -25 84 0l183 201c33 36 8 95 -42 95h-367c-50 0 -75 -59 -42 -95z" />
+    <glyph glyph-name="checkmark" unicode="&#xf117;" horiz-adv-x="182" 
+d="M157 292c6 15 29 8 24 -7c-23 -59 -50 -116 -84 -170c-10 -16 -20 -26 -39 -15c-22 14 -41 37 -56 58c-9 13 13 26 22 13c3 -4 47 -51 47 -51c11 18 22 35 32 53c20 38 38 78 54 119z" />
     <glyph glyph-name="link-out" unicode="&#xf107;" horiz-adv-x="522" 
 d="M500 448c12 0 23 -11 21 -23v-154c0 -12 -9 -23 -23 -23c-12 0 -23 9 -23 23v96l-233 -233c-5 -5 -9 -7 -16 -7c-5 0 -12 2 -17 7c-9 9 -9 26 0 35l233 232h-95c-12 0 -24 10 -24 24c0 12 10 23 24 23h153zM400 246c14 0 24 -10 24 -24v-263c0 -12 -10 -23 -24 -23h-377
 c-12 0 -23 9 -23 23v377c0 12 9 24 23 24h277c12 0 23 -12 23 -24s-9 -23 -23 -23h-251v-328h328v237c0 12 9 24 23 24z" />
