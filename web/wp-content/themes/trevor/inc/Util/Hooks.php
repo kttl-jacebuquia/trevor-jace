@@ -180,6 +180,9 @@ class Hooks {
 		new Customizer\External_Scripts( $manager );
 		new Customizer\Resource_Center( $manager );
 		new Customizer\Posts( $manager );
+		new Customizer\Advocacy( $manager );
+		new Customizer\Volunteer( $manager );
+		new Customizer\ECT( $manager );
 	}
 
 	/**
@@ -360,6 +363,11 @@ class Hooks {
 					if ( $wp_query->is_search() ) {
 						$template = locate_template( 'rc/search.php', false );
 					}
+				}
+			} # Get Involved
+			elseif ( ! empty( $wp_query->get( CPT\Get_Involved\Get_Involved_Object::QV_BASE ) ) ) {
+				if ( ! empty( $wp_query->get( CPT\Get_Involved\Get_Involved_Object::QV_MAIN_LP ) ) ) {
+					$template = locate_template( 'get-involved/advocate.php', false );
 				}
 			}
 		}
