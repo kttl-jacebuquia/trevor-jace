@@ -87,6 +87,15 @@ class Hooks {
 
 			# Admin Post Columns
 			Admin\Post_Rank_Column::register_hooks();
+
+			# Taxonomy
+			Admin\Taxonomy::register_hooks();
+
+			# Partner
+			Admin\Partner::register_hooks();
+
+			# Partnership
+			Admin\Partnership::register_hooks();
 		}
 
 		# Custom Hooks
