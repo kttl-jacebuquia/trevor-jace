@@ -185,6 +185,7 @@ class Hooks {
 		new Customizer\PWU( $manager );
 		new Customizer\ECT( $manager );
 		new Customizer\Donate( $manager );
+		new Customizer\Product_Partnerships( $manager );
 	}
 
 	/**
