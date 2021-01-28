@@ -138,7 +138,7 @@ $featured_word = Helper\Posts::get_one_from_list(
 		ob_start(); ?>
 		<div class="mx-auto lg:w-3/4">
 			<?php if ( ! empty( $main_cat = \TrevorWP\Meta\Post::get_main_category( $featured_guide ) ) ) { ?>
-				<a class="text-px14 leading-px18 tracking-em002 font-semibold uppercase mb-0 lg:text-px18 lg:leading-px22 z-10"
+				<a class="text-px14 leading-px18 tracking-em002 font-semibold uppercase lg:text-px18 lg:leading-px22 z-10"
 				   href="<?= esc_url( get_term_link( $main_cat ) ) ?>"><?= esc_html( $main_cat->name ) ?></a>
 			<?php } ?>
 			<h2 class="text-px32 leading-px42 font-semibold my-3 lg:my-10 lg:text-px42 lg:leading-px52 xl:text-px60 xl:leading-px70"><?= strip_tags( $featured_guide->post_excerpt, '<tilt>' ); ?></h2>
