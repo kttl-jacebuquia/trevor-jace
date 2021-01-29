@@ -396,6 +396,10 @@ class SolrPower_Sync {
 			}
 		} // End if().
 
+		if($post_info->post_type == 'trevor_rc_guide'){
+			error_log('123');
+		}
+
 		/**
 		 * Filter the generated Solr document.
 		 *

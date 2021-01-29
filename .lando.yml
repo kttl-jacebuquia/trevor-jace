@@ -67,6 +67,7 @@ services:
       volumes:
         - ./source/plugin:/app/web/wp-content/plugins/trevor
         - ./source/theme:/app/web/wp-content/themes/trevor
+        - ./source/schema.xml:/app/web/wp-content/uploads/solr-for-wordpress-on-pantheon/schema.xml
         - ./logs:/app/web/wp-content/uploads/private/trevor/logs:delegated
         - ./source/lando/appserver/xdebug.ini:/usr/local/etc/php/conf.d/zzzz-xdebug.ini
 tooling:
