@@ -16,12 +16,12 @@ use \TrevorWP\Theme\Helper\Page_Header;
 			'cta_url'   => '#',
 	] ) ?>
 
-	<div class="py-14 text-blue_green bg-white md:py-20 lg:py-28">
+	<div class="py-14 text-teal-dark bg-white md:py-20 lg:py-28">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-bold text-px32 leading-px42 mb-3.5 mx-6 md:mx-0 lg:text-px46 lg:leading-px56">
 				<?= ECT::get_val( ECT::SETTING_HOME_1_TITLE ) ?>
 			</h2>
-			<p class="mx-auto text-px18 leading-px26 lg:text-px26 lg:leading-px36 lg:w-5/6">
+			<p class="mx-auto text-px18 leading-px26 lg:text-px22 lg:leading-px32 lg:w-5/6">
 				<?= ECT::get_val( ECT::SETTING_HOME_1_DESC ) ?>
 			</p>
 		</div>
@@ -137,17 +137,17 @@ use \TrevorWP\Theme\Helper\Page_Header;
 					</div>
 				</div>
 				<div class="flex flex-row full-w relative mb-8">
-					<input id="checkbox-1" type="checkbox"
-						   class="appearance-none checked:bg-teal-tint mr-5 w-7 h-7 border-0 rounded"/>
+					<input id="checkbox-1" type="checkbox" checked
+						   class="mr-5 w-7 h-7 border-0 rounded"/>
 					<label for="checkbox-1"
-						   class="text-px16 leading-px24 text-white text-left mt-0.5 lg:text-px18 lg:leading-px26">Send
+						   class="text-px16 leading-px24 text-white text-left cursor-pointer mt-0.5 lg:text-px18 lg:leading-px26">Send
 						me emails about this campaign.</label>
 				</div>
 				<div class="flex flex-row full-w relative mb-px50">
-					<input id="checkbox-1" type="checkbox"
-						   class="appearance-none checked:bg-teal-tint mr-5 w-7 h-7 border-0 rounded"/>
-					<label for="checkbox-1"
-						   class="text-px16 leading-px24 text-white text-left mt-0.5 lg:text-px18 lg:leading-px26">Send
+					<input id="checkbox-2" type="checkbox" checked
+						   class="mr-5 w-7 h-7 border-0 rounded"/>
+					<label for="checkbox-2"
+						   class="text-px16 leading-px24 text-white text-left cursor-pointer mt-0.5 lg:text-px18 lg:leading-px26">Send
 						me text messages about this campaign.</label>
 				</div>
 
