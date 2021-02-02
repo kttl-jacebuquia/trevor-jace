@@ -69,7 +69,7 @@ use \TrevorWP\Theme\Helper\Page_Header;
 					<?= ECT::get_val( ECT::SETTING_HOME_2_DESC ) ?>
 				</p>
 			</div>
-			<picture class="rounded-px10">
+			<picture class="rounded-px10 img-square">
 				<?php if ( ! empty( $img_id = ECT::get_val( ECT::SETTING_HOME_2_IMG ) ) ) { ?>
 					<?= wp_get_attachment_image( $img_id, 'large', false, [
 							'class' => implode( ' ', [
@@ -94,7 +94,7 @@ use \TrevorWP\Theme\Helper\Page_Header;
 				'subtitle' => ECT::get_val( ECT::SETTING_HOME_CAROUSEL_DESC ),
 		] ) ?>
 
-		<div class="text-center mx-auto -mt-10 pb-20 lg:pb-28 lg:-mt-28">
+		<div class="text-center mx-auto pb-20 lg:pb-28">
 			<a href="<?= \TrevorWP\CPT\RC\RC_Object::get_search_url( $search_term ) ?>"
 			   class="font-bold text-px24 leading-px34 border-b-2 border-teal-dark lg:text-px26 lg:leading-px36">
 				View All Results
@@ -114,25 +114,25 @@ use \TrevorWP\Theme\Helper\Page_Header;
 					<div class="flex full-w relative mb-7 md:mb-0">
 						<label for="fullname" class="sr-only">Full Name*</label>
 						<input id="fullname"
-							   class="bg-white rounded-px10 text-blue_green py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
+							   class="bg-white rounded-px10 text-teal-dark py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
 							   placeholder="Full Name*"/>
 					</div>
 					<div class="flex full-w relative mb-7 md:mb-0">
 						<label for="email" class="sr-only">Email*</label>
 						<input id="email"
-							   class="bg-white rounded-px10 text-blue_green py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
+							   class="bg-white rounded-px10 text-teal-dark py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
 							   placeholder="Email*"/>
 					</div>
 					<div class="flex full-w relative mb-7 md:mb-0">
 						<label for="mobilephone" class="sr-only">Mobile Phone</label>
 						<input id="mobilephone"
-							   class="bg-white rounded-px10 text-blue_green py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
+							   class="bg-white rounded-px10 text-teal-dark py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
 							   placeholder="Mobile Phone"/>
 					</div>
 					<div class="flex full-w relative mb-12 md:mb-0">
 						<label for="zipcode" class="sr-only">Zip Code*</label>
 						<input id="zipcode"
-							   class="bg-white rounded-px10 text-blue_green py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
+							   class="bg-white rounded-px10 text-teal-dark py-5 px-7 flex-1 placeholder-teal-dark lg:text-px20 lg:leading-px24 lg:py-6"
 							   placeholder="Zip Code*"/>
 					</div>
 				</div>

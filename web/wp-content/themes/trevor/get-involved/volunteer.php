@@ -13,16 +13,13 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 			'img_id'  => Volunteer::get_val( Volunteer::SETTING_HOME_HERO_IMG ),
 	] ) ?>
 
-	<div class="pt-20 pb-24 text-white lg:pt-28 lg:pb-48">
+	<div class="pt-20 pb-24 text-white lg:pt-px140 lg:pb-48">
 		<div class="container mx-auto site-content-inner text-center">
-			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 md:mx-40 lg:text-px46 lg:leading-px56">Trevor
-				counselors save lives everyday.</h2>
-			<p class="text-px18 leading-px26 mb-px60 md:mx-9 md:mb-20 lg:text-px26 lg:leading-px36 lg:mb-20 lg:mx-44">As
-				a volunteer you are on the front lines. working one on one with LGBTQ young people to help them navigate
-				tough times, and prevent suicide.</p>
+			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 md:mx-40 lg:text-px46 lg:leading-px56"><?= Volunteer::get_val( Volunteer::SETTING_HOME_TITLE ); ?></h2>
+			<p class="text-px18 leading-px26 mb-px60 font-normal md:mx-9 md:mb-20 lg:text-px24 lg:leading-px36 lg:mb-px120 lg:mx-44"><?= Volunteer::get_val( Volunteer::SETTING_HOME_DESC ); ?></p>
 
-			<div class="flex flex-col mb-px72 md:mb-20 md:flex-row lg:mb-28">
-				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0" data-aspectRatio="1:1">
+			<div class="flex flex-col lg:container mb-px72 md:mb-20 md:flex-row lg:mb-28">
+				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0 lg:max-w-px500" data-aspectRatio="1:1">
 					<?= Helper\Thumbnail::print_img_variants( [
 							[
 									intval( Volunteer::get_val( Volunteer::SETTING_HOME_1_IMG ) ),
@@ -37,13 +34,13 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 					] ) ?>
 				</div>
 				<div class="text-center md:flex-1 md:flex md:flex-col md:justify-center md:items-center">
-					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-10">
+					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-auto lg:max-w-sm">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_1_DESC ) ?>
 					</p>
 				</div>
 			</div>
-			<div class="flex flex-col mb-px72 md:mb-20 md:flex-row-reverse lg:mb-28">
-				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0" data-aspectRatio="1:1">
+			<div class="flex flex-col lg:container mb-px72 md:mb-20 md:flex-row-reverse lg:mb-28">
+				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0 lg:max-w-px500" data-aspectRatio="1:1">
 					<?= Helper\Thumbnail::print_img_variants( [
 							[
 									intval( Volunteer::get_val( Volunteer::SETTING_HOME_2_IMG ) ),
@@ -58,13 +55,13 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 					] ) ?>
 				</div>
 				<div class="text-center md:flex-1 md:flex md:flex-col md:justify-center md:items-center">
-					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-10">
+					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-auto lg:max-w-sm">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_2_DESC ) ?>
 					</p>
 				</div>
 			</div>
-			<div class="flex flex-col md:flex-row">
-				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0" data-aspectRatio="1:1">
+			<div class="flex flex-col lg:container md:flex-row">
+				<div class="bg-white rounded-px10 mb-7 md:flex-1 md:mb-0 lg:max-w-px500" data-aspectRatio="1:1">
 					<?= Helper\Thumbnail::print_img_variants( [
 							[
 									intval( Volunteer::get_val( Volunteer::SETTING_HOME_3_IMG ) ),
@@ -79,7 +76,7 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 					] ) ?>
 				</div>
 				<div class="text-center md:flex-1 md:flex md:flex-col md:justify-center md:items-center">
-					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-10">
+					<p class="text-px24 leading-px28 tracking-em001 md:leading-px32 mx-4 lg:text-px26 lg:leading-px36 lg:mx-auto lg:max-w-sm">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_3_DESC ) ?>
 					</p>
 				</div>
@@ -156,14 +153,14 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 
 			<div class="justify-center py-10">
 				<a href="#"
-				   class="inline-block font-bold text-indigo bg-white py-3 px-8 rounded-px10 md:px-8 lg:text-px20 lg:leading-px26 lg:py-5 lg:px-10">
+				   class="inline-block font-bold text-teal-dark bg-white py-3 px-8 rounded-px10 md:px-8 lg:text-px20 lg:leading-px26 lg:py-5 lg:px-10">
 					<?= Volunteer::get_val( Volunteer::SETTING_HOME_COUNSELOR_CTA ) ?>
 				</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="pt-20 pb-24 text-white lg:pt-24">
+	<div class="pt-20 pb-24 text-white lg:pt-24 bg-teal-dark">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-semibold text-px32 leading-px42 mb-3.5">
 				<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TITLE ) ?>
