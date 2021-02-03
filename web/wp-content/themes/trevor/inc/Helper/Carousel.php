@@ -122,6 +122,7 @@ class Carousel {
 		];
 
 		ob_start(); ?>
+
 		<div class="carousel-wrap <?= implode( ' ', $ext_cls ) ?>"
 			 id="<?= esc_attr( $id ) ?>">
 			<div class="carousel-header">
@@ -187,43 +188,77 @@ class Carousel {
 			return null;
 		}
 
-		// TODO: Show all entries within the carousel
-		$entry = array_rand( $data, 1 );
+		$options = array_merge( array_fill_keys( [
+				'id', // Main wrapper DOM id
+		], null ), [
+				'print_js' => true,
+		], $options );
+
+		# ID check
+		$id = &$options['id'];
+		if ( empty( $id ) ) {
+			$id = uniqid( 'big-img-carousel-' );
+		}
+
+		if ( $options['print_js'] ) {
+			add_action( 'wp_footer', function () use ( $id ) {
+				self::print_testimonials_js( $id, [] );
+			}, PHP_INT_MAX >> 2, 0 );
+		}
 
 		ob_start(); ?>
-		<div class="fullwidth-carousel carousel-testimonials">
-			<div class="slide md:flex md:flex-row">
-				<div class="bg-white md:flex-1" data-aspectRatio="1:1">
-					<?php if ( ! empty( $entry['img'] ) ) { ?>
-						<?= Thumbnail::print_img_variants( [
-								[
-										$entry['img'],
-										Thumbnail::variant( Thumbnail::SCREEN_MD, null, Thumbnail::SIZE_MD, [
-												'class' => [
+		<div class="carousel-testimonials" id="<?= esc_attr( $id ) ?>">
+			<div class="carousel-testimonials-inner">
+				<div class="carousel-testimonials-img-wrap">
+					<div class="swiper-container h-full">
+						<div class="swiper-wrapper">
+							<?php foreach ( $data as $entry ): ?>
+								<div class="swiper-slide">
+									<?php if ( empty( $entry['img']['id'] ) ) { ?>
+										<div class="w-full h-full bg-white"></div>
+									<?php } else { ?>
+										<?= wp_get_attachment_image( $entry['img']['id'], 'large', false, [
+												'class' => implode( ' ', [
 														'object-center',
 														'object-cover',
-														'rounded-px10',
-												]
-										] ),
-								],
-						] ) ?>
-					<?php } ?>
-				</div>
-				<figure class="bg-canary pt-12 pb-28 container text-center text-teal-dark md:flex-1 md:pt-12 md:pb-20 lg:pt-36">
-					<div class="flex flex-row justify-center md:mb-8 lg:mb-5">
-						<i class="trevor-ti-quote-open -mt-2 mr-0.5 lg:text-px28 lg:mr-2"></i>
-						<i class="trevor-ti-quote-close lg:text-px28"></i>
+												] )
+										] ) ?>
+									<?php } ?>
+								</div>
+							<?php endforeach; ?>
+						</div>
 					</div>
-					<blockquote
-							class="font-bold text-3xl my-4 md:text-px20 md:leading-px26 lg:text-px30 lg:leading-px40">
-						<?= $entry['quote'] ?>
-					</blockquote>
-					<?php if ( ! empty( $entry['cite'] ) ) { ?>
-						<figcaption class="text-px18 leading-px26 lg:text-px22 lg:leading-px32">
-							<?= $entry['cite'] ?>
-						</figcaption>
-					<?php } ?>
-				</figure>
+				</div>
+				<div class="carousel-testimonials-txt-wrap">
+					<div class="swiper-container h-full">
+						<div class="swiper-wrapper">
+							<?php foreach ( $data as $entry ): ?>
+								<div class="swiper-slide px-4 pt-8 pb-12 lg:px-8">
+									<figure class="text-center text-teal-dark flex flex-col justify-center h-full md:w-3/4 md:mx-auto">
+										<div class="flex flex-row justify-center md:mb-8 lg:mb-5">
+											<i class="trevor-ti-quote-open -mt-2 mr-0.5 lg:text-px28 lg:mr-2"></i>
+											<i class="trevor-ti-quote-close lg:text-px28"></i>
+										</div>
+										<blockquote
+												class="font-bold text-3xl my-4 md:text-px20 md:leading-px26 lg:text-px30 lg:leading-px40">
+											<?= $entry['quote'] ?>
+										</blockquote>
+										<?php if ( ! empty( $entry['cite'] ) ) { ?>
+											<figcaption
+													class="text-px18 leading-px26 lg:text-px22 lg:leading-px32">
+												<?= $entry['cite'] ?>
+											</figcaption>
+										<?php } ?>
+									</figure>
+								</div>
+							<?php endforeach; ?>
+						</div>
+						<div class="swiper-pagination"></div>
+
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<?php return ob_get_clean();
@@ -244,7 +279,7 @@ class Carousel {
 				],
 				'breakpoints'   => [
 						768  => [ 'spaceBetween' => 30 ],
-						1024  => [ 'spaceBetween' => 27 ],
+						1024 => [ 'spaceBetween' => 27 ],
 				],
 				'navigation'    => [
 						'nextEl' => "{$base_selector} .swiper-button-next",
@@ -253,12 +288,12 @@ class Carousel {
 				'on'            => new \stdClass()
 		], $options );
 		?>
-		<script><?php /* TODO: Instead of printing this for each carousel, create a controller & use that. */ ?>
+		<script>
 			(function () {
 				var swiper;
 				var options = <?= json_encode( $options )?>;
 				options.on.init = function () {
-					document.querySelectorAll('<?= esc_js( $base_selector )?> .card-post').forEach(elem => {
+					document.querySelectorAll('.carousel-testimonials .card-post').forEach(elem => {
 						elem.tagBoxEllipsis && elem.tagBoxEllipsis.calc();
 					});
 				}
@@ -277,6 +312,18 @@ class Carousel {
 				init();
 				<?php } ?>
 			})();
+		</script>
+		<?php
+	}
+
+	/**
+	 * @param string $id
+	 * @param array $options
+	 */
+	public static function print_testimonials_js( string $id, array $options = [] ): void {
+		?>
+		<script>
+			trevorWP.features.testimonialsCarousel('<?=esc_js( $id );?>')
 		</script>
 		<?php
 	}
