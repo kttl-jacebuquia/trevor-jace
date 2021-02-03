@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2021-2-3: Created with FontForge (http://fontforge.org)
+2021-1-29: Created with FontForge (http://fontforge.org)
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170812 at Wed Feb  3 23:56:32 2021
+Created by FontForge 20170812 at Fri Jan 29 19:40:28 2021
  By node
 
 </metadata>
@@ -22,7 +22,7 @@ Created by FontForge 20170812 at Wed Feb  3 23:56:32 2021
     bbox="-0.5 -67 629 450"
     underline-thickness="25.6"
     underline-position="-51.2"
-    unicode-range="U+0020-F11E"
+    unicode-range="U+0020-F11C"
   />
     <missing-glyph />
     <glyph glyph-name="space" unicode=" " horiz-adv-x="200" 
@@ -123,15 +123,11 @@ d="M490 334c14 -25 22 -67 22 -142v0v0c0 -74 -8 -118 -22 -142c-14 -25 -28 -29 -59
     <glyph glyph-name="share-others" unicode="&#xf10d;" horiz-adv-x="500" 
 d="M146 248l188 85c-2 7 -5 18 -5 25c0 46 39 83 85 83s86 -37 86 -83s-40 -83 -86 -83c-20 0 -38 7 -53 17l-195 -88v-12v-12l195 -88c15 12 33 17 53 17c46 0 86 -37 86 -83s-40 -83 -86 -83s-85 37 -85 83c0 7 3 18 5 25l-188 85c-15 -20 -37 -29 -61 -29
 c-46 0 -85 37 -85 83s39 82 85 82c24 2 46 -7 61 -24z" />
-    <glyph glyph-name="plus" unicode="&#xf11e;" 
-d="M256 448c14 0 26 -12 26 -26v-204h204c14 0 26 -12 26 -26s-12 -26 -26 -26h-204v-204c0 -14 -12 -26 -26 -26s-26 12 -26 26v204h-204c-14 0 -26 12 -26 26s12 26 26 26h204v204c0 14 12 26 26 26z" />
     <glyph glyph-name="hamburger-menu" unicode="&#xf106;" horiz-adv-x="455" 
 d="M0 357v-17h455v17v17h-455v-17zM0 186v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17zM0 186v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17z" />
     <glyph glyph-name="arrow-right" unicode="&#xf101;" horiz-adv-x="619" 
 d="M612 204c0 -16 -11 -28 -23 -28h-566c-14 0 -23 12 -23 28s11 28 23 28h566c12 0 23 -14 23 -28zM619 206c0 -5 -2 -12 -7 -14l-228 -244c-9 -9 -26 -12 -35 -3c-12 9 -11 24 -2 33l212 230l-210 193c-9 9 -9 24 0 33s26 9 35 0l228 -209c5 -7 7 -12 7 -19z" />
     <glyph glyph-name="chevron-down" unicode="&#xf103;" horiz-adv-x="506" 
 d="M7 438l-7 -7l246 -246l7 -7l7 7l246 246l-7 7l-7 7l-239 -239l-239 239z" />
-    <glyph glyph-name="minus" unicode="&#xf11d;" 
-d="M512 448v-64h-512v64h512z" />
   </font>
 </defs></svg>
