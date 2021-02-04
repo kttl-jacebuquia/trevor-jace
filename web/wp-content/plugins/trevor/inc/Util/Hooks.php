@@ -1,5 +1,6 @@
 <?php namespace TrevorWP\Util;
 
+use TrevorWP\Jobs\Trevorspace;
 use WP_Post;
 use TrevorWP\Block;
 use \Solarium\QueryType\Update\Query\Document\Document as SolariumDocument;
@@ -142,6 +143,8 @@ class Hooks {
 		add_action( 'wp_ajax_nopriv_highlight-search-test', [ self::class, 'highlight_search' ], 10, 0 );
 		add_action( 'wp_ajax_partner-name-autocomplete', [ self::class, 'partner_name_autocomplete' ], 10, 0 );
 		add_action( 'wp_ajax_nopriv_partner-name-autocomplete', [ self::class, 'partner_name_autocomplete' ], 10, 0 );
+
+//		add_action('init', [Trevorspace::class, 'update_active_count']);
 	}
 
 	public static function partner_name_autocomplete(): void {
