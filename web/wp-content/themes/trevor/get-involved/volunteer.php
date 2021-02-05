@@ -13,7 +13,7 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 			'img_id'  => Volunteer::get_val( Volunteer::SETTING_HOME_HERO_IMG ),
 	] ) ?>
 
-	<div class="pt-20 pb-24 text-white lg:pt-px140 lg:pb-48">
+	<div class="pt-20 pb-24 text-teal-dark lg:pt-px140 lg:pb-48">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 md:mx-40 lg:text-px46 lg:leading-px56"><?= Volunteer::get_val( Volunteer::SETTING_HOME_TITLE ); ?></h2>
 			<p class="text-px18 leading-px26 mb-px60 font-normal md:mx-9 md:mb-20 lg:text-px24 lg:leading-px36 lg:mb-px120 lg:mx-44"><?= Volunteer::get_val( Volunteer::SETTING_HOME_DESC ); ?></p>
@@ -90,7 +90,7 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 			[]
 	) ?>
 
-	<div class="pt-20 pb-24 text-white lg:pt-36">
+	<div class="pt-20 pb-24 text-white bg-teal-dark lg:pt-36">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 lg:text-px46 lg:leading-px56">
 				<?= Volunteer::get_val( Volunteer::SETTING_HOME_COUNSELOR_TITLE ) ?>
@@ -155,40 +155,40 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 
 			<div class="justify-center py-10">
 				<a href="#"
-				   class="inline-block font-bold text-teal-dark bg-white py-3 px-8 rounded-px10 md:px-8 lg:text-px20 lg:leading-px26 lg:py-5 lg:px-10">
+				   class="inline-block font-bold text-teal-dark bg-white py-3 px-8 rounded-px10 md:px-8 lg:text-px18 lg:leading-px26 lg:py-5 lg:px-10">
 					<?= Volunteer::get_val( Volunteer::SETTING_HOME_COUNSELOR_CTA ) ?>
 				</a>
 			</div>
 		</div>
 	</div>
 
-	<div class="pt-20 pb-24 text-white lg:pt-24 bg-teal-dark">
+	<div class="pt-20 pb-24 text-white lg:pt-24 lg:pb-px150 bg-blue_green">
 		<div class="container mx-auto site-content-inner text-center">
-			<h2 class="font-semibold text-px32 leading-px42 mb-3.5">
+			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 lg:text-px46 lg:leading-px56">
 				<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TITLE ) ?>
 			</h2>
-			<p class="text-px18 leading-px26 mb-px50 md:mx-20 lg:text-px26 lg:leading-px36 lg:mb-px60 lg:mx-44">
+			<p class="text-px18 leading-px26 mb-px50 md:mx-20 lg:text-px24 lg:leading-px34 lg:mb-px86 lg:mx-44">
 				<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_DESC ) ?>
 			</p>
 
 			<div class="grid grid-cols-2 gap-y-12 gap-x-3 md:mx-20 lg:grid-cols-4">
 				<div>
-					<p class="volunteer-icon volunteer-icon-1 text-px20 leading-px30 lg:text-px22 lg:leading-px32px">
+					<p class="volunteer-icon volunteer-icon-1 text-px20 leading-px30 lg:text-px20 lg:leading-px30px">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TXT_1 ) ?>
 					</p>
 				</div>
 				<div>
-					<p class="volunteer-icon volunteer-icon-2 text-px20 leading-px30 lg:text-px22 lg:leading-px32px">
+					<p class="volunteer-icon volunteer-icon-2 text-px20 leading-px30 lg:text-px20 lg:leading-px30px">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TXT_2 ) ?>
 					</p>
 				</div>
 				<div>
-					<p class="volunteer-icon volunteer-icon-3 text-px20 leading-px30 lg:text-px22 lg:leading-px32px">
+					<p class="volunteer-icon volunteer-icon-3 text-px20 leading-px30 lg:text-px20 lg:leading-px30px">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TXT_3 ) ?>
 					</p>
 				</div>
 				<div>
-					<p class="volunteer-icon volunteer-icon-4 text-px20 leading-px30 lg:text-px22 lg:leading-px32px">
+					<p class="volunteer-icon volunteer-icon-4 text-px20 leading-px30 lg:text-px20 lg:leading-px30px">
 						<?= Volunteer::get_val( Volunteer::SETTING_HOME_REASONS_TXT_4 ) ?>
 					</p>
 				</div>
@@ -196,7 +196,7 @@ use \TrevorWP\Theme\Customizer\Volunteer;
 		</div>
 	</div>
 
-	<div class="pt-20 pb-24 text-indigo bg-white lg:pt-24">
+	<div class="pt-20 pb-24 text-teal-dark bg-white lg:pt-24">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 mb-px60 mx-4 md:mx-20 md:mb-10 lg:text-px46 lg:leading-px56 lg:mb-20">
 				There are other ways to help.</h2>

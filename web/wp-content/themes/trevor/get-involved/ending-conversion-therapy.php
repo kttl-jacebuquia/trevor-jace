@@ -59,13 +59,13 @@ use \TrevorWP\Theme\Helper\Page_Header;
 		</div>
 	</div>
 
-	<div class="py-14 text-blue_green bg-white md:py-28 lg:py-36">
+	<div class="py-14 text-teal-dark bg-white md:py-28 lg:py-36">
 		<div class="container mx-auto">
 			<div class="mx-auto site-content-inner text-center">
-				<h2 class="font-bold text-px32 leading-px42 mb-3.5 mx-6 md:mx-40 lg:text-px46 lg:leading-px56 lg:mb-7">
+				<h2 class="font-bold text-px32 leading-px42 mb-3.5 mx-6 md:mx-0 lg:text-px46 lg:leading-px56">
 					<?= ECT::get_val( ECT::SETTING_HOME_2_TITLE ) ?>
 				</h2>
-				<p class="mx-auto text-px18 leading-px26 mb-px60 md:mx-9 lg:text-px26 lg:leading-px36 lg:mb-20 lg:w-5/6">
+				<p class="mx-auto text-px18 leading-px26 mb-px60 md:mx-9 lg:text-px22 lg:leading-px32 lg:mb-20 lg:w-5/6">
 					<?= ECT::get_val( ECT::SETTING_HOME_2_DESC ) ?>
 				</p>
 			</div>
@@ -102,7 +102,7 @@ use \TrevorWP\Theme\Helper\Page_Header;
 		</div>
 	</div>
 
-	<div class="pt-14 pb-12 text-white bg-teal-dark md:pb-20 lg:pt-28 lg:pb-28">
+	<div class="pt-14 pb-12 text-white bg-blue_green md:pb-20 lg:pt-28 lg:pb-28">
 		<div class="container mx-auto site-content-inner text-center">
 			<h2 class="font-semibold text-px32 leading-px42 mb-3.5 lg:text-px46 lg:leading-px56">Join The
 				Campaign</h2>
@@ -152,7 +152,7 @@ use \TrevorWP\Theme\Helper\Page_Header;
 				</div>
 
 				<button type="submit"
-						class="block w-full font-bold text-teal-dark bg-white py-5 px-8 rounded-px10 md:py-4 md:px-20 lg:text-px20 lg:leading-px26 lg:py-5 md:w-auto">
+						class="block w-full font-bold text-teal-dark bg-white py-5 px-8 rounded-px10 md:py-4 md:px-20 lg:text-px18 lg:leading-px26 lg:py-5 md:w-auto">
 					Submit
 				</button>
 			</form>
