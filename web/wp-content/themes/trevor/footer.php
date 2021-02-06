@@ -2,6 +2,33 @@
 
 use \TrevorWP\Theme\Customizer;
 
+$social_media_accounts = [
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_FACEBOOK_URL ),
+				'icon' => 'trevor-ti-facebook',
+		],
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_TWITTER_URL ),
+				'icon' => 'trevor-ti-twitter',
+		],
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_INSTAGRAM_URL ),
+				'icon' => 'trevor-ti-instagram',
+		],
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_TIKTOK_URL ),
+				'icon' => 'trevor-ti-tiktok',
+		],
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_YOUTUBE_URL ),
+				'icon' => 'trevor-ti-youtube',
+		],
+		[
+				'url'  => Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_LINKEDIN_URL ),
+				'icon' => 'trevor-ti-linkedin',
+		],
+];
+
 ?>
 
 <footer class="w-full flex flex-col justify-center">
@@ -39,55 +66,19 @@ use \TrevorWP\Theme\Customizer;
 				<li><a href="#">Privacy Policy</a></li>
 			</ul>
 			<ul class="social-links">
-				<?php
-				$facebook_url  = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_FACEBOOK_URL );
-				$twitter_url   = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_TWITTER_URL );
-				$instagram_url = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_INSTAGRAM_URL );
-				$tiktok_url    = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_TIKTOK_URL );
-				$youtube_url   = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_YOUTUBE_URL );
-				$linkedin_url  = Customizer\Social_Media_Accounts::get_val( Customizer\Social_Media_Accounts::SETTING_HOME_LINKEDIN_URL );
-
-				$social_media_accounts = [
-						[
-								'url'  => $facebook_url,
-								'icon' => 'trevor-ti-facebook',
-						],
-						[
-								'url'  => $twitter_url,
-								'icon' => 'trevor-ti-twitter',
-						],
-						[
-								'url'  => $instagram_url,
-								'icon' => 'trevor-ti-instagram',
-						],
-						[
-								'url'  => $tiktok_url,
-								'icon' => 'trevor-ti-tiktok',
-						],
-						[
-								'url'  => $youtube_url,
-								'icon' => 'trevor-ti-youtube',
-						],
-						[
-								'url'  => $linkedin_url,
-								'icon' => 'trevor-ti-linkedin',
-						],
-				];
-
-				foreach ( $social_media_accounts as $account ) {
+				<?php foreach ( $social_media_accounts as $account ) {
 					if ( ! empty( $account['url'] ) ) { ?>
 						<li>
 							<a href="<?= esc_url( $account['url'] ); ?>">
-								<i class="<?= implode( ' ', [
-										esc_attr( $account['icon'] ),
+								<i class="<?= esc_attr( implode( ' ', [
+										$account['icon'],
 										'text-white'
-								] ); ?>"></i>
+								] ) ); ?>"></i>
 							</a>
 						</li>
-					<?php
+						<?php
 					}
-				}
-				?>
+				} ?>
 			</ul>
 		</div>
 	</div>

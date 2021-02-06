@@ -409,9 +409,7 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/template_redirect/
 	 */
 	public static function template_redirect(): void {
-		global $wp;
-
-		if ( is_home() && empty( get_query_var( CPT\Org\Org_Object::QV_ORG_LP ) ) && ! Is::rc() ) {
+		if ( '/' === $_SERVER['REQUEST_URI'] ) {
 			wp_redirect( home_url( CPT\RC\RC_Object::PERMALINK_BASE ), 301 );
 			exit;
 		}
