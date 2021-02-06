@@ -411,9 +411,9 @@ class Hooks {
 	public static function template_redirect(): void {
 		global $wp;
 
-		if ( is_home() && ! Is::rc() ) {
-			wp_redirect( CPT\RC\RC_Object::PERMALINK_BASE, 301 );
-			die();
+		if ( is_home() && empty( get_query_var( CPT\Org\Org_Object::QV_ORG_LP ) ) && ! Is::rc() ) {
+			wp_redirect( home_url( CPT\RC\RC_Object::PERMALINK_BASE ), 301 );
+			exit;
 		}
 	}
 }

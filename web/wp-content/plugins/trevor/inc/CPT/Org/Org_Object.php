@@ -13,6 +13,17 @@ abstract class Org_Object {
 	 * @see \TrevorWP\Util\Hooks::register_all()
 	 */
 	final public static function construct(): void {
+		# Hooks
+		add_action( 'init', [ self::class, 'init' ], 10, 0 );
+		add_filter( 'query_vars', [ self::class, 'query_vars' ], PHP_INT_MAX, 1 );
+	}
+
+	/**
+	 * Fires after WordPress has finished loading but before any headers are sent.
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/init/
+	 */
+	public static function init(): void {
 		add_rewrite_rule(
 			self::PERMALINK_ORG_LP . '/?$',
 			"index.php?" . http_build_query( [
@@ -21,11 +32,6 @@ abstract class Org_Object {
 			] ),
 			'top'
 		);
-
-		# Hooks
-		add_action( 'init', [ self::class, 'init' ], 10, 0 );
-
-		add_filter( 'query_vars', [ self::class, 'query_vars' ], PHP_INT_MAX, 1 );
 	}
 
 	/**
