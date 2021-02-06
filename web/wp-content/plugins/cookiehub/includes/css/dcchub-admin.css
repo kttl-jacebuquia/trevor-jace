@@ -1,0 +1,61 @@
+.dcchub-logo
+{
+    height: 30px;
+}
+
+.dcchub-wrap
+{
+    background: #fff;
+    padding:10px;
+    margin: 10px 0;
+}
+
+.dcchub-wrap > *:first-child ,
+.dcchub-wrap > *:first-child > *:first-child {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.dcchub-wrap > *:last-child,
+.dcchub-wrap > *:last-child > *:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.dcchub-tab-buttons
+{
+    display: flex;
+    justify-content: flex-start;
+}
+
+.dcchub-tab-buttons > li
+{
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0px 0px;
+    cursor: pointer;
+    padding:3px 5px;
+}
+
+.dcchub-tab-buttons > li.active
+{
+    background: rgba(207, 31, 37, 1);
+    border-color: rgba(207, 31, 37, 1);
+    color: #fff;
+}
+
+.dcchub_script
+{
+    width:600px;
+    height:200px;
+    max-width:100%;
+}
+
+.dcchub-tabs-content li
+{
+    display:none;
+}
+
+.dcchub-tabs-content li.active
+{
+    display: block;
+}
