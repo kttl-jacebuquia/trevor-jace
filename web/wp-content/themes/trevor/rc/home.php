@@ -111,7 +111,7 @@ $featured_word = Helper\Posts::get_one_from_list(
 				'subtitle'  => 'Explore the latest articles, resources, and guides.',
 				'title_cls' => 'text-center',
 				'onlyMd'    => false,
-				'class'     => 'text-white',
+				'class'     => 'text-white md:mt-12 lg:mt-18',
 		] );
 	} ?>
 
