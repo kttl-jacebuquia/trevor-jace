@@ -162,18 +162,20 @@ class Page_Header {
 						<?= $options['title'] ?>
 					</h1>
 					<p class="page-header-desc"><?= $options['desc'] ?></p>
-					<?php if ( ! empty( $options['cta_url'] ) )  {
+					<?php if ( ! empty( $options['cta_url'] ) ) {
 						?>
 						<a href="<?= $options['cta_url'] ?>"
-							class="page-header-cta"><?= $options['cta_txt'] ?></a>
-					<?php
-						} ?>
+						   class="page-header-cta"><?= $options['cta_txt'] ?></a>
+						<?php
+					} ?>
 				</div>
 				<div class="page-header-img-wrap">
-					<?= Helper\Carousel::big_img( $options['carousel_data'], [
-							'class'  => 'text-white',
-							'swiper' => $options['swiper']
-					] ) ?>
+					<?php if ( ! empty( $options['carousel_data'] ) ) { ?>
+						<?= Helper\Carousel::big_img( $options['carousel_data'], [
+								'class'  => 'text-white',
+								'swiper' => $options['swiper']
+						] ) ?>
+					<?php } ?>
 				</div>
 			</div>
 		</div>
