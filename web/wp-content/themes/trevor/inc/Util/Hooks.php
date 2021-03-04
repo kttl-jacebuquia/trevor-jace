@@ -63,6 +63,9 @@ class Hooks {
 
 		# Redirects
 		add_action( 'template_redirect', [ self::class, 'template_redirect' ], 10, 0 );
+
+		# Pre Get Posts
+		add_action( 'pre_get_posts', [ self::class, 'pre_get_posts' ], 10, 1 );
 	}
 
 	/**
@@ -413,6 +416,29 @@ class Hooks {
 		if ( '/' === $_SERVER['REQUEST_URI'] ) {
 			wp_redirect( home_url( CPT\RC\RC_Object::PERMALINK_BASE ), 301 );
 			exit;
+		}
+	}
+
+	/**
+	 * Fires after the query variable object is created, but before the actual query is run.
+	 *
+	 * @param \WP_Query $query
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/pre_get_posts/
+	 */
+	public static function pre_get_posts( \WP_Query $query ): void {
+		if ( is_post_type_archive() ) {
+			switch ( $query->get( 'post_type' ) ) {
+				case CPT\Get_Involved\Bill::POST_TYPE:
+					$query->set( 'posts_per_page', (int) Customizer\Advocacy::get_val( Customizer\Advocacy::SETTING_PAGINATION_BILLS ) );
+					break;
+				case CPT\Get_Involved\Letter::POST_TYPE:
+					$query->set( 'posts_per_page', (int) Customizer\Advocacy::get_val( Customizer\Advocacy::SETTING_PAGINATION_LETTERS ) );
+					break;
+				case CPT\Donate\Prod_Partner::POST_TYPE:
+					$query->set( 'posts_per_page', (int) Customizer\Shop_Product_Partners::get_val( Customizer\Shop_Product_Partners::SETTING_HOME_LIST_PER_PAGE ) );
+					break;
+			}
 		}
 	}
 }
