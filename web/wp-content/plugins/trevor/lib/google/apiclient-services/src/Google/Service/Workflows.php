@@ -16,10 +16,11 @@
  */
 
 /**
- * Service definition for Workflows (v1beta).
+ * Service definition for Workflows (v1).
  *
  * <p>
-</p>
+ * Orchestrate Workflows consisting of Google Cloud APIs, SaaS APIs or private
+ * API endpoints.</p>
  *
  * <p>
  * For more information about this service, see the API
@@ -37,7 +38,7 @@ class Google_Service_Workflows extends Google_Service
   public $projects_locations;
   public $projects_locations_operations;
   public $projects_locations_workflows;
-  
+
   /**
    * Constructs the internal representation of the Workflows service.
    *
@@ -50,7 +51,7 @@ class Google_Service_Workflows extends Google_Service
     $this->rootUrl = $rootUrl ?: 'https://workflows.googleapis.com/';
     $this->servicePath = '';
     $this->batchPath = 'batch';
-    $this->version = 'v1beta';
+    $this->version = 'v1';
     $this->serviceName = 'workflows';
 
     $this->projects_locations = new Google_Service_Workflows_Resource_ProjectsLocations(
@@ -60,7 +61,7 @@ class Google_Service_Workflows extends Google_Service
         array(
           'methods' => array(
             'get' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -70,7 +71,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta/{+name}/locations',
+              'path' => 'v1/{+name}/locations',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -82,13 +83,13 @@ class Google_Service_Workflows extends Google_Service
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -102,7 +103,7 @@ class Google_Service_Workflows extends Google_Service
         array(
           'methods' => array(
             'delete' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
                 'name' => array(
@@ -112,7 +113,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'get' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -122,17 +123,13 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta/{+name}/operations',
+              'path' => 'v1/{+name}/operations',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
                   'location' => 'path',
                   'type' => 'string',
                   'required' => true,
-                ),
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
                 ),
                 'filter' => array(
                   'location' => 'query',
@@ -141,6 +138,10 @@ class Google_Service_Workflows extends Google_Service
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
+                ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
                 ),
               ),
             ),
@@ -154,7 +155,7 @@ class Google_Service_Workflows extends Google_Service
         array(
           'methods' => array(
             'create' => array(
-              'path' => 'v1beta/{+parent}/workflows',
+              'path' => 'v1/{+parent}/workflows',
               'httpMethod' => 'POST',
               'parameters' => array(
                 'parent' => array(
@@ -168,7 +169,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'delete' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'DELETE',
               'parameters' => array(
                 'name' => array(
@@ -178,7 +179,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'get' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'name' => array(
@@ -188,7 +189,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'list' => array(
-              'path' => 'v1beta/{+parent}/workflows',
+              'path' => 'v1/{+parent}/workflows',
               'httpMethod' => 'GET',
               'parameters' => array(
                 'parent' => array(
@@ -196,11 +197,11 @@ class Google_Service_Workflows extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
-                'orderBy' => array(
+                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
-                'filter' => array(
+                'orderBy' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
@@ -214,7 +215,7 @@ class Google_Service_Workflows extends Google_Service
                 ),
               ),
             ),'patch' => array(
-              'path' => 'v1beta/{+name}',
+              'path' => 'v1/{+name}',
               'httpMethod' => 'PATCH',
               'parameters' => array(
                 'name' => array(

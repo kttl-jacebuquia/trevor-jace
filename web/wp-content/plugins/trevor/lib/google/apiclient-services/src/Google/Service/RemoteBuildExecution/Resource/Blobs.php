@@ -82,7 +82,7 @@ class Google_Service_RemoteBuildExecution_Resource_Blobs extends Google_Service_
   /**
    * Determine if blobs are present in the CAS. Clients can use this API before
    * uploading blobs to determine which ones are already present in the CAS and do
-   * not need to be uploaded again. Servers SHOULD increase the TTLs of the
+   * not need to be uploaded again. Servers SHOULD increase the lifetimes of the
    * referenced blobs if necessary and applicable. There are no method-specific
    * errors. (blobs.findMissing)
    *
@@ -126,14 +126,14 @@ class Google_Service_RemoteBuildExecution_Resource_Blobs extends Google_Service_
    * @param string $sizeBytes The size of the blob, in bytes.
    * @param array $optParams Optional parameters.
    *
-   * @opt_param string pageToken A page token, which must be a value received in a
-   * previous GetTreeResponse. If present, the server will use that token as an
-   * offset, returning only that page and the ones that succeed it.
    * @opt_param int pageSize A maximum page size to request. If present, the
    * server will request no more than this many items. Regardless of whether a
    * page size is specified, the server may place its own limit on the number of
    * items to be returned and require the client to retrieve more items using a
    * subsequent request.
+   * @opt_param string pageToken A page token, which must be a value received in a
+   * previous GetTreeResponse. If present, the server will use that token as an
+   * offset, returning only that page and the ones that succeed it.
    * @return Google_Service_RemoteBuildExecution_BuildBazelRemoteExecutionV2GetTreeResponse
    */
   public function getTree($instanceName, $hash, $sizeBytes, $optParams = array())

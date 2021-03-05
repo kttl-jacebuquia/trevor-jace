@@ -1,3 +1,15 @@
+## 1.15.0 (02/05/2021)
+
+ * [feat]: support for PHP 8.0: updated dependencies and tests (#318, #319)
+
+## 1.14.3 (10/16/2020)
+
+ * [fix]: add expires_at to GCECredentials (#314)
+
+## 1.14.2 (10/14/2020)
+
+* [fix]: Better FetchAuthTokenCache and getLastReceivedToken (#311)
+
 ## 1.14.1 (10/05/2020)
 
 * [fix]: variable typo (#310)

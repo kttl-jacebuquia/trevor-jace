@@ -20,16 +20,11 @@ class ComposerStaticInitTrevorWPTheme
         ),
     );
 
-    public static $classMap = array (
-        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-    );
-
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInitTrevorWPTheme::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInitTrevorWPTheme::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInitTrevorWPTheme::$classMap;
 
         }, null, ClassLoader::class);
     }

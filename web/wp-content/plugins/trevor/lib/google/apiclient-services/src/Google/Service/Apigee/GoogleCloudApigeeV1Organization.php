@@ -21,18 +21,22 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Organization extends Google_Colle
   public $analyticsRegion;
   public $attributes;
   public $authorizedNetwork;
+  public $billingType;
   public $caCertificate;
   public $createdAt;
   public $customerName;
   public $description;
   public $displayName;
   public $environments;
+  public $expiresAt;
   public $lastModifiedAt;
   public $name;
   public $projectId;
   protected $propertiesType = 'Google_Service_Apigee_GoogleCloudApigeeV1Properties';
   protected $propertiesDataType = '';
+  public $runtimeDatabaseEncryptionKeyName;
   public $runtimeType;
+  public $state;
   public $subscriptionType;
   public $type;
 
@@ -59,6 +63,14 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Organization extends Google_Colle
   public function getAuthorizedNetwork()
   {
     return $this->authorizedNetwork;
+  }
+  public function setBillingType($billingType)
+  {
+    $this->billingType = $billingType;
+  }
+  public function getBillingType()
+  {
+    return $this->billingType;
   }
   public function setCaCertificate($caCertificate)
   {
@@ -108,6 +120,14 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Organization extends Google_Colle
   {
     return $this->environments;
   }
+  public function setExpiresAt($expiresAt)
+  {
+    $this->expiresAt = $expiresAt;
+  }
+  public function getExpiresAt()
+  {
+    return $this->expiresAt;
+  }
   public function setLastModifiedAt($lastModifiedAt)
   {
     $this->lastModifiedAt = $lastModifiedAt;
@@ -146,6 +166,14 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Organization extends Google_Colle
   {
     return $this->properties;
   }
+  public function setRuntimeDatabaseEncryptionKeyName($runtimeDatabaseEncryptionKeyName)
+  {
+    $this->runtimeDatabaseEncryptionKeyName = $runtimeDatabaseEncryptionKeyName;
+  }
+  public function getRuntimeDatabaseEncryptionKeyName()
+  {
+    return $this->runtimeDatabaseEncryptionKeyName;
+  }
   public function setRuntimeType($runtimeType)
   {
     $this->runtimeType = $runtimeType;
@@ -153,6 +181,14 @@ class Google_Service_Apigee_GoogleCloudApigeeV1Organization extends Google_Colle
   public function getRuntimeType()
   {
     return $this->runtimeType;
+  }
+  public function setState($state)
+  {
+    $this->state = $state;
+  }
+  public function getState()
+  {
+    return $this->state;
   }
   public function setSubscriptionType($subscriptionType)
   {

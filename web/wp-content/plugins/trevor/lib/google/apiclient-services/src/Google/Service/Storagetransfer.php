@@ -38,7 +38,7 @@ class Google_Service_Storagetransfer extends Google_Service
   public $googleServiceAccounts;
   public $transferJobs;
   public $transferOperations;
-  
+
   /**
    * Constructs the internal representation of the Storagetransfer service.
    *
@@ -96,28 +96,40 @@ class Google_Service_Storagetransfer extends Google_Service
                 'projectId' => array(
                   'location' => 'query',
                   'type' => 'string',
+                  'required' => true,
                 ),
               ),
             ),'list' => array(
               'path' => 'v1/transferJobs',
               'httpMethod' => 'GET',
               'parameters' => array(
-                'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
                 'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
+                  'required' => true,
                 ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
+                'pageToken' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                ),
               ),
             ),'patch' => array(
               'path' => 'v1/{+jobName}',
               'httpMethod' => 'PATCH',
+              'parameters' => array(
+                'jobName' => array(
+                  'location' => 'path',
+                  'type' => 'string',
+                  'required' => true,
+                ),
+              ),
+            ),'run' => array(
+              'path' => 'v1/{+jobName}:run',
+              'httpMethod' => 'POST',
               'parameters' => array(
                 'jobName' => array(
                   'location' => 'path',
@@ -164,15 +176,16 @@ class Google_Service_Storagetransfer extends Google_Service
                   'type' => 'string',
                   'required' => true,
                 ),
+                'filter' => array(
+                  'location' => 'query',
+                  'type' => 'string',
+                  'required' => true,
+                ),
                 'pageSize' => array(
                   'location' => 'query',
                   'type' => 'integer',
                 ),
                 'pageToken' => array(
-                  'location' => 'query',
-                  'type' => 'string',
-                ),
-                'filter' => array(
                   'location' => 'query',
                   'type' => 'string',
                 ),
