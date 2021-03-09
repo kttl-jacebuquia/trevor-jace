@@ -6,11 +6,20 @@
     'aliases' => 
     array (
     ),
-    'reference' => '97c185e6a9826453a48176e4a27f14adf803352c',
+    'reference' => 'df36d6fbe6db61755f297fbb89354d33f5d10487',
     'name' => 'kettle/trevor-wp-plugin',
   ),
   'versions' => 
   array (
+    'erusev/parsedown' => 
+    array (
+      'pretty_version' => '1.7.4',
+      'version' => '1.7.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'cb17b6477dfff935958ba01325f2e8a2bfa6dab3',
+    ),
     'firebase/php-jwt' => 
     array (
       'pretty_version' => 'v5.2.1',
@@ -81,7 +90,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '97c185e6a9826453a48176e4a27f14adf803352c',
+      'reference' => 'df36d6fbe6db61755f297fbb89354d33f5d10487',
     ),
     'monolog/monolog' => 
     array (

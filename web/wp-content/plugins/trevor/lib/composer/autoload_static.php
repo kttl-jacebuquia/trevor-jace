@@ -130,6 +130,13 @@ class ComposerStaticInitTrevorWPPlugin
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'Parsedown' => 
+            array (
+                0 => __DIR__ . '/..' . '/erusev/parsedown',
+            ),
+        ),
         'G' => 
         array (
             'Google_Service_' => 
