@@ -9,7 +9,7 @@
 ] ) ?>
 
 <main id="site-content" role="main" class="bg-white">
-	<div class="container mx-auto">
+	<div class="container mx-auto pt-10 md:pt-px50 lg:pt-20">
 		<?php if ( $page_sorter = \TrevorWP\Theme\Helper\Sorter::get_page_sorter() ) { ?>
 			<?= $page_sorter->render(); ?>
 		<?php } ?>
