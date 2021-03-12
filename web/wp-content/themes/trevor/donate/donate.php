@@ -93,7 +93,9 @@ use \TrevorWP\Theme\Customizer\Donate;
 								<?php foreach ( $_1_data as $audit ) : ?>
 									<div class="audit--card__item swiper-slide text-center">
 										<?php if ( $audit['img'] ) : ?>
-											<img src="<?php echo esc_url( $audit['img']['url'] ); ?>" alt="<?php echo esc_attr( $audit['desc'] ); ?>">
+											<div class="audit--card__image">
+												<img src="<?php echo esc_url( $audit['img']['url'] ); ?>" alt="<?php echo esc_attr( $audit['desc'] ); ?>">
+											</div>
 										<?php endif; ?>
 
 										<p><?php echo esc_html( $audit['desc'] ); ?></p>
@@ -256,17 +258,17 @@ use \TrevorWP\Theme\Customizer\Donate;
 		</div>
 
 		<?php /* Recirculation */ ?>
-		<?php $circulation_title = Donate::get_val( Donate::SETTING_HOME_CIRCULATION_TITLE ); ?>
-		<?php /* Two Up: Other Ways to Help   */ ?>
-		<div class="other-ways">
-			<div class="container mx-auto text-center">
-				<h3 class="mb-px60 md:mb-px40 lg:mb-px90"><?= $circulation_title ?></h3>
-				<div class="grid grid-cols-1 gap-y-6 max-w-lg mx-auto lg:grid-cols-2 lg:gap-x-7 lg:max-w-none xl:max-w-px1240">
-					<?= Helper\Circulation_Card::render_fundraiser(); ?>
-					<?= Helper\Circulation_Card::render_counselor(); ?>
-				</div>
-			</div>
-		</div>
+		<?= Helper\Circulation_Card::render_circulation( 
+			Donate::get_val( Donate::SETTING_HOME_CIRCULATION_TITLE ), 
+			null, 
+			[ 
+				'fundraiser', 
+				'counselor' 
+			], 
+			[
+				'container' => 'other-ways',
+			] 
+		); ?>
 	</main>
 
 <?php get_footer();
