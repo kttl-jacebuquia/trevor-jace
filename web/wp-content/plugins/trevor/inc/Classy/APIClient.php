@@ -77,7 +77,7 @@ class APIClient {
 	 *
 	 * @return mixed
 	 */
-	public function get_access_token( bool $use_cache = true ): string {
+	public function get_access_token( bool $use_cache = true ): ?string {
 		$cache_key = Main::CACHE_GROUP_PREFIX . 'ACCESS_TOKEN_' . $this->client_id;
 		$token     = $use_cache ? get_transient( $cache_key ) : null;
 
@@ -94,7 +94,7 @@ class APIClient {
 				if ( $use_cache ) {
 					delete_transient( $cache_key );
 				}
-				$token = false;
+				$token = null;
 				// TODO: LOG
 			} else {
 				$token = json_decode( $result['body'], true );
@@ -118,7 +118,7 @@ class APIClient {
 	 *
 	 * @return string Content response
 	 */
-	public function request( string $url, $method = 'GET', $params = [] ): string {
+	public function request( string $url, $method = 'GET', $params = [] ): ?string {
 		$url = self::CLASSY_API_BASEURL
 		       . '/' . self::CLASSY_API_VERSION
 		       . '/' . $url
@@ -134,11 +134,8 @@ class APIClient {
 			]
 		];
 
-		$context  = stream_context_create( $options );
-		$response = @file_get_contents( $url, false, $context );
+		$context = stream_context_create( $options );
 
-		// FIXME: Error handle
-
-		return $response;
+		return @file_get_contents( $url, false, $context );
 	}
 }
