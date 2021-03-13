@@ -289,7 +289,7 @@ class Carousel {
 	 *
 	 * @return string|null
 	 */
-	public static function fundraisers( array $data = null, array $options = [] ): ?string {
+	public static function fundraisers( array $data, array $options = [] ): ?string {
 		return self::posts( $data, array_merge( $options, [ 'card_renderer' => [ Card::class, 'fundraiser' ] ] ) );
 	}
 

@@ -1,6 +1,7 @@
 <?php namespace TrevorWP\Classy;
 
 use TrevorWP\Main;
+use TrevorWP\Util\Log;
 
 /**
  * Classy APIClient
@@ -61,9 +62,16 @@ class APIClient {
 	 *
 	 * @return APIClient
 	 */
-	public static function get_instance(): APIClient {
+	public static function get_instance(): ?APIClient {
 		if ( empty( self::$instance ) ) {
 			list( $client_id, $client_secret ) = self::get_credentials();
+
+			if ( empty( $client_id ) || empty( $client_secret ) ) {
+				Log::alert( 'Classy API credentials are missing.' );
+
+				return null;
+			}
+
 			self::$instance = new APIClient( $client_id, $client_secret );
 		}
 
