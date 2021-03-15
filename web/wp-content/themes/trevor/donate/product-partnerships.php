@@ -33,6 +33,7 @@ use \TrevorWP\Theme\Customizer\Product_Partnerships;
 					array(
 						'title' => Product_Partnerships::get_val( Product_Partnerships::SETTING_HOME_STORIES_TITLE ),
 						'tileClass'	=> ['product-card'],
+						'class'	=> ['product-grid'],
 					)
 				);
 				?>
@@ -79,7 +80,7 @@ use \TrevorWP\Theme\Customizer\Product_Partnerships;
 													'object-contain',
 													'max-h-px100',
 													'w-auto',
-													'max-w-4/5',
+													'max-w-7/10',
 													'lg:max-w-3/5',
 												)
 											),
@@ -98,7 +99,7 @@ use \TrevorWP\Theme\Customizer\Product_Partnerships;
 			$shop_cta         = Product_Partnerships::get_val( Product_Partnerships::SETTING_HOME_SHOP_CTA );
 			?>
 
-			<div class="banner">
+			<div class="banner container">
 				<div class="banner__inner">
 					<h3 class="banner__title"><?php echo esc_attr( $shop_title ); ?></h3>
 					<p class="banner__description"><?php echo esc_attr( $shop_description ); ?></p>
