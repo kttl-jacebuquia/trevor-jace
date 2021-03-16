@@ -1,37 +1,22 @@
-<?php /* Public Education */ ?>
-<?php get_header(); ?>
+<?php /* Public Education */
 
+use \TrevorWP\Theme\Single_Page\Public_Education as Page;
+
+?>
+
+<?php get_header(); ?>
 
 <main id="site-content" role="main" class="site-content">
 	<?php # Header ?>
-	<?= \TrevorWP\Theme\Helper\Page_Header::split_img( [
-			'title',
-			'desc',
-			'img_id'
-	] ) ?>
+	<?= Page::get_component( Page::SECTION_HEADER )->render() ?>
 
-	<?php # Info Boxes ?>
-	<?= \TrevorWP\Theme\Helper\Info_Boxes::three_up(
-			[],
-			[
-					'title',
-					'desc',
-					'box_type' => 'text',
-			]
-	) ?>
+	<?php # todo: Info Boxes ?>
 
-	<?php # Offerings ?>
+	<?php # todo: Offerings ?>
 
 	<?php # Testimonials Carousel ?>
-	<?= \TrevorWP\Theme\Helper\Carousel::testimonials( [], [] ); ?>
+	<?= Page::get_component( Page::SECTION_TESTIMONIALS )->render() ?>
 
 	<?php # Circulation ?>
-	<?= \TrevorWP\Theme\Helper\Circulation_Card::render_circulation(
-			'',
-			'',
-			[ 'donate', 'fundraiser' ],
-	) ?>
-
+	<?= Page::get_component( Page::SECTION_CIRCULATION )->render( [ 'cards' => [ 'donation', 'fundraiser' ] ] ) ?>
 </main>
-
-

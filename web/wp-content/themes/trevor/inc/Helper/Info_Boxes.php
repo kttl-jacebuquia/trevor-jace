@@ -74,7 +74,7 @@ class Info_Boxes {
 	 * @return string
 	 * @throws Internal
 	 */
-	protected static function render( array $boxes, array $options ): string {
+	public static function render( array $boxes, array $options ): string {
 		$options = array_merge( array_fill_keys( [
 				'title',
 				'desc',
