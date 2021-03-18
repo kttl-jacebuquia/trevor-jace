@@ -8,7 +8,7 @@ class Ally_Training extends Abstract_Single_Page {
 
 	/* Sections */
 	const SECTION_INFO_BOXES = self::PANEL_ID . '_info_boxes';
-	const SECTION_INFO_BOXES_2 = self::PANEL_ID . '_info_boxes_2';
+	const SECTION_INFO_BOXES_2 = self::SECTION_INFO_BOXES . '_2';
 	const SECTION_TESTIMONIALS = self::PANEL_ID . '_testimonials';
 	const SECTION_CIRCULATION = self::PANEL_ID . '_circulation';
 
@@ -55,30 +55,30 @@ class Ally_Training extends Abstract_Single_Page {
 				],
 			]
 		],
-		self::SECTION_INFO_BOXES_2 => [
-			'options'  => [
-				'box_type'        => Helper\Info_Boxes::BOX_TYPE_IMG,
-				'break_behaviour' => Helper\Info_Boxes::BREAK_BEHAVIOUR_GRID,
-			],
-			'defaults' => [
-				Component\Info_Boxes::SETTING_TITLE => 'What you will learn',
-				Component\Info_Boxes::SETTING_DESC  => 'Through activities, participants are encouraged to explore their biases, build knowledge, and develop empathy. Participants will be able to:',
-				Component\Info_Boxes::SETTING_DATA  => [
-					[
-						'desc' => 'Describe various terminology within LGBTQ communities.'
-					],
-					[
-						'desc' => 'Explain the unique challenges facing LGBTQ youth.'
-					],
-					[
-						'desc' => 'Identify ways to create safer environments.'
-					],
-					[
-						'desc' => 'Discuss the services offered by The Trevor Project.'
-					],
-				]
-			],
-		],
+//		self::SECTION_INFO_BOXES_2 => [
+//			'options'  => [
+//				'box_type'        => Helper\Info_Boxes::BOX_TYPE_IMG,
+//				'break_behaviour' => Helper\Info_Boxes::BREAK_BEHAVIOUR_GRID,
+//			],
+//			'defaults' => [
+//				Component\Info_Boxes::SETTING_TITLE => 'What you will learn',
+//				Component\Info_Boxes::SETTING_DESC  => 'Through activities, participants are encouraged to explore their biases, build knowledge, and develop empathy. Participants will be able to:',
+//				Component\Info_Boxes::SETTING_DATA  => [
+//					[
+//						'desc' => 'Describe various terminology within LGBTQ communities.'
+//					],
+//					[
+//						'desc' => 'Explain the unique challenges facing LGBTQ youth.'
+//					],
+//					[
+//						'desc' => 'Identify ways to create safer environments.'
+//					],
+//					[
+//						'desc' => 'Discuss the services offered by The Trevor Project.'
+//					],
+//				]
+//			],
+//		],
 		self::SECTION_TESTIMONIALS => [
 			Component\Testimonials_Carousel::class,
 			[]
