@@ -1,5 +1,11 @@
 === CookieHub ===
 
+= 0.2.1 =
+*Release Date - 11 February 2021*
+
+Added WPML support to control the display language
+
+
 = 0.1.1 =
 *Release Date - 17 December 2020*
 

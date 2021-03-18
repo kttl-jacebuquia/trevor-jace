@@ -118,6 +118,14 @@ class DCCHUBSettingsPage
             'dcchub-setting-admin', // Page
             'dcchub_settings' // Section           
         );   
+
+        add_settings_field(
+            'dcchub_language', // ID
+            'Use language setting from Wordpress or WPML', // Title 
+            array( $this, 'dcchub_language_callback' ), // Callback
+            'dcchub-setting-admin', // Page
+            'dcchub_settings' // Section           
+        );   
         
         add_settings_section(
             'dcchub_settings_necessary', // ID
@@ -258,6 +266,8 @@ class DCCHUBSettingsPage
             $new_input['dcchub_api_key'] =  $input['dcchub_api_key'] ;
         if( isset( $input['dcchub_dev']))
             $new_input['dcchub_dev'] = $input['dcchub_dev'];
+            if( isset( $input['dcchub_language']))
+            $new_input['dcchub_language'] = $input['dcchub_language'];
 
         if( isset( $input['dcchub_necessary_head']))
             $new_input['dcchub_necessary_head'] = $input['dcchub_necessary_head'];
@@ -304,6 +314,13 @@ class DCCHUBSettingsPage
     {
         printf(
             '<input type="checkbox" id="dev" name="dcchub_option_name[dcchub_dev]" value="1" '. checked( 1, $this->options['dcchub_dev'], false ) .' /> <p style="max-width:500px">Enabling development mode will avoid edge caching and can be used to see changes made to your domain in the CookieHub portal quickly. Please note that a watermark will be shown on your web site. Make sure you disable development mode before publishing your site.</p>'            
+        );
+    }
+
+    public function dcchub_language_callback()
+    {
+        printf(
+            '<input type="checkbox" id="language" name="dcchub_option_name[dcchub_language]" value="1" '. checked( 1, $this->options['dcchub_language'], false ) .' /> <p style="max-width:500px">When this feature is enabled, the CookieHub display language will match your web sites language either by using the configured language (in Settings -> General) or the language configured by the WPML or Polylang plugins. Please note that you will have to enable all languages supported by your web site in the CookieHub Portal.</p>'            
         );
     }
 

@@ -8,30 +8,48 @@ function dcchub_generate_code() {
     $options = get_option( 'dcchub_option_name' );
     if($options != null){
         if($options['dcchub_api_key'] != ''){
-            if(in_array('dcchub_dev', $options) && $options['dcchub_dev'] == '1')
-            {
-                echo "<script type=\"text/javascript\">
-                var cpm = {};
-                (function(h,u,b){
-                var d=h.getElementsByTagName(\"script\")[0],e=h.createElement(\"script\");
-                e.async=true;e.src='https://cookiehub.net/dev/c2/" . ($options['dcchub_api_key']) . ".js';
-                e.onload=function(){u.cookiehub.load(b);}
-                d.parentNode.insertBefore(e,d);
-                })(document,window,cpm);
-                </script>";
+            $detectLanguage = false;
+            if(array_key_exists('dcchub_language', $options) && $options['dcchub_language'] == '1'){
+                $detectLanguage = true;
             }
-            else
-            {
-                echo "<script type=\"text/javascript\">
-                var cpm = {};
-                (function(h,u,b){
-                var d=h.getElementsByTagName(\"script\")[0],e=h.createElement(\"script\");
-                e.async=true;e.src='https://cookiehub.net/c2/" . ($options['dcchub_api_key']) . ".js';
-                e.onload=function(){u.cookiehub.load(b);}
-                d.parentNode.insertBefore(e,d);
-                })(document,window,cpm);
-                </script>";
+
+            $lang = get_bloginfo("language");
+            if ($detectLanguage && function_exists('icl_object_id') ) {
+                $lang = ICL_LANGUAGE_CODE;             
             }
+
+            if ($detectLanguage && function_exists('pll_current_language') ) {
+                $lang = pll_current_language('slug');             
+            }
+			
+			if (strlen($lang) > 2)
+			{
+				$lang = substr($lang, 0, 2);
+			}
+
+            $baseUrl = "https://cookiehub.net/c2/";
+            $dev = false;
+            if(array_key_exists('dcchub_dev', $options) && $options['dcchub_dev'] == '1'){                
+                $dev = true;
+                $baseUrl = "https://cookiehub.net/dev/c2/";
+            }
+
+            echo "<script type=\"text/javascript\">\n";
+            if($detectLanguage) {
+                echo "          var cpm = {
+                    language: '" . $lang . "'
+                };\n";
+            }
+            else {
+                echo "          var cpm = {};\n";
+            }
+            echo "          (function(h,u,b){
+            var d=h.getElementsByTagName(\"script\")[0],e=h.createElement(\"script\");
+            e.async=true;e.src='" . $baseUrl . ($options['dcchub_api_key']) . ".js';
+            e.onload=function(){u.cookiehub.load(b);}
+            d.parentNode.insertBefore(e,d);
+            })(document,window,cpm);
+            </script>";
 
             if($options['dcchub_necessary_body'] != '')
             {
