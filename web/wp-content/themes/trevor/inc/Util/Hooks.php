@@ -526,9 +526,9 @@ class Hooks {
 		}
 
 		// TODO: Set appropriate cache headers here
-		$browser_to = 10 * 60; # 10 min
+		$browser_to = 5 * 60; # 5 min
 		$proxy_to   = 10; # 10 sec
-		header( sprintf( 'Cache-Control: no-cache, must-revalidate, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
+		header( sprintf( 'Cache-Control: public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
 
 		wp_send_json( [
 				'success' => true,
