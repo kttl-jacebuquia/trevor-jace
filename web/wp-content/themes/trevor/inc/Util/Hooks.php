@@ -35,6 +35,7 @@ class Hooks {
 	 */
 	public static function register_all() {
 		add_action( 'init', [ self::class, 'init' ], 10, 0 );
+		add_action( 'init', [ Customizer\Search::class, 'handle_init' ], 10, 0 );
 
 		# Media
 		add_action( 'wp_enqueue_scripts', [ self::class, 'wp_enqueue_scripts' ], 10, 0 );
@@ -73,14 +74,11 @@ class Hooks {
 		# Pre Get Posts
 		add_action( 'pre_get_posts', [ self::class, 'pre_get_posts' ], 10, 1 );
 
-		# Google OAuth Return
-		add_action( 'wp_ajax_trevor-site-banners', [ self::class, 'ajax_site_banners' ], 10, 0 );
-		add_action( 'wp_ajax_nopriv_trevor-site-banners', [ self::class, 'ajax_site_banners' ], 10, 0 );
+		# REST API
+		add_action( 'rest_api_init', [ self::class, 'rest_api_init' ], 10, 0 );
 
 		# Single Pages
 		Single_Page\Abstract_Single_Page::init_all();
-
-		add_action( 'rest_api_init', [ self::class, 'rest_api_init' ], 10, 0 );
 	}
 
 	/**
@@ -210,6 +208,7 @@ class Hooks {
 	 */
 	public static function customize_register( \WP_Customize_Manager $manager ): void {
 		# Panels
+		new Customizer\Search( $manager );
 		new Customizer\External_Scripts( $manager );
 		new Customizer\Site_Banners( $manager );
 		new Customizer\Resource_Center( $manager );
@@ -416,6 +415,8 @@ class Hooks {
 				if ( ! empty( $wp_query->get( CPT\Get_Involved\Get_Involved_Object::QV_ADVOCACY ) ) ) {
 					$template = locate_template( 'get-involved/advocate.php', false );
 				}
+			} elseif ( ! empty( $wp_query->get( Customizer\Search::QV_SEARCH ) ) ) {
+				$template = locate_template( 'search.php', false );
 			}
 		}
 
@@ -486,12 +487,19 @@ class Hooks {
 	}
 
 	/**
-	 * Site banners ajax handler.
-	 *
-	 * @link https://developer.wordpress.org/reference/hooks/wp_ajax_action/
-	 * @link https://developer.wordpress.org/reference/hooks/wp_ajax_nopriv_action/
+	 * Fires when preparing to serve a REST API request.
 	 */
-	public static function ajax_site_banners(\WP_REST_Request $request) {
+	public static function rest_api_init(): void {
+		register_rest_route( 'trevor/v1', '/site-banners', array(
+				'methods'  => 'GET',
+				'callback' => [ self::class, 'ajax_site_banners' ],
+		) );
+	}
+
+	/**
+	 * Site banners ajax handler.
+	 */
+	public static function ajax_site_banners() {
 		$banners = [];
 
 		# Long waiting banner
@@ -527,31 +535,16 @@ class Hooks {
 			$banner['id'] = substr( \TrevorWP\Util\Tools::get_obj_signature( $banner ), 3, 6 );
 		}
 
-		// TODO: Set appropriate cache headers here
-		$browser_to = 5 * 60; # 5 min
-		$proxy_to   = 10; # 10 sec
-//		header( sprintf( 'Cache-Control: public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
-
-
-		$resp =  new \WP_REST_Response( [
+		$resp = new \WP_REST_Response( [
 				'success' => true,
 				'banners' => $banners,
 		], 200 );
 
-		$resp->header('Cache-Control', sprintf( 'public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ));
+		// Cache timeouts
+		$browser_to = 5 * 60; # 5 min
+		$proxy_to   = 10; # 10 sec
+		$resp->header( 'Cache-Control', sprintf( 'public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
 
 		return $resp;
-
-		wp_send_json( [
-				'success' => true,
-				'banners' => $banners,
-		] );
-	}
-
-	public static function rest_api_init(): void {
-		register_rest_route( 'trevor/v1', '/site-banners', array(
-				'methods'  => 'GET',
-				'callback' => [ self::class, 'ajax_site_banners' ],
-		) );
 	}
 }
