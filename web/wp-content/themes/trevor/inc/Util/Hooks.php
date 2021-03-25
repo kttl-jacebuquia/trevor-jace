@@ -79,6 +79,8 @@ class Hooks {
 
 		# Single Pages
 		Single_Page\Abstract_Single_Page::init_all();
+
+		add_action( 'rest_api_init', [ self::class, 'rest_api_init' ], 10, 0 );
 	}
 
 	/**
@@ -489,7 +491,7 @@ class Hooks {
 	 * @link https://developer.wordpress.org/reference/hooks/wp_ajax_action/
 	 * @link https://developer.wordpress.org/reference/hooks/wp_ajax_nopriv_action/
 	 */
-	public static function ajax_site_banners(): void {
+	public static function ajax_site_banners(\WP_REST_Request $request) {
 		$banners = [];
 
 		# Long waiting banner
@@ -528,11 +530,28 @@ class Hooks {
 		// TODO: Set appropriate cache headers here
 		$browser_to = 5 * 60; # 5 min
 		$proxy_to   = 10; # 10 sec
-		header( sprintf( 'Cache-Control: public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
+//		header( sprintf( 'Cache-Control: public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ) );
+
+
+		$resp =  new \WP_REST_Response( [
+				'success' => true,
+				'banners' => $banners,
+		], 200 );
+
+		$resp->header('Cache-Control', sprintf( 'public, max-age=%d, s-maxage=%d', $browser_to, $proxy_to ));
+
+		return $resp;
 
 		wp_send_json( [
 				'success' => true,
 				'banners' => $banners,
 		] );
+	}
+
+	public static function rest_api_init(): void {
+		register_rest_route( 'trevor/v1', '/site-banners', array(
+				'methods'  => 'GET',
+				'callback' => [ self::class, 'ajax_site_banners' ],
+		) );
 	}
 }
