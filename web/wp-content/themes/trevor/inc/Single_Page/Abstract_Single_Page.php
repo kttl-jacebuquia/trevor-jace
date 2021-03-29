@@ -21,7 +21,9 @@ abstract class Abstract_Single_Page extends Abstract_Customizer {
 		Public_Education::class,
 		Ally_Training::class,
 		Strategic_Plan::class,
+		Research::class,
 		Meet_Our_Partners::class,
+		Team::class,
 		Careers::class,
 		Contact_Us::class,
 	];
@@ -131,7 +133,7 @@ abstract class Abstract_Single_Page extends Abstract_Customizer {
 	protected function _register_sections(): void {
 		# General Section
 		$this->get_manager()->add_section( $general_id = static::get_section_id( static::NAME_SECTION_GENERAL ), [
-			'panel' => static::PANEL_ID,
+			'panel' => $panel_id = static::get_panel_id(),
 			'title' => 'General',
 		] );
 
@@ -168,7 +170,10 @@ abstract class Abstract_Single_Page extends Abstract_Customizer {
 		parent::_register_settings();
 
 		# Set default slug
-		$this->get_manager()->get_setting( static::get_setting_id( static::NAME_SECTION_GENERAL, static::NAME_SETTING_GENERAL_SLUG ) )->default = static::get_default_slug();
+		$this->get_manager()->add_setting(
+			static::get_setting_id( static::NAME_SECTION_GENERAL, static::NAME_SETTING_GENERAL_SLUG ),
+			[ 'default' => static::get_default_slug() ]
+		);
 	}
 
 	/**
