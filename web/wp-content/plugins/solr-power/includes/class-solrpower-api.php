@@ -156,7 +156,7 @@ class SolrPower_Api {
 		$response  = curl_exec( $ch );
 		$curl_opts = curl_getinfo( $ch );
 		fclose( $file );
-		if ( in_array( (int) $curl_opts['http_code'], [ 200, 204 ] ) ) {
+		if ( 200 === (int) $curl_opts['http_code'] ) {
 			$return_value = 'Schema Upload Success: ' . $curl_opts['http_code'];
 		} else {
 			$return_value = 'Schema Upload Error: ' . $curl_opts['http_code'];
@@ -202,7 +202,6 @@ class SolrPower_Api {
 			$this->ping      = true;
 			return true;
 		} catch ( Solarium\Exception\HttpException $e ) {
-
 			$this->last_code  = $e->getCode();
 			$this->last_error = $e;
 
