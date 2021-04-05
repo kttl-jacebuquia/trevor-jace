@@ -22,18 +22,24 @@ events:
     - node: rm -rf node_modules
   pre-push:
     - node: sh /app/scripts/pre-push-node.sh
+    - appserver: terminus backup:create
   post-push:
     - node: sh /app/scripts/post-push-node.sh
+    - appserver: terminus site:upstream:clear-cache
+  post-pull:
+    - appserver: wp cache flush
 services:
   node:
-    type: node:12
+    type: node:14
     port: 3000
     build_as_root:
-      - apt-get update -y && apt-get install -y zlib1g-dev fontforge ruby ruby-dev
+      - apt-get update -y && apt-get install -y zlib1g-dev fontforge rbenv ruby-build
       - mkdir -p /tmp/fc
       - cd /tmp/fc && git clone https://github.com/bramstein/sfnt2woff-zopfli.git sfnt2woff-zopfli && cd sfnt2woff-zopfli && make && mv sfnt2woff-zopfli /usr/local/bin/sfnt2woff
       - cd /tmp/fc && git clone --recursive https://github.com/google/woff2.git && cd woff2 && make clean all && mv woff2_compress /usr/local/bin/ && mv woff2_decompress /usr/local/bin/
-      - gem install fontcustom
+      - rbenv install 2.4.0 && rbenv global 2.4.0
+      - eval "$(rbenv init -)" && gem install fontcustom && ln -s /root/.rbenv/versions/2.4.0/bin/fontcustom /usr/local/bin/fontcustom
+      - chmod +x /usr/local/bin/fontcustom
       - rm -rf /tmp/fc
     build:
       - npm install
