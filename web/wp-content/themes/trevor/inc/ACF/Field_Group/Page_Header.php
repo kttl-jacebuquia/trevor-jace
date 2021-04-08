@@ -5,7 +5,7 @@ use TrevorWP\Theme\ACF\Util\Field_Val_Getter;
 use TrevorWP\Theme\Helper;
 
 class Page_Header extends A_Basic_Section implements I_Renderable {
-	const FIELD_TYPE = 'type';
+	const FIELD_TYPE = 'header_type';
 	const FIELD_TITLE_TOP = 'title_top';
 	const FIELD_TITLE_TOP_ATTR = 'title_top_attr';
 	const FIELD_CAROUSEL = 'carousel';
@@ -18,8 +18,9 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 		$carousel       = static::gen_field_key( static::FIELD_CAROUSEL );
 
 		return array_merge(
+			static::_gen_tab_field( 'General' ),
 			[
-				static::FIELD_TYPE           => [
+				static::FIELD_TYPE => [
 					'key'           => $type,
 					'name'          => static::FIELD_TYPE,
 					'label'         => 'Type',
@@ -34,6 +35,9 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 						'horizontal'     => 'Horizontal',
 					],
 				],
+			],
+			static::_gen_tab_field( 'Title Top' ),
+			[
 				static::FIELD_TITLE_TOP      => [
 					'key'   => $title_top,
 					'name'  => static::FIELD_TITLE_TOP,
@@ -43,7 +47,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 				static::FIELD_TITLE_TOP_ATTR => DOM_Attr::clone( [
 					'key'               => $title_top_attr,
 					'name'              => static::FIELD_TITLE_TOP_ATTR,
-					'label'             => 'Title Top Attributes',
 					'conditional_logic' => [
 						[
 							[
@@ -116,13 +119,43 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 		# Buttons
 		$buttons = $val->get( static::FIELD_BUTTONS );
 		if ( ! empty( $buttons ) ) {
-			// todo: add buttons
+			#todo
 		}
 
-		# todo: Add image for Split,Full,Horizontal types. (Post's featured image)
+		# Featured Image for Split Image, Horizontal, and Full
+		if ( in_array( $val->get( static::FIELD_TYPE ), [ 'split_img', 'horizontal', 'img_bg' ] ) ) {
+			$args['img_id'] = get_post_thumbnail_id();
+		}
 
-		# todo: Carousel
-		$carousel = $val->get( static::FIELD_CAROUSEL );
+
+		# Split Carousel
+		if ( $val->get( static::FIELD_TYPE ) === 'split_carousel' ) {
+			$carousel_arr = $val->get( static::FIELD_CAROUSEL );
+			$carousel_data = [];
+
+			if ( $carousel_arr[ 'type' ] === 'custom' ) {
+				foreach ( $carousel_arr[ 'data' ] as $item ) {
+					$carousel_data[] = [
+						'img'      => $item['data_img'],
+						'caption'  => $item['data_title'],
+						'subtitle' => $item['data_subtitle'],
+					];
+				}
+			} else {
+				foreach ( $carousel_arr[ 'posts' ] as $post_item ) {
+					$carousel_data[] = [
+						'img'      => [ 'id' => get_post_thumbnail_id($post_item) ],
+						'caption'  => $post_item->post_title,
+					];
+				}
+			}
+
+			$args['carousel_data'] = $carousel_data;
+			$args['swiper'] = [
+				'centeredSlides' => true,
+				'slidesPerView'  => 'auto',
+			];
+		}
 
 		return Helper\Page_Header::$type( $args );
 	}
