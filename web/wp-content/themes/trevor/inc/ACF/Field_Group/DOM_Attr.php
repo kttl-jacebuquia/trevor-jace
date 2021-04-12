@@ -1,5 +1,48 @@
 <?php namespace TrevorWP\Theme\ACF\Field_Group;
 
+$MAP = [
+	'screens' => [
+		'default' => [
+			'name' => 'Default'
+		],
+		'md'      => [
+			'name' => 'Medium',
+		],
+		'xl'      => [
+			'name' => 'XL'
+		],
+	],
+	'rules'   => [
+		'py'       => [],
+		'mt'       => [
+			'0',
+			'',
+		],
+		'mb'       => [
+			'',
+		],
+		'text'     => [
+			'base',
+			'px18',
+			'px24',
+			'px28',
+		],
+		'font'     => [
+			'light',
+			'normal',
+			'medium',
+			'semibold',
+			'bold',
+		],
+		'leading'  => [],
+		'tracking' => [],
+		'rounded'  => [
+			'none',
+			'px10',
+		],
+		'bg'       => [],
+	],
+];
 
 class DOM_Attr extends A_Field_Group {
 	const FIELD_CLASS = 'class';
@@ -18,23 +61,25 @@ class DOM_Attr extends A_Field_Group {
 		return [
 			'title'  => 'DOM Attr',
 			'fields' => [
-				static::FIELD_CLASS              => [
+				static::FIELD_CLASS     => [
 					'key'   => $class,
 					'name'  => static::FIELD_CLASS,
 					'label' => 'Class',
 					'type'  => 'text',
 				],
-				static::FIELD_ACCORDION          => [
+				static::FIELD_ACCORDION => [
 					'name'  => static::FIELD_ACCORDION,
 					'key'   => static::gen_field_key( static::FIELD_ACCORDION ),
 					'type'  => 'accordion',
 					'label' => 'Attributes'
 				],
+
 				static::FIELD_ATTRIBUTES         => [
 					'key'        => $attributes,
 					'name'       => static::FIELD_ATTRIBUTES,
 					'type'       => 'repeater',
 					'layout'     => 'table',
+					'label'      => 'Custom',
 					'collapsed'  => $attr_key,
 					'sub_fields' => [
 						static::FIELD_ATTR_KEY => [
