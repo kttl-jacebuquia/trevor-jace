@@ -7,6 +7,7 @@ class Info_Card extends A_Basic_Section implements I_Block {
 			'name'       => static::get_key(),
 			'title'      => 'Info Card',
 			'post_types' => [ 'page' ],
+			'mode'       => 'edit',
 		] );
 	}
 
