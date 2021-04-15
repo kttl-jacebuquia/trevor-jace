@@ -85,11 +85,4 @@ class Config {
 			array_flip( [ '', 'md', 'xl' ] )
 		);
 	}
-
-	public static function gen_safe_list(): string {
-		$file = get_theme_file_path( 'data/safelist-auto.txt' );
-		if ( time() - filemtime( $file ) > 60 ) {
-			file_put_contents( '', $file );
-		}
-	}
 }
