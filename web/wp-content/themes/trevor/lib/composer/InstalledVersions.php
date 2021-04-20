@@ -19,7 +19,7 @@ private static $installed = array (
     'aliases' => 
     array (
     ),
-    'reference' => 'efb375bc0ca6cde3074ab7a7cca9fbe30d7e0a2d',
+    'reference' => '5c2da1badbe5d2b6cd4824ff116008804b47fd1f',
     'name' => 'kettle/trevor-wp-theme',
   ),
   'versions' => 
@@ -31,7 +31,7 @@ private static $installed = array (
       'aliases' => 
       array (
       ),
-      'reference' => 'efb375bc0ca6cde3074ab7a7cca9fbe30d7e0a2d',
+      'reference' => '5c2da1badbe5d2b6cd4824ff116008804b47fd1f',
     ),
   ),
 );
