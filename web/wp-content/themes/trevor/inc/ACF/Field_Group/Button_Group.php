@@ -69,6 +69,11 @@ class Button_Group extends A_Field_Group implements I_Renderable, I_Block {
 		$btn_cls   = $options['btn_cls'] ?? [];
 		$label_cls = $options['label_cls'] ?? [];
 
+		if ( $multiple = count( $buttons_data ) > 1 ) {
+			$btn_cls[]  = 'my-2.5 md:my-0 md:mx-2.5';
+			$wrap_cls[] = 'flex flex-col md:flex-row';
+		}
+
 		ob_start(); ?>
 		<div <?= DOM_Attr::render_attrs_of( $val->get( static::FIELD_ATTR ), $wrap_cls ) ?>>
 			<?php foreach ( $buttons_data as $button_data ): ?>
@@ -87,8 +92,8 @@ class Button_Group extends A_Field_Group implements I_Renderable, I_Block {
 	public static function clone( array $args = [] ): array {
 		return parent::clone( array_merge( [
 				'display'      => 'seamless',
-				'prefix_label' => 1,
-				'prefix_name'  => 1,
+				'prefix_label' => true,
+				'prefix_name'  => true,
 		], $args ) );
 	}
 }
