@@ -9,6 +9,7 @@ class ACF {
 		Field_Group\Carousel_Data::class,
 		// Options
 		Options_Page\Page_Circulation_Options::class,
+		Options_Page\Fundraiser_Quiz::class,
 		// - Post Type Options
 		Options_Page\Post_Type\Financial_Report::class,
 		Options_Page\Post_Type\Research::class,
@@ -29,6 +30,7 @@ class ACF {
 		Field_Group\Team_Member::class,
 		Field_Group\Partners::class,
 		Field_Group\Post_Images::class,
+		Field_Group\Financial_Report::class,
 	];
 
 	public static function construct() {
