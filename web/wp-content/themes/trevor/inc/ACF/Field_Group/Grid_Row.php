@@ -2,18 +2,18 @@
 
 class Grid_Row extends A_Field_Group implements I_Block {
 	const FIELD_IMAGE = 'img';
-	const FIELD_IMAGE_OPTIONS = 'img_options';
+	const FIELD_IMAGE_STYLE = 'img_style';
 	const FIELD_IMAGE_ATTR = 'img_attr';
 	const FIELD_ATTR = 'attr';
 	const FIELD_CONTENT_ATTR = 'content_attr';
 
 	const IMG_TYPE_NORMAL = 'normal';
-	const IMG_TYPE_EXPAND_WINDOW = 'Expand to Window Edge';
+	const IMG_TYPE_XL_EXPAND = 'xl_expand';
 
 	/** @inheritDoc */
 	protected static function prepare_register_args(): array {
 		$img          = static::gen_field_key( static::FIELD_IMAGE );
-		$img_opt      = static::gen_field_key( static::FIELD_IMAGE_OPTIONS );
+		$img_style    = static::gen_field_key( static::FIELD_IMAGE_STYLE );
 		$img_attr     = static::gen_field_key( static::FIELD_IMAGE_ATTR );
 		$attr         = static::gen_field_key( static::FIELD_ATTR );
 		$content_attr = static::gen_field_key( static::FIELD_CONTENT_ATTR );
@@ -21,7 +21,7 @@ class Grid_Row extends A_Field_Group implements I_Block {
 		return [
 				'title'  => 'Grid Row',
 				'fields' => [
-						static::FIELD_IMAGE         => [
+						static::FIELD_IMAGE        => [
 								'key'           => $img,
 								'name'          => static::FIELD_IMAGE,
 								'label'         => 'Image',
@@ -30,27 +30,34 @@ class Grid_Row extends A_Field_Group implements I_Block {
 								'preview_size'  => 'medium',
 								'library'       => 'all',
 						],
-						static::FIELD_IMAGE_OPTIONS => [
-								'key'        => $img_opt,
-								'name'       => static::FIELD_IMAGE_OPTIONS,
-								'label'      => 'Image Options',
-								'type'       => 'group',
-								'sub_fields' => [/* todo: Sub Fields */ ],
+						static::FIELD_IMAGE_STYLE  => [
+								'key'           => $img_style,
+								'name'          => static::FIELD_IMAGE_STYLE,
+								'label'         => 'Image Style',
+								'type'          => 'select',
+								'default_value' => static::IMG_TYPE_NORMAL,
+								'choices'       => [
+										static::IMG_TYPE_NORMAL    => 'Normal',
+										static::IMG_TYPE_XL_EXPAND => 'XL: Expand',
+								],
 						],
-						static::FIELD_IMAGE_ATTR    => DOM_Attr::clone( [
-								'key'   => $img_attr,
-								'name'  => static::FIELD_IMAGE_ATTR,
-								'label' => 'Image',
+						static::FIELD_IMAGE_ATTR   => DOM_Attr::clone( [
+								'key'     => $img_attr,
+								'name'    => static::FIELD_IMAGE_ATTR,
+								'label'   => 'Image',
+								'display' => 'group',
 						] ),
-						static::FIELD_ATTR          => DOM_Attr::clone( [
-								'key'   => $attr,
-								'name'  => static::FIELD_ATTR,
-								'label' => 'Wrapper',
+						static::FIELD_ATTR         => DOM_Attr::clone( [
+								'key'     => $attr,
+								'name'    => static::FIELD_ATTR,
+								'label'   => 'Wrapper',
+								'display' => 'group',
 						] ),
-						static::FIELD_CONTENT_ATTR  => DOM_Attr::clone( [
-								'key'   => $content_attr,
-								'name'  => static::FIELD_CONTENT_ATTR,
-								'label' => 'Content',
+						static::FIELD_CONTENT_ATTR => DOM_Attr::clone( [
+								'key'     => $content_attr,
+								'name'    => static::FIELD_CONTENT_ATTR,
+								'label'   => 'Content',
+								'display' => 'group',
 						] ),
 				],
 		];
@@ -65,20 +72,29 @@ class Grid_Row extends A_Field_Group implements I_Block {
 
 		$cls_wrap         = [
 				'grid-row',
-				'flex flex-col xl:flex-none xl:grid xl:grid-cols-12 xl:gap-8 absolute-side-parent',
+				'grid',
+				'gap-7',
 		];
 		$cls_img_wrap     = [
 				'grid-row-img-wrap',
-				'w-full h-px375 mb-10 md:mb-12 md:h-px445 md:w-full md:ml-0 xl:h-px706 xl:col-span-5 xl:absolute-left',
+				'w-full',
+				'overflow-hidden',
 		];
 		$cls_img          = [
 				'grid-row-img',
-				'h-full w-full object-cover md:rounded-px10 xl:rounded-l-none',
+				'h-full w-full object-cover rounded-px10 xl:rounded-l-none',
 		];
 		$cls_content_wrap = [
-				'grid-row-content-wrap',
-				'xl:col-span-7 xl:col-start-7 xl:flex xl:flex-col xl:justify-center'
+				'grid-row-content',
+				'flex flex-col justify-center items-center'
 		];
+
+		$img_style = static::get_val( static::FIELD_IMAGE_STYLE ) ?: static::IMG_TYPE_NORMAL;
+		if ( $img_style == static::IMG_TYPE_XL_EXPAND ) {
+			$cls_wrap[] = 'img-style-expand-xl';
+			$cls_img[]  = 'rounded-l-none rounded-r-none md:rounded-px10';
+		}
+
 		?>
 		<div <?= DOM_Attr::render_attrs_of( static::get_val( static::FIELD_ATTR ), $cls_wrap ) ?>>
 			<div <?= DOM_Attr::render_attrs_of( static::get_val( static::FIELD_IMAGE_ATTR ), $cls_img_wrap ) ?>>

@@ -37,12 +37,15 @@ class Grid_Rows_Container extends A_Field_Group implements I_Block {
 
 	/** @inheritDoc */
 	public static function render_block( $block, $content = '', $is_preview = false, $post_id = 0 ): void {
+		$type = static::get_val( static::FIELD_TYPE );
+
 		$cls = [
-				'grid-rows-container',
+				'grid-rows',
 				'mx-auto',
+				"grid-rows-type-{$type}",
+				"py-20 xl:py-24",
 		];
 
-		$type = static::get_val( static::FIELD_TYPE );
 		if ( $type == static::GRID_TYPE_5 ) {
 			$cls[] = 'container';
 		} elseif ( $type == static::GRID_TYPE_5_6 ) {
@@ -53,8 +56,10 @@ class Grid_Rows_Container extends A_Field_Group implements I_Block {
 				'acf/' . Grid_Row::get_key(),
 		];
 		?>
-		<div <?= DOM_Attr::render_attrs_of( static::get_val( static::FIELD_ATTR ), $cls ) ?>>
-			<InnerBlocks allowedBlocks="<?= esc_attr( wp_json_encode( $allowed_blocks ) ) ?>"/>
+		<div class="overflow-hidden">
+			<div <?= DOM_Attr::render_attrs_of( static::get_val( static::FIELD_ATTR ), $cls ) ?>>
+				<InnerBlocks allowedBlocks="<?= esc_attr( wp_json_encode( $allowed_blocks ) ) ?>"/>
+			</div>
 		</div>
 		<?php
 	}
