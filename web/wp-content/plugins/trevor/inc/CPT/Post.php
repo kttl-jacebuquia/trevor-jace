@@ -29,7 +29,7 @@ class Post {
 		add_rewrite_rule( self::PERMALINK_BASE . '/?$', 'index.php?' . http_build_query( $data ), 'top' );
 		add_rewrite_rule(
 			self::PERMALINK_BASE . "/{$wp_rewrite->pagination_base}/?([0-9]{1,})/?$",
-			http_build_query( $data ) . '&paged=$matches[1]',
+			'index.php?' . http_build_query( $data ) . '&paged=$matches[1]',
 			'top'
 		);
 	}
