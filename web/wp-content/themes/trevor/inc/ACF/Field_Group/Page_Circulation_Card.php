@@ -1,29 +1,21 @@
 <?php namespace TrevorWP\Theme\ACF\Field_Group;
 
+use TrevorWP\CPT\Page_ReCirculation;
+
 class Page_Circulation_Card extends A_Basic_Section {
-	const FIELD_CARD_BG = 'card_bg';
-
-	/** @inheritDoc */
+	/** @inheritdoc */
 	public static function prepare_register_args(): array {
-		$card_bg  = static::gen_field_key( static::FIELD_CARD_BG );
-
-		return [
-			'title'  => 'Page Circulation Card',
-			'fields' => array_merge(
-				static::_get_fields(),
-				static::_gen_tab_field( 'Background' ),
+		return array_merge( parent::prepare_register_args(), [
+			'title'    => 'Page Circulation Card',
+			'location' => [
 				[
-					static::FIELD_CARD_BG => [
-						'key'     => $card_bg,
-						'name'    => static::FIELD_CARD_BG,
-						'label'   => 'Type',
-						'type'    => 'select',
-						'choices' => [
-							''
-						]
+					[
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => Page_ReCirculation::POST_TYPE,
 					],
 				],
-			)
-		];
+			],
+		] );
 	}
 }

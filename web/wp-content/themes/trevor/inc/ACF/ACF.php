@@ -29,6 +29,7 @@ class ACF {
 		Field_Group\Embed::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
+		Field_Group\Page_Circulation_Card::class,
 		Field_Group\Team_Member::class,
 		Field_Group\Partners::class,
 		Field_Group\Post_Images::class,
