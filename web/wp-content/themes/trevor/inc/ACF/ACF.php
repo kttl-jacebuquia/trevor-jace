@@ -9,6 +9,7 @@ class ACF {
 		Field_Group\Carousel_Data::class,
 		// Options
 		Options_Page\Fundraiser_Quiz::class,
+		Options_Page\Donation_Modal::class,
 		// - Post Type Options
 		Options_Page\Post_Type\Post::class,
 		Options_Page\Post_Type\Financial_Report::class,
@@ -33,6 +34,7 @@ class ACF {
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
+		Field_Group\Page_Sidebar::class,
 		Field_Group\Team_Member::class,
 		Field_Group\Partners::class,
 		Field_Group\Post_Images::class,
