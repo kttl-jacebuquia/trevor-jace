@@ -14,35 +14,35 @@ class Donation_Modal extends A_Options_Page {
 		$intro = static::gen_field_key( static::FIELD_INTRO );
 		$pages = static::gen_field_key( static::FIELD_PAGES );
 
-		return [
-			static::FIELD_TITLE => [
+		return array(
+			static::FIELD_TITLE => array(
 				'key'   => $title,
 				'name'  => static::FIELD_TITLE,
 				'label' => 'Title',
 				'type'  => 'text',
-			],
-			static::FIELD_INTRO => [
+			),
+			static::FIELD_INTRO => array(
 				'key'   => $intro,
 				'name'  => static::FIELD_INTRO,
 				'label' => 'Intro',
 				'type'  => 'textarea',
-			],
-			static::FIELD_PAGES => [
+			),
+			static::FIELD_PAGES => array(
 				'key'           => $pages,
 				'name'          => static::FIELD_PAGES,
 				'label'         => 'Visible Pages',
 				'type'          => 'relationship',
-				'post_type'     => [ 'page' ],
+				'post_type'     => array( 'page' ),
 				'return_format' => 'id',
-			]
-		];
+			),
+		);
 	}
 
 	/**
 	 * Checks whether donate modal will render in the given post ID
 	 */
 	public static function will_render_in( $post_id ) {
-		$pages = static::get_option( static::FIELD_PAGES );
+		$pages = (array) static::get_option( static::FIELD_PAGES );
 		return in_array( $post_id, $pages );
 	}
 
