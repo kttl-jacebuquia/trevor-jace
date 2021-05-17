@@ -8,12 +8,10 @@ abstract class Donate_Object {
 	const POST_TYPE_PREFIX = Main::POST_TYPE_PREFIX;
 
 	/* Query Vars */
-	const QV_DONATE            = Main::QV_PREFIX . 'donate';
 	const QV_FUNDRAISE         = Main::QV_PREFIX . 'fundraise';
 	const QV_PROD_PARTNERSHIPS = Main::QV_PREFIX . 'prod_partnerships';
 
 	const _QV_ALL = array(
-		self::QV_DONATE,
 		self::QV_FUNDRAISE,
 		self::QV_PROD_PARTNERSHIPS,
 	);
@@ -60,7 +58,6 @@ abstract class Donate_Object {
 		## Single Pages
 		foreach (
 			array(
-				array( self::PERMALINK_DONATE, self::QV_DONATE ),
 				array( self::PERMALINK_FUNDRAISE, self::QV_FUNDRAISE ),
 				array( self::PERMALINK_PROD_PARTNERSHIPS, self::QV_PROD_PARTNERSHIPS ),
 			) as list(
