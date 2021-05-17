@@ -3,7 +3,7 @@
 Plugin Name: CookieHub
 Plugin URI: https://www.cookiehub.com/wordpress
 Description: CookieHub is a complete Cookie Consent Solution that you can easily integrate on your website. The widget can be customized to match your brand and is compliant with cookie laws, including GDPR.
-Version: 0.2.2
+Version: 0.3.0
 Author: CookieHub
 Author URI: https://www.cookiehub.com/
 License: GPL2

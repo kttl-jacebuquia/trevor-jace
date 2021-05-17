@@ -1,9 +1,9 @@
 === CookieHub - GDPR Compliant Cookie Consent Solution ===
 Contributors: cookiehub
-Tags: cookies, cookie consent, cmp, cookie dialog, cookie widget, consent, wpml, polylang
+Tags: cookies, cookie consent, cmp, gcm, cookie dialog, cookie widget, consent, wpml, polylang
 Requires at least: 5.2
-Tested up to: 5.6.1
-Stable tag: 0.2.2
+Tested up to: 5.7.1
+Stable tag: 0.3.0
 License: GPLv2 or later
 
 CookieHub is a complete Cookie Consent Solution that you can easily integrate on your website. The widget can be customized to match your brand and is compliant with cookie laws, including GDPR.
@@ -30,6 +30,11 @@ Major features in CookieHub include:
 * Enter your CookieHub domain code.
 
 == Changelog ==
+
+= 0.3.0 =
+*Release Date - 20 April 2021*
+
+Added support for Google Consent Mode and automatic cookie blocking
 
 = 0.2.2 =
 *Release Date - 15 February 2021*

@@ -110,7 +110,23 @@ class DCCHUBSettingsPage
             'dcchub-setting-admin', // Page
             'dcchub_settings' // Section           
         );      
-
+		
+		add_settings_field(
+            'dcchub_blocking', // ID
+            'Automatic cookie blocking (premium only)', // Title 
+            array( $this, 'dcchub_blocking_callback' ), // Callback
+            'dcchub-setting-admin', // Page
+            'dcchub_settings' // Section           
+        );   
+		
+        add_settings_field(
+            'dcchub_gcm', // ID
+            'Google Consent Mode', // Title 
+            array( $this, 'dcchub_gcm_callback' ), // Callback
+            'dcchub-setting-admin', // Page
+            'dcchub_settings' // Section           
+        );   
+		
         add_settings_field(
             'dcchub_dev', // ID
             'Development mode', // Title 
@@ -264,8 +280,16 @@ class DCCHUBSettingsPage
         $new_input = array();
         if( isset( $input['dcchub_api_key']))
             $new_input['dcchub_api_key'] =  $input['dcchub_api_key'] ;
+		
+        if( isset( $input['dcchub_blocking']))
+            $new_input['dcchub_blocking'] = $input['dcchub_blocking'];
+		
+        if( isset( $input['dcchub_gcm']))
+            $new_input['dcchub_gcm'] = $input['dcchub_gcm'];
+		
         if( isset( $input['dcchub_dev']))
             $new_input['dcchub_dev'] = $input['dcchub_dev'];
+		
             if( isset( $input['dcchub_language']))
             $new_input['dcchub_language'] = $input['dcchub_language'];
 
@@ -316,7 +340,21 @@ class DCCHUBSettingsPage
             '<input type="checkbox" id="dev" name="dcchub_option_name[dcchub_dev]" value="1" '. checked( 1, $this->options['dcchub_dev'], false ) .' /> <p style="max-width:500px">Enabling development mode will avoid edge caching and can be used to see changes made to your domain in the CookieHub portal quickly. Please note that a watermark will be shown on your web site. Make sure you disable development mode before publishing your site.</p>'            
         );
     }
+	
+	public function dcchub_blocking_callback()
+    {
+        printf(
+            '<input type="checkbox" id="dcchub_blocking" name="dcchub_option_name[dcchub_blocking]" value="1" '. checked( 1, $this->options['dcchub_blocking'], false ) .' /> <p style="max-width:500px">Automatically block common services that set cookies until the user has consented making it easier to implement CookieHub to your website. Please note that this feature is only available for domains with premium subscription and you must also enable it in the CookieHub dashboard.</p>'            
+        );
+    }
 
+	public function dcchub_gcm_callback()
+    {
+        printf(
+            '<input type="checkbox" id="gcm" name="dcchub_option_name[dcchub_gcm]" value="1" '. checked( 1, $this->options['dcchub_gcm'], false ) .' /> <p style="max-width:500px">When Google Consent Mode (GCM) is enabled, Google Analytics and Google Ads won\'t set any cookies until the user has consented without any modifications to the integration codes.</p>'            
+        );
+    }
+	
     public function dcchub_language_callback()
     {
         printf(

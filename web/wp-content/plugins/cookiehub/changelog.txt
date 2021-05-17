@@ -1,5 +1,17 @@
 === CookieHub ===
 
+= 0.3.0 =
+*Release Date - 20 April 2021*
+
+Added support for Google Consent Mode and automatic cookie blocking
+
+
+= 0.2.2 =
+*Release Date - 15 February 2021*
+
+Added Polylang support to control the display language
+
+
 = 0.2.1 =
 *Release Date - 11 February 2021*
 
