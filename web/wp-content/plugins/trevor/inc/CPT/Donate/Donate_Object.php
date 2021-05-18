@@ -17,7 +17,7 @@ abstract class Donate_Object {
 	);
 
 	/* Permalinks */
-	const PERMALINK_DONATE            = 'donate';
+	const PERMALINK_DONATE            = 'donate'; // todo: create a ACF options page & remove this
 	const PERMALINK_FUNDRAISE         = 'fundraise';
 	const PERMALINK_PROD_PARTNERS     = 'shop-products';
 	const PERMALINK_PROD_PARTNERSHIPS = 'product-partnerships';
