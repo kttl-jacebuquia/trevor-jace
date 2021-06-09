@@ -6,7 +6,6 @@ class Grid_Rows_Container extends A_Field_Group implements I_Block {
 	const FIELD_ATTR    = 'attr';
 	const GRID_TYPE_5   = '5'; // 6/6 -> 4/8 -> 5/12
 	const GRID_TYPE_5_6 = '5_6'; // 6/6 -> 4/8 -> 5/12 + 6/12
-	const GRID_TYPE_5_9 = '5_9'; // 6/6 -> 3/8 + 6/8 -> 5/12 + 9/12
 
 	/** @inheritDoc */
 	protected static function prepare_register_args(): array {
@@ -24,7 +23,6 @@ class Grid_Rows_Container extends A_Field_Group implements I_Block {
 					'choices'       => array(
 						static::GRID_TYPE_5   => '6/6 -> 4/8 -> 5/12',
 						static::GRID_TYPE_5_6 => '6/6 -> 4/8 -> 5/12 + 6/12',
-						static::GRID_TYPE_5_9 => '6/6 -> 3/8 + 6/8 -> 5/12 + 9/12',
 					),
 					'default_value' => static::GRID_TYPE_5,
 				),

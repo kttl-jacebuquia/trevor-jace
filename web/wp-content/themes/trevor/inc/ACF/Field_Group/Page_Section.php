@@ -117,12 +117,12 @@ class Page_Section extends A_Basic_Section implements I_Block {
 		$bg_color  = $val->get( static::FIELD_BG_COLOR );
 		$txt_color = $val->get( static::FIELD_TEXT_COLOR );
 
-//		if ( ! empty( $bg_color ) ) {
-//			$wrap_cls[] = "bg-{$bg_color}";
-//		}
-//		if ( ! empty( $txt_color ) ) {
-//			$wrap_cls[] = "text-{$txt_color}";
-//		}
+		if ( ! empty( $bg_color ) ) {
+			$wrap_cls[] = "bg-{$bg_color}";
+		}
+		if ( ! empty( $txt_color ) ) {
+			$wrap_cls[] = "text-{$txt_color}";
+		}
 
 		# Title align
 		$title_align = $val->get( static::FIELD_TITLE_ALIGN );
