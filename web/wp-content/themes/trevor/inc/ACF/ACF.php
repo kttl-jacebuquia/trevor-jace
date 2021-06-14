@@ -33,6 +33,11 @@ class ACF {
 		Field_Group\Charity_Navigator::class,
 		Field_Group\FAQ::class,
 		Field_Group\URL_File_List::class,
+		Field_Group\Alternating_Image_Text::class,
+		Field_Group\Pillars::class,
+		Field_Group\Checkmark_Text::class,
+		Field_Group\Guiding_Principles::class,
+		Field_Group\Topic_Cards::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
