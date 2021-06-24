@@ -289,8 +289,9 @@ class Carousel {
 		}
 
 		$carousel_cls = array(
-			'carousel-testimonials bg-gray-light pt-px56 pb-px70 px-0',
+			'carousel-testimonials pt-px56 pb-px70 px-0',
 			'md:py-px50 lg:py-px80',
+			'bg-' . $options['bg_color'],
 		);
 		$carousel_cls = implode( ' ', $carousel_cls );
 
@@ -340,7 +341,7 @@ class Carousel {
 							aria-label="Next Slide" role="button"></div>
 					</div>
 					<div class="swiper-container h-full pt-px50 md:py-px20">
-						<div class="flex flex-row justify-center w-full">
+						<div class="flex flex-row justify-center w-full" aria-hidden="true">
 							<i class="trevor-ti-quote-open -mt-2 mr-0.5 lg:text-px28 lg:mr-2"></i>
 							<i class="trevor-ti-quote-close lg:text-px28"></i>
 						</div>
