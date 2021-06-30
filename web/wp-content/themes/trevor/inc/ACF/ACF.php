@@ -4,6 +4,7 @@ class ACF {
 	const ALL_GROUPS = array(
 		// Common Fields
 		Field_Group\DOM_Attr::class,
+		Field_Group\Advanced_Link::class,
 		Field_Group\Button::class,
 		Field_Group\Button_Group::class,
 		Field_Group\Carousel_Data::class,
@@ -12,6 +13,7 @@ class ACF {
 		Options_Page\Donation_Modal::class,
 		Options_Page\Site_Banners::class,
 		Options_Page\Quick_Exit::class,
+		Options_Page\Resource_Center::class,
 		// - Post Type Options
 		Options_Page\Post_Type\Post::class,
 		Options_Page\Post_Type\Financial_Report::class,
@@ -40,8 +42,13 @@ class ACF {
 		Field_Group\Guiding_Principles::class,
 		Field_Group\Topic_Cards::class,
 		Field_Group\Center_Text_Full_Width_Image::class,
+		Field_Group\Crisis_Support::class,
+		Field_Group\Volunteer_Reason::class,
 		Field_Group\Image_Gallery::class,
 		Field_Group\Single_Quote::class,
+		Field_Group\Text_Block::class,
+		Field_Group\File_Download::class,
+		Field_Group\Tier::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
@@ -52,6 +59,7 @@ class ACF {
 		Field_Group\Financial_Report::class,
 		Field_Group\Event::class,
 		Field_Group\Product::class,
+		Field_Group\Text_Only_Popup::class,
 	);
 
 	public static function construct() {

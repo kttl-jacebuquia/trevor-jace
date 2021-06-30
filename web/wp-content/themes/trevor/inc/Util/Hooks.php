@@ -9,6 +9,7 @@ use TrevorWP\Theme\ACF\Options_Page\Site_Banners;
 use TrevorWP\Theme\Customizer;
 use TrevorWP\Theme\Helper\Sorter;
 use TrevorWP\Util\StaticFiles;
+use TrevorWP\Theme\Helper\Modal;
 
 /**
  * Theme Hooks
@@ -489,12 +490,15 @@ class Hooks {
 	public static function wp_footer(): void {
 		if ( empty( get_query_var( CPT\RC\RC_Object::QV_GET_HELP ) ) ) {
 			?>
-			<div class="floating-crisis-btn-wrap">
+			<aside class="floating-crisis-btn-wrap">
 				<a class="btn floating-crisis-btn" href="<?php echo esc_attr( home_url( \TrevorWP\CPT\RC\RC_Object::PERMALINK_GET_HELP ) ); ?>">
 					Reach a Counselor</a>
-			</div>
+			</aside>
 			<?php
 		}
+
+		// TODO:
+		// Remove these modal renders once integrated through the Advanced_Link field
 
 		// Fundraiser Quiz Modal
 		echo ( new \TrevorWP\Theme\Helper\FundraiserQuizModal(

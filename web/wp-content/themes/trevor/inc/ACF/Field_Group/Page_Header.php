@@ -39,12 +39,12 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 					'required'      => true,
 					'default_value' => 'text',
 					'choices'       => array(
-						'text'             => 'Text',
-						'split_img'        => 'Split Image',
-						'img_bg'           => 'Full Image',
-						'split_carousel'   => 'Split Carousel',
-						'horizontal'       => 'Horizontal',
-						'multi_image_text' => 'Multi Image + Text',
+						'text'             => 'Colorblock + Text',
+						'horizontal'       => 'Colorblock + Image + Text',
+						'multi_image_text' => 'Multi-image + Text',
+						'img_bg'           => 'Full Bleed Image/Video + Text',
+						'split_img'        => 'Text + Image',
+						'split_carousel'   => 'Text + Carousel',
 					),
 				),
 			),
@@ -210,7 +210,7 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 		$args = array_merge(
 			parent::prepare_register_args(),
 			array(
-				'title'    => 'Page Header',
+				'title'    => 'Landing Page Hero',
 				'location' => array(
 					array(
 						array(

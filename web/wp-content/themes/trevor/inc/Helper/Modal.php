@@ -2,6 +2,8 @@
 
 
 class Modal {
+	public static $rendered_modals = array();
+
 	protected $_selector;
 	protected $_content;
 	protected $_options = array();
@@ -26,16 +28,23 @@ class Modal {
 	}
 
 	public function render(): string {
+		// Don't render the same modal id twice
+		if ( $this->_selector && in_array( $this->_selector, static::$rendered_modals, true ) ) {
+			return '';
+		}
+
+		array_push( static::$rendered_modals, $this->_selector );
+
 		ob_start();
 		?>
 		<div class="modal <?php echo implode( ' ', $this->_options['class'] ); ?>" id="<?php echo esc_attr( $this->_selector ); ?>">
-			<div class="modal-container">
-				<button class="modal-close js-modal-close cursor-pointer z-50" aria-label="click to close this modal">
-					<i class="trevor-ti-close" aria-hidden="true"></i>
-				</button>
+			<div class="modal-container" tabindex="0">
 				<div class="modal-content-wrap">
 					<?php echo $this->_content; ?>
 				</div>
+				<button class="modal-close js-modal-close cursor-pointer z-50" aria-label="click to close this modal">
+					<i class="trevor-ti-close" aria-hidden="true"></i>
+				</button>
 			</div>
 		</div>
 		<?php $this->print_js(); ?>
@@ -56,5 +65,17 @@ class Modal {
 			});
 		</script>
 		<?php
+	}
+
+	static public function create_and_render( $content = '', $options = array() ) {
+		// Ensure that modals are only rendered down the document
+		add_action(
+			'wp_footer',
+			function() use ( $content, $options ) {
+				echo ( new self( $content, $options ) )->render();
+			},
+			10,
+			0
+		);
 	}
 }
