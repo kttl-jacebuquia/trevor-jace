@@ -8,6 +8,16 @@ class Search extends A_Options_Page {
 	const FIELD_DESCRIPTION        = 'search_carousel_description';
 
 	/** @inheritDoc */
+	protected static function prepare_page_register_args(): array {
+		return array_merge(
+			parent::prepare_page_register_args(),
+			array(
+				'parent_slug' => 'general-settings',
+			)
+		);
+	}
+
+	/** @inheritDoc */
 	protected static function prepare_fields(): array {
 		$posts_per_page     = static::gen_field_key( static::FIELD_POSTS_PER_PAGE );
 		$headline           = static::gen_field_key( static::FIELD_HEADLINE );
@@ -29,11 +39,12 @@ class Search extends A_Options_Page {
 					'step'          => 1,
 				),
 				static::FIELD_HEADLINE           => array(
-					'key'      => $headline,
-					'name'     => static::FIELD_HEADLINE,
-					'label'    => 'Headline',
-					'type'     => 'text',
-					'required' => true,
+					'key'           => $headline,
+					'name'          => static::FIELD_HEADLINE,
+					'label'         => 'Headline',
+					'type'          => 'text',
+					'required'      => true,
+					'default_value' => 'Search The Trevor Project',
 				),
 				static::FIELD_SEARCH_PLACEHOLDER => array(
 					'key'           => $search_placeholder,
@@ -47,19 +58,38 @@ class Search extends A_Options_Page {
 			static::_gen_tab_field( 'Carousel' ),
 			array(
 				static::FIELD_TITLE       => array(
-					'key'      => $title,
-					'name'     => static::FIELD_TITLE,
-					'label'    => 'Title',
-					'type'     => 'text',
-					'required' => true,
+					'key'           => $title,
+					'name'          => static::FIELD_TITLE,
+					'label'         => 'Title',
+					'type'          => 'text',
+					'required'      => true,
+					'default_value' => 'The Latest',
 				),
 				static::FIELD_DESCRIPTION => array(
-					'key'   => $description,
-					'name'  => static::FIELD_DESCRIPTION,
-					'label' => 'Description',
-					'type'  => 'textarea',
+					'key'           => $description,
+					'name'          => static::FIELD_DESCRIPTION,
+					'label'         => 'Description',
+					'type'          => 'textarea',
+					'default_value' => 'Explore the latest from The Trevor Project.',
 				),
 			),
 		);
+	}
+
+	/**
+	 * Gets all Search values
+	 */
+	public static function get_search() {
+		$data = array(
+			'posts_per_page'     => static::get_option( static::FIELD_POSTS_PER_PAGE ),
+			'headline'           => static::get_option( static::FIELD_HEADLINE ),
+			'search_placeholder' => static::get_option( static::FIELD_SEARCH_PLACEHOLDER ),
+			'carousel'           => array(
+				'title'       => static::get_option( static::FIELD_TITLE ),
+				'description' => static::get_option( static::FIELD_DESCRIPTION ),
+			),
+		);
+
+		return $data;
 	}
 }

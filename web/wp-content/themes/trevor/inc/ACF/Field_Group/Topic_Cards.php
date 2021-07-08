@@ -137,7 +137,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 
 		ob_start();
 		?>
-		<div class="topic-cards <?php echo esc_attr($styles); ?>">
+		<div class="topic-cards <?php echo esc_attr( $styles ); ?>">
 			<div class="topic-cards__container">
 				<h2 class="topic-cards__heading"><?php echo esc_html( $title ); ?></h2>
 				<?php if ( ! empty( $description ) ) : ?>
@@ -161,9 +161,18 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 									<?php if ( ! empty( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ) ) : ?>
 										<p class="topic-cards__item-description"><?php echo esc_html( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ); ?></p>
 									<?php endif; ?>
-									<?php if ( ! empty( $topic[ static::FIELD_TOPIC_ENTRY_LINK ]['title'] ) ) : ?>
-										<a class="topic-cards__cta" href="<?php echo esc_url( $topic[ static::FIELD_TOPIC_ENTRY_LINK ]['url'] ); ?>" target="<?php echo esc_attr( $topic[ static::FIELD_TOPIC_ENTRY_LINK ]['target'] ); ?>"><?php echo esc_html( $topic[ static::FIELD_TOPIC_ENTRY_LINK ]['title'] ); ?></a>
-									<?php endif; ?>
+									<?php
+										echo Advanced_Link::render(
+											null,
+											$topic[ static::FIELD_TOPIC_ENTRY_LINK ],
+											array(
+												'class' => array( 'topic-cards__cta wave-underline' ),
+												'attributes' => array(
+													'aria-label' => 'click to learn more about ' . $topic[ static::FIELD_TOPIC_ENTRY_TITLE ],
+												),
+											)
+										);
+									?>
 								</div>
 							</div>
 						<?php endforeach; ?>
