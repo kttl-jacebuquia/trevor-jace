@@ -2,46 +2,31 @@
 
 use TrevorWP\CPT\Get_Involved\Get_Involved_Object;
 use TrevorWP\CPT\Get_Involved\Grant;
-use TrevorWP\CPT\Get_Involved\Partner;
 use TrevorWP\Meta\Taxonomy;
 use TrevorWP\Theme\Helper;
 
-class Tier extends A_Field_Group implements I_Block, I_Renderable {
-	const FIELD_TITLE     = 'title';
-	const FIELD_TIER_TYPE = 'tier_type';
-	const FIELD_BUTTON    = 'button';
+class Current_Funders_Table_CTA extends A_Field_Group implements I_Block, I_Renderable {
+	const FIELD_TITLE  = 'title';
+	const FIELD_BUTTON = 'button';
 
 	/**
 	 * @inheritDoc
 	 */
 	protected static function prepare_register_args(): array {
-		$title     = static::gen_field_key( static::FIELD_TITLE );
-		$tier_type = static::gen_field_key( static::FIELD_TIER_TYPE );
-		$button    = static::gen_field_key( static::FIELD_BUTTON );
+		$title  = static::gen_field_key( static::FIELD_TITLE );
+		$button = static::gen_field_key( static::FIELD_BUTTON );
 
 		return array(
-			'title'  => 'Tier',
+			'title'  => 'Current Funders Table + CTA',
 			'fields' => array(
-				static::FIELD_TITLE     => array(
+				static::FIELD_TITLE  => array(
 					'key'      => $title,
 					'name'     => static::FIELD_TITLE,
 					'label'    => 'Title',
 					'type'     => 'text',
 					'required' => 1,
 				),
-				static::FIELD_TIER_TYPE => array(
-					'key'           => $tier_type,
-					'name'          => static::FIELD_TIER_TYPE,
-					'label'         => 'Tier Type',
-					'type'          => 'button_group',
-					'required'      => 1,
-					'choices'       => array(
-						'partner' => 'Partner',
-						'grant'   => 'Grant',
-					),
-					'default_value' => 'partner',
-				),
-				static::FIELD_BUTTON    => array(
+				static::FIELD_BUTTON => array(
 					'key'           => $button,
 					'name'          => static::FIELD_BUTTON,
 					'label'         => 'Button',
@@ -60,7 +45,7 @@ class Tier extends A_Field_Group implements I_Block, I_Renderable {
 			parent::get_block_args(),
 			array(
 				'name'       => static::get_key(),
-				'title'      => 'Tier',
+				'title'      => 'Current Funders Table + CTA',
 				'post_types' => array( 'page' ),
 			)
 		);
@@ -70,24 +55,14 @@ class Tier extends A_Field_Group implements I_Block, I_Renderable {
 	 * @inheritDoc
 	 */
 	public static function render( $post = false, array $data = null, array $options = array() ): ?string {
-		$title     = static::get_val( static::FIELD_TITLE );
-		$tier_type = static::get_val( static::FIELD_TIER_TYPE );
-		$button    = static::get_val( static::FIELD_BUTTON );
+		$title  = static::get_val( static::FIELD_TITLE );
+		$button = static::get_val( static::FIELD_BUTTON );
 
-		$taxonomy  = '';
-		$post_type = '';
-		$meta_key  = '';
-		$tiers     = '';
+		$tiers = '';
 
-		if ( 'partner' === $tier_type ) {
-			$taxonomy  = Get_Involved_Object::TAXONOMY_PARTNER_TIER;
-			$meta_key  = Taxonomy::KEY_PARTNER_TIER_VALUE;
-			$post_type = Partner::POST_TYPE;
-		} elseif ( 'grant' === $tier_type ) {
-			$taxonomy  = Get_Involved_Object::TAXONOMY_GRANT_TIER;
-			$meta_key  = Taxonomy::KEY_PARTNER_TIER_VALUE;
-			$post_type = Grant::POST_TYPE;
-		}
+		$taxonomy  = Get_Involved_Object::TAXONOMY_GRANT_TIER;
+		$meta_key  = Taxonomy::KEY_PARTNER_TIER_VALUE;
+		$post_type = Grant::POST_TYPE;
 
 		if ( ! empty( $taxonomy ) ) {
 			$tiers = ( new \WP_Term_Query(
@@ -126,7 +101,7 @@ class Tier extends A_Field_Group implements I_Block, I_Renderable {
 			'button' => $button,
 		);
 
-		return Helper\Tier::$tier_type( $data );
+		return Helper\Tier::grant( $data );
 	}
 
 	/**
