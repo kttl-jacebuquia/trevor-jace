@@ -12,15 +12,16 @@ use TrevorWP\Theme\Helper\FundraiserQuizModal;
 use TrevorWP\Theme\Helper\WhatToExpectModal;
 
 class Advanced_Link extends A_Field_Group implements I_Renderable {
-	const FIELD_LABEL             = 'label';
-	const FIELD_ACTION            = 'action';
-	const FIELD_LINK              = 'link';
-	const FIELD_PAGE_LINK         = 'page_link';
-	const FIELD_FILE              = 'file';
-	const FIELD_MODAL             = 'modal';
-	const FIELD_DONATE_DEDICATION = 'donate_dedication';
-	const FIELD_TEXTONLY_POPUP    = 'textonly_popup';
-	const FIELD_PHONE             = 'phone';
+	const FIELD_LABEL              = 'label';
+	const FIELD_ACTION             = 'action';
+	const FIELD_LINK               = 'link';
+	const FIELD_PAGE_LINK          = 'page_link';
+	const FIELD_FILE               = 'file';
+	const FIELD_MODAL              = 'modal';
+	const FIELD_DONATE_DEDICATION  = 'donate_dedication';
+	const FIELD_TEXTONLY_POPUP     = 'textonly_popup';
+	const FIELD_PHONE              = 'phone';
+	const FIELD_SHOW_DOWNLOAD_ICON = 'show_download_icon';
 
 	/** @inheritDoc */
 	public static function prepare_register_args(): array {
@@ -29,25 +30,26 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 
 	/** @inheritDoc */
 	public static function _get_fields(): array {
-		$label             = static::gen_field_key( static::FIELD_LABEL );
-		$action            = static::gen_field_key( static::FIELD_ACTION );
-		$link              = static::gen_field_key( static::FIELD_LINK );
-		$page_link         = static::gen_field_key( static::FIELD_PAGE_LINK );
-		$file              = static::gen_field_key( static::FIELD_FILE );
-		$modal             = static::gen_field_key( static::FIELD_MODAL );
-		$donate_dedication = static::gen_field_key( static::FIELD_DONATE_DEDICATION );
-		$textonly_popup    = static::gen_field_key( static::FIELD_TEXTONLY_POPUP );
-		$phone             = static::gen_field_key( static::FIELD_PHONE );
+		$label              = static::gen_field_key( static::FIELD_LABEL );
+		$action             = static::gen_field_key( static::FIELD_ACTION );
+		$link               = static::gen_field_key( static::FIELD_LINK );
+		$page_link          = static::gen_field_key( static::FIELD_PAGE_LINK );
+		$file               = static::gen_field_key( static::FIELD_FILE );
+		$modal              = static::gen_field_key( static::FIELD_MODAL );
+		$donate_dedication  = static::gen_field_key( static::FIELD_DONATE_DEDICATION );
+		$textonly_popup     = static::gen_field_key( static::FIELD_TEXTONLY_POPUP );
+		$phone              = static::gen_field_key( static::FIELD_PHONE );
+		$show_download_icon = static::gen_field_key( static::FIELD_SHOW_DOWNLOAD_ICON );
 
 		return array(
-			static::FIELD_LABEL             => array(
+			static::FIELD_LABEL              => array(
 				'key'      => $label,
 				'name'     => static::FIELD_LABEL,
 				'label'    => 'Label',
 				'type'     => 'text',
 				'required' => true,
 			),
-			static::FIELD_ACTION            => array(
+			static::FIELD_ACTION             => array(
 				'key'           => $action,
 				'name'          => static::FIELD_ACTION,
 				'label'         => 'Action',
@@ -65,7 +67,27 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				'allow_null'    => true,
 				'multiple'      => false,
 			),
-			static::FIELD_PHONE             => array(
+			static::FIELD_SHOW_DOWNLOAD_ICON => array(
+				'key'               => $show_download_icon,
+				'name'              => static::FIELD_SHOW_DOWNLOAD_ICON,
+				'label'             => 'Show download icon',
+				'type'              => 'true_false',
+				'required'          => 0,
+				'default_value'     => 0,
+				'ui'                => 1,
+				'ui_on_text'        => '',
+				'ui_off_text'       => '',
+				'conditional_logic' => array(
+					array(
+						array(
+							'field'    => $action,
+							'operator' => '==',
+							'value'    => 'file_download',
+						),
+					),
+				),
+			),
+			static::FIELD_PHONE              => array(
 				'key'               => $phone,
 				'name'              => static::FIELD_PHONE,
 				'label'             => 'Phone Number',
@@ -87,7 +109,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					),
 				),
 			),
-			static::FIELD_LINK              => array(
+			static::FIELD_LINK               => array(
 				'key'               => $link,
 				'label'             => 'Link',
 				'name'              => static::FIELD_LINK,
@@ -103,7 +125,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				),
 				'return_format'     => 'array',
 			),
-			static::FIELD_PAGE_LINK         => array(
+			static::FIELD_PAGE_LINK          => array(
 				'key'               => $page_link,
 				'name'              => static::FIELD_PAGE_LINK,
 				'label'             => 'Page Link',
@@ -123,7 +145,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				'return_format'     => 'object',
 				'ui'                => true,
 			),
-			static::FIELD_FILE              => array(
+			static::FIELD_FILE               => array(
 				'key'               => $file,
 				'name'              => static::FIELD_FILE,
 				'label'             => 'File',
@@ -143,7 +165,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				'return_format'     => 'object',
 				'ui'                => true,
 			),
-			static::FIELD_MODAL             => array(
+			static::FIELD_MODAL              => array(
 				'key'               => $modal,
 				'name'              => static::FIELD_MODAL,
 				'label'             => 'Modal',
@@ -165,7 +187,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					'what_to_expect'  => 'What to Expect Pop-up',
 				),
 			),
-			static::FIELD_TEXTONLY_POPUP    => array(
+			static::FIELD_TEXTONLY_POPUP     => array(
 				'key'               => $textonly_popup,
 				'name'              => static::FIELD_TEXTONLY_POPUP,
 				'label'             => 'Text Only Popup',
@@ -192,7 +214,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				'return_format'     => 'object',
 				'ui'                => 1,
 			),
-			static::FIELD_DONATE_DEDICATION => array(
+			static::FIELD_DONATE_DEDICATION  => array(
 				'key'               => $donate_dedication,
 				'name'              => static::FIELD_DONATE_DEDICATION,
 				'label'             => 'Dedication Donation',
@@ -291,6 +313,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 						)
 					);
 				}
+				$options['show_download_icon'] = $val->get( static::FIELD_SHOW_DOWNLOAD_ICON );
 				break;
 			case 'call':
 				$phone = $val->get( static::FIELD_PHONE );
@@ -373,6 +396,9 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 			>
 				<span <?php echo DOM_Attr::render_attrs_of( $options['label_attributes'], $options['label_class'] ); ?>>
 					<?php echo esc_html( $label ); ?>
+					<?php if ( $options['show_download_icon'] ) : ?>
+						<i class="trevor-ti-download" aria-hidden="true"></i>
+					<?php endif; ?>
 				</span>
 			</<?php echo $options['tag']; ?>>
 		<?php endif; ?>

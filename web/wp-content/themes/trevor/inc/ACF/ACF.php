@@ -60,6 +60,12 @@ class ACF {
 		Field_Group\ECT_Map::class,
 		Field_Group\Campaign_Form::class,
 		Field_Group\Header_Image_Grid::class,
+		Field_Group\Text_Only_Two_Up::class,
+		Field_Group\Training::class,
+		Field_Group\Statistics_Block::class,
+		Field_Group\Information_Cards::class,
+		Field_Group\Featured_Resource_Two_Up::class,
+		Field_Group\Featured_Card_Three_Up::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
