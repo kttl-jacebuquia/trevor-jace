@@ -17,6 +17,7 @@ class ACF {
 		Options_Page\Donation_Modal::class,
 		Options_Page\What_To_Expect::class,
 		Options_Page\Search::class,
+		Options_Page\External_Scripts::class,
 		// - Post Type Options
 		Options_Page\Post_Type\Post::class,
 		Options_Page\Post_Type\Financial_Report::class,
@@ -66,6 +67,7 @@ class ACF {
 		Field_Group\Information_Cards::class,
 		Field_Group\Featured_Resource_Two_Up::class,
 		Field_Group\Featured_Card_Three_Up::class,
+		Field_Group\Staff_Module::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
