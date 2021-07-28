@@ -50,7 +50,6 @@ class ACF {
 		Field_Group\Text_Icon::class,
 		Field_Group\Image_Carousel::class,
 		Field_Group\Single_Quote::class,
-		Field_Group\Text_Only_Messaging_Block::class,
 		Field_Group\Current_Partners_Table::class,
 		Field_Group\Breathing_Exercise::class,
 		Field_Group\Crisis_Services_Text_Block::class,
@@ -68,6 +67,8 @@ class ACF {
 		Field_Group\Featured_Resource_Two_Up::class,
 		Field_Group\Featured_Card_Three_Up::class,
 		Field_Group\Staff_Module::class,
+		Field_Group\Side_Text_Image::class,
+		Field_Group\Organization_Mission::class,
 		// Page Specific
 		Field_Group\Page_Header::class,
 		Field_Group\Page_Circulation_Card::class,
