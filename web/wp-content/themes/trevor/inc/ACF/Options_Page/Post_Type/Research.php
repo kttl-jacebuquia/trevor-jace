@@ -3,7 +3,6 @@
 
 class Research extends A_Post_Type {
 	const POST_TYPE = \TrevorWP\CPT\Research::POST_TYPE;
-	const SLUG      = \TrevorWP\CPT\Research::SLUG;
 
 	const OTHER_FIELDS = array(
 		'sort',

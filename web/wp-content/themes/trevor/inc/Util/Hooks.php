@@ -795,11 +795,6 @@ class Hooks {
 			}
 		}
 
-		if ( is_archive() ) {
-			$title = str_replace( 'Archives', '', $title );
-			$title = str_replace( 'Archive', '', $title );
-		}
-
 		return $title;
 	}
 }

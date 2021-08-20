@@ -33,8 +33,8 @@ class Page_ReCirculation {
 					'custom-fields',
 				),
 				'labels'              => array(
-					'name'          => 'Recirculation Cards',
-					'singular_name' => 'Recirculation Card',
+					'name'          => 'Page ReCirculation Cards',
+					'singular_name' => 'Page ReCirculation Card',
 				),
 			)
 		);
