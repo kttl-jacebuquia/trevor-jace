@@ -1,0 +1,68 @@
+									
+	Section	Card	Position	Span	Toggle	ID	Chart Type	Graph Title	Toggle Category
+	Introduction	0	0	1	0	0_0_0_1_0	text		
+	Suicide & Mental Health	0	0	1	0	1_0_0_1_0	headline		
+	Suicide & Mental Health	1	0	1	1	1_1_0_1_1	horizontal	LGBTQ youth who considered suicide:	Considered Suicide
+	Suicide & Mental Health	1	0	1	2	1_1_0_1_2	horizontal	LGBTQ youth who attempted suicide:	Attempted Suicide
+	Suicide & Mental Health	1	1	1	1	1_1_1_1_1	vertical	Youth who attempted suicide among those who considered:	Gender Identity
+	Suicide & Mental Health	1	1	1	2	1_1_1_1_2	vertical	Youth who attempted suicide among those who considered:	Age
+	Suicide & Mental Health	1	2	1	0	1_1_2_1_0	annotation		
+	Suicide & Mental Health	2	0	1	0	1_2_0_1_0	annotation		
+	Suicide & Mental Health	2	1	1	0	1_2_1_1_0	pie	In the past 12 months, have you wanted counseling from a mental health professional?	
+	Suicide & Mental Health	2	2	1	0	1_2_2_1_0	annotation		
+	Suicide & Mental Health	3	0	1	0	1_3_0_1_0	annotation		
+	Suicide & Mental Health	3	1	2	1	1_3_1_2_1	horizontal	LGBTQ youth who wanted mental health care but were unable to get it cited the following reasons:	Cisgender
+	Suicide & Mental Health	3	1	2	2	1_3_1_2_2	horizontal	LGBTQ youth who wanted mental health care but were unable to get it cited the following reasons:	Transgender and nonbinary
+	Suicide & Mental Health	3	2	1	0	1_3_2_1_0	annotation		
+	Conversion Therapy & Change Attempts	0	0	1	0	2_0_0_1_0	headline		
+	Conversion Therapy & Change Attempts	1	0	1	0	2_1_0_1_0	pie	LGBTQ youth who reported someone attempted to convince them to change their sexual orientation or gender identity:	
+	Conversion Therapy & Change Attempts	1	1	1	0	2_1_1_1_0	subset	Youth who attempted suicide, comparison of those who experienced attempts to change their sexual orientation or gender identity to those who had not:	
+	Conversion Therapy & Change Attempts	1	2	1	1	2_1_2_1_1	horizontal	Who attempted to convince you to change your sexual orientation or gender identity?	
+	Conversion Therapy & Change Attempts	2	0	1	0	2_2_0_1_0	headline		
+	Conversion Therapy & Change Attempts	3	0	1	0	2_3_0_1_0	pie	LGBTQ youth who reported undergoing conversion therapy:	
+	Conversion Therapy & Change Attempts	3	1	1	0	2_3_1_1_0	subset	Youth who attempted suicide, comparison of those who experienced conversion therapy with those who had not:	
+	Conversion Therapy & Change Attempts	3	2	1	0	2_3_2_1_0	annotation		
+	Conversion Therapy & Change Attempts	4	0	1	0	2_4_0_1_0	annotation		
+	Conversion Therapy & Change Attempts	4	1	1	0	2_4_1_1_0	vertical	LGBTQ youth underwent conversion therapy led by the following individuals:	
+	Conversion Therapy & Change Attempts	4	2	1	0	2_4_2_1_0	pie	Types of formal conversion efforts reported by LGBTQ youth who underwent conversion therapy:	
+	Discrimination & Physical Harm	0	0	1	0	3_0_0_1_0	headline		
+	Discrimination & Physical Harm	1	0	1	0	3_1_0_1_0	annotation		
+	Discrimination & Physical Harm	1	1	1	0	3_1_1_1_0	pie	LGBTQ youth who experienced physical harm due to either their sexual orientation or gender identity:	
+	Discrimination & Physical Harm	1	2	1	0	3_1_2_1_0	subset	Youth who attempted suicide, comparison of those who experienced physical harm with those who had not:	
+	Discrimination & Physical Harm	2	0	1	0	3_2_0_1_0	pie	LGBTQ youth who experienced discrimination due to either their sexual orientation or gender identity:	
+	Discrimination & Physical Harm	2	1	1	0	3_2_1_1_0	subset	Youth who attempted suicide, comparison of those who experienced discrimination with those who had not:	
+	Discrimination & Physical Harm	2	2	1	0	3_2_2_1_0	annotation		
+	Housing Instability	0	0	1	0	4_0_0_1_0	headline		
+	Housing Instability	1	0	1	0	4_1_0_1_0	pie	LGBTQ youth who have experienced housing instability:	
+	Housing Instability	1	1	1	0	4_1_1_1_0	subset	Youth who have experienced housing instability, comparison by gender identity:	
+	Housing Instability	1	2	1	0	4_1_2_1_0	subset	Youth who attempted suicide among those who experienced housing instability:	
+	Housing Instability	2	0	2	0	4_2_0_2_0	horizontal	Percentage of LGBTQ youth who reported that they were kicked out or ran away due to their LGBTQ identity:	
+	Housing Instability	2	2	1	0	4_2_2_1_0	annotation		
+	Supporting Transgender & Nonbinary Youth	0	0	1	0	5_0_0_1_0	headline		
+	Supporting Transgender & Nonbinary Youth	1	0	1	0	5_1_0_1_0	annotation		
+	Supporting Transgender & Nonbinary Youth	1	1	1	0	5_1_1_1_0	vertical	Youth who attempted suicide, comparison of number of people who respected their pronouns:	
+	Supporting Transgender & Nonbinary Youth	1	2	1	0	5_1_2_1_0	annotation		
+	Supporting Transgender & Nonbinary Youth	2	0	1	0	5_2_0_1_0	annotation		
+	Supporting Transgender & Nonbinary Youth	2	1	1	0	5_2_1_1_0	pie	Amount of people in transgender and nonbinary youth’s lives who respect their pronouns:	
+	Supporting Transgender & Nonbinary Youth	2	2	1	0	5_2_2_1_0	subset	Youth who attempted suicide, comparison of those who had access to binders, shapewear, and gender-affirming clothing to those who had not:	
+	Finding Support	0	0	1	0	6_0_0_1_0	headline		
+	Finding Support	1	0	2	0	6_1_0_2_0	grouped_vertical	Youth who attempted suicide in the past year, comparison of whether spaces are {} not LGBTQ-affirming or {} LGBTQ-affirming:	
+	Finding Support	1	2	1	0	6_1_2_1_0	annotation		
+	Finding Support	2	0	1	0	6_2_0_1_0	annotation		
+	Finding Support	2	1	1	1	6_2_1_1_1	grouped_vertical	Youth who attempted suicide in the past year, receiving {} low or moderate support or {} high support from the following individuals:	
+	Finding Support	2	2	1	0	6_2_2_1_0	annotation		
+	Diversity of Gender Identity & Sexual Orientation	0	0	1	0	7_0_0_1_0	headline		
+	Diversity of Gender Identity & Sexual Orientation	1	0	1	0	7_1_0_1_0	word	LGBTQ youth in the survey identified with more than 100 different combinations of terms to describe their gender identity:	
+	Diversity of Gender Identity & Sexual Orientation	1	1	1	0	7_1_1_1_0	word	LGBTQ youth in the survey identified with more than 100 different combinations of terms to describe their sexual orientation:	
+	Research & Methodology	0	0	1	0	8_0_0_1_0	headline		
+	Research & Methodology	1	0	1	0	8_1_0_1_0	text_nested		
+	Research & Methodology	2	0	1	0	8_2_0_1_0	headline		
+	Research & Methodology	3	0	1	0	8_3_0_1_0	text		
+	Research & Methodology	4	0	1	0	8_4_0_1_0	annotation		
+	Research & Methodology	4	1	1	0	8_4_1_1_0	annotation		
+	Research & Methodology	4	2	1	1	8_4_2_1_1	vertical	Comparability metrics: Trevor Project Survey and YRBS Survey	considering suicide
+	Research & Methodology	4	2	1	2	8_4_2_1_2	vertical	Comparability metrics: Trevor Project Survey and YRBS Survey	attempting suicide
+	Research & Methodology	5	0	1	1	8_5_0_1_1	pie	Youth participants in the survey:	Sexual orientation
+	Research & Methodology	5	0	1	2	8_5_0_1_2	pie	Youth participants in the survey:	gender identity
+	Research & Methodology	5	1	1	0	8_5_1_1_0	pie		
+	Research & Methodology	5	2	1	0	8_5_2_1_0	pie		
