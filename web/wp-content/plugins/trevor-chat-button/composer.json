@@ -1,0 +1,12 @@
+{
+    "name": "simon/trevor-chat-button",
+    "authors": [
+        {
+            "name": "Simon Hunter",
+            "email": "simon@remedyone.com"
+        }
+    ],
+    "require": {
+        "geoip2/geoip2": "~2.0"
+    }
+}
