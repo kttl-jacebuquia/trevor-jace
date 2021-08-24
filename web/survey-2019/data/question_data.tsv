@@ -1,0 +1,203 @@
+ID	Data ID	Label	Value	Label Group
+57	1	I’m proud to share The Trevor Project’s inaugural ^National Survey on LGBTQ Youth Mental Health.^		
+46	1	This is our first wide-ranging report from a cross-sectional national survey of LGBTQ youth across the United States. With over 34,000 respondents, it is the largest survey of LGBTQ youth mental health ever conducted and provides a critical understanding of the experiences impacting their lives.		text
+46	2	This ground-breaking survey provides new insights into the challenges that LGBTQ youth across the country face every day, including suicide, feeling sad or hopeless, discrimination, physical threats and exposure to conversion therapy.		highlight
+46	3	The data provides a sobering look at how far we still have to go to protect LGBTQ young lives. But the survey also reveals the resilience and diversity of LGBTQ youth and provides guidance on what can be done to enable them to survive and thrive. Among some of the key findings of the report from LGBTQ youth in the survey:		text
+46	4	^39% of LGBTQ youth^ seriously considered attempting suicide in the past twelve months, with more than half of transgender and non-binary youth having seriously considered		list
+46	5	^71% of LGBTQ youth^ reported feeling sad or hopeless for at least two weeks in the past year		list
+46	6	^Less than half of LGBTQ respondents^ were out to an adult at school, with youth much less likely to disclose their gender identity than sexual orientation		list
+46	7	^2 in 3 LGBTQ youth^ reported that someone tried to convince them to change their sexual orientation or gender identity, with youth who have undergone conversion therapy more than twice as likely to attempt suicide as those who did not		list
+46	8	^71% of LGBTQ youth^ in our study reported discrimination due to either their sexual orientation or gender identity		list
+46	9	^58% of transgender and non-binary youth^ reported being discouraged from using a bathroom that corresponds to their gender identity		list
+46	10	^76% of LGBTQ youth^ felt that the recent political climate impacted their mental health or sense of self		list
+46	11	^87% of LGBTQ youth^ said it was important to them to reach out to a crisis intervention organization that focuses on LGBTQ youth and ^98%^ said a safe space social networking site for LGBTQ youth would be valuable to them		list
+46	12	The Trevor Project’s National Survey on LGBTQ Youth Mental Health is part of our commitment to use research and data to continually improve our life-saving services for LGBTQ youth and expand the knowledge base for organizations around the globe.		highlight
+46	13	This survey builds upon critical research done by many of our partner organizations over the years and we are particularly proud that it is inclusive of youth of more than 100 sexual orientations and more than 100 gender identities from all 50 states across the country.		text
+46	14	We hope this report elevates the voices and experiences of LGBTQ youth, providing insights that can be used by the many organizations working alongside The Trevor Project to support LGBTQ young people around the world. We also hope this report shows LGBTQ youth that we hear them, that their lives have value, and that we are here to support them 24/7.		text
+50	1	^39 % of LGBTQ respondents^ seriously considered attempting suicide in the past twelve months.		
+50	2	^More than half^ of transgender and non-binary youth have seriously considered suicide.		
+18	1	Cisgender	0.312	
+18	2	Transgender and non-binary	0.542	
+19	1	Cisgender	0.136	
+19	2	Transgender and non-binary	0.286	
+21	1	13-17	0.258	
+21	2	18-24	0.113	
+20	1	13-17	0.469	
+20	2	18-24	0.307	
+24	1	Cisgender youth who attempted suicide	0.435	Among those who considered suicide
+24	2	Transgender and non-binary youth who attempted suicide	0.527	Among those who considered suicide
+25	1	13-17 year olds who attempted suicide	0.55	Among those who considered suicide
+25	2	18-24 year olds who attempted suicide	0.369	Among those who considered suicide
+58	1	^71%^ ^of respondents^ reported feeling sad or hopeless for at least two weeks in the past year.		highlight
+59	1	^Over 18% of LGBTQ respondents^ attempted suicide in the past twelve months		list
+59	2	^29% of transgender and non-binary youth respondents^ have attempted suicide		list
+59	3	^76% of the sample^ felt that recent politics impacted their mental health or sense of self		list
+59	4	^47% of the sample^ received psychological or emotional counseling from a mental health professional		list
+51	1	^2 in 3 youth in our study^ reported that someone tried to convince them to change their sexual orientation or gender identity.		
+13	1	No attempt to convince to change	0.33	
+13	2	Attempt to convince to change	0.67	
+14	1	Conversion therapy	0.05	
+14	2	No conversion therapy	0.95	
+15	1	Cisgender	0.041	
+15	2	Transgender and non-binary	0.054	
+16	1	Youth who attempted suicide	0.08	No attempt to convince to change
+16	2	Youth who attempted suicide	0.23	Attempt to convince to change
+17	1	Youth who attempted suicide	0.17	No conversion therapy
+17	2	Youth who attempted suicide	0.42	Conversion therapy
+60	1	^57% of transgender and non-binary youth^ who have undergone conversion therapy report a suicide attempt in the last year.		highlight
+60	2	*Some LGBTQ youth who have undergone conversion therapy may not use that term to describe their experience. We asked youth separately whether someone attempted to convince them to change their sexual orientation or gender identity and whether they underwent conversion therapy in order to fully capture the ways youth experience efforts to change their sexual orientation or gender identity.		text
+52	1	^71% of LGBTQ youth^ in our study reported experiencing discrimination due to either their sexual orientation or gender identity.		
+37	1	Physical harm	0.2	
+37	2	No physical harm	0.8	
+38	1	Discrimination	0.29	
+38	2	No Discrimination	0.71	
+39	1	Youth who attempted suicide	0.13	No physical harm
+39	2	Youth who attempted suicide	0.36	Physical harm
+40	1	Youth who attempted suicide	0.09	No Discrimination
+40	2	Youth who attempted suicide	0.22	Discrimination
+61	1	^78% of transgender and non-binary youth^ reported being the subject of discrimination due to their gender identity and ^70% of LGBTQ youth^ reported discrimination due to their sexual orientation.		highlight
+61	2	^58% of transgender and non-binary youth^ reported being discouraged from using a bathroom that corresponds to their gender identity.		highlight
+54	1	^Less than half of LGBTQ respondents^ were out to an adult at school.		
+54	2	Youth are ^much less likely^ to disclose their gender identity than sexual orientation.		
+1	1	LGBT Friends	0.9257	Peers
+1	2	Straight Friends	0.8702	Peers
+1	3	Other Classmates	0.6031	Peers
+1	4	Parents	0.6755	Adults
+1	5	Teacher or Guidance Counselor	0.4252	Adults
+1	6	Doctor or Healthcare Professional	0.3018	Adults
+1	7	Online Resource or Chat Room	0.3623	Online/Other
+2	1	LGBTQ Friends	0.8454	Peers
+2	2	Straight Friends	0.593	Peers
+2	3	Other Classmates	0.3484	Peers
+2	4	Parents	0.5087	Adults
+2	5	Teacher or Guidance Counselor	0.3956	Adults
+2	6	Doctor or Healthcare Professional	0.2945	Adults
+2	7	Online Resource or Chat Room	0.2977	Online/Other
+62	2	LGBTQ youth disclosed their sexual orientation and gender identity to their friends at the highest rates, but are also disclosing to adults in their lives.		highlight
+62	3	Gender identity (for those identifying as transgender and non-binary) is disclosed at a lower rate than sexual orientation (for those not identifying as straight).		text
+53	1	^76% of youth respondents^ indicated that they would be somewhat to extremely likely to reach out via text or chat in a crisis.		
+27	1	Somewhat to extremely unlikely	0.122	
+27	2	Neither likely nor unlikely	0.114	
+27	3	Somewhat to extremely likely	0.764	
+28	1	Somewhat to extremely unlikely	0.387	
+28	2	Neither likely nor unlikely	0.182	
+28	3	Somewhat to extremely likely	0.431	
+35	1	Not at all	0.02	
+35	2	Somewhat	0.17	
+35	3	Very	0.81	
+36	1	Not at all	0.05	
+36	2	Slightly	0.08	
+36	3	Moderately	0.25	
+36	4	Extremely	0.34	
+36	5	Very	0.28	
+63	1	Youth indicated a ^strong digital preference^ when reaching out when in crisis.		highlight
+56	1	The content and methodology for The Trevor Project’s 2019 National Survey on LGBTQ Mental Health were approved by an independent Institutional Review Board.		
+29	1	Hispanic	0.143	
+29	2	White	0.721	
+29	3	Black	0.027	
+29	4	American Indian/Alaskan native	0.007	
+29	6	Mixed race	0.072	
+29	7	Asian	0.029	
+30	1	Ages 13-16	0.353	
+30	2	Ages 17-20	0.43	
+30	3	Ages 21-24	0.217	
+31	1	Bisexual	0.327	
+31	2	Gay or lesbian	0.453	
+31	3	Something else	0.22	
+32	1	Cisgender female	0.318	
+32	2	Cisgender male	0.353	
+32	3	Transgender and non-binary	0.329	
+33	1	Trevor Project Survey	0.453	
+33	2	YRBS Survey	0.477	
+34	1	Trevor Project Survey	0.241	
+34	2	YRBS Survey	0.23	
+47	2	A quantitative cross-sectional design was used to collect data using an online survey platform between February 2, 2018 and September 30, 2018.		text
+47	3	A sample of individuals ages 13–24 who resided in the United States were recruited via targeted ads on social media. No recruitment was conducted via The Trevor Project website or any of The Trevor Project social media sites. Respondents were defined as being LGBTQ if they identified with a sexual orientation other than straight/heterosexual, a gender identity other than cisgender, or both. In order to ensure representativeness of the sample, targeted recruitment was conducted to ensure adequate sample sizes with respect to geography, gender identity, and race/ethnicity. Qualified respondents completed a secure online questionnaire that included a maximum of 110 questions.		text
+47	4	Questions on sexual orientation and gender identity (SOGI) were aligned with the best practices identified in SOGI measurement. Questions on depressed mood and suicidality in the past 12 months were taken from the Center for Disease Control and Prevention’s Youth Risk Behavior Surveillance Survey to allow for direct comparisons to their nationally representative sample. Each question related to mental health and suicidality was preceded by a message stating, 		text
+47	5	“If at any time you need to talk to someone about your mental health or thoughts of suicide, please call The Trevor Project at 1-866-488-7386.”		highlight
+47	6	Participation was voluntary, informed consent was obtained, and no names or personal details were included ensuring confidentiality. 		text
+47	7	A total of 34,808 youth consented to complete the online survey. Youth who indicated that they lived outside of the U.S. (n=475) received a message that they were ineligible to participate in the survey. Youth who indicated that they were both cisgender and straight (n=294) were excluded from the sample. A filter was applied to indicate youth who either a) completed less than half of the survey items or b) reached the end of the survey within three minutes (n=8,091). 		text
+47	8	Additionally, a mischievous responders analysis identified and removed 52 youth who either provided highly unlikely answers (e.g. selecting all possible religious affiliations and race/ethnicity categories) and/or who provided obvious hate speech about LGBTQ populations in any of the free response options.		text
+47	9	The final analytic sample was comprised of 25,896 LGBTQ youth in the United States. 		highlight
+47	10	Preliminary analyses were conducted to identify any potential problems with redundancy (e.g. multicollinearity) among similar variables such as experiences of discrimination and victimization. All variables contributed uniquely to indicators related to suicidality.		text
+47	11	This report uses “transgender and non-binary” as an umbrella term  to encompass non-cisgender youth, which includes young people who identify as transgender or non-binary as well as gender expansive, differently gendered, gender creative, gender variant, genderqueer, agender, gender fluid, gender neutral, bigender, androgynous, or gender diverse. 		text
+48	1	In order to better understand how our sample compares to a national probabilistic sample, we included questions regarding suicidality that were identical to those used by the Center for Disease Control and Prevention (CDC) in their Youth Risk Behavior Surveillance Survey (YRBS).		text
+48	2	Analyses were conducted to compare rates of seriously considering suicide and attempting suicide in the past 12 months among youth ages 13–18 in our sample to the 2017 YRBS sample of lesbian, gay, and bisexual (LGB) youth.		text
+48	3	YRBS prevalence rates among LGB youth for seriously considering suicide (48%) were comparable to rates among the same age range in our sample (45%).		highlight
+48	4	Similarly 23% of LGB youth in the 2017 YRBS reported a suicide attempt in the past 12 months compared to 24% in our sample.		text
+49	1	The Trevor Project is the world's largest suicide prevention and crisis intervention organization for lesbian, gay, bisexual, transgender, queer & questioning (LGBTQ) young people. The Trevor Project offers a suite of 24/7/365 crisis intervention and suicide prevention programs, including TrevorLifeline, TrevorText, and TrevorChat as well as the world’s largest safe space social networking site for LGBTQ youth, TrevorSpace. Trevor also offers an education program with resources for youth-serving adults and organizations, a legislative advocacy department fighting for pro-LGBTQ legislation and against anti-LGBTQ rhetoric/policy positions, and conducts research to discover the most effective means to help young LGBTQ people in crisis and end suicide. If you or someone you know is feeling hopeless or suicidal, our trained crisis counselors are available 24/7/365 at 1-866-488-7386 and www.TheTrevorProject.org/Help.		text
+55	1	LGBTQ youth are ^in all parts and communities of America^, with a ^large amount^ identifying sexual orientation and gender identity in non-binary ways.		
+42	1	Asexual		
+42	2	Graysexual		
+42	3	Pansexual		
+42	4	Heteroflexible		
+42	5	Biromantic		
+42	6	Demisexual		
+42	7	Polysexual		
+42	8	Homoflexible		
+42	9	Ace spectrum		
+42	10	Androsexual		
+42	11	Abrosexual		
+42	12	Asexual lesbian		
+42	13	Bisexual polyamorous		
+42	14	Gynedemisexual		
+42	15	Queer		
+42	16	Masexual		
+42	17	Monosexual		
+42	18	Sexually fluid		
+42	19	Sapphic		
+42	20	Sapiosexual		
+42	21	Sexually fluid abrosexual		
+42	22	Queer greysexual		
+42	23	Queer demisexual		
+42	24	Panromantic asexual		
+42	25	Semi-sexual		
+42	26	Aegosexual		
+42	27	Biromantic homosexual		
+42	28	Greyromantic demisexual		
+43	1	Agender		
+43	2	Agender non-binary		
+43	3	Androgyn		
+43	4	Agenderflux		
+43	5	Bigender		
+43	6	Both genders		
+43	7	Boy flux		
+43	8	Demi-boy		
+43	9	Demi-girl		
+43	10	Gray gender		
+43	11	Female genderflux		
+43	12	Gender apathetic		
+43	13	Gender neutral		
+43	14	Non-binary		
+43	15	Polygender		
+43	16	Omnigender		
+43	17	Queer		
+43	18	Queer non-binary		
+43	19	Gender fluid		
+43	20	Transfemme		
+43	21	Trans masculine		
+43	22	Trigender		
+43	23	Two spirited		
+43	24	Gender fluid non-binary		
+43	25	Genderqueer		
+43	26	Androgenous		
+43	28	Neutrois		
+44	1	The mission of The Trevor Project’s Research Department is to produce and use innovative research that brings new knowledge and clinical implications to the field of suicidology and LGBTQ mental health.	0	highlight
+44	2	To address this mission we:	0	highlight
+44	3	Advance Scientific Inquiry	1.1	subtitle
+44	4	Providing empirical data to better understand the lives of LGBTQ youth and suicidality including risk factors, protective factors, and outcomes.	1.1	text
+44	5	The Trevor Project will be a leading source of scientific information on the needs and strengths of LGBTQ youth	1.1	list
+44	6	The Trevor Project will collaborate with key national and international research teams and agencies to improve the lives of LGBTQ youth	1.1	list
+44	7	Support The Trevor Project’s Life-Saving Work	1.2	subtitle
+44	8	Using internal and external data and research findings to advance Trevor’s crisis services and peer support programs as well as advocacy and education initiatives.	1.2	text
+44	9	The Trevor Project’s advocacy and training activities will be supported by data collected directly by The Trevor Project as well as evidence gathered from the broader research literature	1.2	list
+44	10	The Trevor Project will embody an evidence-informed culture in which all staff are supported and recognized in the use of research evidence	1.2	list
+44	11	Inform Public Knowledge	1.3	subtitle
+44	12	Ensuring our research and evaluation findings are applicable and widely communicated to the broader public including LGBTQ-youth-serving agencies and mental health organizations.	1.3	text
+44	13	The Trevor Project will serve as a national model on how to integrate the best research evidence into its practices, programs, and policies	1.3	list
+44	14	The Trevor Project will be a leading resource on terminology related to LGBTQ youth	1.3	list
+44	15	Recommended Citation	2	highlight
+44	16	The Trevor Project. (2019). National Survey on LGBTQ Mental Health. New York, New York: The Trevor Project.	2	text
+44	17	For additional information please contact: Research@TheTrevorProject.org	2	text
+64	1	Respondents were from ^all 50 states^.		highlight
+64	2	39% were ^religious^.		highlight

@@ -1,0 +1,108 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "id": {
+        "description": "unique graph id",
+        "type": "number"
+      },
+      "section": {
+        "description": "section in the app",
+        "type": "string",
+        "enum": [
+          "Disclosure & Acceptance",
+          "Discrimination & Victimization",
+          "Change Attempts & Conversion Therapy",
+          "Sharing & Crisis Line Preference",
+          "Methodology"
+        ]
+      },
+      "card_title": {
+        "description": "example: `Who have you shared your sexual orientation with?`",
+        "type": "string"
+      },
+      "category": {
+        "description": "toggle-able version of question",
+        "type": "string",
+        "enum": [
+          "Sexual Orientation",
+          "Gender Identity",
+          "Cisgender",
+          "Transgender or Gender Diverse",
+          "Age",
+          "Race/Ethnicity",
+          "Peers",
+          "Adults",
+          "Chat or Text",
+          "Phone",
+          "Considering Suicide",
+          "Attempting Suicide"
+        ]
+      },
+      "card": {
+        "description": "which card this question shows up on",
+        "type": "number"
+      },
+      "chart_type": {
+        "description": "what chart types should this data be",
+        "type": "string"
+      },
+      "subset": {
+        "description": "a secondary breakdown, determining the data.label, example: `Who have you shared your sexual orientation with? Please select all that apply. Your parent(s)`",
+        "type": "string"
+      },
+      "full_question": {
+        "description": "full question text, example: `I have heard my parents (or guardians) use religion to say negative things about being LGBTQ+`",
+        "type": "string"
+      },
+      "measure_name": {
+        "description": "value description, used for axis, example: `% of youth who disclosed sexual orientation among those who heard or didn't hear parents use religion to say negative things`",
+        "type": "string"
+      },
+      "data": {
+        "description": "date values array",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "value": {
+              "type": "number"
+            },
+            "footnote": {
+              "type": "string"
+            },
+            "label_group": {
+              "type": "string",
+              "enum": ["Peers", "Adults", "Online/Other", ""]
+            }
+          }
+        }
+      },
+      "graph_title": {
+        "description": "graph title",
+        "type": "string"
+      },
+      "annotation": {
+        "description": "annotation related to graph",
+        "type": "string"
+      },
+      "footnote": {
+        "description": "footnote to graph",
+        "type": "string"
+      },
+      "callout": {
+        "type": "string"
+      },
+      "position": {
+        "description": "graph position - the position [1, 2] where the graph will live",
+        "type": ["number", "null"],
+        "enum": [1, 2, null]
+      }
+    }
+  }
+}
