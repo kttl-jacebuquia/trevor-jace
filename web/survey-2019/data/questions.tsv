@@ -1,0 +1,48 @@
+slide title (internal)	Section	Card	ID	Category	Chart Type	Graph Title	Position
+	Introduction	1	57		subheader		
+	Introduction	2	46		text		
+	Suicidality & Mental Health	1	50		subheader		
+Considered Suicide	Suicidality & Mental Health	2	18	Considered Suicide	vertical	LGBTQ youth who considered suicide by gender identity:	0
+Considered Suicide	Suicidality & Mental Health	2	19	Attempted Suicide	vertical	LGBTQ youth who attempted suicide by gender identity:	0
+Suicide Attempt	Suicidality & Mental Health	2	20	Considered Suicide	vertical	Youth who considered suicide by age:	1
+Suicide Attempt	Suicidality & Mental Health	2	21	Attempted Suicide	vertical	Youth who attempted suicide by age:	1
+	Suicidality & Mental Health	2	58		annotation		2
+Suicide Attempt Among Those Who Considered	Suicidality & Mental Health	3	24	Gender Identity	subset	Youth who attempted suicide among those who considered by gender identity:	0
+Suicide Attempt Among Those Who Considered	Suicidality & Mental Health	3	25	Age	subset	Youth who attempted suicide among those who considered by age:	0
+	Suicidality & Mental Health	3	59		annotation		2
+	Conversion Therapy & Change Attempts	1	51		subheader		
+Change Attempts	Conversion Therapy & Change Attempts	2	13	Change Attempts	pie	LGBTQ youth reported someone attempted to convince them to change their sexual orientation or gender identity*:	0
+Change Attempts	Conversion Therapy & Change Attempts	2	14	Conversion Therapy	pie	LGBTQ youth reported undergoing conversion therapy*:	0
+Conversion Therapy and Suicidality	Conversion Therapy & Change Attempts	2	16	Change Attempts	subset	Youth who attempted suicide, comparison of those who experienced attempts to change their sexual orientation or gender identity to those who had not:	1
+Conversion Therapy and Suicidality	Conversion Therapy & Change Attempts	2	17	Conversion Therapy	subset	Youth who attempted suicide, comparison of those who experienced conversion therapy with those who had not:	1
+	Conversion Therapy & Change Attempts	2	60		annotation		2
+	Discrimination & Physical Harm	1	52		subheader		
+	Discrimination & Physical Harm	2	37	Physical Harm	pie	LGBTQ youth who experienced physical harm due to either their sexual orientation or gender identity:	0
+	Discrimination & Physical Harm	2	38	Discrimination	pie	LGBTQ youth who experienced discrimination due to either their sexual orientation or gender identity:	0
+	Discrimination & Physical Harm	2	39	Physical Harm	subset	Youth who attempted suicide, comparison of those who experienced physical harm with those who had not:	1
+	Discrimination & Physical Harm	2	40	Discrimination	subset	Youth who attempted suicide, comparison of those who experienced discrimination with those who had not:	1
+	Discrimination & Physical Harm	2	61		annotation		2
+	Disclosure	1	54		subheader		
+Disclosure	Disclosure	2	1	Sexual Orientation	horizontal	With whom do LGBTQ youth share their sexual orientation?	0
+Disclosure	Disclosure	2	2	Gender Identity	horizontal	With whom do LGBTQ youth share their gender identity?	0
+	Disclosure	2	62		annotation		2
+	Youth Support Preferences	1	53		subheader		
+	Youth Support Preferences	2	35	Value	pie	How valuable is an LGBTQ safe-space networking site?	0
+	Youth Support Preferences	2	36	Importance	pie	How important would it be to you to reach out to a crisis intervention organization focused on LGBTQ youth?	0
+Crisis Service Preferences	Youth Support Preferences	2	27	Chat or Text	pie	If you needed to reach out to a crisis intervention organization for support, how likely are you to reach out via chat/instant message or text message?	1
+Crisis Service Preferences	Youth Support Preferences	2	28	Phone	pie	If you needed to reach out to a crisis intervention organization for support, how likely are you to reach out via phone?	1
+	Youth Support Preferences	2	63		annotation		2
+	Diversity	1	55		subheader		
+	Diversity	2	42		word	LGBTQ youth in the survey identified with more than 100 sexual orientations:	0
+	Diversity	2	43		word	LGBTQ youth in the survey identified with more than 100 gender identities:	1
+	Diversity	2	64		annotation		2
+	Methodology	1	56		subheader		
+	Methodology	2	47		text	Summary	
+	Methodology	3	48		text	Comparability	
+Methodology: Participants	Methodology	4	29	Race/Ethnicity	pie	Youth participants in the survey by race/ethnicity	0
+Methodology: Participants	Methodology	4	30	Age	pie	Youth participants in the survey by age	0
+Methodology: Participants	Methodology	4	31	Sexual Orientation	pie	Youth participants in the survey by sexual orientation	1
+Methodology: Participants	Methodology	4	32	Gender Identity	pie	Youth participants in the survey by gender identity	1
+Methodology: Comparability	Methodology	4	33	Considering Suicide	vertical	Comparability metrics: Trevor Project Survey and YRBS Survey:	2
+Methodology: Comparability	Methodology	4	34	Attempting Suicide	vertical	Comparability metrics: Trevor Project Survey and YRBS Survey:	2
+	Methodology	5	44		text_nested	The Trevor Project's Research Department	

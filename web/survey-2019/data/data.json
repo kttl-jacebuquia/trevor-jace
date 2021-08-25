@@ -1,0 +1,1713 @@
+[
+  {
+    "id": 57,
+    "section": "Introduction",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "57",
+        "label": "I’m proud to share The Trevor Project’s inaugural ^National Survey on LGBTQ Youth Mental Health.^",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 46,
+    "section": "Introduction",
+    "category": "",
+    "card": 2,
+    "chart_type": "text",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "46",
+        "label": "This is our first wide-ranging report from a cross-sectional national survey of LGBTQ youth across the United States. With over 34,000 respondents, it is the largest survey of LGBTQ youth mental health ever conducted and provides a critical understanding of the experiences impacting their lives.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "This ground-breaking survey provides new insights into the challenges that LGBTQ youth across the country face every day, including suicide, feeling sad or hopeless, discrimination, physical threats and exposure to conversion therapy.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "The data provides a sobering look at how far we still have to go to protect LGBTQ young lives. But the survey also reveals the resilience and diversity of LGBTQ youth and provides guidance on what can be done to enable them to survive and thrive. Among some of the key findings of the report from LGBTQ youth in the survey:",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^39% of LGBTQ youth^ seriously considered attempting suicide in the past twelve months, with more than half of transgender and non-binary youth having seriously considered",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^71% of LGBTQ youth^ reported feeling sad or hopeless for at least two weeks in the past year",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^Less than half of LGBTQ respondents^ were out to an adult at school, with youth much less likely to disclose their gender identity than sexual orientation",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^2 in 3 LGBTQ youth^ reported that someone tried to convince them to change their sexual orientation or gender identity, with youth who have undergone conversion therapy more than twice as likely to attempt suicide as those who did not",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^71% of LGBTQ youth^ in our study reported discrimination due to either their sexual orientation or gender identity",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^58% of transgender and non-binary youth^ reported being discouraged from using a bathroom that corresponds to their gender identity",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^76% of LGBTQ youth^ felt that the recent political climate impacted their mental health or sense of self",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "^87% of LGBTQ youth^ said it was important to them to reach out to a crisis intervention organization that focuses on LGBTQ youth and ^98%^ said a safe space social networking site for LGBTQ youth would be valuable to them",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "The Trevor Project’s National Survey on LGBTQ Youth Mental Health is part of our commitment to use research and data to continually improve our life-saving services for LGBTQ youth and expand the knowledge base for organizations around the globe.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "This survey builds upon critical research done by many of our partner organizations over the years and we are particularly proud that it is inclusive of youth of more than 100 sexual orientations and more than 100 gender identities from all 50 states across the country.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "46",
+        "label": "We hope this report elevates the voices and experiences of LGBTQ youth, providing insights that can be used by the many organizations working alongside The Trevor Project to support LGBTQ young people around the world. We also hope this report shows LGBTQ youth that we hear them, that their lives have value, and that we are here to support them 24/7.",
+        "label_group": "text",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 50,
+    "section": "Suicidality & Mental Health",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "50",
+        "label": "^39 % of LGBTQ respondents^ seriously considered attempting suicide in the past twelve months.",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "50",
+        "label": "^More than half^ of transgender and non-binary youth have seriously considered suicide.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "section": "Suicidality & Mental Health",
+    "category": "Considered Suicide",
+    "card": 2,
+    "chart_type": "vertical",
+    "graph_title": "LGBTQ youth who considered suicide by gender identity:",
+    "position": 0,
+    "data": [
+      {
+        "id": "18",
+        "label": "Cisgender",
+        "label_group": "",
+        "value": 0.312
+      },
+      {
+        "id": "18",
+        "label": "Transgender and non-binary",
+        "label_group": "",
+        "value": 0.542
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "section": "Suicidality & Mental Health",
+    "category": "Attempted Suicide",
+    "card": 2,
+    "chart_type": "vertical",
+    "graph_title": "LGBTQ youth who attempted suicide by gender identity:",
+    "position": 0,
+    "data": [
+      {
+        "id": "19",
+        "label": "Cisgender",
+        "label_group": "",
+        "value": 0.136
+      },
+      {
+        "id": "19",
+        "label": "Transgender and non-binary",
+        "label_group": "",
+        "value": 0.286
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "section": "Suicidality & Mental Health",
+    "category": "Considered Suicide",
+    "card": 2,
+    "chart_type": "vertical",
+    "graph_title": "Youth who considered suicide by age:",
+    "position": 1,
+    "data": [
+      {
+        "id": "20",
+        "label": "13-17",
+        "label_group": "",
+        "value": 0.469
+      },
+      {
+        "id": "20",
+        "label": "18-24",
+        "label_group": "",
+        "value": 0.307
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "section": "Suicidality & Mental Health",
+    "category": "Attempted Suicide",
+    "card": 2,
+    "chart_type": "vertical",
+    "graph_title": "Youth who attempted suicide by age:",
+    "position": 1,
+    "data": [
+      {
+        "id": "21",
+        "label": "13-17",
+        "label_group": "",
+        "value": 0.258
+      },
+      {
+        "id": "21",
+        "label": "18-24",
+        "label_group": "",
+        "value": 0.113
+      }
+    ]
+  },
+  {
+    "id": 58,
+    "section": "Suicidality & Mental Health",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "58",
+        "label": "^71%^ ^of respondents^ reported feeling sad or hopeless for at least two weeks in the past year.",
+        "label_group": "highlight",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "section": "Suicidality & Mental Health",
+    "category": "Gender Identity",
+    "card": 3,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide among those who considered by gender identity:",
+    "position": 0,
+    "data": [
+      {
+        "id": "24",
+        "label": "Cisgender youth who attempted suicide",
+        "label_group": "Among those who considered suicide",
+        "value": 0.435
+      },
+      {
+        "id": "24",
+        "label": "Transgender and non-binary youth who attempted suicide",
+        "label_group": "Among those who considered suicide",
+        "value": 0.527
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "section": "Suicidality & Mental Health",
+    "category": "Age",
+    "card": 3,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide among those who considered by age:",
+    "position": 0,
+    "data": [
+      {
+        "id": "25",
+        "label": "13-17 year olds who attempted suicide",
+        "label_group": "Among those who considered suicide",
+        "value": 0.55
+      },
+      {
+        "id": "25",
+        "label": "18-24 year olds who attempted suicide",
+        "label_group": "Among those who considered suicide",
+        "value": 0.369
+      }
+    ]
+  },
+  {
+    "id": 59,
+    "section": "Suicidality & Mental Health",
+    "category": "",
+    "card": 3,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "59",
+        "label": "^Over 18% of LGBTQ respondents^ attempted suicide in the past twelve months",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "59",
+        "label": "^29% of transgender and non-binary youth respondents^ have attempted suicide",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "59",
+        "label": "^76% of the sample^ felt that recent politics impacted their mental health or sense of self",
+        "label_group": "list",
+        "value": 0
+      },
+      {
+        "id": "59",
+        "label": "^47% of the sample^ received psychological or emotional counseling from a mental health professional",
+        "label_group": "list",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 51,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "51",
+        "label": "^2 in 3 youth in our study^ reported that someone tried to convince them to change their sexual orientation or gender identity.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "Change Attempts",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "LGBTQ youth reported someone attempted to convince them to change their sexual orientation or gender identity*:",
+    "position": 0,
+    "data": [
+      {
+        "id": "13",
+        "label": "No attempt to convince to change",
+        "label_group": "",
+        "value": 0.33
+      },
+      {
+        "id": "13",
+        "label": "Attempt to convince to change",
+        "label_group": "",
+        "value": 0.67
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "Conversion Therapy",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "LGBTQ youth reported undergoing conversion therapy*:",
+    "position": 0,
+    "data": [
+      {
+        "id": "14",
+        "label": "Conversion therapy",
+        "label_group": "",
+        "value": 0.05
+      },
+      {
+        "id": "14",
+        "label": "No conversion therapy",
+        "label_group": "",
+        "value": 0.95
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "Change Attempts",
+    "card": 2,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide, comparison of those who experienced attempts to change their sexual orientation or gender identity to those who had not:",
+    "position": 1,
+    "data": [
+      {
+        "id": "16",
+        "label": "Youth who attempted suicide",
+        "label_group": "No attempt to convince to change",
+        "value": 0.08
+      },
+      {
+        "id": "16",
+        "label": "Youth who attempted suicide",
+        "label_group": "Attempt to convince to change",
+        "value": 0.23
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "Conversion Therapy",
+    "card": 2,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide, comparison of those who experienced conversion therapy with those who had not:",
+    "position": 1,
+    "data": [
+      {
+        "id": "17",
+        "label": "Youth who attempted suicide",
+        "label_group": "No conversion therapy",
+        "value": 0.17
+      },
+      {
+        "id": "17",
+        "label": "Youth who attempted suicide",
+        "label_group": "Conversion therapy",
+        "value": 0.42
+      }
+    ]
+  },
+  {
+    "id": 60,
+    "section": "Conversion Therapy & Change Attempts",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "60",
+        "label": "^57% of transgender and non-binary youth^ who have undergone conversion therapy report a suicide attempt in the last year.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "60",
+        "label": "*Some LGBTQ youth who have undergone conversion therapy may not use that term to describe their experience. We asked youth separately whether someone attempted to convince them to change their sexual orientation or gender identity and whether they underwent conversion therapy in order to fully capture the ways youth experience efforts to change their sexual orientation or gender identity.",
+        "label_group": "text",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 52,
+    "section": "Discrimination & Physical Harm",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "52",
+        "label": "^71% of LGBTQ youth^ in our study reported experiencing discrimination due to either their sexual orientation or gender identity.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "section": "Discrimination & Physical Harm",
+    "category": "Physical Harm",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "LGBTQ youth who experienced physical harm due to either their sexual orientation or gender identity:",
+    "position": 0,
+    "data": [
+      {
+        "id": "37",
+        "label": "Physical harm",
+        "label_group": "",
+        "value": 0.2
+      },
+      {
+        "id": "37",
+        "label": "No physical harm",
+        "label_group": "",
+        "value": 0.8
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "section": "Discrimination & Physical Harm",
+    "category": "Discrimination",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "LGBTQ youth who experienced discrimination due to either their sexual orientation or gender identity:",
+    "position": 0,
+    "data": [
+      {
+        "id": "38",
+        "label": "No Discrimination",
+        "label_group": "",
+        "value": 0.29
+      },
+      {
+        "id": "38",
+        "label": "Discrimination",
+        "label_group": "",
+        "value": 0.71
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "section": "Discrimination & Physical Harm",
+    "category": "Physical Harm",
+    "card": 2,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide, comparison of those who experienced physical harm with those who had not:",
+    "position": 1,
+    "data": [
+      {
+        "id": "39",
+        "label": "Youth who attempted suicide",
+        "label_group": "No physical harm",
+        "value": 0.13
+      },
+      {
+        "id": "39",
+        "label": "Youth who attempted suicide",
+        "label_group": "Physical harm",
+        "value": 0.36
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "section": "Discrimination & Physical Harm",
+    "category": "Discrimination",
+    "card": 2,
+    "chart_type": "subset",
+    "graph_title": "Youth who attempted suicide, comparison of those who experienced discrimination with those who had not:",
+    "position": 1,
+    "data": [
+      {
+        "id": "40",
+        "label": "Youth who attempted suicide",
+        "label_group": "No Discrimination",
+        "value": 0.09
+      },
+      {
+        "id": "40",
+        "label": "Youth who attempted suicide",
+        "label_group": "Discrimination",
+        "value": 0.22
+      }
+    ]
+  },
+  {
+    "id": 61,
+    "section": "Discrimination & Physical Harm",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "61",
+        "label": "^78% of transgender and non-binary youth^ reported being the subject of discrimination due to their gender identity and ^70% of LGBTQ youth^ reported discrimination due to their sexual orientation.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "61",
+        "label": "^58% of transgender and non-binary youth^ reported being discouraged from using a bathroom that corresponds to their gender identity.",
+        "label_group": "highlight",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 54,
+    "section": "Disclosure",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "54",
+        "label": "^Less than half of LGBTQ respondents^ were out to an adult at school.",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "54",
+        "label": "Youth are ^much less likely^ to disclose their gender identity than sexual orientation.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 1,
+    "section": "Disclosure",
+    "category": "Sexual Orientation",
+    "card": 2,
+    "chart_type": "horizontal",
+    "graph_title": "With whom do LGBTQ youth share their sexual orientation?",
+    "position": 0,
+    "data": [
+      {
+        "id": "1",
+        "label": "LGBT Friends",
+        "label_group": "Peers",
+        "value": 0.9257
+      },
+      {
+        "id": "1",
+        "label": "Straight Friends",
+        "label_group": "Peers",
+        "value": 0.8702
+      },
+      {
+        "id": "1",
+        "label": "Other Classmates",
+        "label_group": "Peers",
+        "value": 0.6031
+      },
+      {
+        "id": "1",
+        "label": "Parents",
+        "label_group": "Adults",
+        "value": 0.6755
+      },
+      {
+        "id": "1",
+        "label": "Teacher or Guidance Counselor",
+        "label_group": "Adults",
+        "value": 0.4252
+      },
+      {
+        "id": "1",
+        "label": "Doctor or Healthcare Professional",
+        "label_group": "Adults",
+        "value": 0.3018
+      },
+      {
+        "id": "1",
+        "label": "Online Resource or Chat Room",
+        "label_group": "Online/Other",
+        "value": 0.3623
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "section": "Disclosure",
+    "category": "Gender Identity",
+    "card": 2,
+    "chart_type": "horizontal",
+    "graph_title": "With whom do LGBTQ youth share their gender identity?",
+    "position": 0,
+    "data": [
+      {
+        "id": "2",
+        "label": "LGBTQ Friends",
+        "label_group": "Peers",
+        "value": 0.8454
+      },
+      {
+        "id": "2",
+        "label": "Straight Friends",
+        "label_group": "Peers",
+        "value": 0.593
+      },
+      {
+        "id": "2",
+        "label": "Other Classmates",
+        "label_group": "Peers",
+        "value": 0.3484
+      },
+      {
+        "id": "2",
+        "label": "Parents",
+        "label_group": "Adults",
+        "value": 0.5087
+      },
+      {
+        "id": "2",
+        "label": "Teacher or Guidance Counselor",
+        "label_group": "Adults",
+        "value": 0.3956
+      },
+      {
+        "id": "2",
+        "label": "Doctor or Healthcare Professional",
+        "label_group": "Adults",
+        "value": 0.2945
+      },
+      {
+        "id": "2",
+        "label": "Online Resource or Chat Room",
+        "label_group": "Online/Other",
+        "value": 0.2977
+      }
+    ]
+  },
+  {
+    "id": 62,
+    "section": "Disclosure",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "62",
+        "label": "LGBTQ youth disclosed their sexual orientation and gender identity to their friends at the highest rates, but are also disclosing to adults in their lives.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "62",
+        "label": "Gender identity (for those identifying as transgender and non-binary) is disclosed at a lower rate than sexual orientation (for those not identifying as straight).",
+        "label_group": "text",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 53,
+    "section": "Youth Support Preferences",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "53",
+        "label": "^76% of youth respondents^ indicated that they would be somewhat to extremely likely to reach out via text or chat in a crisis.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "section": "Youth Support Preferences",
+    "category": "Value",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "How valuable is an LGBTQ safe-space networking site?",
+    "position": 0,
+    "data": [
+      {
+        "id": "35",
+        "label": "Not at all",
+        "label_group": "",
+        "value": 0.02
+      },
+      {
+        "id": "35",
+        "label": "Somewhat",
+        "label_group": "",
+        "value": 0.17
+      },
+      {
+        "id": "35",
+        "label": "Very",
+        "label_group": "",
+        "value": 0.81
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "section": "Youth Support Preferences",
+    "category": "Importance",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "How important would it be to you to reach out to a crisis intervention organization focused on LGBTQ youth?",
+    "position": 0,
+    "data": [
+      {
+        "id": "36",
+        "label": "Not at all",
+        "label_group": "",
+        "value": 0.05
+      },
+      {
+        "id": "36",
+        "label": "Slightly",
+        "label_group": "",
+        "value": 0.08
+      },
+      {
+        "id": "36",
+        "label": "Moderately",
+        "label_group": "",
+        "value": 0.25
+      },
+      {
+        "id": "36",
+        "label": "Extremely",
+        "label_group": "",
+        "value": 0.34
+      },
+      {
+        "id": "36",
+        "label": "Very",
+        "label_group": "",
+        "value": 0.28
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "section": "Youth Support Preferences",
+    "category": "Chat or Text",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "If you needed to reach out to a crisis intervention organization for support, how likely are you to reach out via chat/instant message or text message?",
+    "position": 1,
+    "data": [
+      {
+        "id": "27",
+        "label": "Somewhat to extremely unlikely",
+        "label_group": "",
+        "value": 0.122
+      },
+      {
+        "id": "27",
+        "label": "Neither likely nor unlikely",
+        "label_group": "",
+        "value": 0.114
+      },
+      {
+        "id": "27",
+        "label": "Somewhat to extremely likely",
+        "label_group": "",
+        "value": 0.764
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "section": "Youth Support Preferences",
+    "category": "Phone",
+    "card": 2,
+    "chart_type": "pie",
+    "graph_title": "If you needed to reach out to a crisis intervention organization for support, how likely are you to reach out via phone?",
+    "position": 1,
+    "data": [
+      {
+        "id": "28",
+        "label": "Somewhat to extremely unlikely",
+        "label_group": "",
+        "value": 0.387
+      },
+      {
+        "id": "28",
+        "label": "Neither likely nor unlikely",
+        "label_group": "",
+        "value": 0.182
+      },
+      {
+        "id": "28",
+        "label": "Somewhat to extremely likely",
+        "label_group": "",
+        "value": 0.431
+      }
+    ]
+  },
+  {
+    "id": 63,
+    "section": "Youth Support Preferences",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "63",
+        "label": "Youth indicated a ^strong digital preference^ when reaching out when in crisis.",
+        "label_group": "highlight",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 55,
+    "section": "Diversity",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "55",
+        "label": "LGBTQ youth are ^in all parts and communities of America^, with a ^large amount^ identifying sexual orientation and gender identity in non-binary ways.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "section": "Diversity",
+    "category": "",
+    "card": 2,
+    "chart_type": "word",
+    "graph_title": "LGBTQ youth in the survey identified with more than 100 sexual orientations:",
+    "position": 0,
+    "data": [
+      {
+        "id": "42",
+        "label": "Asexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Graysexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Pansexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Heteroflexible",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Biromantic",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Demisexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Polysexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Homoflexible",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Ace spectrum",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Androsexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Abrosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Asexual lesbian",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Bisexual polyamorous",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Gynedemisexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Queer",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Masexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Monosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Sexually fluid",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Sapphic",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Sapiosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Sexually fluid abrosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Queer greysexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Queer demisexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Panromantic asexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Semi-sexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Aegosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Biromantic homosexual",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "42",
+        "label": "Greyromantic demisexual",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "section": "Diversity",
+    "category": "",
+    "card": 2,
+    "chart_type": "word",
+    "graph_title": "LGBTQ youth in the survey identified with more than 100 gender identities:",
+    "position": 1,
+    "data": [
+      {
+        "id": "43",
+        "label": "Agender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Agender non-binary",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Androgyn",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Agenderflux",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Bigender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Both genders",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Boy flux",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Demi-boy",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Demi-girl",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Gray gender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Female genderflux",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Gender apathetic",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Gender neutral",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Non-binary",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Polygender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Omnigender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Queer",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Queer non-binary",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Gender fluid",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Transfemme",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Trans masculine",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Trigender",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Two spirited",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Gender fluid non-binary",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Genderqueer",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Androgenous",
+        "label_group": "",
+        "value": 0
+      },
+      {
+        "id": "43",
+        "label": "Neutrois",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 64,
+    "section": "Diversity",
+    "category": "",
+    "card": 2,
+    "chart_type": "annotation",
+    "graph_title": "",
+    "position": 2,
+    "data": [
+      {
+        "id": "64",
+        "label": "Respondents were from ^all 50 states^.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "64",
+        "label": "39% were ^religious^.",
+        "label_group": "highlight",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 56,
+    "section": "Methodology",
+    "category": "",
+    "card": 1,
+    "chart_type": "subheader",
+    "graph_title": "",
+    "position": 0,
+    "data": [
+      {
+        "id": "56",
+        "label": "The content and methodology for The Trevor Project’s 2019 National Survey on LGBTQ Mental Health were approved by an independent Institutional Review Board.",
+        "label_group": "",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 47,
+    "section": "Methodology",
+    "category": "",
+    "card": 2,
+    "chart_type": "text",
+    "graph_title": "Summary",
+    "position": 0,
+    "data": [
+      {
+        "id": "47",
+        "label": "A quantitative cross-sectional design was used to collect data using an online survey platform between February 2, 2018 and September 30, 2018.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "A sample of individuals ages 13–24 who resided in the United States were recruited via targeted ads on social media. No recruitment was conducted via The Trevor Project website or any of The Trevor Project social media sites. Respondents were defined as being LGBTQ if they identified with a sexual orientation other than straight/heterosexual, a gender identity other than cisgender, or both. In order to ensure representativeness of the sample, targeted recruitment was conducted to ensure adequate sample sizes with respect to geography, gender identity, and race/ethnicity. Qualified respondents completed a secure online questionnaire that included a maximum of 110 questions.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "Questions on sexual orientation and gender identity (SOGI) were aligned with the best practices identified in SOGI measurement. Questions on depressed mood and suicidality in the past 12 months were taken from the Centers for Disease Control and Prevention’s Youth Risk Behavior Surveillance Survey to allow for direct comparisons to their nationally representative sample. Each question related to mental health and suicidality was preceded by a message stating, ",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "“If at any time you need to talk to someone about your mental health or thoughts of suicide, please call The Trevor Project at 1-866-488-7386.”",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "Participation was voluntary, informed consent was obtained, and no names or personal details were included ensuring confidentiality. ",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "A total of 34,808 youth consented to complete the online survey. Youth who indicated that they lived outside of the U.S. (n=475) received a message that they were ineligible to participate in the survey. Youth who indicated that they were both cisgender and straight (n=294) were excluded from the sample. A filter was applied to indicate youth who either a) completed less than half of the survey items or b) reached the end of the survey within three minutes (n=8,091). ",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "Additionally, a mischievous responders analysis identified and removed 52 youth who either provided highly unlikely answers (e.g. selecting all possible religious affiliations and race/ethnicity categories) and/or who provided obvious hate speech about LGBTQ populations in any of the free response options.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "The final analytic sample was comprised of 25,896 LGBTQ youth in the United States. ",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "Preliminary analyses were conducted to identify any potential problems with redundancy (e.g. multicollinearity) among similar variables such as experiences of discrimination and victimization. All variables contributed uniquely to indicators related to suicidality.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "47",
+        "label": "This report uses “transgender and non-binary” as an umbrella term  to encompass non-cisgender youth, which includes young people who identify as transgender or non-binary as well as gender expansive, differently gendered, gender creative, gender variant, genderqueer, agender, gender fluid, gender neutral, bigender, androgynous, or gender diverse. ",
+        "label_group": "text",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 48,
+    "section": "Methodology",
+    "category": "",
+    "card": 3,
+    "chart_type": "text",
+    "graph_title": "Comparability",
+    "position": 0,
+    "data": [
+      {
+        "id": "48",
+        "label": "In order to better understand how our sample compares to a national probabilistic sample, we included questions regarding suicidality that were identical to those used by the Center for Disease Control and Prevention (CDC) in their Youth Risk Behavior Surveillance Survey (YRBS).",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "48",
+        "label": "Analyses were conducted to compare rates of seriously considering suicide and attempting suicide in the past 12 months among youth ages 13–18 in our sample to the 2017 YRBS sample of lesbian, gay, and bisexual (LGB) youth.",
+        "label_group": "text",
+        "value": 0
+      },
+      {
+        "id": "48",
+        "label": "YRBS prevalence rates among LGB youth for seriously considering suicide (48%) were comparable to rates among the same age range in our sample (45%).",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "48",
+        "label": "Similarly 23% of LGB youth in the 2017 YRBS reported a suicide attempt in the past 12 months compared to 24% in our sample.",
+        "label_group": "text",
+        "value": 0
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "section": "Methodology",
+    "category": "Race/Ethnicity",
+    "card": 4,
+    "chart_type": "pie",
+    "graph_title": "Youth participants in the survey by race/ethnicity",
+    "position": 0,
+    "data": [
+      {
+        "id": "29",
+        "label": "Hispanic",
+        "label_group": "",
+        "value": 0.143
+      },
+      {
+        "id": "29",
+        "label": "White",
+        "label_group": "",
+        "value": 0.721
+      },
+      {
+        "id": "29",
+        "label": "Black",
+        "label_group": "",
+        "value": 0.027
+      },
+      {
+        "id": "29",
+        "label": "American Indian/Alaskan native",
+        "label_group": "",
+        "value": 0.007
+      },
+      {
+        "id": "29",
+        "label": "Mixed race",
+        "label_group": "",
+        "value": 0.072
+      },
+      {
+        "id": "29",
+        "label": "Asian",
+        "label_group": "",
+        "value": 0.029
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "section": "Methodology",
+    "category": "Age",
+    "card": 4,
+    "chart_type": "pie",
+    "graph_title": "Youth participants in the survey by age",
+    "position": 0,
+    "data": [
+      {
+        "id": "30",
+        "label": "Ages 13-16",
+        "label_group": "",
+        "value": 0.353
+      },
+      {
+        "id": "30",
+        "label": "Ages 17-20",
+        "label_group": "",
+        "value": 0.43
+      },
+      {
+        "id": "30",
+        "label": "Ages 21-24",
+        "label_group": "",
+        "value": 0.217
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "section": "Methodology",
+    "category": "Sexual Orientation",
+    "card": 4,
+    "chart_type": "pie",
+    "graph_title": "Youth participants in the survey by sexual orientation",
+    "position": 1,
+    "data": [
+      {
+        "id": "31",
+        "label": "Bisexual",
+        "label_group": "",
+        "value": 0.327
+      },
+      {
+        "id": "31",
+        "label": "Gay or lesbian",
+        "label_group": "",
+        "value": 0.453
+      },
+      {
+        "id": "31",
+        "label": "Something else",
+        "label_group": "",
+        "value": 0.22
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "section": "Methodology",
+    "category": "Gender Identity",
+    "card": 4,
+    "chart_type": "pie",
+    "graph_title": "Youth participants in the survey by gender identity",
+    "position": 1,
+    "data": [
+      {
+        "id": "32",
+        "label": "Cisgender female",
+        "label_group": "",
+        "value": 0.318
+      },
+      {
+        "id": "32",
+        "label": "Cisgender male",
+        "label_group": "",
+        "value": 0.353
+      },
+      {
+        "id": "32",
+        "label": "Transgender and non-binary",
+        "label_group": "",
+        "value": 0.329
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "section": "Methodology",
+    "category": "Considering Suicide",
+    "card": 4,
+    "chart_type": "vertical",
+    "graph_title": "Comparability metrics: Trevor Project Survey and YRBS Survey:",
+    "position": 2,
+    "data": [
+      {
+        "id": "33",
+        "label": "Trevor Project Survey",
+        "label_group": "",
+        "value": 0.453
+      },
+      {
+        "id": "33",
+        "label": "YRBS Survey",
+        "label_group": "",
+        "value": 0.477
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "section": "Methodology",
+    "category": "Attempting Suicide",
+    "card": 4,
+    "chart_type": "vertical",
+    "graph_title": "Comparability metrics: Trevor Project Survey and YRBS Survey:",
+    "position": 2,
+    "data": [
+      {
+        "id": "34",
+        "label": "Trevor Project Survey",
+        "label_group": "",
+        "value": 0.241
+      },
+      {
+        "id": "34",
+        "label": "YRBS Survey",
+        "label_group": "",
+        "value": 0.23
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "section": "Methodology",
+    "category": "",
+    "card": 5,
+    "chart_type": "text_nested",
+    "graph_title": "The Trevor Project's Research Department",
+    "position": 0,
+    "data": [
+      {
+        "id": "44",
+        "label": "The mission of The Trevor Project’s Research Department is to produce and use innovative research that brings new knowledge and clinical implications to the field of suicidology and LGBTQ mental health.",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "44",
+        "label": "To address this mission we:",
+        "label_group": "highlight",
+        "value": 0
+      },
+      {
+        "id": "44",
+        "label": "Advance Scientific Inquiry",
+        "label_group": "subtitle",
+        "value": 1.1
+      },
+      {
+        "id": "44",
+        "label": "Providing empirical data to better understand the lives of LGBTQ youth and suicidality including risk factors, protective factors, and outcomes.",
+        "label_group": "text",
+        "value": 1.1
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project will be a leading source of scientific information on the needs and strengths of LGBTQ youth",
+        "label_group": "list",
+        "value": 1.1
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project will collaborate with key national and international research teams and agencies to improve the lives of LGBTQ youth",
+        "label_group": "list",
+        "value": 1.1
+      },
+      {
+        "id": "44",
+        "label": "Support The Trevor Project’s Life-Saving Work",
+        "label_group": "subtitle",
+        "value": 1.2
+      },
+      {
+        "id": "44",
+        "label": "Using internal and external data and research findings to advance Trevor’s crisis services and peer support programs as well as advocacy and education initiatives.",
+        "label_group": "text",
+        "value": 1.2
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project’s advocacy and training activities will be supported by data collected directly by The Trevor Project as well as evidence gathered from the broader research literature",
+        "label_group": "list",
+        "value": 1.2
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project will embody an evidence-informed culture in which all staff are supported and recognized in the use of research evidence",
+        "label_group": "list",
+        "value": 1.2
+      },
+      {
+        "id": "44",
+        "label": "Inform Public Knowledge",
+        "label_group": "subtitle",
+        "value": 1.3
+      },
+      {
+        "id": "44",
+        "label": "Ensuring our research and evaluation findings are applicable and widely communicated to the broader public including LGBTQ-youth-serving agencies and mental health organizations.",
+        "label_group": "text",
+        "value": 1.3
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project will serve as a national model on how to integrate the best research evidence into its practices, programs, and policies",
+        "label_group": "list",
+        "value": 1.3
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project will be a leading resource on terminology related to LGBTQ youth",
+        "label_group": "list",
+        "value": 1.3
+      },
+      {
+        "id": "44",
+        "label": "Recommended Citation",
+        "label_group": "highlight",
+        "value": 2
+      },
+      {
+        "id": "44",
+        "label": "The Trevor Project. (2019). National Survey on LGBTQ Mental Health. New York, New York: The Trevor Project.",
+        "label_group": "text",
+        "value": 2
+      },
+      {
+        "id": "44",
+        "label": "For additional information please contact: Research@TheTrevorProject.org",
+        "label_group": "text",
+        "value": 2
+      }
+    ]
+  }
+]

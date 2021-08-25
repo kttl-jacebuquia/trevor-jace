@@ -1,0 +1,21 @@
+{
+  "main.css": "/survey-2019/static/css/main.a9467418.chunk.css",
+  "main.js": "/survey-2019/static/js/main.9f469fbf.chunk.js",
+  "main.js.map": "/survey-2019/static/js/main.9f469fbf.chunk.js.map",
+  "runtime~main.js": "/survey-2019/static/js/runtime~main.9ff92f76.js",
+  "runtime~main.js.map": "/survey-2019/static/js/runtime~main.9ff92f76.js.map",
+  "static/js/2.d1c59f92.chunk.js": "/survey-2019/static/js/2.d1c59f92.chunk.js",
+  "static/js/2.d1c59f92.chunk.js.map": "/survey-2019/static/js/2.d1c59f92.chunk.js.map",
+  "index.html": "/survey-2019/index.html",
+  "precache-manifest.a6241e66f72b2d641d9f4b219d903749.js": "/survey-2019/precache-manifest.a6241e66f72b2d641d9f4b219d903749.js",
+  "service-worker.js": "/survey-2019/service-worker.js",
+  "static/css/main.a9467418.chunk.css.map": "/survey-2019/static/css/main.a9467418.chunk.css.map",
+  "static/media/fonts.scss": "/survey-2019/static/media/PT_Serif-Web-Regular.91b51060.ttf",
+  "static/media/amit_headshot.png": "/survey-2019/static/media/amit_headshot.e90b75b4.png",
+  "static/media/amit_signature.svg": "/survey-2019/static/media/amit_signature.aadfda57.svg",
+  "static/media/facebook.f35424cb.svg": "/survey-2019/static/media/facebook.f35424cb.svg",
+  "static/media/link.87c95bca.svg": "/survey-2019/static/media/link.87c95bca.svg",
+  "static/media/logo.png": "/survey-2019/static/media/logo.fe31856e.png",
+  "static/media/twitter.86c40b58.svg": "/survey-2019/static/media/twitter.86c40b58.svg",
+  "static/media/two-n-logo.248960ee.svg": "/survey-2019/static/media/two-n-logo.248960ee.svg"
+}
