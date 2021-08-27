@@ -88,8 +88,6 @@ class Post {
 			'post_types'    => $ppt,
 		);
 
-
-
 		// Posts
 		foreach (
 			array(
@@ -115,11 +113,16 @@ class Post {
 				self::KEY_HEADER_SHOW_AUTHOR  => array(
 					'type'       => 'boolean',
 					'default'    => true,
-					'post_types' => $article_kind,
+					'post_types' => array(
+						CPT\Post::POST_TYPE,
+					),
 				),
 				self::KEY_LENGTH_IND          => array(
 					'default'    => Theme\Helper\Content_Length::DEFAULT_OPTION,
-					'post_types' => $article_kind,
+					'post_types' => array(
+						CPT\RC\Guide::POST_TYPE,
+						CPT\RC\Article::POST_TYPE,
+					),
 				),
 				self::KEY_IMAGE_SQUARE        => array(
 					'post_types' => $article_kind,
