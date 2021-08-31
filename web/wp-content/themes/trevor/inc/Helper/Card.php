@@ -8,7 +8,7 @@ use TrevorWP\Meta\Post as PostMeta;
 
 class Card {
 	public static function post( $post, $key = 0, array $options = array() ): string {
-		$post      = get_post( $post );
+		$post = get_post( $post );
 
 		if ( empty( $post ) ) {
 			return '';
@@ -86,17 +86,20 @@ class Card {
 		// Thumbnail variants.
 		$thumb_var = array();
 
-		if ( $is_bg_full ) {
-			// Prefer vertical image on full bg.
-			$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_VERTICAL );
-		} else {
-			$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_HORIZONTAL );
+		// External Resources should have no image
+		if ( CPT\RC\External::POST_TYPE !== $post_type ) {
+			if ( $is_bg_full ) {
+				// Prefer vertical image on full bg.
+				$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_VERTICAL );
+			} else {
+				$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_HORIZONTAL );
+			}
+
+			// Fallback to the square.
+			$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_SQUARE );
 		}
 
-		// Fallback to the square.
-		$thumb_var[] = self::_get_thumb_var( Thumbnail::TYPE_SQUARE );
-
-		$thumb         = Thumbnail::post( $post, ...$thumb_var );
+		$thumb         = ! empty( $thumb_var ) ? Thumbnail::post( $post, ...$thumb_var ) : false;
 		$has_thumbnail = ! empty( $thumb );
 		if ( ! $has_thumbnail ) {
 			$_class[] = 'no-thumbnail';
