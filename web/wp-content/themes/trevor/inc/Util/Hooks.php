@@ -555,14 +555,6 @@ class Hooks {
 		// TODO:
 		// Remove these modal renders once integrated through the Advanced_Link field
 
-		// Fundraiser Quiz Modal
-		echo ( new \TrevorWP\Theme\Helper\FundraiserQuizModal(
-			Options_Page\Fundraiser_Quiz::render(),
-			array(
-				'target' => '.js-fundraiser-quiz',
-			)
-		) )->render();
-
 		// Donation Modal
 		if ( Options_Page\Donation_Modal::will_render_in( get_the_ID() ) ) {
 			echo ( new \TrevorWP\Theme\Helper\DonationModal(
@@ -781,8 +773,19 @@ class Hooks {
 			$classes['general_bg'] = 'bg-teal-dark';
 		}
 
-		// Text Color
-		$classes['general_txt_clr'] = is_404() ? 'text-indigo' : 'text-' . Page_Header::get_val( Page_Header::FIELD_TEXT_CLR );
+		$hero_type = Page_Header::get_hero_type();
+
+		// If RC, Trevorspace or Crisis pages, set text-color to indigo.
+		if (
+			Is::rc() ||
+			is_404() ||
+			$hero_type == 'support_crisis_services' ||
+			$hero_type == 'support_trevorspace'
+		) {
+			$classes['general_txt_clr'] = 'text-indigo';
+		} else {
+			$classes['general_txt_clr'] = 'text-teal-dark';
+		}
 
 		return $classes;
 	}
