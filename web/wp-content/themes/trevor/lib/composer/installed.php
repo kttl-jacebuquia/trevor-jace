@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '1e82e4db9e080a9014916019ebd0cb3d6adf5b39',
+    'reference' => 'a9fa6cc7a94e1dca1d00a8b73538aba8770e06b4',
     'name' => 'kettle/trevor-wp-theme',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '1e82e4db9e080a9014916019ebd0cb3d6adf5b39',
+      'reference' => 'a9fa6cc7a94e1dca1d00a8b73538aba8770e06b4',
     ),
   ),
 );

@@ -12,18 +12,17 @@ use TrevorWP\Theme\Helper\FundraiserQuizModal;
 use TrevorWP\Theme\Helper\WhatToExpectModal;
 
 class Advanced_Link extends A_Field_Group implements I_Renderable {
-	const FIELD_LABEL                = 'label';
-	const FIELD_ACTION               = 'action';
-	const FIELD_LINK                 = 'link';
-	const FIELD_PAGE_LINK            = 'page_link';
-	const FIELD_FILE                 = 'file';
-	const FIELD_MODAL                = 'modal';
-	const FIELD_DONATE_DEDICATION    = 'donate_dedication';
-	const FIELD_TEXTONLY_POPUP       = 'textonly_popup';
-	const FIELD_WHAT_TO_EXPECT_POPUP = 'what_to_expect_popup';
-	const FIELD_PHONE                = 'phone';
-	const FIELD_SHOW_DOWNLOAD_ICON   = 'show_download_icon';
-	const FIELD_SHOW_DEV_FORM_ONLY   = 'show_dev_form_only';
+	const FIELD_LABEL              = 'label';
+	const FIELD_ACTION             = 'action';
+	const FIELD_LINK               = 'link';
+	const FIELD_PAGE_LINK          = 'page_link';
+	const FIELD_FILE               = 'file';
+	const FIELD_MODAL              = 'modal';
+	const FIELD_DONATE_DEDICATION  = 'donate_dedication';
+	const FIELD_TEXTONLY_POPUP     = 'textonly_popup';
+	const FIELD_PHONE              = 'phone';
+	const FIELD_SHOW_DOWNLOAD_ICON = 'show_download_icon';
+	const FIELD_SHOW_DEV_FORM_ONLY = 'show_dev_form_only';
 
 	/** @inheritDoc */
 	public static function prepare_register_args(): array {
@@ -32,18 +31,17 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 
 	/** @inheritDoc */
 	public static function _get_fields(): array {
-		$label                = static::gen_field_key( static::FIELD_LABEL );
-		$action               = static::gen_field_key( static::FIELD_ACTION );
-		$link                 = static::gen_field_key( static::FIELD_LINK );
-		$page_link            = static::gen_field_key( static::FIELD_PAGE_LINK );
-		$file                 = static::gen_field_key( static::FIELD_FILE );
-		$modal                = static::gen_field_key( static::FIELD_MODAL );
-		$donate_dedication    = static::gen_field_key( static::FIELD_DONATE_DEDICATION );
-		$textonly_popup       = static::gen_field_key( static::FIELD_TEXTONLY_POPUP );
-		$what_to_expect_popup = static::gen_field_key( static::FIELD_WHAT_TO_EXPECT_POPUP );
-		$phone                = static::gen_field_key( static::FIELD_PHONE );
-		$show_download_icon   = static::gen_field_key( static::FIELD_SHOW_DOWNLOAD_ICON );
-		$show_dev_form_only   = static::gen_field_key( static::FIELD_SHOW_DEV_FORM_ONLY );
+		$label              = static::gen_field_key( static::FIELD_LABEL );
+		$action             = static::gen_field_key( static::FIELD_ACTION );
+		$link               = static::gen_field_key( static::FIELD_LINK );
+		$page_link          = static::gen_field_key( static::FIELD_PAGE_LINK );
+		$file               = static::gen_field_key( static::FIELD_FILE );
+		$modal              = static::gen_field_key( static::FIELD_MODAL );
+		$donate_dedication  = static::gen_field_key( static::FIELD_DONATE_DEDICATION );
+		$textonly_popup     = static::gen_field_key( static::FIELD_TEXTONLY_POPUP );
+		$phone              = static::gen_field_key( static::FIELD_PHONE );
+		$show_download_icon = static::gen_field_key( static::FIELD_SHOW_DOWNLOAD_ICON );
+		$show_dev_form_only = static::gen_field_key( static::FIELD_SHOW_DEV_FORM_ONLY );
 
 		return array_merge(
 			static::_gen_tab_field( 'Action' ),
@@ -88,7 +86,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 				),
 			),
 			array(
-				static::FIELD_PHONE                => array(
+				static::FIELD_PHONE              => array(
 					'key'               => $phone,
 					'name'              => static::FIELD_PHONE,
 					'label'             => 'Phone Number',
@@ -110,7 +108,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 						),
 					),
 				),
-				static::FIELD_LINK                 => array(
+				static::FIELD_LINK               => array(
 					'key'               => $link,
 					'label'             => 'Link',
 					'name'              => static::FIELD_LINK,
@@ -126,7 +124,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					),
 					'return_format'     => 'array',
 				),
-				static::FIELD_SHOW_DOWNLOAD_ICON   => array(
+				static::FIELD_SHOW_DOWNLOAD_ICON => array(
 					'key'               => $show_download_icon,
 					'name'              => static::FIELD_SHOW_DOWNLOAD_ICON,
 					'label'             => 'Show download icon',
@@ -146,7 +144,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 						),
 					),
 				),
-				static::FIELD_PAGE_LINK            => array(
+				static::FIELD_PAGE_LINK          => array(
 					'key'               => $page_link,
 					'name'              => static::FIELD_PAGE_LINK,
 					'label'             => 'Page Link',
@@ -166,7 +164,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					'return_format'     => 'object',
 					'ui'                => true,
 				),
-				static::FIELD_FILE                 => array(
+				static::FIELD_FILE               => array(
 					'key'               => $file,
 					'name'              => static::FIELD_FILE,
 					'label'             => 'File',
@@ -186,7 +184,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					'return_format'     => 'object',
 					'ui'                => true,
 				),
-				static::FIELD_MODAL                => array(
+				static::FIELD_MODAL              => array(
 					'key'               => $modal,
 					'name'              => static::FIELD_MODAL,
 					'label'             => 'Modal',
@@ -208,7 +206,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 						'what_to_expect'  => 'What to Expect Pop-up',
 					),
 				),
-				static::FIELD_TEXTONLY_POPUP       => array(
+				static::FIELD_TEXTONLY_POPUP     => array(
 					'key'               => $textonly_popup,
 					'name'              => static::FIELD_TEXTONLY_POPUP,
 					'label'             => 'Text Only Popup',
@@ -235,34 +233,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 					'return_format'     => 'object',
 					'ui'                => 1,
 				),
-				static::FIELD_WHAT_TO_EXPECT_POPUP => array(
-					'key'               => $what_to_expect_popup,
-					'name'              => static::FIELD_WHAT_TO_EXPECT_POPUP,
-					'label'             => 'What To Expect',
-					'type'              => 'post_object',
-					'required'          => 1,
-					'conditional_logic' => array(
-						array(
-							array(
-								'field'    => $modal,
-								'operator' => '==',
-								'value'    => 'what_to_expect',
-							),
-						),
-					),
-					'post_type'         => array(
-						0 => CPT\What_To_Expect_Popup::POST_TYPE,
-					),
-					'filters'           => array(
-						0 => 'search',
-					),
-					'taxonomy'          => '',
-					'allow_null'        => 0,
-					'multiple'          => 0,
-					'return_format'     => 'object',
-					'ui'                => 1,
-				),
-				static::FIELD_DONATE_DEDICATION    => array(
+				static::FIELD_DONATE_DEDICATION  => array(
 					'key'               => $donate_dedication,
 					'name'              => static::FIELD_DONATE_DEDICATION,
 					'label'             => 'Dedication Donation',
@@ -282,7 +253,7 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 						),
 					),
 				),
-				static::FIELD_SHOW_DEV_FORM_ONLY   => array(
+				static::FIELD_SHOW_DEV_FORM_ONLY => array(
 					'key'               => $show_dev_form_only,
 					'name'              => static::FIELD_SHOW_DEV_FORM_ONLY,
 					'label'             => 'Show Dev Form Only',
@@ -460,14 +431,13 @@ class Advanced_Link extends A_Field_Group implements I_Renderable {
 
 					// WHAT TO EXPECT POPUP
 				} elseif ( 'what_to_expect' === $modal_type ) {
-					$what_to_expect_popup                                  = $val->get( static::FIELD_WHAT_TO_EXPECT_POPUP );
 					$options['tag']                                        = 'button';
-					$options['class'][]                                    = ! empty( $what_to_expect_popup->ID ) ? What_To_Expect_Popup::gen_modal_id( $what_to_expect_popup->ID ) : WhatToExpectModal::ID;
+					$options['class'][]                                    = WhatToExpectModal::ID;
 					$options['attributes'][ DOM_Attr::FIELD_ATTRIBUTES ][] = array(
 						DOM_Attr::FIELD_ATTR_KEY => 'aria-label',
 						DOM_Attr::FIELD_ATTR_VAL => 'click to open what to expect modal',
 					);
-					WhatToExpectModal::create( $what_to_expect_popup );
+					WhatToExpectModal::create();
 				}
 				break;
 			case 'trevor_chat':
