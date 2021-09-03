@@ -767,14 +767,27 @@ class Hooks {
 		// BG Color
 		if ( Is::rc() ) {
 			$classes['general_bg'] = 'bg-indigo';
-		} elseif ( is_404() ) {
-			$classes['general_bg'] = 'bg-white';
 		} else {
 			$classes['general_bg'] = 'bg-teal-dark';
 		}
 
-		// Text Color
-		$classes['general_txt_clr'] = is_404() ? 'text-indigo' : 'text-' . Page_Header::get_val( Page_Header::FIELD_TEXT_CLR );
+		if (is_404()) {
+			$classes['general_bg'] = 'bg-white';
+		}
+
+		$hero_type = Page_Header::get_hero_type();
+
+		// If RC, Trevorspace or Crisis pages, set text-color to indigo.
+		if (
+			Is::rc() ||
+			is_404() ||
+			$hero_type == 'support_crisis_services' ||
+			$hero_type == 'support_trevorspace'
+		) {
+			$classes['general_txt_clr'] = 'text-indigo';
+		} else {
+			$classes['general_txt_clr'] = 'text-teal-dark';
+		}
 
 		return $classes;
 	}
