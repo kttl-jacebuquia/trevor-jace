@@ -1,40 +1,41 @@
 <?php namespace TrevorWP\Theme\ACF\Options_Page;
 
-use TrevorWP\CPT\RC\Glossary;
 use TrevorWP\CPT\RC\Guide;
 use TrevorWP\CPT\RC\RC_Object;
 use TrevorWP\Meta\Post;
 use TrevorWP\Theme\Helper;
 
 class Resource_Center extends A_Options_Page {
-	const POST_TYPE = 'trevor_rc_post';
-
-	const FIELD_PAGE_SLUG          = 'rc_page_slug';
-	const FIELD_EYEBROW            = 'eyebrow';
-	const FIELD_HEADLINE           = 'headline';
-	const FIELD_SEARCH_PLACEHOLDER = 'search_placeholder';
-	const FIELD_DESCRIPTION        = 'description';
-	const FIELD_FEATURED_TOPICS    = 'featured_topics';
-	const FIELD_TRENDING           = 'trending';
-	const FIELD_GUIDES             = 'guide';
-	const FIELD_GLOSSARY_IMAGE     = 'glossary_image';
-	const FIELD_CARD_NUM           = 'card_num';
+	const FIELD_PAGE_SLUG           = 'rc_page_slug';
+	const FIELD_EYEBROW             = 'eyebrow';
+	const FIELD_HEADLINE            = 'headline';
+	const FIELD_SEARCH_PLACEHOLDER  = 'search_placeholder';
+	const FIELD_DESCRIPTION         = 'description';
+	const FIELD_FEATURED_TOPICS     = 'featured_topics';
+	const FIELD_TRENDING            = 'trending';
+	const FIELD_GUIDES              = 'guide';
+	const FIELD_GLOSSARY_IMAGE      = 'glossary_image';
+	const FIELD_CARD_NUM            = 'card_num';
+	const PAGINATION_TAX_ARCHIVE    = 'pagination_tax_archive';
+	const PAGINATION_SEARCH_RESULTS = 'pagination_search_results';
 
 	public static $used_post_ids = array();
 	public static $category_num  = 4;
 
 	/** @inheritDoc */
 	protected static function prepare_fields(): array {
-		$page_slug          = static::gen_field_key( static::FIELD_PAGE_SLUG );
-		$eyebrow            = static::gen_field_key( static::FIELD_EYEBROW );
-		$headline           = static::gen_field_key( static::FIELD_HEADLINE );
-		$search_placeholder = static::gen_field_key( static::FIELD_SEARCH_PLACEHOLDER );
-		$description        = static::gen_field_key( static::FIELD_DESCRIPTION );
-		$featured_topics    = static::gen_field_key( static::FIELD_FEATURED_TOPICS );
-		$trending           = static::gen_field_key( static::FIELD_TRENDING );
-		$guides             = static::gen_field_key( static::FIELD_GUIDES );
-		$glossary_image     = static::gen_field_key( static::FIELD_GLOSSARY_IMAGE );
-		$card_num           = static::gen_field_key( static::FIELD_CARD_NUM );
+		$page_slug                 = static::gen_field_key( static::FIELD_PAGE_SLUG );
+		$eyebrow                   = static::gen_field_key( static::FIELD_EYEBROW );
+		$headline                  = static::gen_field_key( static::FIELD_HEADLINE );
+		$search_placeholder        = static::gen_field_key( static::FIELD_SEARCH_PLACEHOLDER );
+		$description               = static::gen_field_key( static::FIELD_DESCRIPTION );
+		$featured_topics           = static::gen_field_key( static::FIELD_FEATURED_TOPICS );
+		$trending                  = static::gen_field_key( static::FIELD_TRENDING );
+		$guides                    = static::gen_field_key( static::FIELD_GUIDES );
+		$glossary_image            = static::gen_field_key( static::FIELD_GLOSSARY_IMAGE );
+		$card_num                  = static::gen_field_key( static::FIELD_CARD_NUM );
+		$pagination_tax_archive    = static::gen_field_key( static::PAGINATION_TAX_ARCHIVE );
+		$pagination_search_results = static::gen_field_key( static::PAGINATION_SEARCH_RESULTS );
 
 		return array_merge(
 			array(
@@ -154,6 +155,25 @@ class Resource_Center extends A_Options_Page {
 					'library'       => 'all',
 				),
 			),
+			static::_gen_tab_field( 'Pagination' ),
+			array(
+				static::PAGINATION_TAX_ARCHIVE => array(
+					'key'           => $pagination_tax_archive,
+					'name'          => static::PAGINATION_TAX_ARCHIVE,
+					'label'         => 'Taxonomy Pages',
+					'type'          => 'number',
+					'default_value' => 6,
+				),
+			),
+			array(
+				static::PAGINATION_SEARCH_RESULTS => array(
+					'key'           => $pagination_search_results,
+					'name'          => static::PAGINATION_SEARCH_RESULTS,
+					'label'         => 'Search Results',
+					'type'          => 'number',
+					'default_value' => 6,
+				),
+			),
 		);
 	}
 
@@ -162,7 +182,7 @@ class Resource_Center extends A_Options_Page {
 		return array_merge(
 			parent::prepare_page_register_args(),
 			array(
-				'parent_slug' => 'edit.php?post_type=' . static::POST_TYPE,
+				'parent_slug' => 'edit.php?post_type=' . Guide::POST_TYPE,
 				'menu_title'  => 'Options',
 				'page_title'  => 'Resource Center Options',
 			)
@@ -383,5 +403,17 @@ class Resource_Center extends A_Options_Page {
 		$featured_topics = static::get_option( static::FIELD_FEATURED_TOPICS );
 
 		return $featured_topics;
+	}
+
+	public static function get_pagination() {
+		$pagination_tax_archive    = static::get_option( static::PAGINATION_TAX_ARCHIVE );
+		$pagination_search_results = static::get_option( static::PAGINATION_SEARCH_RESULTS );
+
+		$data = array(
+			'tax_archive'    => $pagination_tax_archive,
+			'search_results' => $pagination_search_results,
+		);
+
+		return $data;
 	}
 }
