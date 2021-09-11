@@ -128,7 +128,4 @@ Template Name: Empty Template (no branding or foundation)
 <?php endwhile;?>
 <?php edit_post_link( __( '(Edit)', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
 
-<?php do_action( 'foundationpress_layout_end' ); ?>
-
-<?php do_action( 'foundationpress_before_closing_body' ); ?>
 </body>
