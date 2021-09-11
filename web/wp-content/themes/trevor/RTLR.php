@@ -14,8 +14,8 @@ Template Name: Reform The Locker Room
 		<!-- End Google Tag Manager -->
 	<?php endif ?>
 	<link rel="icon" type="image/png" href="/favicon.png">
-	<link rel="mask-icon" href="/favicon.svg" color="orange">
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<!-- <link rel="mask-icon" href="/favicon.svg" color="orange"> -->
+	<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg"> -->
 	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,900,900i" rel="stylesheet">
 	<link rel="stylesheet" media="screen" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <link rel="stylesheet" id="main-stylesheet-css" href="https://www.thetrevorproject.org/wp-content/themes/trevor/assets/stylesheets/foundation.css?ver=2.9.2" type="text/css" media="all">
@@ -24,15 +24,9 @@ Template Name: Reform The Locker Room
 </head>
 <body id="RTLR">
 <?php while ( have_posts() ) : the_post(); ?>
-	<?php the_content(); ?>
-	
-
+<?php the_content(); ?>
 <?php endwhile;?>
+
 <?php edit_post_link( __( '(Edit)', 'foundationpress' ), '<span class="edit-link">', '</span>' ); ?>
 
-
-		<?php do_action( 'foundationpress_layout_end' ); ?>
-
-<?php wp_footer(); ?>
-<?php do_action( 'foundationpress_before_closing_body' ); ?>
 </body>
