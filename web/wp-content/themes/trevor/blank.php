@@ -14,7 +14,7 @@ Template Name: Empty Template (no branding or foundation)
 		})(window,document,'script','dataLayer','GTM-WV5P347');</script>
 		<!-- End Google Tag Manager -->
 	<?php endif ?>
-	<?php wp_head(); ?>
+	
 	<link rel="icon" type="image/png" href="/favicon.png">
 	<link rel="mask-icon" href="/favicon.svg" color="orange">
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
