@@ -17,9 +17,6 @@ Template Name: Empty Template (no branding or foundation)
 
 	<?php wp_head(); ?>
 
-	<link rel="icon" type="image/png" href="/favicon.png">
-	<link rel="mask-icon" href="/favicon.svg" color="orange">
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
