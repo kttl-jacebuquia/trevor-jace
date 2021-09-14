@@ -14,20 +14,15 @@ Template Name: Empty Template (no branding or foundation)
 		})(window,document,'script','dataLayer','GTM-WV5P347');</script>
 		<!-- End Google Tag Manager -->
 	<?php endif ?>
-    <!-- Here ? -->
+
 	<?php wp_head(); ?>
-    <!-- Here End ? -->
+
 	<link rel="icon" type="image/png" href="/favicon.png">
 	<link rel="mask-icon" href="/favicon.svg" color="orange">
 	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,900,900i" rel="stylesheet">
-	<link rel="stylesheet" media="screen" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    <link rel="stylesheet" id="main-stylesheet-css" href="https://www.thetrevorproject.org/wp-content/themes/trevor/assets/stylesheets/foundation.css?ver=2.9.2" type="text/css" media="all">
 	<meta charset="<?php bloginfo( 'charset' ); ?>" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.8/ScrollMagic.min.js" type="text/javascript" charset="utf-8"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" type="text/javascript" charset="utf-8"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js" type="text/javascript" charset="utf-8"></script>
+	
 	<script>
         jQuery(function ($){
         	function setFocus(i){
