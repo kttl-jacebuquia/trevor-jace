@@ -1,7 +1,11 @@
 <?php namespace TrevorWP\Theme\Util;
 
 use TrevorWP\CPT;
+use TrevorWP\CPT\Financial_Report;
+use TrevorWP\CPT\Get_Involved\Bill;
+use TrevorWP\CPT\Get_Involved\Letter;
 use TrevorWP\CPT\RC\RC_Object;
+use TrevorWP\CPT\Research;
 use TrevorWP\Main;
 use TrevorWP\Theme\ACF\ACF;
 use TrevorWP\Theme\ACF\Field_Group\Page_Header;
@@ -36,6 +40,9 @@ class Hooks {
 	public static function register_all() {
 		add_action( 'init', array( self::class, 'init' ), 10, 0 );
 		add_action( 'admin_init', array( self::class, 'admin_init' ), 10, 0 );
+
+		// Add a custom menu for Careers Option Page
+		add_action( 'admin_menu', array( self::class, '_register_careers_option_page' ), 99, 0 );
 
 		# Media
 		add_action( 'wp_enqueue_scripts', array( self::class, 'wp_enqueue_scripts' ), 10, 0 );
@@ -310,7 +317,10 @@ class Hooks {
 		global $wp_query;
 
 		if ( ( ! empty( $wp_query->get( RC_Object::QV_RESOURCES_LP ) ) ) ||
-			( ! empty( $wp_query->get( Search::QV_SEARCH ) && empty( get_search_query( false ) ) ) )
+			( ! empty( $wp_query->get( Search::QV_SEARCH ) && empty( get_search_query( false ) ) ) ) ||
+			( 'post' === get_post_type() && ! is_single() ) || is_post_type_archive( Bill::POST_TYPE ) ||
+			is_post_type_archive( Letter::POST_TYPE ) || is_post_type_archive( Research::POST_TYPE ) ||
+			is_post_type_archive( Financial_Report::POST_TYPE )
 		) {
 			static::remove_wpseo_action();
 		}
@@ -351,6 +361,56 @@ class Hooks {
 				array(
 					'type'   => 'option',
 					'prefix' => Options_Search::PREFIX,
+				)
+			);
+		} elseif ( 'post' === get_post_type() && ! is_single() ) {
+			echo SEO_Details::render(
+				null,
+				null,
+				array(
+					'type'   => 'archive',
+					'prefix' => '',
+					'title'  => 'Blogs',
+				)
+			);
+		} elseif ( is_post_type_archive( Bill::POST_TYPE ) ) {
+			echo SEO_Details::render(
+				null,
+				null,
+				array(
+					'type'   => 'archive',
+					'prefix' => '',
+					'title'  => 'State Priorities',
+				)
+			);
+		} elseif ( is_post_type_archive( Letter::POST_TYPE ) ) {
+			echo SEO_Details::render(
+				null,
+				null,
+				array(
+					'type'   => 'archive',
+					'prefix' => '',
+					'title'  => 'Federal Priorities',
+				)
+			);
+		} elseif ( is_post_type_archive( Research::POST_TYPE ) ) {
+			echo SEO_Details::render(
+				null,
+				null,
+				array(
+					'type'   => 'archive',
+					'prefix' => '',
+					'title'  => 'Research Briefs',
+				)
+			);
+		} elseif ( is_post_type_archive( Financial_Report::POST_TYPE ) ) {
+			echo SEO_Details::render(
+				null,
+				null,
+				array(
+					'type'   => 'archive',
+					'prefix' => '',
+					'title'  => 'Financial Reports',
 				)
 			);
 		}
@@ -885,6 +945,24 @@ class Hooks {
 			$type,
 			Thumbnail::SIZE_MD,
 			array( 'class' => 'post-header-bg' )
+		);
+	}
+
+	/**
+	 * Registers a custom menu page for Careers.
+	 * We don't need ACF Options Page functionality for this.
+	 *
+	 * @return void
+	 */
+	public static function _register_careers_option_page(): void {
+		add_submenu_page(
+			'trvr--header',
+			'Careers',
+			'Careers',
+			'manage_options',
+			'trvr--careers',
+			array( 'TrevorWP\Theme\Helper\Careers', 'render_option_page' ),
+			'',
 		);
 	}
 }
