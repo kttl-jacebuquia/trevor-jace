@@ -16,7 +16,7 @@
  * Plugin Name:       Trevor Chat Button
  * Plugin URI:        https://thetrevorproject.org
  * Description:       Enables a shortcode to display a chat button to US visitors during certain times of day. Updated MaxMind GeoIP DB on 2019-06-27
- * Version:           1.0.9
+ * Version:           1.0.10
  * Author:            Simon Hunter
  * Author URI:        https://www.remedyone.com
  * License:           GPL-2.0+
