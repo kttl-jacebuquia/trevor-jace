@@ -17,6 +17,7 @@ class ACF {
 		Options_Page\Fundraiser_Quiz::class,
 		Options_Page\Donation_Modal::class,
 		Options_Page\What_To_Expect::class,
+		Options_Page\Promo::class,
 		Options_Page\Four_O_Four::class,
 		Options_Page\Search::class,
 		Options_Page\External_Scripts::class,
@@ -95,6 +96,7 @@ class ACF {
 		Field_Group\Chat_Link_Option::class,
 		Field_Group\What_To_Expect_Popup::class,
 		Field_Group\Post_Details::class,
+		Field_Group\Promo_Popup::class,
 	);
 
 	public static function construct() {
