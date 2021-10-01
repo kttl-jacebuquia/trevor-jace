@@ -10,7 +10,9 @@
  * when attempting to apply upstream updates.
  */
 
-define( 'WP_MEMORY_LIMIT', '512M' );
+define( 'WP_MEMORY_LIMIT', '1024M' );
+
+set_time_limit( 600 );
 
 // ** MySQL settings - included in the Pantheon Environment ** //
 /** The name of the database for WordPress */
