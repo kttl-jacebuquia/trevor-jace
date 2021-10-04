@@ -41,9 +41,6 @@ class Hooks {
 		add_action( 'init', array( self::class, 'init' ), 10, 0 );
 		add_action( 'admin_init', array( self::class, 'admin_init' ), 10, 0 );
 
-		// Add a custom menu for Careers Option Page
-		add_action( 'admin_menu', array( self::class, '_register_careers_option_page' ), 99, 0 );
-
 		# Media
 		add_action( 'wp_enqueue_scripts', array( self::class, 'wp_enqueue_scripts' ), 10, 0 );
 		add_action( 'admin_enqueue_scripts', array( self::class, 'admin_enqueue_scripts' ), 10, 0 );
@@ -185,6 +182,14 @@ class Hooks {
 	 */
 	public static function wp_enqueue_scripts(): void {
 		wp_enqueue_script( 'jquery-ui-autocomplete' );
+
+		// Highcharts
+		wp_enqueue_script( 'highmaps-main', '//code.highcharts.com/maps/highmaps.js' );
+		wp_enqueue_script( 'highmaps-module-data', '//code.highcharts.com/maps/modules/data.js' );
+		wp_enqueue_script( 'highmaps-module-exporting', '//code.highcharts.com/maps/modules/exporting.js' );
+		wp_enqueue_script( 'highmaps-module-offline-exporting', '//code.highcharts.com/maps/modules/offline-exporting.js' );
+		wp_enqueue_script( 'highmaps-mapdata', '//code.highcharts.com/mapdata/countries/us/us-all.js' );
+		wp_enqueue_script( 'highcharts-patternfill', '//highcharts.github.io/pattern-fill/pattern-fill.js' );
 
 		# Theme's frontend JS package
 		wp_enqueue_script(
@@ -603,6 +608,16 @@ class Hooks {
 				'target' => '.js-quick-exit-modal',
 				'id'     => 'js-quick-exit-modal',
 				'class'  => array( 'quick-exit-modal', 'js-quick-exit-modal' ),
+			)
+		) )->render();
+
+		// Quick Exit Modal
+		echo ( new \TrevorWP\Theme\Helper\Modal(
+			Options_Page\Promo::render(),
+			array(
+				'target' => '.promo-popup-modal',
+				'id'     => 'js-promo-popup-modal',
+				'class'  => array( 'promo-popup-modal' ),
 			)
 		) )->render();
 	}
