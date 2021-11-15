@@ -72,7 +72,7 @@ class Page_Header {
 			<div class="<?php echo esc_attr( $hero_cls ); ?>">
 				<div class="hero--inner mx-auto text-center site-content-inner items-center w-full">
 					<?php if ( ! empty( $options['title_top'] ) ) { ?>
-						<p class="col-span-full uppercase text-px16 md:text-px14 leading-px24 md:leading-px18 mb-2.5"><?php echo $options['title_top']; ?></p>
+						<p class="hero__eyebrow col-span-full uppercase text-px16 md:text-px14 leading-px24 md:leading-px18 mb-2.5"><?php echo $options['title_top']; ?></p>
 					<?php } ?>
 					<h1 class="<?php echo esc_attr( $heading_cls ); ?>"><?php echo $options['title']; ?></h1>
 					<p class="<?php echo esc_attr( $desc_cls ); ?>"><?php echo $options['desc']; ?></p>
@@ -230,8 +230,8 @@ class Page_Header {
 								Your browser does not support the video tag.
 							</video>
 							<button class="page-header__playback" aria-label="click to play background video" type="button">
-								<i class="trevor-ti-caret-down page-header__playback-icon play"></i>
-								<i class="page-header__playback-icon pause"></i>
+								<i class="trevor-ti-play page-header__playback-icon play"></i>
+								<i class="trevor-ti-pause page-header__playback-icon pause"></i>
 							</button>
 						</div>
 					<?php endif; ?>
