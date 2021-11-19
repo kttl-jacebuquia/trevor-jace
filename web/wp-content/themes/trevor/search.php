@@ -1,5 +1,8 @@
 <?php
 
+var_dump($wp_query->posts);
+
+
 use TrevorWP\Parsedown\Parsedown;
 use \TrevorWP\Theme\Customizer\Search as Page;
 use \TrevorWP\Theme\ACF\Field_Group\Featured_Card_Three_Up;
