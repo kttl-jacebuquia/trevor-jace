@@ -1,1 +1,1 @@
-<?php define( 'TREVORWP_STATIC_VERSION', '1cde7e27-4a3b-43b7-812e-8592d42a8b51' );
+<?php define( 'TREVORWP_STATIC_VERSION', '20f4efdd-92ca-4d93-8c0c-364b99f24448' );
