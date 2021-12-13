@@ -1,11 +1,11 @@
 <?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
 <!--
-2021-12-10: Created with FontForge (http://fontforge.org)
+2021-11-23: Created with FontForge (http://fontforge.org)
 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
 <metadata>
-Created by FontForge 20170812 at Fri Dec 10 05:15:13 2021
+Created by FontForge 20170812 at Tue Nov 23 11:09:03 2021
  By node
 
 </metadata>
@@ -135,9 +135,8 @@ d="M490 334c14 -25 22 -67 22 -142v0v0c0 -74 -8 -118 -22 -142c-14 -25 -28 -29 -59
 d="M512 448v-64h-512v64h512z" />
     <glyph glyph-name="plus" unicode="&#xf11e;" 
 d="M256 448c14 0 26 -12 26 -26v-204h204c14 0 26 -12 26 -26s-12 -26 -26 -26h-204v-204c0 -14 -12 -26 -26 -26s-26 12 -26 26v204h-204c-14 0 -26 12 -26 26s12 26 26 26h204v204c0 14 12 26 26 26z" />
-    <glyph glyph-name="hamburger-menu" unicode="&#xf106;" horiz-adv-x="500" 
-d="M0 425c0 10 7 17 17 17h466c10 0 17 -7 17 -17s-7 -18 -17 -18h-466c-10 0 -17 8 -17 18zM0 250c0 10 7 18 17 18h466c10 0 17 -8 17 -18s-7 -17 -17 -17h-466c-10 0 -17 7 -17 17zM0 76c0 10 7 17 17 17h466c10 0 17 -7 17 -17s-7 -18 -17 -18h-466c-10 0 -17 8 -17 18z
-" />
+    <glyph glyph-name="hamburger-menu" unicode="&#xf106;" horiz-adv-x="455" 
+d="M0 357v-17h455v17v17h-455v-17zM0 186v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17zM0 186v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17zM0 16v-17h455v17v17h-455v-17z" />
     <glyph glyph-name="arrow-right" unicode="&#xf101;" horiz-adv-x="619" 
 d="M612 204c0 -16 -11 -28 -23 -28h-566c-14 0 -23 12 -23 28s11 28 23 28h566c12 0 23 -14 23 -28zM619 206c0 -5 -2 -12 -7 -14l-228 -244c-9 -9 -26 -12 -35 -3c-12 9 -11 24 -2 33l212 230l-210 193c-9 9 -9 24 0 33s26 9 35 0l228 -209c5 -7 7 -12 7 -19z" />
     <glyph glyph-name="chevron-down" unicode="&#xf103;" horiz-adv-x="506" 
