@@ -32,6 +32,13 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 
 	const DEFAULT_NUM_DISPLAY_LIMIT = 6;
 
+	/** @inheritDoc */
+	public static function register(): bool {
+		add_filter( 'acf/fields/relationship/query/name=' . static::FIELD_PRODUCTS, array( static::class, 'relationship_query_products' ), 10, 3 );
+
+		return parent::register();
+	}
+
 	/**
 	 * @inheritDoc
 	 */
@@ -204,10 +211,13 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 								'type'  => 'text',
 							),
 							static::FIELD_TOPIC_ENTRY_DESCRIPTION => array(
-								'key'   => $topic_entry_description,
-								'name'  => static::FIELD_TOPIC_ENTRY_DESCRIPTION,
-								'label' => 'Description',
-								'type'  => 'textarea',
+								'key'          => $topic_entry_description,
+								'name'         => static::FIELD_TOPIC_ENTRY_DESCRIPTION,
+								'label'        => 'Description',
+								'type'         => 'wysiwyg',
+								'tabs'         => 'visual',
+								'toolbar'      => 'common',
+								'media_upload' => 0,
 							),
 							static::FIELD_TOPIC_ENTRY_LINK => array(
 								'key'        => $topic_entry_link,
@@ -577,7 +587,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 							</div>
 							<div class="topic-cards__accordion-content accordion-collapse">
 								<?php if ( ! empty( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ) ) : ?>
-									<p class="topic-cards__item-description"><?php echo esc_html( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ); ?></p>
+									<p class="topic-cards__item-description"><?php echo $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ]; ?></p>
 								<?php endif; ?>
 								<?php
 									echo Advanced_Link::render(
@@ -610,7 +620,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 								<?php endif; ?>
 
 								<?php if ( ! empty( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ) ) : ?>
-									<p class="topic-cards__item-description"><?php echo esc_html( $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ] ); ?></p>
+									<p class="topic-cards__item-description"><?php echo $topic[ static::FIELD_TOPIC_ENTRY_DESCRIPTION ]; ?></p>
 								<?php endif; ?>
 
 								<?php if ( ! empty( $topic[ static::FIELD_TOPIC_ENTRY_LINK ]['label'] ) ) : ?>
@@ -641,9 +651,11 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 								<i class="trevor-ti-arrow-right"></i>
 							</button>
 						</div>
-						<div class="swiper-pagination"></div>
 					<?php endif; ?>
 				</div>
+				<?php if ( 'carousel' === $layout ) : ?>
+				<div class="swiper-pagination"></div>
+				<?php endif; ?>
 			<?php endif; ?>
 		<?php
 		return ob_get_clean();
@@ -690,6 +702,34 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 		);
 
 		return $data;
+	}
+
+	/**
+	 * Remove Products that are inactive
+	 */
+	public static function relationship_query_products( $args, $field, $post_id ) {
+		if ( $field && ! empty( $field['key'] ) && static::gen_field_key( static::FIELD_PRODUCTS ) === $field['key'] ) {
+			$current_date = current_datetime();
+			$current_date = wp_date( 'Ymd', $current_date->date, $current_date->timezone );
+
+			$args['meta_query'] = array(
+				'relation' => 'AND',
+				array(
+					'key' => Product::FIELD_PRODUCT_START_DATE,
+					'value' => $current_date,
+					'compare' => '<=',
+					'type' => 'DATE',
+				),
+				array(
+					'key' => Product::FIELD_PRODUCT_END_DATE,
+					'value' => $current_date,
+					'compare' => '>=',
+					'type' => 'DATE',
+				),
+			);
+		}
+
+		return $args;
 	}
 
 	/**
