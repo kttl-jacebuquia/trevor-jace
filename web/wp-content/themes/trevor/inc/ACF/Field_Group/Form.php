@@ -104,7 +104,19 @@ class Form extends A_Field_Group {
 		$description = $val->get( static::FIELD_DESCRIPTION );
 
 		// Get FormAssembly form using shortcode
-		$form_assembly_form = static::render_form( $form_id, $server_url );
+		$form_assembly_form = do_shortcode( "[formassembly formid={$form_id} server=\"{$server_url}\"]" );
+
+		// Remove embedded styles and extra gtm scripts
+		$pattern            = implode(
+			'|',
+			array(
+				'<style[^>]*>[^<]*<\/style>',
+				'<link[^>]*theme-51\.css[^>]*>',
+				'style="[^"]*"',
+				'[^>]+GTM-[a-z\d]+[^<]+',
+			),
+		);
+		$form_assembly_form = preg_replace( "/{$pattern}/i", '', $form_assembly_form );
 
 		ob_start();
 		?>
@@ -123,25 +135,6 @@ class Form extends A_Field_Group {
 			</div>
 		<?php
 		return ob_get_clean();
-	}
-
-	public static function render_form( $form_id, $server_url ) {
-		// Get FormAssembly form using shortcode
-		$form_assembly_form = do_shortcode( "[formassembly formid={$form_id} server=\"{$server_url}\"]" );
-
-		// Remove embedded styles and extra gtm scripts
-		$pattern            = implode(
-			'|',
-			array(
-				'<style[^>]*>[^<]*<\/style>',
-				'<link[^>]*theme-51\.css[^>]*>',
-				'style="[^"]*"',
-				'[^>]+GTM-[a-z\d]+[^<]+',
-			),
-		);
-		$form_assembly_form = preg_replace( "/{$pattern}/i", '', $form_assembly_form );
-
-		return $form_assembly_form;
 	}
 
 	public static function gen_modal_id( $id = null ) {

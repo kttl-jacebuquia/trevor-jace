@@ -1,6 +1,7 @@
 <?php namespace TrevorWP\CPT\RC;
 
 use Solarium\QueryType\Update\Query\Document\Document as SolariumDocument;
+use TrevorWP\Block\Glossary_Entry;
 use TrevorWP\Main;
 use TrevorWP\Theme\Util\Is;
 use TrevorWP\Util\Log;
@@ -92,6 +93,7 @@ abstract class RC_Object {
 		add_filter( 'posts_request', array( self::class, 'posts_request' ), 8 /* Must be lower than the Solr's hook */, 2 );
 		add_filter( 'body_class', array( self::class, 'body_class' ), 10, 1 );
 		add_filter( 'solr_build_document', array( self::class, 'solr_build_document' ), 10, 2 );
+		add_filter( 'the_posts', array( self::class, 'the_posts' ), 12 /* Must be higher than the Solr's hook */, 2 );
 	}
 
 	/**
@@ -604,7 +606,7 @@ abstract class RC_Object {
 		/* We need to modify the post_type qv right this time and just before the solr */
 		$is_rc_lp = ! empty( $query->get( self::QV_RESOURCES_LP ) );
 		if ( $is_rc_lp && $query->is_search() ) {
-			$query->set( 'post_type', array_merge( self::$PUBLIC_POST_TYPES, array( Glossary::POST_TYPE ) ) );
+			$query->set( 'post_type', array_merge( self::$PUBLIC_POST_TYPES, array( Glossary_Entry::POST_TYPE ) ) );
 			$query->set( 'post_status', 'publish' );
 		}
 
@@ -622,7 +624,7 @@ abstract class RC_Object {
 			return $base;
 		}
 
-		return $base . '?s=' . urlencode( $term );
+		return $base . '?' . http_build_query( array( 's' => $term ) );
 	}
 
 	/**
@@ -665,89 +667,42 @@ abstract class RC_Object {
 	}
 
 	/**
-	 * Check if the search query have glossaries.
+	 * Filters the array of retrieved posts after they’ve been fetched and internally processed.
 	 *
-	 * @param string $search
-	 * @return array
+	 * @param \WP_Post[] $posts
+	 * @param \WP_Query $query
+	 *
+	 * @return \WP_Post[]
+	 *
+	 * @link https://developer.wordpress.org/reference/hooks/the_posts/
+	 * @see solr_build_document()
+	 * @see \SolrPower_WP_Query::the_posts()
+	 * @see \SolrPower_WP_Query::setup()
 	 */
-	public static function find_glossaries( $search ) {
-		if ( empty( $search ) ) {
-			return false;
+	public static function the_posts( array $posts, \WP_Query $query ): array {
+
+		if ( Is::rc() && $query->is_search() ) {
+			$glossary_key = null;
+			foreach ( $posts as $key => $post ) {
+				if ( $post->post_type == Glossary::POST_TYPE ) {
+					$post->post_content = @$post->post_content_t;
+					$post->post_excerpt = @$post->post_excerpt_t;
+
+					// Get key of first glossary item in posts.
+					if ( is_null( $glossary_key ) ) {
+						$glossary_key = $key;
+					}
+				}
+			}
+
+			if ( ! is_null( $glossary_key ) && $glossary_key > 0 ) {
+				// Take first glossary item then prepend it to posts.
+				$glossary = $posts[ $glossary_key ];
+				unset( $posts[ $glossary_key ] );
+				array_unshift( $posts, $glossary );
+			}
 		}
 
-		$q = new \WP_Query(
-			array(
-				's'              => strtolower( str_replace( ' ', '', $search ) ),
-				'post_type'      => CPT\RC\Glossary::POST_TYPE,
-				'posts_per_page' => -1,
-				'post_status'    => 'publish',
-			)
-		);
-
-		if ( ! $q->have_posts() ) {
-			$q = new \WP_Query(
-				array(
-					's'              => strtolower( $search ),
-					'post_type'      => CPT\RC\Glossary::POST_TYPE,
-					'posts_per_page' => -1,
-					'post_status'    => 'publish',
-				)
-			);
-		}
-
-		return $q->have_posts()
-				? $q->posts
-				: null;
-	}
-
-	public static function filter_results( $glossaries ) {
-		$posts = array_merge( $glossaries, self::get_all_posts() );
-
-		$page       = ! empty( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-		$pagination = Resource_Center::get_pagination();
-
-		$total = count( $posts );
-		$limit = $pagination['search_results'];
-
-		$totalPages = ceil( $total / $limit );
-
-		$page = max( $page, 1 );
-		$page = min( $page, $totalPages );
-
-		$offset = ( $page - 1 ) * $limit;
-
-		if ( $offset < 0 ) {
-			$offset = 0;
-		}
-
-		$posts = array_slice( $posts, $offset, $limit );
-
-		return array(
-			'posts'      => $posts,
-			'pagination' => array(
-				'total'       => $total,
-				'total_pages' => $totalPages,
-				'limit'       => $limit,
-				'page'        => $page,
-			),
-		);
-
-	}
-
-	public static function get_all_posts() {
-		$q = new \WP_Query(
-			array(
-				's'              => strtolower( trim( get_search_query( false ) ) ),
-				'post_type'      => self::$PUBLIC_POST_TYPES,
-				'posts_per_page' => -1,
-				'post_status'    => 'publish',
-				'order'          => 'DESC',
-				'orderby'        => 'date',
-			)
-		);
-
-		return $q->have_posts()
-				? $q->posts
-				: array();
+		return $posts;
 	}
 }

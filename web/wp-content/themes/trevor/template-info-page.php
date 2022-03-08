@@ -6,7 +6,7 @@ Template Name: Info Page Template
 
 <?php get_header(); ?>
 
-<main role="main" class="site-content bg-white" tabindex="0" id="site-content">
+<main id="site-content" role="main" class="site-content">
 	<div class="site-content-inner">
 		<div class="info-page-wrap">
 			<h1 class="info-page-heading"><?php the_title(); ?></h1>

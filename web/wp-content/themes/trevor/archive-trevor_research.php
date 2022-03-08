@@ -37,7 +37,7 @@ $container_attrs['class'] = implode(
 );
 ?>
 
-<main role="main" class="bg-white" tabindex="0" id="site-content">
+<main id="site-content" role="main" class="bg-white">
 	<div <?php echo DOM_Attr::render_attrs_of( $container_attrs ); ?>>
 		<?php # Top Content ?>
 		<?php if ( ! empty( $content_top ) ) { ?>

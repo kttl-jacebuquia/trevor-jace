@@ -248,14 +248,9 @@ class Carousel {
 									<div class="img-wrap">
 										<?php echo wp_get_attachment_image( $entry['img']['id'], 'large' ); ?>
 									</div>
-									<?php if ( ! empty( $entry['caption'] ) || ! empty( $entry['subtitle'] ) ) { ?>
+									<?php if ( ! empty( $entry['caption'] ) ) { ?>
 										<figcaption>
-											<div>
-												<?php echo $entry['caption']; ?>
-											</div>
-											<div>
-												<?php echo $entry['subtitle']; ?>
-											</div>
+											<?php echo $entry['caption']; ?>
 											<?php if ( ! empty( $entry['cta_txt'] ) && ! empty( $entry['cta_url'] ) ) : ?>
 												<a href="<?php echo $entry['cta_url']; ?>"><?php echo $entry['cta_txt']; ?></a>
 											<?php endif; ?>

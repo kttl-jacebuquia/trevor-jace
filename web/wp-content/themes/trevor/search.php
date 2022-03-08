@@ -9,19 +9,19 @@ $search_data = \TrevorWP\Theme\ACF\Options_Page\Search::get_search();
 
 $glossary_item = Page::get_glossary_item();
 
-$posts         = array();
-$pagination    = array();
-$total_results = 0;
+$posts         = $wp_query->posts;
+$total_results = $wp_query->found_posts;
 
-$search_results = Search::paginate_search_results();
-if ( ! empty( $search_results['posts'] ) ) {
-	$posts         = $search_results['posts'];
-	$pagination    = $search_results['pagination'];
-	$total_results = $search_results['pagination']['total'];
+if ( empty( get_query_var( Search::QV_SEARCH_SCOPE ) ) ) {
+	$search_results = Search::paginate_search_results();
+	if ( ! empty( $search_results ) ) {
+		$posts         = $search_results['posts'];
+		$total_results = $search_results['total'];
+	}
 }
 ?>
 <?php get_header(); ?>
-	<main role="main" tabindex="0" id="site-content">
+	<main id="site-content" role="main">
 		<?php // TODO: Add header ?>
 		<div class="bg-gray-light">
 			<div class="container mx-auto text-center text-indigo py-20">
@@ -60,7 +60,7 @@ if ( ! empty( $search_results['posts'] ) ) {
 						</div>
 
 						<div class="trevor-pagination-default">
-							<?php get_template_part( 'template-parts/pagination', '', $pagination ); ?>
+							<?php get_template_part( 'template-parts/pagination' ); ?>
 						</div>
 					<?php else : ?>
 						<div class="container pt-px60 pb-px110 md:pt-px80 text-center text-indigo">
