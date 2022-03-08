@@ -26,7 +26,7 @@ class Breathing_Exercise {
 
 	static public function render_overlay_contents(): void {
 		ob_start(); ?>
-		<div class="breathing-exercise-overlay" tabindex="0" aria-role="dialog" title="Breathing Exercise">
+		<div class="breathing-exercise-overlay" tabindex="0" role="dialog" title="Breathing Exercise">
 			<div class="breathing-exercise-overlay__container">
 				<div class="breathing-exercise-overlay__content content">
 					<div class="countdown">
@@ -34,7 +34,7 @@ class Breathing_Exercise {
 						<p class="countdown__number">5</p>
 						<button class="countdown__skip">Skip</button>
 					</div>
-					<div class="step-one">
+					<div class="step-one" tabindex="0" aria-label="step one">
 						<div class="step-one__content">
 							<h2 class="step-one__heading breathing-exercise-overlay__heading">1-Minute<br>Breathing Exercise</h2>
 							<p class="step-one__description">Start by following your breath as it moves in through your nose and out through your mouth.</p>
@@ -49,17 +49,17 @@ class Breathing_Exercise {
 							<button class="step-one__cta start">Start</button>
 						</div>
 					</div>
-					<div class="breathing">
+					<div class="breathing" tabindex="0">
 						<div class="breathing__content">
 							<div class="breathing__blob-container">
 								<canvas id="blob" class="canvas-blob small"></canvas>
 							</div>
 							<div class="copy-wrapper">
-								<span class="breathing-exercise-overlay__heading rotate-copy">Let's begin</span>
+								<span class="breathing-exercise-overlay__heading rotate-copy" aria-live="assertive">Let's begin</span>
 							</div>
 						</div>
 					</div>
-					<div class="breathing-end">
+					<div class="breathing-end" tabindex="0">
 						<div class="breathing-end__content">
 							<p class="breathing-end__heading breathing-exercise-overlay__heading">If you're still feeling distracted or tense, go ahead and try the exercise again</p>
 							<div class="breathing-end__icon">
@@ -77,7 +77,7 @@ class Breathing_Exercise {
 				</div>
 			</div>
 
-			<button class="breathing-exercise-overlay__close trevor-ti-close"></button>
+			<button class="breathing-exercise-overlay__close trevor-ti-close" aria-label="click here to close the breathing excercise popup"></button>
 		</div>
 		<?php
 		echo ob_get_clean();

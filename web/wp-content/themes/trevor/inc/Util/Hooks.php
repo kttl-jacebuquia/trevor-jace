@@ -61,6 +61,9 @@ class Hooks {
 		add_filter( 'nav_menu_link_attributes', array( self::class, 'nav_menu_link_attributes' ), 10, 2 );
 		add_filter( 'nav_menu_item_title', array( self::class, 'nav_menu_item_title' ), 10, 4 );
 
+		# Search Link
+		add_filter( 'search_link', array( self::class, 'sitewide_search_link' ) );
+
 		# Admin Bar
 		add_action( 'admin_bar_init', array( self::class, 'admin_bar_init' ), 10, 0 );
 
@@ -506,7 +509,7 @@ class Hooks {
 	/**
 	 * Filters a menu item’s title.
 	 *
-	 * @param string $title The menu item's title.
+	 * @param string $item_title The menu item's title.
 	 * @param \WP_Post $item The current menu item.
 	 * @param \stdClass $args An object of wp_nav_menu() arguments.
 	 * @param int $depth Depth of menu item. Used for padding.
@@ -515,13 +518,17 @@ class Hooks {
 	 *
 	 * @link https://developer.wordpress.org/reference/hooks/nav_menu_item_title/
 	 */
-	public static function nav_menu_item_title( string $title, \WP_Post $item, \stdClass $args, int $depth ): string {
-		$title = "<div class='menu-link-text'><span class='title-wrap'>{$title}</span>";
+	public static function nav_menu_item_title( string $item_title, \WP_Post $item, \stdClass $args, int $depth ): string {
+		$is_burger_nav_link = preg_match( '/^burger-menu-/i', $args->menu_id );
+		$subtitle           = get_post_meta( $item->ID, Meta::KEY_MENU_ITEM_SUBTITLE, true );
+		$with_chevron       = $is_burger_nav_link && ( 0 === $depth || ( 1 === $depth && ! empty( $subtitle ) ) );
+
+		$title  = "<div class='menu-link-text'><span class='title-wrap'>";
+		$title .= $item_title . ( $with_chevron ? '<span class="burger-nav-link-icon trevor-ti-chevron-thick-right" aria-hidden="true"></span>' : '' );
+		$title .= '</span>';
 		if ( 0 === $depth ) {
 			$title .= '<span class="submenu-icon trevor-ti-caret-down"></span>';
 		} elseif ( 1 === $depth ) {
-			$subtitle = get_post_meta( $item->ID, Meta::KEY_MENU_ITEM_SUBTITLE, true );
-
 			if ( ! empty( $subtitle ) ) {
 				$title .= '<div class="subtitle">' . esc_html( $subtitle ) . '</div>';
 			}
@@ -953,6 +960,22 @@ class Hooks {
 			$atts['class'] = 'tcb-link';
 		}
 
+		if ( empty( $item->menu_item_parent ) ) {
+			// Primary menu labels.
+			$atts['aria-label'] = 'Click to get to ' . $item->post_title;
+		} else {
+			// Secondary menu links.
+			if ( 'custom' === $item->object ) {
+				if ( ! empty( $item->post_title ) ) {
+					$atts['aria-label'] = 'Click to ' . $item->post_title;
+				}
+			} else {
+				if ( ! empty( $item->post_title ) || ! empty( $item->title ) ) {
+					$atts['aria-label'] = 'Click to get to ' . ( $item->post_title ? $item->post_title : $item->title );
+				}
+			}
+		}
+
 		return $atts;
 	}
 
@@ -1027,5 +1050,10 @@ class Hooks {
 		$toolbars['Bullink'][1] = array( 'bullist', 'link' );
 
 		return $toolbars;
+	}
+
+	public static function sitewide_search_link() : string {
+		$search = get_search_query();
+		return '/search?s=' . $search;
 	}
 }

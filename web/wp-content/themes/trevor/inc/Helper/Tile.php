@@ -22,8 +22,9 @@ class Tile {
 	 *
 	 * @return string
 	 */
-	public static function post( \WP_Post $post, $key, array $options = array() ): string {
+	public static function post( \WP_Post $post, $key, array $options = array(), bool $as_array = false ) {
 		$attachment_id = '';
+		$footer_html   = '';
 
 		if ( CPT\Donate\Partner_Prod::POST_TYPE === $post->post_type ) {
 			$attachment    = Product::get_val( Product::FIELD_PRODUCT_IMAGE, $post->ID );
@@ -91,31 +92,26 @@ class Tile {
 			$id                 = uniqid( 'post-' );
 			$options['id']      = $id;
 			$options['class'][] = 'bill-letter-card';
-
-			add_action(
-				'wp_footer',
-				function () use ( $id, $post ) {
-					echo ( new \TrevorWP\Theme\Helper\Modal(
-						CPT\Get_Involved\Bill::render_modal( $post ),
-						array(
-							'target' => "#{$id} a",
-							'id'     => "{$id}-content",
-							'class'  => array( 'bill-modal' ),
-						)
-					) )->render();
-					?>
+			$footer_html = ( new \TrevorWP\Theme\Helper\Modal(
+				CPT\Get_Involved\Bill::render_modal( $post ),
+				array(
+					'target' => "#{$id} a",
+					'id'     => "{$id}-content",
+					'class'  => array( 'bill-modal' ),
+				)
+			) )->render();
+			ob_start();
+			?>
 				<script>jQuery(function () {
-						trevorWP.features.sharingMore(
-								document.querySelector('#<?php echo $id; ?>-content .post-share-more-btn'),
-								document.querySelector('#<?php echo $id; ?>-content .post-share-more-content'),
-								{appendTo: document.querySelector('#<?php echo $id; ?>-content')}
+					trevorWP.features.sharingMore(
+							document.querySelector('#<?php echo $id; ?>-content .post-share-more-btn'),
+							document.querySelector('#<?php echo $id; ?>-content .post-share-more-content'),
+							{appendTo: document.querySelector('#<?php echo $id; ?>-content')}
 						);
-					})</script>
-					<?php
-				},
-				10,
-				0
-			);
+					});
+				</script>
+			<?php
+			$footer_html .= ob_get_clean();
 		}
 
 		if ( CPT\Research::POST_TYPE === $post->post_type ) {
@@ -124,7 +120,22 @@ class Tile {
 			$data['desc']       = $formatted_date . ' ' . $data['desc'];
 			$options['class'][] = 'research-card';
 		}
-		return self::custom( $data, $key, $options );
+
+		$card_html = self::custom( $data, $key, $options );
+
+		if ( $as_array ) {
+			return compact( 'card_html', 'footer_html' );
+		} else {
+			add_action(
+				'wp_footer',
+				function () use ( $footer_html ) {
+					echo $footer_html;
+				},
+				10,
+				0
+			);
+			return $card_html;
+		}
 	}
 
 	/**
@@ -203,6 +214,9 @@ class Tile {
 			$options
 		);
 
+		# Aria-label. Change according to post type
+		$link_aria_label = "click to read more about {$data['title']}";
+
 		# class
 		$cls = array( 'tile', 'relative' );
 		if ( ! empty( $options['class'] ) ) {
@@ -228,11 +242,24 @@ class Tile {
 		$attr['data-post']      = $data['id'];
 		$attr['data-post-type'] = $data['post_type'];
 
+		// Aria-label according to post_type
+		switch ( $data['post_type'] ) {
+			case 'trevor_prtnr_prod':
+				$link_aria_label = "click to check out {$data['title']}";
+				break;
+			case 'trevor_gi_bill':
+				$link_aria_label = "click here to read the bill {$data['title']}";
+				break;
+			case 'trevor_gi_letter':
+				$link_aria_label = "click here to read the letter {$data['title']}";
+				break;
+		}
+
 		ob_start();
 		?>
 		<div <?php echo Tools::flat_attr( $attr ); ?>>
 			<?php if ( in_array( 'clickable-card', $cls, true ) ) { ?>
-				<a href="<?php echo $data['cta_url']; ?>" class="card-link">&nbsp;</a>
+				<a aria-hidden="true" tabindex="-1" href="<?php echo $data['cta_url']; ?>" class="card-link">&nbsp;</a>
 			<?php } ?>
 
 			<?php if ( 'product' === $options['card_type'] && ! empty( $data['img'] ) ) { ?>
@@ -252,7 +279,10 @@ class Tile {
 
 				<?php if ( ! empty( $data['cta_txt'] ) ) { ?>
 					<div class="tile-cta-wrap">
-						<a href="<?php echo $data['cta_url']; ?>" class="<?php echo $cta_cls; ?>">
+						<a
+							href="<?php echo $data['cta_url']; ?>"
+							class="<?php echo $cta_cls; ?>"
+							aria-label="<?php echo $link_aria_label; ?>">
 							<span><?php echo $data['cta_txt']; ?></span>
 						</a>
 					</div>
@@ -270,7 +300,7 @@ class Tile {
 	 *
 	 * @return string
 	 */
-	public static function staff( \WP_Post $post, int $key, array $options = array() ) :string {
+	public static function staff( \WP_Post $post, int $key, array $options = array(), bool $as_array = false ) :string {
 		$_class                   = array( 'tile-staff', 'relative', 'shadow-darkGreen', 'overflow-hidden' );
 		$post                     = get_post( $post );
 		$name                     = get_the_title( $post );
@@ -290,7 +320,15 @@ class Tile {
 		);
 
 		$thumbnail                = Thumbnail::post( $post, ...$thumbnail_variants );
-		$modal_thumbnail          = Thumbnail::post( $post, ...$modal_thumbnail_variants );
+		$modal_thumbnail_images   = Thumbnail::get_post_imgs( $post->ID, ...$modal_thumbnail_variants );
+		$modal_thumbnail_alt      = 'Image of ' . $post->post_title;
+		$modal_thumbnail          = Thumbnail::render_img_variants(
+			$modal_thumbnail_images,
+			array(
+				'alt' => $modal_thumbnail_alt,
+			)
+		);
+		$modal_thumbnail          = implode( "\n", wp_list_pluck( $modal_thumbnail, 0 ) );
 		$is_placeholder_thumbnail = false;
 
 		$options = array_merge(
@@ -327,32 +365,21 @@ class Tile {
 			$_class[] = 'hidden';
 		}
 
-		/**
-		 * @todo: use AJAX
-		 */
-		$id = \uniqid( 'team-member-' );
-		add_action(
-			'wp_footer',
-			function () use ( $id, $post, $modal_thumbnail, $is_placeholder_thumbnail ) {
-
-				echo ( new \TrevorWP\Theme\Helper\Modal(
-					CPT\Team::render_modal(
-						$post,
-						array(
-							'thumbnail'                => $modal_thumbnail,
-							'is_placeholder_thumbnail' => $is_placeholder_thumbnail,
-						)
-					),
-					array(
-						'target' => "#{$id} a",
-						'id'     => "{$id}-content",
-						'class'  => array( 'team' ),
-					)
-				) )->render();
-			},
-			10,
-			0
-		);
+		$id          = \uniqid( 'team-member-' );
+		$footer_html = ( new \TrevorWP\Theme\Helper\Modal(
+			CPT\Team::render_modal(
+				$post,
+				array(
+					'thumbnail'                => $modal_thumbnail,
+					'is_placeholder_thumbnail' => $is_placeholder_thumbnail,
+				)
+			),
+			array(
+				'target' => "#{$id} a",
+				'id'     => "{$id}-content",
+				'class'  => array( 'team' ),
+			)
+		) )->render();
 
 		$attr          = (array) $options['attr'];
 		$attr['class'] = implode( ' ', $_class );
@@ -392,7 +419,22 @@ class Tile {
 			</a>
 		</article>
 		<?php
-		return ob_get_clean();
+		$card_html = ob_get_clean();
+
+		if ( $as_array ) {
+			return compact( 'card_html', 'footer_html' );
+		} else {
+			add_action(
+				'wp_footer',
+				function () use ( $footer_html ) {
+					echo $footer_html;
+				},
+				10,
+				0
+			);
+
+			return $card_html;
+		}
 	}
 
 	/**

@@ -6,7 +6,7 @@ use TrevorWP\CPT;
 use TrevorWP\CPT\RC\RC_Object;
 use TrevorWP\Meta\Post as PostMeta;
 use TrevorWP\Theme\ACF\Field_Group\A_Field_Group;
-use TrevorWP\Theme\ACF\Util\Field_Val_Getter;
+use TrevorWP\Util\Tools;
 
 class Card {
 	public static function post( $post, $key = 0, array $options = array() ): string {
@@ -24,8 +24,9 @@ class Card {
 			),
 			$options
 		);
-		$post_type = get_post_type( $post );
-		$_class    = &$options['class'];
+		$post_type          = get_post_type( $post );
+		$tags_use_rc_search = 'post' !== $post_type;
+		$_class             = &$options['class'];
 
 		// Double check hide_cat_eyebrow settings
 		if ( empty( $options['hide_cat_eyebrow'] ) ) {
@@ -45,8 +46,8 @@ class Card {
 		// Determine the type.
 		if ( CPT\RC\Glossary::POST_TYPE === $post_type ) {
 			$title_top                   = 'Glossary';
-			$title_btm                   = $post->post_excerpt;
-			$desc                        = $post->post_content;
+			$title_btm                   = $post->post_excerpt_t ?: $post->post_excerpt;
+			$desc                        = $post->post_content_t ?: $post->post_content;
 			$title_link                  = false;
 			$options['hide_cat_eyebrow'] = false;
 		} elseif ( CPT\RC\External::POST_TYPE === $post_type ) {
@@ -122,9 +123,7 @@ class Card {
 			$_class[] = 'no-excerpt';
 		}
 
-		$title         = get_the_title( $post );
-		$wrapped_title = static::_wrap_words( $title );
-		$desc_wrapped  = ! empty( $desc ) ? static::_wrap_words( $desc ) : '';
+		$title = get_the_title( $post );
 
 		$attrs = array(
 			'data-post-type' => $post_type,
@@ -168,10 +167,10 @@ class Card {
 					<h3 class="post-title font-semibold text-px24 leading-px28">
 						<?php if ( $title_link ) { ?>
 							<a href="<?php echo get_the_permalink( $post ); ?>" class="stretched-link">
-								<?php echo $wrapped_title; ?>
+								<?php echo $title; ?>
 							</a>
 						<?php } else { ?>
-							<?php echo $wrapped_title; ?>
+							<?php echo $title; ?>
 						<?php } ?>
 					</h3>
 
@@ -180,16 +179,16 @@ class Card {
 					<?php } ?>
 
 					<?php if ( ! empty( $desc ) ) { ?>
-						<div class="post-desc" aria-label="<?php echo $desc; ?>"><span aria-hidden="true"><?php echo $desc_wrapped; /* Sanitized above */ ?></span></div>
+						<div class="post-desc"><?php echo $desc; ?></div>
 					<?php } ?>
 				</div>
 
 				<?php if ( ! empty( $tags ) ) { ?>
-					<aside class="tags-box" data-title="<?php echo esc_attr( $title ); ?>" aria-label="tags for <?php echo esc_attr( $title ); ?>">
+					<aside class="tags-box" title="tags for - <?php echo $title_top; ?> - <?php echo esc_attr( $title ); ?>" data-title="<?php echo esc_attr( $title ); ?>" aria-label="tags for <?php echo esc_attr( $title ); ?>">
 						<div class="tags-box__contents">
 							<?php foreach ( $tags as $tag ) { ?>
 								<a
-									href="<?php echo esc_url( RC_Object::get_search_url( $tag->name ) ); ?>"
+									href="<?php echo esc_url( Tools::get_search_url( $tag->name, $tags_use_rc_search ) ); ?>"
 									class="tag-box"
 									aria-label="<?php echo $tag->name; ?> tag. Click here to view content under <?php echo $tag->name; ?> tag">
 										<span><?php echo $tag->name; ?></span>

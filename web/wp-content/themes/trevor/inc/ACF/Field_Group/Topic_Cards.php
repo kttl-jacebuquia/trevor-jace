@@ -378,6 +378,8 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 			'class' => 'topic-cards bg-' . $bg_color . ' ' . 'text-' . $text_color,
 		);
 
+		$will_render_accordion = false;
+
 		if ( 'carousel' === $layout ) {
 			$attr['class'] .= ' topic-cards--carousel';
 		}
@@ -402,6 +404,57 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 			}
 		}
 
+		// Get rendered contents first
+		ob_start();
+
+		switch ( $entries_source ) {
+			case 'products':
+				$posts = static::get_val( static::FIELD_PRODUCTS );
+				$order = static::get_val( static::FIELD_ORDER );
+
+				if ( 'alphabetical' === $order && ! empty( $posts ) ) {
+					usort(
+						$posts,
+						function ( $a, $b ) {
+							return strcmp( $a->post_title, $b->post_title );
+						}
+					);
+				}
+				echo static::render_posts( $posts );
+				break;
+			case 'partners':
+				$posts = static::get_val( static::FIELD_PRODUCT_PARTNERS );
+				echo static::render_posts( $posts );
+				break;
+			case 'bills':
+				$posts = static::get_val( static::FIELD_BILLS );
+				echo static::render_posts( $posts );
+				break;
+			case 'letters':
+				$posts = static::get_val( static::FIELD_LETTERS );
+				echo static::render_posts( $posts );
+				break;
+			case 'research_briefs':
+				$posts = static::get_latest_research_briefs();
+				echo static::render_posts( $posts );
+				break;
+			default:
+				list(
+					$content,
+					$will_render_accordion,
+				) = static::render_entries();
+				echo $content;
+				break;
+		}
+
+		// Save contents for later rendering
+		$contents = ob_get_clean();
+
+		if ( $will_render_accordion ) {
+			$attr['class'] .= ' topic-cards--mobile-drawer';
+		}
+
+		// Render whole component
 		ob_start();
 		?>
 		<div <?php echo Tools::flat_attr( $attr ); ?>>
@@ -413,44 +466,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 					<p class="topic-cards__description"><?php echo esc_html( $description ); ?></p>
 				<?php endif; ?>
 
-				<?php
-				switch ( $entries_source ) {
-					case 'products':
-						$posts = static::get_val( static::FIELD_PRODUCTS );
-						$order = static::get_val( static::FIELD_ORDER );
-
-						if ( 'alphabetical' === $order && ! empty( $posts ) ) {
-							usort(
-								$posts,
-								function ( $a, $b ) {
-									return strcmp( $a->post_title, $b->post_title );
-								}
-							);
-						}
-
-						echo static::render_posts( $posts );
-						break;
-					case 'partners':
-						$posts = static::get_val( static::FIELD_PRODUCT_PARTNERS );
-						echo static::render_posts( $posts );
-						break;
-					case 'bills':
-						$posts = static::get_val( static::FIELD_BILLS );
-						echo static::render_posts( $posts );
-						break;
-					case 'letters':
-						$posts = static::get_val( static::FIELD_LETTERS );
-						echo static::render_posts( $posts );
-						break;
-					case 'research_briefs':
-						$posts = static::get_latest_research_briefs();
-						echo static::render_posts( $posts );
-						break;
-					default:
-						echo static::render_entries();
-						break;
-				}
-				?>
+				<?php echo $contents; ?>
 
 				<?php if ( ! empty( $button_link ) && '' !== $button_link['label'] && '' !== $button_link['action'] ) : ?>
 					<div class="topic-cards__block-cta-wrap">
@@ -537,11 +553,11 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 						<?php endforeach; ?>
 					</div>
 					<?php if ( 'carousel' === $layout ) : ?>
-						<?php echo static::render_carousel_pagination(); ?>
+						<?php echo static::render_carousel_navigation(); ?>
 					<?php endif; ?>
 				</div>
 				<?php if ( 'carousel' === $layout ) : ?>
-					<div class="swiper-pagination"></div>
+					<?php echo static::render_carousel_pagination(); ?>
 				<?php endif; ?>
 				<?php if ( $show_load_more && count( $posts ) > 0 ) : ?>
 					<div class="topic-cards__block-cta-wrap">
@@ -556,7 +572,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 	/**
 	 * @inheritDoc
 	 */
-	private static function render_entries(): string {
+	private static function render_entries(): array {
 		$entries       = static::get_val( static::FIELD_TOPIC_ENTRIES );
 		$topic_entries = static::filter_entries( $entries );
 		$layout        = static::get_val( static::FIELD_LAYOUT );
@@ -640,7 +656,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 											null,
 											$topic[ static::FIELD_TOPIC_ENTRY_LINK ],
 											array(
-												'class'      => array( 'topic-cards__cta wave-underline' ),
+												'class' => array( 'topic-cards__cta wave-underline' ),
 												'attributes' => array(
 													'aria-label' => 'click to learn more about ' . $topic[ static::FIELD_TOPIC_ENTRY_TITLE ],
 												),
@@ -652,15 +668,19 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 						<?php endforeach; ?>
 					</div>
 					<?php if ( 'carousel' === $layout ) : ?>
-						<?php static::render_carousel_pagination(); ?>
+						<?php echo static::render_carousel_navigation(); ?>
 					<?php endif; ?>
 				</div>
 				<?php if ( 'carousel' === $layout ) : ?>
-					<div class="swiper-pagination"></div>
+					<?php echo static::render_carousel_pagination(); ?>
 				<?php endif; ?>
 			<?php endif; ?>
 		<?php
-		return ob_get_clean();
+
+		return array(
+			ob_get_clean(),
+			$will_render_accordion,
+		);
 	}
 
 	public static function filter_entries( $entries ): array {
@@ -717,16 +737,16 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 			$args['meta_query'] = array(
 				'relation' => 'AND',
 				array(
-					'key' => Product::FIELD_PRODUCT_START_DATE,
-					'value' => $current_date,
+					'key'     => Product::FIELD_PRODUCT_START_DATE,
+					'value'   => $current_date,
 					'compare' => '<=',
-					'type' => 'DATE',
+					'type'    => 'DATE',
 				),
 				array(
-					'key' => Product::FIELD_PRODUCT_END_DATE,
-					'value' => $current_date,
+					'key'     => Product::FIELD_PRODUCT_END_DATE,
+					'value'   => $current_date,
 					'compare' => '>=',
-					'type' => 'DATE',
+					'type'    => 'DATE',
 				),
 			);
 		}
@@ -734,7 +754,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 		return $args;
 	}
 
-	public static function render_carousel_pagination() {
+	public static function render_carousel_navigation() {
 		$swiper_button_class = array( 'swiper-button' );
 
 		// mobile
@@ -749,16 +769,45 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 
 		ob_start();
 		?>
-			<div <?php echo static::render_attrs( array_merge( $swiper_button_class, array( 'swiper-button-prev' ))); ?>>
-				<button type="button" class="swiper-button-wrapper">
+			<div <?php echo static::render_attrs( array_merge( $swiper_button_class, array( 'swiper-button-prev' ) ) ); ?>>
+				<div role="button" class="swiper-button-wrapper" aria-hidden="true">
 					<i class="trevor-ti-arrow-left"></i>
-				</button>
+				</div>
 			</div>
-			<div <?php echo static::render_attrs( array_merge( $swiper_button_class, array( 'swiper-button-next' ))); ?>>
-				<button type="button" class="swiper-button-wrapper">
+			<div <?php echo static::render_attrs( array_merge( $swiper_button_class, array( 'swiper-button-next' ) ) ); ?>>
+				<div role="button" class="swiper-button-wrapper" aria-hidden="true">
 					<i class="trevor-ti-arrow-right"></i>
-				</button>
+				</div>
 			</div>
+		<?php
+		return ob_get_clean();
+	}
+
+	public static function render_carousel_pagination() {
+		$pagination_class = array( 'swiper-pagination' );
+
+		// mobile
+		if ( static::$entries_count <= 1 ) {
+			$pagination_class[] = 'hidden';
+		}
+
+		// tablet
+		if ( static::$entries_count > 2 ) {
+			$pagination_class[] = 'md:inline-flex';
+		} else {
+			$pagination_class[] = 'md:hidden';
+		}
+
+		// desktop
+		if ( static::$entries_count > 3 ) {
+			$pagination_class[] = 'lg:inline-flex';
+		} else {
+			$pagination_class[] = 'lg:hidden';
+		}
+
+		ob_start();
+		?>
+			<div class="<?php echo implode( ' ', $pagination_class ); ?>"></div>
 		<?php
 		return ob_get_clean();
 	}
