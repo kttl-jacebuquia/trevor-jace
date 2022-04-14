@@ -1,14 +1,16 @@
 /*!
+ * Platform.js <https://mths.be/platform>
+ * Copyright 2014-2016 Benjamin Tan <https://demoneaux.github.io/>
+ * Copyright 2011-2013 John-David Dalton <http://allyoucanleet.com/>
+ * Available under MIT license <https://mths.be/mit>
+ */
+
+/*!
  * weakmap-polyfill v2.0.1 - ECMAScript6 WeakMap polyfill
  * https://github.com/polygonplanet/weakmap-polyfill
  * Copyright (c) 2015-2020 Polygon Planet <polygon.planet.aqua@gmail.com>
  * @license MIT
  */
-
-/*!
-* focus-trap 6.6.0
-* @license MIT, https://github.com/focus-trap/focus-trap/blob/master/LICENSE
-*/
 
 /*! @vimeo/player v2.16.1 | (c) 2021 Vimeo | MIT License | https://github.com/vimeo/player.js */
 
