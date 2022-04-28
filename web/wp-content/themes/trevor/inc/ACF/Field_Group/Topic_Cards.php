@@ -37,6 +37,7 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 	/** @inheritDoc */
 	public static function register(): bool {
 		add_filter( 'acf/fields/relationship/query/name=' . static::FIELD_PRODUCTS, array( static::class, 'relationship_query_products' ), 10, 3 );
+		add_filter( 'acf/fields/relationship/result/name=' . static::FIELD_PRODUCTS, array( static::class, 'relationship_result_products' ), 10, 4 );
 
 		return parent::register();
 	}
@@ -543,13 +544,43 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 			}
 		}
 
+		// Additional data-attributes for debugging purposes.
+		if ( 'products' === static::get_val( static::FIELD_ENTRIES_SOURCE ) ) {
+			foreach ( $posts as $post ) {
+				$post->tile_options = array(
+					'post_data' => $post,
+					'attr'      => array(
+						'data-post-id'   => $post->ID,
+						'data-post-type' => $post->post_type,
+					),
+				);
+
+				$current_date_unix = time();
+
+				$entry_val  = new Field_Val_Getter( Product::class, $post );
+				$start_date = $entry_val->get( Product::FIELD_PRODUCT_START_DATE );
+				$end_date   = $entry_val->get( Product::FIELD_PRODUCT_END_DATE );
+				$start_unix = strtotime( $start_date );
+				$end_unix   = strtotime( $end_date );
+
+				$post->current_date_unix       = $current_date_unix;
+				$post->product_start_date_unix = $start_unix;
+				$post->product_end_date_unix   = $end_unix;
+
+				$post->tile_options['attr']['data-current-date-unix']       = $current_date_unix;
+				$post->tile_options['attr']['data-product-start-date-unix'] = $start_unix;
+				$post->tile_options['attr']['data-product-end-date-unix']   = $end_unix;
+			}
+		}
+
 		ob_start();
 		?>
 			<?php if ( ! empty( $posts ) && count( $posts ) > 0 ) : ?>
 				<div class="<?php echo $grid_class; ?>" role="list" data-post-ids="<?php echo implode( ',', $post_ids ); ?>">
 					<div class="topic-cards__swiper-wrapper swiper-wrapper" >
 						<?php foreach ( $posts as $key => $post ) : ?>
-							<?php echo Helper\Tile::post( $post, $key, $tile_options ); ?>
+
+							<?php echo Helper\Tile::post( $post, $key, array_merge( (array) $tile_options, (array) $post->tile_options ) ); ?>
 						<?php endforeach; ?>
 					</div>
 					<?php if ( 'carousel' === $layout ) : ?>
@@ -736,13 +767,6 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 			$current_date = wp_date( 'Ymd', $current_date->date, $current_date->timezone );
 
 			$args['meta_query'] = array(
-				'relation' => 'AND',
-				array(
-					'key'     => Product::FIELD_PRODUCT_START_DATE,
-					'value'   => $current_date,
-					'compare' => '<=',
-					'type'    => 'DATE',
-				),
 				array(
 					'key'     => Product::FIELD_PRODUCT_END_DATE,
 					'value'   => $current_date,
@@ -753,6 +777,29 @@ class Topic_Cards extends A_Field_Group implements I_Block, I_Renderable {
 		}
 
 		return $args;
+	}
+
+	/**
+	 * Add custom text on product results title
+	 */
+	public static function relationship_result_products( $text, $post, $field, $post_id ) {
+		$current_date = current_datetime();
+		$current_date = wp_date( 'Ymd', $current_date->date, $current_date->timezone );
+		$status       = 'Inactive';
+
+		$val        = new Field_Val_Getter( Product::class, $post );
+		$start_date = $val->get( Product::FIELD_PRODUCT_START_DATE );
+		$end_date   = $val->get( Product::FIELD_PRODUCT_END_DATE );
+
+		if ( strtotime( $current_date ) < strtotime( $start_date ) && strtotime( $current_date ) <= strtotime( $end_date ) ) {
+			$status = 'Upcoming';
+		} else if ( strtotime( $current_date ) >= strtotime( $start_date ) && strtotime( $current_date ) <= strtotime( $end_date ) ) {
+			$status = 'Active';
+		}
+
+		$text = "<em>$status | $start_date</em><br/>$text";
+
+		return $text;
 	}
 
 	public static function render_carousel_navigation() {
