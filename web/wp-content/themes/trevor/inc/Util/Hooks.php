@@ -679,19 +679,6 @@ class Hooks {
 						$updates[ 'post' === $pt ? 'posts_per_page' : 'posts_per_archive_page' ] = $per_page;
 					}
 
-					# Exclude category for blog (post)
-					$exclude_cat = A_Post_Type::get_option_for( $pt, A_Post_Type::FIELD_ARCHIVE_EXCLUDE_CAT );
-					if ( 'post' === $pt && empty( $query->get( RC_Object::QV_RESOURCES_LP ) ) && $exclude_cat ) {
-						$updates['tax_query'] = array(
-							array(
-								'taxonomy' => 'category',
-								'field'    => 'id',
-								'terms'    => $exclude_cat,
-								'operator' => 'NOT IN',
-							),
-						);
-					}
-
 					# Init Sorter
 					if ( A_Post_Type::get_option_for( $pt, A_Post_Type::FIELD_SORTER_ACTIVE ) ) {
 						new Sorter( $query, Sorter::get_options_for_date(), 'new-old' );
@@ -825,19 +812,6 @@ class Hooks {
 					'type'  => 'long_wait',
 				);
 			}
-		}
-
-		# Pride Promo Banner
-		$pride_promo_title = Site_Banners::get_option( Site_Banners::FIELD_PRIDE_PROMO_TITLE );
-
-		if ( ! empty( $pride_promo_title ) ) {
-			$banners[] = array(
-				'title'      => $pride_promo_title,
-				'link_text'  => Site_Banners::get_option( Site_Banners::FIELD_PRIDE_PROMO_LINK )[ Site_Banners::FIELD_PRIDE_PROMO_LINK_LABEL ],
-				'link_url'   => Site_Banners::get_option( Site_Banners::FIELD_PRIDE_PROMO_LINK )[ Site_Banners::FIELD_PRIDE_PROMO_LINK_URL ],
-				'type'       => 'pride_promo',
-				'exclude_in' => Site_Banners::get_option( Site_Banners::FIELD_PRIDE_PROMO_EXLUDE_POST ),
-			);
 		}
 
 		# Add their signatures

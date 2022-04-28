@@ -200,7 +200,7 @@ class Page_Header {
 	}
 
 	/**
-	 * Full Bleed Image/Video + Text Page header.
+	 * Image BG Page header.
 	 *
 	 * @param array $options
 	 *
@@ -215,10 +215,6 @@ class Page_Header {
 
 		if ( ! empty( $options['content_alignment'] ) ) {
 			$attrs['class'][] = 'content-' . $options['content_alignment'];
-
-			if ( 'center' === $options['content_alignment'] ) {
-				$attrs['class'][] = 'content-' . $options['content_size'];
-			}
 		}
 
 		$attrs['class'] = implode( ' ', $attrs['class'] );
@@ -257,27 +253,7 @@ class Page_Header {
 										)
 									),
 								)
-							);
-
-							// Render mobile image is supplied.
-							if ( ! empty( $options['image_mobile'] ) ) {
-								echo wp_get_attachment_image(
-									$options['image_mobile']['ID'],
-									'full',
-									false,
-									array(
-										'class' => implode(
-											' ',
-											array(
-												'object-center object-cover',
-												'absolute top-0 left-0 w-full h-full',
-												'md:hidden',
-											)
-										),
-									)
-								);
-							}
-
+							)
 							?>
 						</div>
 					<?php endif; ?>

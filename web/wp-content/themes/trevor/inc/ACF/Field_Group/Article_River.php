@@ -3,7 +3,6 @@
 use TrevorWP\CPT;
 use TrevorWP\CPT\RC\RC_Object;
 use TrevorWP\Ranks;
-use TrevorWP\Meta;
 use TrevorWP\Theme\Helper\Thumbnail;
 use TrevorWP\Theme\Helper\Taxonomy;
 use TrevorWP\Parsedown\Parsedown;
@@ -217,15 +216,11 @@ class Article_River extends A_Field_Group implements I_Block, I_Renderable {
 				$first_cat  = empty( $categories ) ? null : reset( $categories );
 				$title_top  = $first_cat ? $first_cat->name : null;
 				break;
-			case CPT\Post::POST_TYPE:
-				$main_category = Meta\Post::get_main_category( $post );
-
-				if ( ! empty( $main_category ) ) {
-					$title_top = $main_category->name;
-				}
+			case CPT\RC\Post::POST_TYPE:
+				$title_top = 'Blog';
 
 				break;
-			case CPT\RC\Post::POST_TYPE:
+			case CPT\Post::POST_TYPE:
 				$title_top = 'Blog';
 				break;
 		}
@@ -268,7 +263,7 @@ class Article_River extends A_Field_Group implements I_Block, I_Renderable {
 			<div class="text-content">
 				<div class="eyebrow article-river__item-eyebrow">
 					<?php if ( $options['show_taxonomy_eyebrow'] ) : ?>
-						<strong class="pr-px24"><?php echo $title_top; ?></strong>
+					<strong class="pr-px24"><?php echo $title_top; ?></strong>
 					<?php endif; ?>
 					<?php if ( in_array( $post->post_type, array( CPT\RC\Post::POST_TYPE, CPT\Post::POST_TYPE ) ) ) { ?>
 					<time
@@ -453,11 +448,7 @@ class Article_River extends A_Field_Group implements I_Block, I_Renderable {
 		$params = $request->get_params();
 
 		list( $posts ) = array_values( static::get_paged_posts( $params ) );
-		$options       = array(
-			'show_taxonomy_eyebrow' => ! key_exists( 'category', $params ),
-			'show_tags'             => ! key_exists( 'category', $params ),
-		);
-		$posts_html    = static::render_articles( $posts, $options );
+		$posts_html    = static::render_articles( $posts );
 
 		$resp = new \WP_REST_Response(
 			array(

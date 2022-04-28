@@ -11,7 +11,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 	const FIELD_TITLE_TOP         = 'title_top';
 	const FIELD_CAROUSEL          = 'carousel';
 	const FIELD_IMAGE             = 'image';
-	const FIELD_IMAGE_MOBILE      = 'image_mobile';
 	const FIELD_BG_CLR            = 'bg_clr';
 	const FIELD_TEXT_CLR          = 'text_clr';
 	const FIELD_IMAGE_ENTRIES     = 'image_entries';
@@ -21,7 +20,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 	const FIELD_THRESHOLD_MESSAGE = 'threshold_message';
 	const FIELD_BOTTOM_TEXT       = 'bottom_text';
 	const FIELD_CONTENT_ALIGNMENT = 'content_alignment';
-	const FIELD_CONTENT_SIZE      = 'content_size';
 	const FIELD_CALL_NUMBER       = 'call_number';
 	const FIELD_SMS_NUMBER        = 'sms_number';
 
@@ -33,7 +31,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 		$title_top         = static::gen_field_key( static::FIELD_TITLE_TOP );
 		$carousel          = static::gen_field_key( static::FIELD_CAROUSEL );
 		$image             = static::gen_field_key( static::FIELD_IMAGE );
-		$image_mobile      = static::gen_field_key( static::FIELD_IMAGE_MOBILE );
 		$text_clr          = static::gen_field_key( static::FIELD_TEXT_CLR );
 		$bg_clr            = static::gen_field_key( static::FIELD_BG_CLR );
 		$image_entries     = static::gen_field_key( static::FIELD_IMAGE_ENTRIES );
@@ -43,7 +40,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 		$threshold_message = static::gen_field_key( static::FIELD_THRESHOLD_MESSAGE );
 		$bottom_text       = static::gen_field_key( static::FIELD_BOTTOM_TEXT );
 		$content_alignment = static::gen_field_key( static::FIELD_CONTENT_ALIGNMENT );
-		$content_size      = static::gen_field_key( static::FIELD_CONTENT_SIZE );
 		$call_number       = static::gen_field_key( static::FIELD_CALL_NUMBER );
 		$sms_number        = static::gen_field_key( static::FIELD_SMS_NUMBER );
 
@@ -104,28 +100,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 					'layout'            => 'horizontal',
 					'return_format'     => 'value',
 					'save_other_choice' => 0,
-				),
-				static::FIELD_CONTENT_SIZE      => array(
-					'key'               => $content_size,
-					'name'              => static::FIELD_CONTENT_SIZE,
-					'label'             => 'Text Size',
-					'type'              => 'button_group',
-					'choices'           => array(
-						'normal' => 'Normal',
-						'xl'     => 'XL',
-					),
-					'allow_null'        => 0,
-					'other_choice'      => 0,
-					'default_value'     => 'normal',
-					'conditional_logic' => array(
-						array(
-							array(
-								'field'    => $content_alignment,
-								'operator' => '==',
-								'value'    => 'center',
-							),
-						),
-					),
 				),
 			),
 			static::_gen_tab_field(
@@ -316,26 +290,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 								'value'    => 'split_img',
 							),
 						),
-						array(
-							array(
-								'field'    => $type,
-								'operator' => '==',
-								'value'    => 'img_bg',
-							),
-							array(
-								'field'    => $media_type,
-								'operator' => '==',
-								'value'    => 'image',
-							),
-						),
-					),
-				),
-				static::FIELD_IMAGE_MOBILE  => array(
-					'key'               => $image_mobile,
-					'name'              => static::FIELD_IMAGE_MOBILE,
-					'label'             => 'Image (Mobile)',
-					'type'              => 'image',
-					'conditional_logic' => array(
 						array(
 							array(
 								'field'    => $type,
@@ -737,8 +691,6 @@ class Page_Header extends A_Basic_Section implements I_Renderable {
 
 			$args['media_type']        = $media_type;
 			$args['content_alignment'] = $val->get( static::FIELD_CONTENT_ALIGNMENT );
-			$args['content_size']      = $val->get( static::FIELD_CONTENT_SIZE );
-			$args['image_mobile']      = $val->get( static::FIELD_IMAGE_MOBILE );
 
 			if ( 'video' === $media_type ) {
 				$args['video'] = $val->get( static::FIELD_VIDEO );
