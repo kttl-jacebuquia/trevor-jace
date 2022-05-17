@@ -51310,9 +51310,11 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
 
         $content.removeClass('hidden').fadeIn({
           done: function done() {
-            var _ref2;
+            setTimeout(function () {
+              var _this4$modalContainer, _this4$modalContainer2;
 
-            (_ref2 = _this4.modalContainer || $content.get(0)) === null || _ref2 === void 0 ? void 0 : _ref2.focus();
+              (_this4$modalContainer = _this4.modalContainer) === null || _this4$modalContainer === void 0 ? void 0 : (_this4$modalContainer2 = _this4$modalContainer.get(0)) === null || _this4$modalContainer2 === void 0 ? void 0 : _this4$modalContainer2.focus();
+            }, 400);
           }
         });
       }
@@ -51452,9 +51454,12 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
           external_jQuery_default()(_this5.containers[latestVertex], _this5.selector).removeClass(_this5.classes);
           (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.fadeIn({
             done: function done() {
-              var _ref3, _$previousContent2;
+              setTimeout(function () {
+                var _this5$modalContainer, _this5$modalContainer2, _this5$modalContainer3;
 
-              (_ref3 = _this5.modalContainer || ((_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.get(0))) === null || _ref3 === void 0 ? void 0 : _ref3.focus();
+                (_this5$modalContainer = _this5.modalContainer) === null || _this5$modalContainer === void 0 ? void 0 : (_this5$modalContainer2 = _this5$modalContainer.get(0)) === null || _this5$modalContainer2 === void 0 ? void 0 : _this5$modalContainer2.focus();
+                console.log('previous', 'should focus', _this5.modalContainer, (_this5$modalContainer3 = _this5.modalContainer) === null || _this5$modalContainer3 === void 0 ? void 0 : _this5$modalContainer3.get(0));
+              }, 500);
             }
           });
         });
@@ -57541,7 +57546,8 @@ var $quickExitModal = external_jQuery_default()('.js-quick-exit-modal');
 var $ectMap = external_jQuery_default()('.ect-map');
 var $staffCarousel = external_jQuery_default()('.staff.is-carousel');
 var $staffGrid = external_jQuery_default()('.staff.is-grid');
-var faqTrigger = external_jQuery_default()('.faq-list__toggle'); // Tag Box Ellipsis
+var faqTrigger = external_jQuery_default()('.faq-list__toggle');
+var $siteWideSearchInput = external_jQuery_default()('.is-site-search .search-field'); // Tag Box Ellipsis
 // features.tagBoxEllipsis($('.card-post'));
 // Ajax Pagination
 
@@ -57839,6 +57845,10 @@ if ($ectMap.length) {
   $ectMap.each(function (index, element) {
     return ect_map(element);
   });
+}
+
+if ($siteWideSearchInput.length) {
+  $siteWideSearchInput.get(0).focus();
 }
 
 quick_exit.init();
