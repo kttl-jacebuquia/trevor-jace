@@ -51351,8 +51351,12 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "computeCurrentPageNumber",
     value: function computeCurrentPageNumber() {
+      var _this$paginationConta2, _this$paginationConta3;
+
       this.currentPage = 1 + this.currentVertexStack.length;
       this.currentPageContainer.html(this.currentPage);
+      (_this$paginationConta2 = this.paginationContainer) === null || _this$paginationConta2 === void 0 ? void 0 : _this$paginationConta2.attr('aria-label', "slide ".concat(this.currentPage, " of ").concat(this.totalPages));
+      (_this$paginationConta3 = this.paginationContainer) === null || _this$paginationConta3 === void 0 ? void 0 : _this$paginationConta3.html("".concat(this.currentPage, "/").concat(this.totalPages));
     }
   }, {
     key: "computeTotalPageNumber",
@@ -51367,8 +51371,6 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
         nextVertex = this.graph.get(lastItem);
         ++this.totalPages;
       }
-
-      this.totalPageContainer.html(this.totalPages);
     }
     /**
      * Clears all the radio buttons of the next content.
@@ -51455,10 +51457,9 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
           (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.fadeIn({
             done: function done() {
               setTimeout(function () {
-                var _this5$modalContainer, _this5$modalContainer2, _this5$modalContainer3;
+                var _this5$modalContainer, _this5$modalContainer2;
 
                 (_this5$modalContainer = _this5.modalContainer) === null || _this5$modalContainer === void 0 ? void 0 : (_this5$modalContainer2 = _this5$modalContainer.get(0)) === null || _this5$modalContainer2 === void 0 ? void 0 : _this5$modalContainer2.focus();
-                console.log('previous', 'should focus', _this5.modalContainer, (_this5$modalContainer3 = _this5.modalContainer) === null || _this5$modalContainer3 === void 0 ? void 0 : _this5$modalContainer3.get(0));
               }, 500);
             }
           });
