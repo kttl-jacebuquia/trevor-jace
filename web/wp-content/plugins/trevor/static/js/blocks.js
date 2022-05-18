@@ -158,8 +158,7 @@ function _inherits(subClass, superClass) {
 module.exports = wp.components;
 
 /***/ }),
-/* 9 */,
-/* 10 */
+/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -202,6 +201,7 @@ function _objectSpread2(target) {
 }
 
 /***/ }),
+/* 10 */,
 /* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1279,7 +1279,7 @@ function _objectDestructuringEmpty(obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   var collectionName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Posts';
@@ -4102,7 +4102,7 @@ var book_solid_SvgBookSolid = function SvgBookSolid(props) {
 
 /* harmony default export */ var book_solid = (book_solid_SvgBookSolid);
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-var objectSpread2 = __webpack_require__(10);
+var objectSpread2 = __webpack_require__(9);
 
 // EXTERNAL MODULE: external "jQuery"
 var external_jQuery_ = __webpack_require__(0);

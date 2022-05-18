@@ -5264,42 +5264,6 @@ module.exports = __webpack_require__(285);
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-// EXPORTS
-__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
-
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
-var arrayLikeToArray = __webpack_require__(20);
-
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
-
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
-}
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-var iterableToArray = __webpack_require__(33);
-
-// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
-var unsupportedIterableToArray = __webpack_require__(18);
-
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
-
-
-
-
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || Object(iterableToArray["a" /* default */])(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
-}
-
-/***/ }),
-/* 10 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _objectSpread2; });
 /* harmony import */ var _defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
 
@@ -5336,6 +5300,42 @@ function _objectSpread2(target) {
   }
 
   return target;
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXPORTS
+__webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
+var arrayLikeToArray = __webpack_require__(20);
+
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js
+
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr)) return Object(arrayLikeToArray["a" /* default */])(arr);
+}
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/iterableToArray.js
+var iterableToArray = __webpack_require__(33);
+
+// EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
+var unsupportedIterableToArray = __webpack_require__(18);
+
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+// CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js
+
+
+
+
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || Object(iterableToArray["a" /* default */])(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
 }
 
 /***/ }),
@@ -40313,7 +40313,7 @@ function cardToggle($btn) {
   external_jQuery_default()('.tile-desc, .tile-cta-wrap', _parent).slideToggle(slideDuration);
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-var objectSpread2 = __webpack_require__(10);
+var objectSpread2 = __webpack_require__(9);
 
 // CONCATENATED MODULE: ./node_modules/ssr-window/ssr-window.esm.js
 /**
@@ -46843,7 +46843,7 @@ function collapsible($content, options) {
   var controller = new collapsible_Collapsible($content, options);
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(9);
+var toConsumableArray = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./node_modules/swiper/esm/components/navigation/navigation.js
 function navigation_extends() {
@@ -53460,6 +53460,7 @@ recent_highlights_RecentHighlights.init();
 
 
 
+
 var article_river_ENDPOINT = '/wp-json/trevor/v1/article-river-entries';
 
 var article_river_ArticleRiver = /*#__PURE__*/function (_Component) {
@@ -53479,10 +53480,6 @@ var article_river_ArticleRiver = /*#__PURE__*/function (_Component) {
       slidesPerView: 4,
       slidesPerGroup: 4,
       pagination: false,
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-      },
       on: {
         init: _this.onSwiperInit.bind(Object(assertThisInitialized["a" /* default */])(_this))
       }
@@ -53499,9 +53496,17 @@ var article_river_ArticleRiver = /*#__PURE__*/function (_Component) {
     key: "afterInit",
     value: function afterInit() {
       var $paginationContainer = external_jQuery_default()(this.children.paginationContainer);
+      var nextEl = this.element.querySelector('.article-river__pagination-nav--next');
+      var prevEl = this.element.querySelector('.article-river__pagination-nav--prev');
+      var navigationOptions = {
+        nextEl: nextEl,
+        prevEl: prevEl
+      };
 
       if (this.children.paginationPages.length > 4) {
-        carousel($paginationContainer, this.swiperOptions);
+        carousel($paginationContainer, Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, this.swiperOptions), {}, {
+          navigation: navigationOptions
+        }));
       }
 
       if (this.paginationType === 'ajax') {
