@@ -51202,7 +51202,13 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
       (_this$paginationConta = this.paginationContainer) === null || _this$paginationConta === void 0 ? void 0 : _this$paginationConta.hide();
       setTimeout(function () {
         $initialStepContent.fadeIn(500, function () {
+          var _$initialStepContent$;
+
           $initialStepContent.addClass(_this2.classes);
+          (_$initialStepContent$ = $initialStepContent.attr({
+            tabindex: '0',
+            role: 'group'
+          }).get(0)) === null || _$initialStepContent$ === void 0 ? void 0 : _$initialStepContent$.focus();
         });
       }, 100);
     } // Incorporate FloatingLabelInputs to FormAssembly DevInquiryForm
@@ -51311,9 +51317,13 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
         $content.removeClass('hidden').fadeIn({
           done: function done() {
             setTimeout(function () {
-              var _this4$modalContainer, _this4$modalContainer2;
+              var _this4$modalContainer;
 
-              (_this4$modalContainer = _this4.modalContainer) === null || _this4$modalContainer === void 0 ? void 0 : (_this4$modalContainer2 = _this4$modalContainer.get(0)) === null || _this4$modalContainer2 === void 0 ? void 0 : _this4$modalContainer2.focus();
+              var toFocus = $content.attr({
+                tabindex: '0',
+                role: 'group'
+              }).get(0) || ((_this4$modalContainer = _this4.modalContainer) === null || _this4$modalContainer === void 0 ? void 0 : _this4$modalContainer.get(0));
+              toFocus === null || toFocus === void 0 ? void 0 : toFocus.focus();
             }, 400);
           }
         });
@@ -51457,9 +51467,10 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
           (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.fadeIn({
             done: function done() {
               setTimeout(function () {
-                var _this5$modalContainer, _this5$modalContainer2;
+                var _$previousContent2, _this5$modalContainer;
 
-                (_this5$modalContainer = _this5.modalContainer) === null || _this5$modalContainer === void 0 ? void 0 : (_this5$modalContainer2 = _this5$modalContainer.get(0)) === null || _this5$modalContainer2 === void 0 ? void 0 : _this5$modalContainer2.focus();
+                var toFocus = ((_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.get(0)) || ((_this5$modalContainer = _this5.modalContainer) === null || _this5$modalContainer === void 0 ? void 0 : _this5$modalContainer.get(0));
+                toFocus === null || toFocus === void 0 ? void 0 : toFocus.focus();
               }, 500);
             }
           });
