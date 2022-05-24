@@ -40089,7 +40089,7 @@ var modal_Modal = /*#__PURE__*/function () {
               case 0:
                 e === null || e === void 0 ? void 0 : e.preventDefault();
                 e === null || e === void 0 ? void 0 : e.stopPropagation();
-                _this.lastActiveElement = e.currentTarget || document.activeElement || document.body;
+                _this.lastActiveElement = (e === null || e === void 0 ? void 0 : e.currentTarget) || document.activeElement || document.body;
                 $document.on('keydown', _this._handleKeyDown);
 
                 _this.$overlay.on('click', _this.close);
