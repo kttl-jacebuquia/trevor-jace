@@ -54531,6 +54531,7 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
     key: "afterInit",
     // Will be called upon component instantiation
     value: function afterInit() {
+      this.element.setAttribute('tabindex', '0');
       this.generateToggleButton();
       this.bindToggle();
       this.handleMutation();
@@ -54596,8 +54597,12 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
 
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
+    value: function componentDidUpdate(changedStates) {
       this.computeLayout();
+
+      if ('expanded' in changedStates) {
+        this.element.focus();
+      }
     }
   }, {
     key: "computeLayout",
