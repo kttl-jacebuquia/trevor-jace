@@ -57365,7 +57365,7 @@ var onSwitcherClick = /*#__PURE__*/function () {
               }
             });
             burgerMenuContainerA11y(activeMenuIndex);
-            resetNavState();
+            resetNavState(true);
 
           case 7:
           case "end":
@@ -57430,13 +57430,17 @@ var onBackToTier1Click = function onBackToTier1Click(e) {
 var resetNavState = function resetNavState() {
   var _$currentActiveMenuIt;
 
+  var noFocusOnActiveMenu = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
   var $currentActiveMenuItem = $tier1Links.filter('.active');
   var menuItemLink = (_$currentActiveMenuIt = $currentActiveMenuItem.get(0)) === null || _$currentActiveMenuIt === void 0 ? void 0 : _$currentActiveMenuIt.firstElementChild;
   $burgerNav.removeClass('tier-two-visible');
   $currentActiveMenuItem.removeClass('active');
-  setTimeout(function () {
-    return menuItemLink === null || menuItemLink === void 0 ? void 0 : menuItemLink.focus();
-  }, 300);
+
+  if (!noFocusOnActiveMenu) {
+    setTimeout(function () {
+      return menuItemLink === null || menuItemLink === void 0 ? void 0 : menuItemLink.focus();
+    }, 300);
+  }
 }; // Adds click-to-close for nav background blur
 
 
