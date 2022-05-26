@@ -51071,7 +51071,12 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
    * single        - If true, hides pagination and back buttons
    */
   function FundraiserQuiz(options) {
-    var _this$parentContainer,
+    var _this$modalRoot,
+        _this$modalRoot2,
+        _this$modalRoot3,
+        _this$modalRoot4,
+        _this$modalContainer,
+        _this$parentContainer,
         _this$parentContainer2,
         _this$$devInquirySlid,
         _this$$devInquirySlid2,
@@ -51098,11 +51103,16 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     this.choices = void 0;
     this.modalRoot = void 0;
     this.modalContainer = void 0;
+    this.modalContent = void 0;
+    this.content = void 0;
     this.form = void 0;
     this.paginationContainer = void 0;
     this.currentPageContainer = void 0;
     this.totalPageContainer = void 0;
     this.$devInquirySlide = void 0;
+    this.controlsWrapper = void 0;
+    this.controlsReferencePrimary = void 0;
+    this.controlsReferenceSecondary = void 0;
     this.choicesForms = void 0;
     this.devInquiryForm = void 0;
     this.devInquiryFieldsContainer = void 0;
@@ -51112,13 +51122,20 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     this.choices = external_jQuery_default()("".concat(this.selector, "__radio-btn"));
     this.modalRoot = external_jQuery_default()('#js-fundraiser-quiz');
     this.modalContainer = external_jQuery_default()('#js-fundraiser-quiz .modal-container');
+    this.modalContent = external_jQuery_default()('#js-fundraiser-quiz .modal-content-wrap');
+    this.content = (_this$modalRoot = this.modalRoot) === null || _this$modalRoot === void 0 ? void 0 : _this$modalRoot.find('.fundraiser-quiz__contents');
     this.form = external_jQuery_default()("form".concat(this.selector));
+    this.controlsWrapper = (_this$modalRoot2 = this.modalRoot) === null || _this$modalRoot2 === void 0 ? void 0 : _this$modalRoot2.find('.fundraiser-quiz__controls');
+    this.controlsReferencePrimary = (_this$modalRoot3 = this.modalRoot) === null || _this$modalRoot3 === void 0 ? void 0 : _this$modalRoot3.find('.fundraiser-quiz__controls-reference-primary');
+    this.controlsReferenceSecondary = (_this$modalRoot4 = this.modalRoot) === null || _this$modalRoot4 === void 0 ? void 0 : _this$modalRoot4.find('.fundraiser-quiz__controls-reference-secondary');
     this.paginationContainer = external_jQuery_default()("".concat(this.selector, "__pagination"));
     this.currentPageContainer = external_jQuery_default()("".concat(this.selector, "__current-page"));
     this.totalPageContainer = external_jQuery_default()("".concat(this.selector, "__total-page"));
     this.totalPages = 1;
     this.currentPage = 0;
-    this.options = options;
+    this.options = options; // this.modalRoot?.attr('tabindex', '0');
+
+    (_this$modalContainer = this.modalContainer) === null || _this$modalContainer === void 0 ? void 0 : _this$modalContainer.removeAttr('tabindex');
     this.choicesForms = Array.from(((_this$parentContainer = this.parentContainer) === null || _this$parentContainer === void 0 ? void 0 : (_this$parentContainer2 = _this$parentContainer.get(0)) === null || _this$parentContainer2 === void 0 ? void 0 : _this$parentContainer2.querySelectorAll("".concat(this.selector, "__choices-form"))) || []);
     this.ajaxAction = this.parentContainer.data('ajax-action');
     this.$devInquirySlide = this.parentContainer.find('[data-vertex="form"]');
@@ -51169,7 +51186,7 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     value: function show() {
       var _this$choices,
           _this$backBtn,
-          _this$paginationConta,
+          _this$controls,
           _this2 = this;
 
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -51199,18 +51216,15 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
       (_this$choices = this.choices) === null || _this$choices === void 0 ? void 0 : _this$choices.prop('checked', false);
       (_this$backBtn = this.backBtn) === null || _this$backBtn === void 0 ? void 0 : _this$backBtn.hide();
       external_jQuery_default()("".concat(this.selector, "--steps")).removeClass(this.classes);
-      (_this$paginationConta = this.paginationContainer) === null || _this$paginationConta === void 0 ? void 0 : _this$paginationConta.hide();
-      setTimeout(function () {
-        $initialStepContent.fadeIn(500, function () {
-          var _$initialStepContent$;
+      (_this$controls = this.controls) === null || _this$controls === void 0 ? void 0 : _this$controls.hide();
+      $initialStepContent.attr('tabindex', '0').fadeIn(500, function () {
+        setTimeout(function () {
+          var _$initialStepContent, _$initialStepContent$;
 
           $initialStepContent.addClass(_this2.classes);
-          (_$initialStepContent$ = $initialStepContent.attr({
-            tabindex: '0',
-            role: 'group'
-          }).get(0)) === null || _$initialStepContent$ === void 0 ? void 0 : _$initialStepContent$.focus();
-        });
-      }, 100);
+          (_$initialStepContent = $initialStepContent) === null || _$initialStepContent === void 0 ? void 0 : (_$initialStepContent$ = _$initialStepContent.get(0)) === null || _$initialStepContent$ === void 0 ? void 0 : _$initialStepContent$.focus();
+        }, 100);
+      });
     } // Incorporate FloatingLabelInputs to FormAssembly DevInquiryForm
 
   }, {
@@ -51279,7 +51293,8 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "displayNextPage",
     value: function displayNextPage(btn) {
-      var _this4 = this;
+      var _this$currentVertexSt4,
+          _this4 = this;
 
       var vertex = btn.dataset.vertex;
 
@@ -51288,7 +51303,7 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
           nextVertex = _this$graph$get2[0];
 
       this.answers.push(btn.value);
-      this.currentVertexStack.push(nextVertex);
+      (_this$currentVertexSt4 = this.currentVertexStack) === null || _this$currentVertexSt4 === void 0 ? void 0 : _this$currentVertexSt4.push(nextVertex);
       this.handleBackButtonDisplay(nextVertex);
 
       if (this.mainVerteces.includes(vertex)) {
@@ -51297,37 +51312,84 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
         this.computeTotalPageNumber(vertex);
       }
 
-      this.computeCurrentPageNumber();
-      this.paginationContainer.fadeIn(); // Get the new content
+      this.computeCurrentPageNumber(); // Get the new content
 
       var $content = external_jQuery_default()("[data-vertex=\"".concat(nextVertex, "\"]:not(input)"), this.selector);
 
       if ($content.length) {
+        var _this$controlsWrapper;
+
         var $oldContent = external_jQuery_default()(this.containers[vertex], this.selector);
         this.prevVertexStack.push(vertex);
-        this.handleNextContentRadioBtns($content); // Hide old content
+        this.handleNextContentRadioBtns($content);
+        this.clearContentInputs(nextVertex);
+        (_this$controlsWrapper = this.controlsWrapper) === null || _this$controlsWrapper === void 0 ? void 0 : _this$controlsWrapper.fadeOut(200, function () {
+          // Move pagination controls
+          $content.find('.fundraiser-quiz__controls-reference-secondary').after(_this4.controlsWrapper);
 
-        $oldContent.fadeOut(400, function () {
+          _this4.controlsWrapper.fadeIn(200);
+        }); // Hide old content
+
+        $oldContent.removeAttr('tabindex').fadeOut(400, function () {
           _this4.changeContainerBackground(nextVertex);
 
           $content.addClass(_this4.classes);
-        });
-        this.clearContentInputs(nextVertex); // Show new content
+        }); // Show new content
 
-        $content.removeClass('hidden').fadeIn({
-          done: function done() {
-            setTimeout(function () {
-              var _this4$modalContainer;
+        $content.attr('tabindex', '0').removeClass('hidden').delay(400).fadeIn(400);
+        setTimeout(function () {
+          var _$content$get;
 
-              var toFocus = $content.attr({
-                tabindex: '0',
-                role: 'group'
-              }).get(0) || ((_this4$modalContainer = _this4.modalContainer) === null || _this4$modalContainer === void 0 ? void 0 : _this4$modalContainer.get(0));
-              toFocus === null || toFocus === void 0 ? void 0 : toFocus.focus();
-            }, 400);
-          }
-        });
+          (_$content$get = $content.get(0)) === null || _$content$get === void 0 ? void 0 : _$content$get.focus();
+        }, 900);
       }
+    }
+  }, {
+    key: "displayPreviousPage",
+    value: function displayPreviousPage() {
+      var _this$answers,
+          _this$prevVertexStack,
+          _this$currentVertexSt5,
+          _this$modalRoot5,
+          _$previousContent,
+          _$previousContent2,
+          _this5 = this;
+
+      (_this$answers = this.answers) === null || _this$answers === void 0 ? void 0 : _this$answers.pop();
+      var $previousContent = null;
+      var prevVertex = null;
+
+      if ((_this$prevVertexStack = this.prevVertexStack) === null || _this$prevVertexStack === void 0 ? void 0 : _this$prevVertexStack.length) {
+        prevVertex = this.prevVertexStack.pop();
+        this.changeContainerBackground(prevVertex);
+        this.handleBackButtonDisplay(prevVertex);
+        $previousContent = external_jQuery_default()(this.containers[prevVertex || 0], this.selector);
+      }
+
+      var latestVertex = ((_this$currentVertexSt5 = this.currentVertexStack) === null || _this$currentVertexSt5 === void 0 ? void 0 : _this$currentVertexSt5.pop()) || 0;
+      var $currentContent = (_this$modalRoot5 = this.modalRoot) === null || _this$modalRoot5 === void 0 ? void 0 : _this$modalRoot5.find(this.containers[latestVertex]);
+      var $previousContentReference = (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.find('.fundraiser-quiz__controls-reference-secondary');
+      this.computeCurrentPageNumber(); // must be after currentVertexStack.pop as this function is using the currentVertexStack variable
+
+      if ((_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.length) {
+        var _this$controlsWrapper2;
+
+        (_this$controlsWrapper2 = this.controlsWrapper) === null || _this$controlsWrapper2 === void 0 ? void 0 : _this$controlsWrapper2.fadeOut(200, function () {
+          var _this5$controlsWrappe;
+
+          (_this5$controlsWrappe = _this5.controlsWrapper) === null || _this5$controlsWrappe === void 0 ? void 0 : _this5$controlsWrappe.insertAfter($previousContentReference).fadeIn(200);
+        });
+        $currentContent === null || $currentContent === void 0 ? void 0 : $currentContent.fadeOut(400, function () {
+          $currentContent === null || $currentContent === void 0 ? void 0 : $currentContent.removeClass(_this5.classes).removeAttr('tabindex');
+        });
+        $previousContent.attr('tabindex', '0').delay(400).fadeIn(400);
+      }
+
+      setTimeout(function () {
+        var _$previousContent3;
+
+        (_$previousContent3 = $previousContent) === null || _$previousContent3 === void 0 ? void 0 : _$previousContent3.get(0).focus();
+      }, 1000);
     }
   }, {
     key: "clearContentInputs",
@@ -51361,12 +51423,13 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "computeCurrentPageNumber",
     value: function computeCurrentPageNumber() {
-      var _this$paginationConta2, _this$paginationConta3;
+      var _this$currentPageCont, _this$paginationConta, _this$paginationConta2, _this$backBtn2;
 
       this.currentPage = 1 + this.currentVertexStack.length;
-      this.currentPageContainer.html(this.currentPage);
-      (_this$paginationConta2 = this.paginationContainer) === null || _this$paginationConta2 === void 0 ? void 0 : _this$paginationConta2.attr('aria-label', "slide ".concat(this.currentPage, " of ").concat(this.totalPages));
-      (_this$paginationConta3 = this.paginationContainer) === null || _this$paginationConta3 === void 0 ? void 0 : _this$paginationConta3.html("".concat(this.currentPage, "/").concat(this.totalPages));
+      (_this$currentPageCont = this.currentPageContainer) === null || _this$currentPageCont === void 0 ? void 0 : _this$currentPageCont.html(String(this.currentPage));
+      (_this$paginationConta = this.paginationContainer) === null || _this$paginationConta === void 0 ? void 0 : _this$paginationConta.attr('aria-label', "slide ".concat(this.currentPage, " of ").concat(this.totalPages));
+      (_this$paginationConta2 = this.paginationContainer) === null || _this$paginationConta2 === void 0 ? void 0 : _this$paginationConta2.html("".concat(this.currentPage, "/").concat(this.totalPages));
+      (_this$backBtn2 = this.backBtn) === null || _this$backBtn2 === void 0 ? void 0 : _this$backBtn2.attr('data-current', this.currentPage);
     }
   }, {
     key: "computeTotalPageNumber",
@@ -51415,14 +51478,14 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "handleModal",
     value: function handleModal() {
-      var _this$modalRoot, _this$modalRoot$get;
+      var _this$modalContainer2, _this$modalContainer3;
 
-      var modalComponent = (_this$modalRoot = this.modalRoot) === null || _this$modalRoot === void 0 ? void 0 : (_this$modalRoot$get = _this$modalRoot.get(0)) === null || _this$modalRoot$get === void 0 ? void 0 : _this$modalRoot$get.component;
+      var modalComponent = (_this$modalContainer2 = this.modalContainer) === null || _this$modalContainer2 === void 0 ? void 0 : (_this$modalContainer3 = _this$modalContainer2.get(0)) === null || _this$modalContainer3 === void 0 ? void 0 : _this$modalContainer3.component;
 
       if (!modalComponent) {
-        var _this$modalRoot2;
+        var _this$modalRoot6;
 
-        (_this$modalRoot2 = this.modalRoot) === null || _this$modalRoot2 === void 0 ? void 0 : _this$modalRoot2.on('modal-init', this.onModalInit.bind(this));
+        (_this$modalRoot6 = this.modalRoot) === null || _this$modalRoot6 === void 0 ? void 0 : _this$modalRoot6.on('modal-init', this.onModalInit.bind(this));
       } else {
         this.onModalInit(null, modalComponent);
       }
@@ -51436,46 +51499,6 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     key: "onModalClose",
     value: function onModalClose() {
       this.clearContentInputs('form');
-    }
-  }, {
-    key: "displayPreviousPage",
-    value: function displayPreviousPage() {
-      var _this$answers,
-          _this$prevVertexStack,
-          _this$currentVertexSt4,
-          _this5 = this;
-
-      (_this$answers = this.answers) === null || _this$answers === void 0 ? void 0 : _this$answers.pop();
-      var $previousContent = null;
-      var prevVertex = null;
-
-      if ((_this$prevVertexStack = this.prevVertexStack) === null || _this$prevVertexStack === void 0 ? void 0 : _this$prevVertexStack.length) {
-        prevVertex = this.prevVertexStack.pop();
-        this.changeContainerBackground(prevVertex);
-        this.handleBackButtonDisplay(prevVertex);
-        $previousContent = external_jQuery_default()(this.containers[prevVertex || 0], this.selector);
-      }
-
-      var latestVertex = ((_this$currentVertexSt4 = this.currentVertexStack) === null || _this$currentVertexSt4 === void 0 ? void 0 : _this$currentVertexSt4.pop()) || 0;
-      this.computeCurrentPageNumber(); // must be after currentVertexStack.pop as this function is using the currentVertexStack variable
-
-      if ($previousContent !== null && $previousContent.length) {
-        external_jQuery_default()(this.containers[latestVertex], this.selector).fadeOut(400, function () {
-          var _$previousContent;
-
-          external_jQuery_default()(_this5.containers[latestVertex], _this5.selector).removeClass(_this5.classes);
-          (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.fadeIn({
-            done: function done() {
-              setTimeout(function () {
-                var _$previousContent2, _this5$modalContainer;
-
-                var toFocus = ((_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.get(0)) || ((_this5$modalContainer = _this5.modalContainer) === null || _this5$modalContainer === void 0 ? void 0 : _this5$modalContainer.get(0));
-                toFocus === null || toFocus === void 0 ? void 0 : toFocus.focus();
-              }, 500);
-            }
-          });
-        });
-      }
     }
   }, {
     key: "changeContainerBackground",
