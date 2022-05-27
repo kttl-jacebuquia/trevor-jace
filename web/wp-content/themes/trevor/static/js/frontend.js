@@ -51178,7 +51178,9 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     (_this$choicesForms = this.choicesForms) === null || _this$choicesForms === void 0 ? void 0 : _this$choicesForms.forEach(this.initChoicesForm.bind(this)); // Initialize other features
 
     this.initDevInquiryForm();
-    this.handleModal();
+    this.handleModal(); // Handle focus
+
+    this.handleFocusableChildren();
   }
 
   Object(createClass["a" /* default */])(FundraiserQuiz, [{
@@ -51540,6 +51542,36 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
     value: function addEdge(source, destination) {
       if (this.graph.get(source).indexOf(destination) === -1) {
         this.graph.get(source).push(destination);
+      }
+    }
+  }, {
+    key: "handleFocusableChildren",
+    value: function handleFocusableChildren() {
+      var _this$modalContainer4,
+          _this7 = this;
+
+      var $focusableChildren = (_this$modalContainer4 = this.modalContainer) === null || _this$modalContainer4 === void 0 ? void 0 : _this$modalContainer4.find('button, input');
+      $focusableChildren === null || $focusableChildren === void 0 ? void 0 : $focusableChildren.toArray().forEach(function (child) {
+        child.addEventListener('focus', function () {
+          _this7.checkElementVisibility(child);
+        });
+      });
+    }
+  }, {
+    key: "checkElementVisibility",
+    value: function checkElementVisibility(child) {
+      var _child$getBoundingCli = child.getBoundingClientRect(),
+          top = _child$getBoundingCli.top;
+
+      var viewportHeight = window.innerHeight - 80; // Account for iOS Safari controls
+      // If element is out of view, scroll it into view
+
+      if (top > viewportHeight || top < 0) {
+        var _this$modalContainer5, _this$modalContainer6, _this$modalContainer7, _this$modalContainer8;
+
+        var halfViewport = viewportHeight / 2;
+        var targetScroll = (((_this$modalContainer5 = this.modalContainer) === null || _this$modalContainer5 === void 0 ? void 0 : (_this$modalContainer6 = _this$modalContainer5.get(0)) === null || _this$modalContainer6 === void 0 ? void 0 : _this$modalContainer6.scrollTop) || 0) + top - halfViewport;
+        (_this$modalContainer7 = this.modalContainer) === null || _this$modalContainer7 === void 0 ? void 0 : (_this$modalContainer8 = _this$modalContainer7.get(0)) === null || _this$modalContainer8 === void 0 ? void 0 : _this$modalContainer8.scrollTo(0, targetScroll);
       }
     }
   }]);
@@ -54624,7 +54656,9 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
       this.computeLayout();
 
       if ('expanded' in changedStates) {
-        this.element.focus();
+        var _this$children, _this$children$tags$;
+
+        (_this$children = this.children) === null || _this$children === void 0 ? void 0 : (_this$children$tags$ = _this$children.tags[0]) === null || _this$children$tags$ === void 0 ? void 0 : _this$children$tags$.focus();
       }
     }
   }, {
@@ -57853,6 +57887,12 @@ if (isPhoneField) {
         loop: false,
         slidesPerView: 'auto',
         centeredSlides: false,
+        breakpoints: {
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 28
+          }
+        },
         on: {
           init: function init(_swiper) {
             swiper = _swiper;
@@ -57864,7 +57904,7 @@ if (isPhoneField) {
       };
 
       if ($cards.length) {
-        mobileAndTablet(function () {
+        mobileAndSmallDesktop(function () {
           return !swiper && carousel($swiperContainer, swiperOptions);
         }, function () {
           return swiper && swiper.destroy();
