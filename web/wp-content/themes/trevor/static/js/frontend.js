@@ -57890,6 +57890,10 @@ if (isPhoneField) {
         loop: false,
         slidesPerView: 'auto',
         centeredSlides: false,
+        navigation: {
+          prevEl: external_jQuery_default()(el).find('.swiper-button-prev').get(0),
+          nextEl: external_jQuery_default()(el).find('.swiper-button-next').get(0)
+        },
         breakpoints: {
           1024: {
             slidesPerView: 3,
