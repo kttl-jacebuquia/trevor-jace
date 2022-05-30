@@ -54628,7 +54628,8 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
         className: 'tags-box__toggle',
         type: 'button',
         'aria-label': 'click to expand tags',
-        'aria-expanded': false
+        'aria-expanded': false,
+        'aria-controls': this.element.id
       });
     }
   }, {
@@ -54656,9 +54657,9 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
       this.computeLayout();
 
       if ('expanded' in changedStates) {
-        var _this$children, _this$children$tags$;
+        var _this$toggleButton3;
 
-        (_this$children = this.children) === null || _this$children === void 0 ? void 0 : (_this$children$tags$ = _this$children.tags[0]) === null || _this$children$tags$ === void 0 ? void 0 : _this$children$tags$.focus();
+        (_this$toggleButton3 = this.toggleButton) === null || _this$toggleButton3 === void 0 ? void 0 : _this$toggleButton3.focus();
       }
     }
   }, {
@@ -54688,6 +54689,7 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
         // Move toggle button to the end of the box
         this.children.content.appendChild(this.toggleButton);
         this.toggleButton.setAttribute('aria-label', 'click to collapse tags group');
+        this.toggleButton.setAttribute('aria-expanded', 'true');
       } // Collapsed
       else {
           // Get either the first overflowing tag, or the rightmost tag.
@@ -54703,6 +54705,7 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
             tag.dataset.withinView = true;
           });
           this.toggleButton.setAttribute('aria-label', 'click to expand tags group');
+          this.toggleButton.setAttribute('aria-expanded', 'false');
         }
     }
   }]);
