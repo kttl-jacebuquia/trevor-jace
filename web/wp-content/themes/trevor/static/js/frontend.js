@@ -5435,7 +5435,7 @@ exports.default = function (_ref) {
   return element;
 };
 
-var _nodeArray = __webpack_require__(53);
+var _nodeArray = __webpack_require__(54);
 
 var _nodeArray2 = _interopRequireDefault(_nodeArray);
 
@@ -6232,12 +6232,100 @@ function validate(element, focusTarget, _document) {
 
 /***/ }),
 /* 40 */,
-/* 41 */,
-/* 42 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(43),
-    isObjectLike = __webpack_require__(44);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function () {
+  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
+      context = _ref.context;
+
+  if (!context) {
+    context = document.documentElement;
+  } // Make sure the supports tests are run before intercepting the Tab key,
+  // or IE10 and IE11 will fail to process the first Tab key event. Not
+  // limiting this warm-up to IE because it may be a problem elsewhere, too.
+
+
+  (0, _tabsequence2.default)();
+  return (0, _key2.default)({
+    // Safari on OSX may require ALT+TAB to reach links,
+    // see https://github.com/medialize/ally.js/issues/146
+    '?alt+?shift+tab': function altShiftTab(event) {
+      // we're completely taking over the Tab key handling
+      event.preventDefault();
+      var sequence = (0, _tabsequence2.default)({
+        context: context
+      });
+      var backward = event.shiftKey;
+      var first = sequence[0];
+      var last = sequence[sequence.length - 1]; // wrap around first to last, last to first
+
+      var source = backward ? first : last;
+      var target = backward ? last : first;
+
+      if ((0, _activeElement2.default)(source)) {
+        target.focus();
+        return;
+      } // find current position in tabsequence
+
+
+      var currentIndex = void 0;
+      var found = sequence.some(function (element, index) {
+        if (!(0, _activeElement2.default)(element)) {
+          return false;
+        }
+
+        currentIndex = index;
+        return true;
+      });
+
+      if (!found) {
+        // redirect to first as we're not in our tabsequence
+        first.focus();
+        return;
+      } // shift focus to previous/next element in the sequence
+
+
+      var offset = backward ? -1 : 1;
+      sequence[currentIndex + offset].focus();
+    }
+  });
+};
+
+var _activeElement = __webpack_require__(286);
+
+var _activeElement2 = _interopRequireDefault(_activeElement);
+
+var _tabsequence = __webpack_require__(287);
+
+var _tabsequence2 = _interopRequireDefault(_tabsequence);
+
+var _key = __webpack_require__(348);
+
+var _key2 = _interopRequireDefault(_key);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : {
+    default: obj
+  };
+}
+
+module.exports = exports['default'];
+
+/***/ }),
+/* 42 */,
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var baseGetTag = __webpack_require__(44),
+    isObjectLike = __webpack_require__(45);
 /** `Object#toString` result references. */
 
 
@@ -6267,7 +6355,7 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var Symbol = __webpack_require__(35),
@@ -6300,7 +6388,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports) {
 
 /**
@@ -6334,7 +6422,7 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6359,9 +6447,9 @@ exports.default = function (node) {
 module.exports = exports["default"];
 
 /***/ }),
-/* 46 */,
 /* 47 */,
-/* 48 */
+/* 48 */,
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(37),
@@ -6560,11 +6648,11 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 /***/ }),
-/* 49 */,
 /* 50 */,
 /* 51 */,
 /* 52 */,
-/* 53 */
+/* 53 */,
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6603,7 +6691,7 @@ module.exports = exports['default']; // input may be undefined, selector-tring, 
 // yes, to some extent this is a bad replica of jQuery's constructor function
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6650,7 +6738,7 @@ module.exports = exports['default']; // [elem, elem.parent, elem.parent.parent, 
 // will not contain the shadowRoot (DOCUMENT_FRAGMENT_NODE) and shadowHost
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6664,7 +6752,7 @@ var _arrayFindIndex = __webpack_require__(85);
 
 var _arrayFindIndex2 = _interopRequireDefault(_arrayFindIndex);
 
-var _parents = __webpack_require__(54);
+var _parents = __webpack_require__(55);
 
 var _parents2 = _interopRequireDefault(_parents);
 
@@ -6672,7 +6760,7 @@ var _contextToElement = __webpack_require__(16);
 
 var _contextToElement2 = _interopRequireDefault(_contextToElement);
 
-var _getFrameElement = __webpack_require__(56);
+var _getFrameElement = __webpack_require__(57);
 
 var _getFrameElement2 = _interopRequireDefault(_getFrameElement);
 
@@ -6824,7 +6912,7 @@ exports.default = isVisible;
 module.exports = exports['default'];
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6902,95 +6990,7 @@ function getFrameElement(element) {
 module.exports = exports['default'];
 
 /***/ }),
-/* 57 */,
-/* 58 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-exports.default = function () {
-  var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},
-      context = _ref.context;
-
-  if (!context) {
-    context = document.documentElement;
-  } // Make sure the supports tests are run before intercepting the Tab key,
-  // or IE10 and IE11 will fail to process the first Tab key event. Not
-  // limiting this warm-up to IE because it may be a problem elsewhere, too.
-
-
-  (0, _tabsequence2.default)();
-  return (0, _key2.default)({
-    // Safari on OSX may require ALT+TAB to reach links,
-    // see https://github.com/medialize/ally.js/issues/146
-    '?alt+?shift+tab': function altShiftTab(event) {
-      // we're completely taking over the Tab key handling
-      event.preventDefault();
-      var sequence = (0, _tabsequence2.default)({
-        context: context
-      });
-      var backward = event.shiftKey;
-      var first = sequence[0];
-      var last = sequence[sequence.length - 1]; // wrap around first to last, last to first
-
-      var source = backward ? first : last;
-      var target = backward ? last : first;
-
-      if ((0, _activeElement2.default)(source)) {
-        target.focus();
-        return;
-      } // find current position in tabsequence
-
-
-      var currentIndex = void 0;
-      var found = sequence.some(function (element, index) {
-        if (!(0, _activeElement2.default)(element)) {
-          return false;
-        }
-
-        currentIndex = index;
-        return true;
-      });
-
-      if (!found) {
-        // redirect to first as we're not in our tabsequence
-        first.focus();
-        return;
-      } // shift focus to previous/next element in the sequence
-
-
-      var offset = backward ? -1 : 1;
-      sequence[currentIndex + offset].focus();
-    }
-  });
-};
-
-var _activeElement = __webpack_require__(286);
-
-var _activeElement2 = _interopRequireDefault(_activeElement);
-
-var _tabsequence = __webpack_require__(287);
-
-var _tabsequence2 = _interopRequireDefault(_tabsequence);
-
-var _key = __webpack_require__(348);
-
-var _key2 = _interopRequireDefault(_key);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : {
-    default: obj
-  };
-}
-
-module.exports = exports['default'];
-
-/***/ }),
+/* 58 */,
 /* 59 */,
 /* 60 */
 /***/ (function(module, exports, __webpack_require__) {
@@ -7105,7 +7105,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _parents = __webpack_require__(54);
+var _parents = __webpack_require__(55);
 
 var _parents2 = _interopRequireDefault(_parents);
 
@@ -7411,7 +7411,7 @@ var _css = __webpack_require__(337);
 
 var _css2 = _interopRequireDefault(_css);
 
-var _getDocument = __webpack_require__(45);
+var _getDocument = __webpack_require__(46);
 
 var _getDocument2 = _interopRequireDefault(_getDocument);
 
@@ -8661,7 +8661,7 @@ var _validArea = __webpack_require__(334);
 
 var _validArea2 = _interopRequireDefault(_validArea);
 
-var _visible = __webpack_require__(55);
+var _visible = __webpack_require__(56);
 
 var _visible2 = _interopRequireDefault(_visible);
 
@@ -8677,7 +8677,7 @@ var _contextToElement = __webpack_require__(16);
 
 var _contextToElement2 = _interopRequireDefault(_contextToElement);
 
-var _getFrameElement = __webpack_require__(56);
+var _getFrameElement = __webpack_require__(57);
 
 var _getFrameElement2 = _interopRequireDefault(_getFrameElement);
 
@@ -9216,7 +9216,7 @@ var _arrayFindIndex = __webpack_require__(85);
 
 var _arrayFindIndex2 = _interopRequireDefault(_arrayFindIndex);
 
-var _nodeArray = __webpack_require__(53);
+var _nodeArray = __webpack_require__(54);
 
 var _nodeArray2 = _interopRequireDefault(_nodeArray);
 
@@ -25310,7 +25310,7 @@ if (!isNode) {
 /* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var debounce = __webpack_require__(48),
+var debounce = __webpack_require__(49),
     isObject = __webpack_require__(37);
 /** Error message constants. */
 
@@ -26206,7 +26206,7 @@ var _shadowHost = __webpack_require__(76);
 
 var _shadowHost2 = _interopRequireDefault(_shadowHost);
 
-var _getDocument = __webpack_require__(45);
+var _getDocument = __webpack_require__(46);
 
 var _getDocument2 = _interopRequireDefault(_getDocument);
 
@@ -26271,7 +26271,7 @@ var _tabbable = __webpack_require__(77);
 
 var _tabbable2 = _interopRequireDefault(_tabbable);
 
-var _nodeArray = __webpack_require__(53);
+var _nodeArray = __webpack_require__(54);
 
 var _nodeArray2 = _interopRequireDefault(_nodeArray);
 
@@ -26412,7 +26412,7 @@ var _focusRelevant = __webpack_require__(69);
 
 var _focusRelevant2 = _interopRequireDefault(_focusRelevant);
 
-var _getDocument = __webpack_require__(45);
+var _getDocument = __webpack_require__(46);
 
 var _getDocument2 = _interopRequireDefault(_getDocument);
 
@@ -29001,11 +29001,11 @@ var _contextToElement = __webpack_require__(16);
 
 var _contextToElement2 = _interopRequireDefault(_contextToElement);
 
-var _visible = __webpack_require__(55);
+var _visible = __webpack_require__(56);
 
 var _visible2 = _interopRequireDefault(_visible);
 
-var _parents = __webpack_require__(54);
+var _parents = __webpack_require__(55);
 
 var _parents2 = _interopRequireDefault(_parents);
 
@@ -29071,7 +29071,7 @@ exports.default = function (node) {
   return _document.defaultView || window;
 };
 
-var _getDocument = __webpack_require__(45);
+var _getDocument = __webpack_require__(46);
 
 var _getDocument2 = _interopRequireDefault(_getDocument);
 
@@ -29228,7 +29228,7 @@ var _contextToElement = __webpack_require__(16);
 
 var _contextToElement2 = _interopRequireDefault(_contextToElement);
 
-var _parents = __webpack_require__(54);
+var _parents = __webpack_require__(55);
 
 var _parents2 = _interopRequireDefault(_parents);
 
@@ -29334,7 +29334,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _visible = __webpack_require__(55);
+var _visible = __webpack_require__(56);
 
 var _visible2 = _interopRequireDefault(_visible);
 
@@ -29342,7 +29342,7 @@ var _contextToElement = __webpack_require__(16);
 
 var _contextToElement2 = _interopRequireDefault(_contextToElement);
 
-var _getFrameElement = __webpack_require__(56);
+var _getFrameElement = __webpack_require__(57);
 
 var _getFrameElement2 = _interopRequireDefault(_getFrameElement);
 
@@ -29560,7 +29560,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _visible = __webpack_require__(55);
+var _visible = __webpack_require__(56);
 
 var _visible2 = _interopRequireDefault(_visible);
 
@@ -29580,7 +29580,7 @@ var _focusRelevant = __webpack_require__(69);
 
 var _focusRelevant2 = _interopRequireDefault(_focusRelevant);
 
-var _getFrameElement = __webpack_require__(56);
+var _getFrameElement = __webpack_require__(57);
 
 var _getFrameElement2 = _interopRequireDefault(_getFrameElement);
 
@@ -29954,7 +29954,7 @@ var _mergeDomOrder = __webpack_require__(87);
 
 var _mergeDomOrder2 = _interopRequireDefault(_mergeDomOrder);
 
-var _getDocument = __webpack_require__(45);
+var _getDocument = __webpack_require__(46);
 
 var _getDocument2 = _interopRequireDefault(_getDocument);
 
@@ -30454,7 +30454,7 @@ var _key = __webpack_require__(349);
 
 var _key2 = _interopRequireDefault(_key);
 
-var _nodeArray = __webpack_require__(53);
+var _nodeArray = __webpack_require__(54);
 
 var _nodeArray2 = _interopRequireDefault(_nodeArray);
 
@@ -30757,7 +30757,7 @@ module.exports = now;
 
 var baseTrim = __webpack_require__(354),
     isObject = __webpack_require__(37),
-    isSymbol = __webpack_require__(42);
+    isSymbol = __webpack_require__(43);
 /** Used as references for various `Number` constants. */
 
 
@@ -39975,7 +39975,7 @@ function _asyncToGenerator(fn) {
   };
 }
 // EXTERNAL MODULE: ./node_modules/ally.js/maintain/tab-focus.js
-var tab_focus = __webpack_require__(58);
+var tab_focus = __webpack_require__(41);
 var tab_focus_default = /*#__PURE__*/__webpack_require__.n(tab_focus);
 
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/global-ui.ts
@@ -48747,7 +48747,7 @@ function handleNavigationArrows(_swiper) {
 core_class.use([navigation, pagination_pagination, scrollbar_scrollbar, controller, effect_fade, a11y, a11y_extended]);
 /* harmony default export */ var vendors_swiper = (core_class);
 // EXTERNAL MODULE: ./node_modules/lodash/debounce.js
-var lodash_debounce = __webpack_require__(48);
+var lodash_debounce = __webpack_require__(49);
 var debounce_default = /*#__PURE__*/__webpack_require__.n(lodash_debounce);
 
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/testimonials-carousel/index.tsx
@@ -54560,6 +54560,8 @@ post_card_PostCard.init();
 
 
 
+var tags_box_FOCUS_TRAP_KEY = Symbol();
+
 var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(TagsBox, _Component);
 
@@ -54659,6 +54661,7 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
       if ('expanded' in changedStates) {
         var _this$toggleButton3;
 
+        this.toggleFocusTrap();
         (_this$toggleButton3 = this.toggleButton) === null || _this$toggleButton3 === void 0 ? void 0 : _this$toggleButton3.focus();
       }
     }
@@ -54707,6 +54710,25 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
           this.toggleButton.setAttribute('aria-label', 'click to expand tags group');
           this.toggleButton.setAttribute('aria-expanded', 'false');
         }
+    }
+  }, {
+    key: "toggleFocusTrap",
+    value: function toggleFocusTrap() {
+      if (this.state.expanded) {
+        var _this$FOCUS_TRAP_KEY;
+
+        // Ensure existing handle is disengaged first
+        (_this$FOCUS_TRAP_KEY = this[tags_box_FOCUS_TRAP_KEY]) === null || _this$FOCUS_TRAP_KEY === void 0 ? void 0 : _this$FOCUS_TRAP_KEY.disengage(); // Initialize a new one
+
+        this[tags_box_FOCUS_TRAP_KEY] = tab_focus_default()({
+          context: this.element
+        });
+      } else {
+        var _this$FOCUS_TRAP_KEY2;
+
+        // Disengage focus trap
+        (_this$FOCUS_TRAP_KEY2 = this[tags_box_FOCUS_TRAP_KEY]) === null || _this$FOCUS_TRAP_KEY2 === void 0 ? void 0 : _this$FOCUS_TRAP_KEY2.disengage();
+      }
     }
   }]);
 
