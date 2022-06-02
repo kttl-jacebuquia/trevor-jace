@@ -140,7 +140,7 @@ class Trevor_Chat_Button_Public {
 			$output = '<a onclick="alert(\'' . addslashes(get_option( 'tcb_outside_us_message' )) . '\');">';
 		} elseif ( $this->is_24_hrs() || $this->is_within_timerange() ) {
 			if ( get_option( 'tcb_in_uat') ) {
-				$output = '<a href="https://www.thetrevorproject.org/webchat">';
+				$output = '<a href="https://webchat-load-balancer-uat.thetrevorproject.workers.dev/">';
 			} else {
 				$output = '<a href="https://www.thetrevorproject.org/webchat">';
 			}
@@ -228,10 +228,12 @@ class Trevor_Chat_Button_Public {
 		} elseif ( $this->is_in_us() && ( $this->is_24_hrs() || $this->is_within_timerange() ) ) {
 			$output['status'] = 'ok';
 			if ( get_option('tcb_in_uat') ) {
-				$output['href'] = 'https://uat-trevorproject.cs194.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Fuat-trevorproject.cs194.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D010000004YmN%26button_id%3D57341000000LTDX%26session_id%3D'.$string;
+				//$output['href'] = 'https://uat-trevorproject.cs194.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Fuat-trevorproject.cs194.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D010000004YmN%26button_id%3D57341000000LTDX%26session_id%3D'.$string;
+				$output['href'] = 'https://webchat-load-balancer-uat.thetrevorproject.workers.dev/';
 				$output['onclick'] = "window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=500,height=900');return false;";
 			} else {
-				$output['href'] = 'https://trevorproject.secure.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Ftrevorproject.secure.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D410000005OLz%26button_id%3D57341000000LTDX%26session_id%3D'.$string;
+				//$output['href'] = 'https://trevorproject.secure.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Ftrevorproject.secure.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D410000005OLz%26button_id%3D57341000000LTDX%26session_id%3D'.$string;
+				$output['href'] = 'https://www.thetrevorproject.org/webchat';
 				$output['onclick'] = "window.open(this.href,'targetWindow','toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900');return false;";
 			}
 		} else {
@@ -255,7 +257,8 @@ class Trevor_Chat_Button_Public {
 		} elseif ( !$this->is_in_us() ) {
 			$button .= '<h5>' . get_option( 'tcb_outside_us_message' ) . '</h5>';
 		} elseif ( $this->is_24_hrs() || $this->is_within_timerange() ) {
-			$button .= '<a class="button white" href="https://trevorproject.secure.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Ftrevorproject.secure.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D410000005OLz%26button_id%3D57341000000LTDX%26session_id%3D'.$string.'" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900\');return false;">Connect With a TrevorChat Counselor</a>';
+			//$button .= '<a class="button white" href="https://trevorproject.secure.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Ftrevorproject.secure.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D410000005OLz%26button_id%3D57341000000LTDX%26session_id%3D'.$string.'" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900\');return false;">Connect With a TrevorChat Counselor</a>';
+			$button .= '<a class="button white" href="https://www.thetrevorproject.org/webchat" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900\');return false;">Connect With a TrevorChat Counselor</a>';
 		} else {
 			$button .= '<h5>'. get_option( 'tcb_away_message' ) .'</h5>';
 		}
