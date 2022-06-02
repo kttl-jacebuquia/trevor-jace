@@ -45,7 +45,7 @@ class Trevor_Chat_Button_Public {
 
 	/**
 	 * Country codes for US territories
-	 * 
+	 *
 	 */
 	private $us_country_codes = ['US', 'AS', 'GU', 'MP', 'PR', 'UM', 'VI'];
 
@@ -140,9 +140,9 @@ class Trevor_Chat_Button_Public {
 			$output = '<a onclick="alert(\'' . addslashes(get_option( 'tcb_outside_us_message' )) . '\');">';
 		} elseif ( $this->is_24_hrs() || $this->is_within_timerange() ) {
 			if ( get_option( 'tcb_in_uat') ) {
-				$output = '<a href="https://uat-trevorproject.cs194.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Fuat-trevorproject.cs194.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00DJ0000003RAeH%26button_id%3D57341000000LTDX%26session_id%3D'.$string.'" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900\');return false;">';
+				$output = '<a href="https://www.thetrevorproject.org/webchat">';
 			} else {
-				$output = '<a href="https://trevorproject.secure.force.com/apex/TrevorChatPreChatForm?endpoint=https%3A%2F%2Ftrevorproject.secure.force.com%2Fapex%2FTrevorChatWaitingScreen%3Flanguage%3D%23deployment_id%3D57241000000LPlc%26org_id%3D00D410000005OLz%26button_id%3D57341000000LTDX%26session_id%3D'.$string.'" onclick="window.open(this.href,\'targetWindow\',\'toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=700,height=900\');return false;">';
+				$output = '<a href="https://www.thetrevorproject.org/webchat">';
 			}
 		} else {
 			$output = '<a onclick="alert(\''. addslashes(get_option( 'tcb_away_message' )) .'\');">';
@@ -158,14 +158,14 @@ class Trevor_Chat_Button_Public {
 		if ( $this->is_long_wait_time() ) {
 			$msg = '<div class="long-wait-time">';
 			$msg .=	'<p class="long-wait-time-msg">' . get_option( 'tcb_wait_time_message' );
-			
+
 			$count = $this->get_trevorspace_user_count();
 			if ($count >= 5) {
 				$msg .= '<br /><span class="trevorspace-user-count">There are currently ' . $count .' LGBTQ youth online at TrevorSpace. Sign up and ask questions!</span>';
 			}
 			$msg .= '</p>';
 			$msg .= '</div>';
-			return $msg;	
+			return $msg;
 		}
 	}
 
@@ -175,7 +175,7 @@ class Trevor_Chat_Button_Public {
 	public function trevorspace_online_users_function() {
 
 		$online_users_count = $this->get_trevorspace_user_count();
-		
+
 		if ($online_users_count >= 5) {
 			$msg = '<div class="trevorspace-online-users-count">';
 			$msg .= 'There are currently ' . $online_users_count .' LGBTQ youth online at TrevorSpace. Sign up and ask questions!';
@@ -193,9 +193,9 @@ class Trevor_Chat_Button_Public {
 		}
 		// append a query string to bust the cache
 		$response = wp_remote_get('https://www.trevorspace.org/active-count/?' . time());
-		
+
 		$online_users_count = 0;
-		
+
 		if ( !is_wp_error( $response ) ) {
 			$online_users_count = (int) $response['body'];
 			return $online_users_count;
@@ -216,7 +216,7 @@ class Trevor_Chat_Button_Public {
 	 */
 	public function tcb_get_anchor() {
 		$string = base64_encode(random_bytes(10));
-		
+
 		$output = [];
 
 		if ( $this->is_disabled() ) {
@@ -260,7 +260,7 @@ class Trevor_Chat_Button_Public {
 			$button .= '<h5>'. get_option( 'tcb_away_message' ) .'</h5>';
 		}
 		$button .= '</div>';
-				
+
 		return $button;
 	}
 
@@ -305,7 +305,7 @@ class Trevor_Chat_Button_Public {
 	}
 
 	/**
-	 * Check if the current user is within the US. 
+	 * Check if the current user is within the US.
 	 */
 	private function is_in_us() {
 		if ( isset($_SERVER['HTTP_CF_IPCOUNTRY']) ) {
@@ -343,7 +343,7 @@ class Trevor_Chat_Button_Public {
 		} else {
 			$remote_ip = $_SERVER['REMOTE_ADDR'];
 		}
-		
+
 		$reader = new GeoIp2\Database\Reader(plugin_dir_path( __DIR__ ) . 'database/geolite/GeoLite2-Country.mmdb');
 		try {
 			$record = $reader->country($remote_ip);
@@ -374,26 +374,26 @@ class Trevor_Chat_Button_Public {
 	private function is_in_us_ipstack() {
 
 		if ( !get_option( 'tcb_only_us' ) ) {
-			return true; 
-		
+			return true;
+
 		} else {
 			$remote_ip = $_SERVER['REMOTE_ADDR'];
-			$ipstack_access_key = get_option('tcb_ipstack_access_key'); 
+			$ipstack_access_key = get_option('tcb_ipstack_access_key');
 			$ipstack = wp_remote_get( 'http://api.ipstack.com/' . $remote_ip . '?access_key=' . $ipstack_access_key);
-			
+
 			// Returns true on error, this way if the geolocation service is not available
 			// the chat button will fall back to being available.
 			if ( is_wp_error( $ipstack ) ) {
 				$this->log_ip_in_db($remote_ip, 'ipstack - error', $ipstack->get_error_message(), 0);
 				return true;
-				
+
 			} else {
 				$ipstack = json_decode(wp_remote_retrieve_body( $ipstack ));
-				
+
 				$this->log_ip_in_db($remote_ip, $ipstack->country_code, 'ipstack', ($ipstack->country_code === 'US') ? 1 : 0);
 				return ($ipstack->country_code === 'US' );
 			}
-		} 
+		}
 	}
 	/**
 	 * Log IP result in DB
@@ -416,7 +416,7 @@ class Trevor_Chat_Button_Public {
 			$url = get_option( 'tcb_wait_time_url' );
 			if ($url) {
 				$response = wp_remote_get($url);
-			
+
 				if (is_array($response)) {
 					$body = json_decode($response['body']);
 						return $body->isLongWait;
@@ -432,7 +432,7 @@ class Trevor_Chat_Button_Public {
 	public function tcb_cron_exec() {
 		global $wpdb;
 		$table_name = $wpdb->prefix . "tcb_ip_log";
-		$delete = $wpdb->query( 
+		$delete = $wpdb->query(
 			"DELETE FROM $table_name
 			WHERE created_at < (NOW() - INTERVAL 1 MONTH)"
 		);
