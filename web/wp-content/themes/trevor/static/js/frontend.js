@@ -51189,7 +51189,8 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
       var _this$choices,
           _this$backBtn,
           _this$controls,
-          _this2 = this;
+          _this2 = this,
+          _this$controlsWrapper;
 
       var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
       // Default initial step
@@ -51227,6 +51228,7 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
           (_$initialStepContent = $initialStepContent) === null || _$initialStepContent === void 0 ? void 0 : (_$initialStepContent$ = _$initialStepContent.get(0)) === null || _$initialStepContent$ === void 0 ? void 0 : _$initialStepContent$.focus();
         }, 100);
       });
+      (_this$controlsWrapper = this.controlsWrapper) === null || _this$controlsWrapper === void 0 ? void 0 : _this$controlsWrapper.hide();
     } // Incorporate FloatingLabelInputs to FormAssembly DevInquiryForm
 
   }, {
@@ -51295,16 +51297,17 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "displayNextPage",
     value: function displayNextPage(btn) {
-      var _this$currentVertexSt4,
+      var _this$answers,
+          _this$currentVertexSt4,
           _this4 = this;
 
-      var vertex = btn.dataset.vertex;
+      var vertex = (btn === null || btn === void 0 ? void 0 : btn.dataset.vertex) || '';
 
       var _this$graph$get = this.graph.get(vertex),
           _this$graph$get2 = _slicedToArray(_this$graph$get, 1),
           nextVertex = _this$graph$get2[0];
 
-      this.answers.push(btn.value);
+      (_this$answers = this.answers) === null || _this$answers === void 0 ? void 0 : _this$answers.push((btn === null || btn === void 0 ? void 0 : btn.value) || '');
       (_this$currentVertexSt4 = this.currentVertexStack) === null || _this$currentVertexSt4 === void 0 ? void 0 : _this$currentVertexSt4.push(nextVertex);
       this.handleBackButtonDisplay(nextVertex);
 
@@ -51319,17 +51322,16 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
       var $content = external_jQuery_default()("[data-vertex=\"".concat(nextVertex, "\"]:not(input)"), this.selector);
 
       if ($content.length) {
-        var _this$controlsWrapper;
+        var _this$prevVertexStack, _this$controlsWrapper2;
 
         var $oldContent = external_jQuery_default()(this.containers[vertex], this.selector);
-        this.prevVertexStack.push(vertex);
+        (_this$prevVertexStack = this.prevVertexStack) === null || _this$prevVertexStack === void 0 ? void 0 : _this$prevVertexStack.push(vertex);
         this.handleNextContentRadioBtns($content);
         this.clearContentInputs(nextVertex);
-        (_this$controlsWrapper = this.controlsWrapper) === null || _this$controlsWrapper === void 0 ? void 0 : _this$controlsWrapper.fadeOut(200, function () {
-          // Move pagination controls
-          $content.find('.fundraiser-quiz__controls-reference-secondary').after(_this4.controlsWrapper);
+        (_this$controlsWrapper2 = this.controlsWrapper) === null || _this$controlsWrapper2 === void 0 ? void 0 : _this$controlsWrapper2.fadeOut(200, function () {
+          var _this4$controlsWrappe;
 
-          _this4.controlsWrapper.fadeIn(200);
+          (_this4$controlsWrappe = _this4.controlsWrapper) === null || _this4$controlsWrappe === void 0 ? void 0 : _this4$controlsWrappe.fadeIn(200);
         }); // Hide old content
 
         $oldContent.removeAttr('tabindex').fadeOut(400, function () {
@@ -51349,38 +51351,33 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
   }, {
     key: "displayPreviousPage",
     value: function displayPreviousPage() {
-      var _this$answers,
-          _this$prevVertexStack,
+      var _this$answers2,
+          _this$prevVertexStack2,
           _this$currentVertexSt5,
           _this$modalRoot5,
           _$previousContent,
-          _$previousContent2,
           _this5 = this;
 
-      (_this$answers = this.answers) === null || _this$answers === void 0 ? void 0 : _this$answers.pop();
+      (_this$answers2 = this.answers) === null || _this$answers2 === void 0 ? void 0 : _this$answers2.pop();
       var $previousContent = null;
       var prevVertex = null;
 
-      if ((_this$prevVertexStack = this.prevVertexStack) === null || _this$prevVertexStack === void 0 ? void 0 : _this$prevVertexStack.length) {
+      if ((_this$prevVertexStack2 = this.prevVertexStack) === null || _this$prevVertexStack2 === void 0 ? void 0 : _this$prevVertexStack2.length) {
         prevVertex = this.prevVertexStack.pop();
         this.changeContainerBackground(prevVertex);
         this.handleBackButtonDisplay(prevVertex);
         $previousContent = external_jQuery_default()(this.containers[prevVertex || 0], this.selector);
+      } else {
+        var _this$controlsWrapper3;
+
+        (_this$controlsWrapper3 = this.controlsWrapper) === null || _this$controlsWrapper3 === void 0 ? void 0 : _this$controlsWrapper3.hide();
       }
 
       var latestVertex = ((_this$currentVertexSt5 = this.currentVertexStack) === null || _this$currentVertexSt5 === void 0 ? void 0 : _this$currentVertexSt5.pop()) || 0;
       var $currentContent = (_this$modalRoot5 = this.modalRoot) === null || _this$modalRoot5 === void 0 ? void 0 : _this$modalRoot5.find(this.containers[latestVertex]);
-      var $previousContentReference = (_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.find('.fundraiser-quiz__controls-reference-secondary');
       this.computeCurrentPageNumber(); // must be after currentVertexStack.pop as this function is using the currentVertexStack variable
 
-      if ((_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.length) {
-        var _this$controlsWrapper2;
-
-        (_this$controlsWrapper2 = this.controlsWrapper) === null || _this$controlsWrapper2 === void 0 ? void 0 : _this$controlsWrapper2.fadeOut(200, function () {
-          var _this5$controlsWrappe;
-
-          (_this5$controlsWrappe = _this5.controlsWrapper) === null || _this5$controlsWrappe === void 0 ? void 0 : _this5$controlsWrappe.insertAfter($previousContentReference).fadeIn(200);
-        });
+      if ((_$previousContent = $previousContent) === null || _$previousContent === void 0 ? void 0 : _$previousContent.length) {
         $currentContent === null || $currentContent === void 0 ? void 0 : $currentContent.fadeOut(400, function () {
           $currentContent === null || $currentContent === void 0 ? void 0 : $currentContent.removeClass(_this5.classes).removeAttr('tabindex');
         });
@@ -51388,9 +51385,9 @@ var fundraiser_quiz_FundraiserQuiz = /*#__PURE__*/function () {
       }
 
       setTimeout(function () {
-        var _$previousContent3;
+        var _$previousContent2;
 
-        (_$previousContent3 = $previousContent) === null || _$previousContent3 === void 0 ? void 0 : _$previousContent3.get(0).focus();
+        (_$previousContent2 = $previousContent) === null || _$previousContent2 === void 0 ? void 0 : _$previousContent2.get(0).focus();
       }, 1000);
     }
   }, {
