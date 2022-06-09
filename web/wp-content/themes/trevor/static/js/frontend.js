@@ -52211,15 +52211,15 @@ var moment_timezone_default = /*#__PURE__*/__webpack_require__.n(moment_timezone
 
 
 
-var content_ADPContent = /*#__PURE__*/function (_WithState) {
-  Object(inherits["a" /* default */])(ADPContent, _WithState);
+var content_JobsContent = /*#__PURE__*/function (_WithState) {
+  Object(inherits["a" /* default */])(JobsContent, _WithState);
 
-  var _super = Object(createSuper["a" /* default */])(ADPContent);
+  var _super = Object(createSuper["a" /* default */])(JobsContent);
 
-  function ADPContent(context) {
+  function JobsContent(context) {
     var _this;
 
-    Object(classCallCheck["a" /* default */])(this, ADPContent);
+    Object(classCallCheck["a" /* default */])(this, JobsContent);
 
     _this = _super.call(this);
     _this.state = {
@@ -52235,7 +52235,7 @@ var content_ADPContent = /*#__PURE__*/function (_WithState) {
     return _this;
   }
 
-  Object(createClass["a" /* default */])(ADPContent, [{
+  Object(createClass["a" /* default */])(JobsContent, [{
     key: "init",
     value: function init() {
       this.initializeContentObserver();
@@ -52317,17 +52317,15 @@ var content_ADPContent = /*#__PURE__*/function (_WithState) {
   }, {
     key: "generateJobItemMarkup",
     value: function generateJobItemMarkup(item) {
-      var _item$links;
-
-      var departments = this.getDepartments(item.organizationalUnits);
-      var locations = this.getLocations(item.requisitionLocations);
+      var departments = item.department ? [item.department] : [];
+      var locations = item.location ? [item.location] : [];
 
       var _this$generateJobItem = this.generateJobItemClasses(departments, locations),
           _this$generateJobItem2 = _slicedToArray(_this$generateJobItem, 2),
           department = _this$generateJobItem2[0],
           location = _this$generateJobItem2[1];
 
-      return "\n\t\t\t<div\n\t\t\t\tclass=\"listing__item show\"\n\t\t\t\tdata-departments=".concat(department, "\n\t\t\t\tdata-locations=").concat(location, "\n\t\t\t\t>\n\t\t\t\t<div class=\"listing__item-inner\">\n\t\t\t\t\t").concat(this.generateEyebrowMarkup(departments, locations), "\n\t\t\t\t\t").concat(this.generateTitleMarkup(item), "\n\t\t\t\t\t<time class=\"listing__item__date\">\n\t\t\t\t\t\t").concat(this.getDateAgo(item.requisitionStatusCode.effectiveDate), "\n\t\t\t\t\t</time>\n\t\t\t\t</div>\n\t\t\t\t").concat((item === null || item === void 0 ? void 0 : (_item$links = item.links) === null || _item$links === void 0 ? void 0 : _item$links.length) && "<div class=\"listing__item__cta\">\n\t\t\t\t\t\t\t<a href=\"".concat(item.links[item.links.length - 1].href, "\"\n\t\t\t\t\t\t\ttarget=\"_blank\">Apply Now</a>\n\t\t\t\t\t\t</div>"), "\n\t\t\t</div>\n\t\t");
+      return "\n\t\t\t<div\n\t\t\t\tclass=\"listing__item show\"\n\t\t\t\tdata-departments=".concat(department || '', "\n\t\t\t\tdata-locations=").concat(location || '', "\n\t\t\t\t>\n\t\t\t\t<div class=\"listing__item-inner\">\n\t\t\t\t\t").concat(this.generateEyebrowMarkup(departments, locations), "\n\t\t\t\t\t").concat(this.generateTitleMarkup(item), "\n\t\t\t\t\t<time class=\"listing__item__date\">\n\t\t\t\t\t\t").concat(this.getDateAgo(item.createdAt), "\n\t\t\t\t\t</time>\n\t\t\t\t</div>\n\t\t\t\t").concat((item === null || item === void 0 ? void 0 : item.applyUrl) && "<div class=\"listing__item__cta\">\n\t\t\t\t\t\t\t<a href=\"".concat(item.applyUrl, "\"\n\t\t\t\t\t\t\ttarget=\"_blank\">Apply Now</a>\n\t\t\t\t\t\t</div>") || '', "\n\t\t\t</div>\n\t\t");
     }
   }, {
     key: "getDepartments",
@@ -52394,8 +52392,8 @@ var content_ADPContent = /*#__PURE__*/function (_WithState) {
   }, {
     key: "generateTitleMarkup",
     value: function generateTitleMarkup(item) {
-      var workTypeMarkup = item.workerTypeCode ? "<span>(".concat(item.workerTypeCode.shortName, ")</span>") : '';
-      return "<h3 class=\"listing__item__title\">\n\t\t\t\t\t".concat(item.job.jobTitle, "\n\t\t\t\t\t").concat(workTypeMarkup, "\n\t\t\t\t</h3>\n\t\t");
+      var workTypeMarkup = item.commitment ? "<span>(".concat(item.commitment, ")</span>") : '';
+      return "<h3 class=\"listing__item__title\">\n\t\t\t\t\t".concat(item.title, "\n\t\t\t\t\t").concat(workTypeMarkup, "\n\t\t\t\t</h3>\n\t\t");
     }
   }, {
     key: "sanitizeOptionValue",
@@ -52426,12 +52424,14 @@ var content_ADPContent = /*#__PURE__*/function (_WithState) {
     }
   }]);
 
-  return ADPContent;
+  return JobsContent;
 }(WithState_WithState);
 
 function initContent(context) {
-  var content = new content_ADPContent(context);
-  content.init();
+  Array.from(document.querySelectorAll(context)).forEach(function (element) {
+    var content = new content_JobsContent(element);
+    content.init();
+  });
 }
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/current-openings/index.js
 
