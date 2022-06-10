@@ -1,12 +1,12 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-develop',
+    'version' => 'dev-develop',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '052c92ea9dc28d8ed01201b8cb331ddb9e31bdd9',
     'name' => 'kettle/trevor-wp-plugin',
   ),
   'versions' => 
@@ -85,12 +85,12 @@
     ),
     'kettle/trevor-wp-plugin' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-develop',
+      'version' => 'dev-develop',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '052c92ea9dc28d8ed01201b8cb331ddb9e31bdd9',
     ),
     'monolog/monolog' => 
     array (

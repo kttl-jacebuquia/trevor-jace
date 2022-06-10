@@ -14,24 +14,24 @@ class InstalledVersions
 private static $installed = array (
   'root' => 
   array (
-    'pretty_version' => '1.0.0+no-version-set',
-    'version' => '1.0.0.0',
+    'pretty_version' => 'dev-develop',
+    'version' => 'dev-develop',
     'aliases' => 
     array (
     ),
-    'reference' => NULL,
+    'reference' => '052c92ea9dc28d8ed01201b8cb331ddb9e31bdd9',
     'name' => 'kettle/trevor-wp-theme',
   ),
   'versions' => 
   array (
     'kettle/trevor-wp-theme' => 
     array (
-      'pretty_version' => '1.0.0+no-version-set',
-      'version' => '1.0.0.0',
+      'pretty_version' => 'dev-develop',
+      'version' => 'dev-develop',
       'aliases' => 
       array (
       ),
-      'reference' => NULL,
+      'reference' => '052c92ea9dc28d8ed01201b8cb331ddb9e31bdd9',
     ),
   ),
 );
