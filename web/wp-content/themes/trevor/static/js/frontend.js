@@ -5184,7 +5184,7 @@ function _isNativeReflectConstruct() {
 var esm_typeof = __webpack_require__(15);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(11);
+var assertThisInitialized = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
 
@@ -5307,6 +5307,20 @@ function _objectSpread2(target) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
+}
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
@@ -5336,20 +5350,6 @@ function _nonIterableSpread() {
 
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || Object(iterableToArray["a" /* default */])(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
-}
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
 }
 
 /***/ }),
@@ -46554,7 +46554,7 @@ function carousel($element) {
     return null;
   }
 
-  var swiper = new core_class(_el, Object(objectSpread2["a" /* default */])({
+  var swiper = new core_class(_el, Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({
     // Optional parameters
     direction: 'horizontal',
     simulateTouch: false,
@@ -46567,9 +46567,20 @@ function carousel($element) {
     },
     a11y: true,
     autoHeight: true
-  }, option));
+  }, option), {}, {
+    init: false
+  }));
+  swiper.on('afterInit', onCarouselAfterInit);
+  swiper.init();
   return swiper;
 }
+
+function onCarouselAfterInit(swiper) {
+  console.log('carouselInit'); // Array.from(swiper.slides).forEach((slide) => {
+  // 	slide.removeAttribute('tabindex');
+  // });
+}
+
 function carouselNavigator($element) {
   var onAfterInit = function onAfterInit(swiper) {
     Array.from(swiper.pagination.bullets).forEach(function (bullet, index) {
@@ -46734,7 +46745,11 @@ var carousel_initializeCarousel = function initializeCarousel(carouselSettings) 
   var breakpoint = carouselSettings.options.breakpoint;
   var baseContainer = document.querySelector(baseSelector);
 
-  options.on.afterInit = function () {
+  options.on.afterInit = function (_swiper) {
+    _swiper.slides.forEach(function (slide) {
+      return slide.removeAttribute('tabindex');
+    });
+
     document.querySelectorAll('.carousel-testimonials .card-post').forEach(function (elem) {
       if (elem.tagBoxEllipsis) {
         elem.tagBoxEllipsis.calc();
@@ -46843,7 +46858,7 @@ function collapsible($content, options) {
   var controller = new collapsible_Collapsible($content, options);
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(10);
+var toConsumableArray = __webpack_require__(11);
 
 // CONCATENATED MODULE: ./node_modules/swiper/esm/components/navigation/navigation.js
 function navigation_extends() {
@@ -48456,6 +48471,7 @@ var A11y = {
 // CONCATENATED MODULE: ./src/theme/js/frontend/vendors/swiper/a11y-extended.ts
 
 
+var SLIDE_FOCUSABLE_CHILDREN_SELECTOR = 'a,button';
 
 /**
  * Additional a11y functionalities for Swiper
@@ -48535,7 +48551,7 @@ function a11y_extended_onSlideChangeTransitionEnd(_swiper) {
   checkPaginationFocusability(_swiper); // Focus on the first focusable slide
 
   setTimeout(function () {
-    var _swiper$params$slides;
+    var _swiper$params$slides, _firstFocusableSlide$;
 
     // Don't include non-visible slides
     var visibleSlides = Array.from(_swiper.slides).filter(function (el) {
@@ -48551,7 +48567,7 @@ function a11y_extended_onSlideChangeTransitionEnd(_swiper) {
         firstFocusableSlide = _ref3[0]; // Focus on slide
 
 
-    firstFocusableSlide === null || firstFocusableSlide === void 0 ? void 0 : firstFocusableSlide.focus();
+    (_firstFocusableSlide$ = firstFocusableSlide.firstElementChild) === null || _firstFocusableSlide$ === void 0 ? void 0 : _firstFocusableSlide$.focus();
     _swiper.navigatedByNav = false; // Save current set
 
     _swiper.currentVisibleSlides = visibleSlides;
@@ -48649,57 +48665,49 @@ function a11y_extended_applySlidesA11y(_swiper) {
         left = _slide$getBoundingCli2.left,
         right = _slide$getBoundingCli2.right;
 
-    var slideContent = slide.firstElementChild;
-    var tagsBox = slide.querySelector('.tags-box');
-
     if ((_swiper$params$a11yEx = _swiper.params.a11yExtended) === null || _swiper$params$a11yEx === void 0 ? void 0 : (_swiper$params$a11yEx2 = _swiper$params$a11yEx.pagination) === null || _swiper$params$a11yEx2 === void 0 ? void 0 : _swiper$params$a11yEx2.oneToOne) {
       if (_swiper.activeIndex === index) {
-        var _slideContent$querySe;
-
-        slide.removeAttribute('aria-hidden');
-        slide.setAttribute('tabindex', '0');
-
-        Object(toConsumableArray["a" /* default */])((_slideContent$querySe = slideContent === null || slideContent === void 0 ? void 0 : slideContent.querySelectorAll('a,button')) !== null && _slideContent$querySe !== void 0 ? _slideContent$querySe : []).forEach(function (el) {
-          return el.removeAttribute('tabindex');
-        });
-
-        tagsBox === null || tagsBox === void 0 ? void 0 : tagsBox.removeAttribute('aria-hidden');
+        setSlideA11y(slide, true);
       } else {
-        slide.setAttribute('aria-hidden', 'true');
-        slide.setAttribute('tabindex', '-1'); // Make contents untabbable
-
-        Object(toConsumableArray["a" /* default */])(slide.querySelectorAll('a,button')).forEach(function (el) {
-          return el.setAttribute('tabindex', '-1');
-        });
-
-        tagsBox === null || tagsBox === void 0 ? void 0 : tagsBox.setAttribute('aria-hidden', 'true');
+        setSlideA11y(slide, false);
       }
     } else if (left < 0 || right > windowWidth) {
-      slide.setAttribute('aria-hidden', 'true');
-      slide.setAttribute('tabindex', '-1'); // Make contents untabbable
+      setSlideA11y(slide, false);
+    } else {
+      setSlideA11y(slide, true);
+    }
+  });
+}
 
-      Object(toConsumableArray["a" /* default */])(slide.querySelectorAll('a,button')).forEach(function (el) {
+function setSlideA11y(slide, makeFocusable) {
+  if (typeof makeFocusable === 'boolean') {
+    var slideContent = slide.querySelector('.card-post');
+    var tagsBox = slide.querySelector('.tags-box');
+
+    if (makeFocusable) {
+      var _slideContent$querySe;
+
+      slide === null || slide === void 0 ? void 0 : slide.removeAttribute('aria-hidden');
+      slideContent === null || slideContent === void 0 ? void 0 : slideContent.setAttribute('tabindex', '0');
+
+      Object(toConsumableArray["a" /* default */])((_slideContent$querySe = slideContent === null || slideContent === void 0 ? void 0 : slideContent.querySelectorAll(SLIDE_FOCUSABLE_CHILDREN_SELECTOR)) !== null && _slideContent$querySe !== void 0 ? _slideContent$querySe : []).forEach(function (el) {
+        return el.setAttribute('tabindex', '0');
+      });
+
+      tagsBox === null || tagsBox === void 0 ? void 0 : tagsBox.removeAttribute('aria-hidden');
+    } else {
+      var _slideContent$querySe2;
+
+      slide === null || slide === void 0 ? void 0 : slide.setAttribute('aria-hidden', 'true');
+      slideContent === null || slideContent === void 0 ? void 0 : slideContent.setAttribute('tabindex', '-1'); // Make contents untabbable
+
+      Object(toConsumableArray["a" /* default */])((_slideContent$querySe2 = slideContent === null || slideContent === void 0 ? void 0 : slideContent.querySelectorAll(SLIDE_FOCUSABLE_CHILDREN_SELECTOR)) !== null && _slideContent$querySe2 !== void 0 ? _slideContent$querySe2 : []).forEach(function (el) {
         return el.setAttribute('tabindex', '-1');
       });
 
       tagsBox === null || tagsBox === void 0 ? void 0 : tagsBox.setAttribute('aria-hidden', 'true');
-    } else {
-      var _slideContent$querySe2;
-
-      slide.removeAttribute('aria-hidden');
-      slide.setAttribute('tabindex', '0');
-
-      Object(toConsumableArray["a" /* default */])((_slideContent$querySe2 = slideContent === null || slideContent === void 0 ? void 0 : slideContent.querySelectorAll('a,button')) !== null && _slideContent$querySe2 !== void 0 ? _slideContent$querySe2 : []).forEach(function (el) {
-        return el.removeAttribute('tabindex');
-      });
-
-      tagsBox === null || tagsBox === void 0 ? void 0 : tagsBox.removeAttribute('aria-hidden'); // Make contents  tabbable
-
-      Object(toConsumableArray["a" /* default */])(slide.querySelectorAll('a,button')).forEach(function (el) {
-        return el.removeAttribute('tabindex');
-      });
     }
-  });
+  }
 }
 /**
  * Show/Hide prev/next nav button depending on whether the first/last slides are visible in the view
@@ -50343,7 +50351,7 @@ function showAllTiles($showAllBtn) {
   }
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(11);
+var assertThisInitialized = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/floating-label-input/index.ts
 
@@ -54585,7 +54593,6 @@ var tags_box_TagsBox = /*#__PURE__*/function (_Component) {
     key: "afterInit",
     // Will be called upon component instantiation
     value: function afterInit() {
-      this.element.setAttribute('tabindex', '0');
       this.generateToggleButton();
       this.bindToggle();
       this.handleMutation();
