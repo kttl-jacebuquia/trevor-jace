@@ -12,12 +12,11 @@ module.exports = jQuery;
 
 
 if (true) {
-  module.exports = __webpack_require__(42);
+  module.exports = __webpack_require__(43);
 } else {}
 
 /***/ }),
-/* 2 */,
-/* 3 */
+/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -29,6 +28,7 @@ function _classCallCheck(instance, Constructor) {
 }
 
 /***/ }),
+/* 3 */,
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -153,12 +153,6 @@ function _inherits(subClass, superClass) {
 /***/ }),
 /* 7 */,
 /* 8 */
-/***/ (function(module, exports) {
-
-module.exports = wp.components;
-
-/***/ }),
-/* 9 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -199,6 +193,12 @@ function _objectSpread2(target) {
 
   return target;
 }
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = wp.components;
 
 /***/ }),
 /* 10 */
@@ -323,7 +323,7 @@ __webpack_require__.d(__webpack_exports__, "mediaHostnameFix", function() { retu
 __webpack_require__.d(__webpack_exports__, "copyToClipboard", function() { return /* reexport */ copyToClipboard; });
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(3);
+var classCallCheck = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(4);
@@ -667,10 +667,11 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 /* 32 */,
 /* 33 */,
 /* 34 */,
-/* 35 */
+/* 35 */,
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(36);
+var root = __webpack_require__(37);
 /** Built-in value references. */
 
 
@@ -678,7 +679,7 @@ var Symbol = root.Symbol;
 module.exports = Symbol;
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var freeGlobal = __webpack_require__(66);
@@ -692,7 +693,7 @@ var root = freeGlobal || freeSelf || Function('return this')();
 module.exports = root;
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports) {
 
 /**
@@ -728,11 +729,11 @@ function isObject(value) {
 module.exports = isObject;
 
 /***/ }),
-/* 38 */,
 /* 39 */,
 /* 40 */,
 /* 41 */,
-/* 42 */
+/* 42 */,
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1164,11 +1165,11 @@ exports.useState = function (a) {
 exports.version = "16.14.0";
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(44),
-    isObjectLike = __webpack_require__(45);
+var baseGetTag = __webpack_require__(45),
+    isObjectLike = __webpack_require__(46);
 /** `Object#toString` result references. */
 
 
@@ -1198,10 +1199,10 @@ function isSymbol(value) {
 module.exports = isSymbol;
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(35),
+var Symbol = __webpack_require__(36),
     getRawTag = __webpack_require__(67),
     objectToString = __webpack_require__(68);
 /** `Object#toString` result references. */
@@ -1231,7 +1232,7 @@ function baseGetTag(value) {
 module.exports = baseGetTag;
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports) {
 
 /**
@@ -1265,8 +1266,8 @@ function isObjectLike(value) {
 module.exports = isObjectLike;
 
 /***/ }),
-/* 46 */,
-/* 47 */
+/* 47 */,
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1276,11 +1277,11 @@ function _objectDestructuringEmpty(obj) {
 }
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
+/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_objectSpread2__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
 
 /* harmony default export */ __webpack_exports__["a"] = (function () {
   var collectionName = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Posts';
@@ -1335,8 +1336,8 @@ function termProcessor(results, response) {
 }
 
 /***/ }),
-/* 49 */,
-/* 50 */
+/* 50 */,
+/* 51 */
 /***/ (function(module, exports) {
 
 /**
@@ -1366,7 +1367,7 @@ var isArray = Array.isArray;
 module.exports = isArray;
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(75);
@@ -1377,7 +1378,7 @@ var nativeCreate = getNative(Object, 'create');
 module.exports = nativeCreate;
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var eq = __webpack_require__(264);
@@ -1406,7 +1407,7 @@ function assocIndexOf(array, key) {
 module.exports = assocIndexOf;
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isKeyable = __webpack_require__(270);
@@ -1428,18 +1429,17 @@ function getMapData(map, key) {
 module.exports = getMapData;
 
 /***/ }),
-/* 54 */,
 /* 55 */,
 /* 56 */,
 /* 57 */,
 /* 58 */,
-/* 59 */
+/* 59 */,
+/* 60 */
 /***/ (function(module, exports) {
 
 module.exports = wp.editPost;
 
 /***/ }),
-/* 60 */,
 /* 61 */,
 /* 62 */,
 /* 63 */,
@@ -1457,7 +1457,7 @@ module.exports = freeGlobal;
 /* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(35);
+var Symbol = __webpack_require__(36);
 /** Used for built-in method references. */
 
 
@@ -1863,7 +1863,7 @@ module.exports = baseHas;
 
 var castPath = __webpack_require__(242),
     isArguments = __webpack_require__(277),
-    isArray = __webpack_require__(50),
+    isArray = __webpack_require__(51),
     isIndex = __webpack_require__(279),
     isLength = __webpack_require__(280),
     toKey = __webpack_require__(281);
@@ -1908,7 +1908,7 @@ module.exports = hasPath;
 /* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(50),
+var isArray = __webpack_require__(51),
     isKey = __webpack_require__(243),
     stringToPath = __webpack_require__(244),
     toString = __webpack_require__(274);
@@ -1936,8 +1936,8 @@ module.exports = castPath;
 /* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isArray = __webpack_require__(50),
-    isSymbol = __webpack_require__(43);
+var isArray = __webpack_require__(51),
+    isSymbol = __webpack_require__(44);
 /** Used to match property names within property paths. */
 
 
@@ -2222,7 +2222,7 @@ module.exports = Hash;
 /* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(51);
+var nativeCreate = __webpack_require__(52);
 /**
  * Removes all key-value entries from the hash.
  *
@@ -2245,7 +2245,7 @@ module.exports = hashClear;
 
 var isFunction = __webpack_require__(252),
     isMasked = __webpack_require__(253),
-    isObject = __webpack_require__(37),
+    isObject = __webpack_require__(38),
     toSource = __webpack_require__(255);
 /**
  * Used to match `RegExp`
@@ -2294,8 +2294,8 @@ module.exports = baseIsNative;
 /* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(44),
-    isObject = __webpack_require__(37);
+var baseGetTag = __webpack_require__(45),
+    isObject = __webpack_require__(38);
 /** `Object#toString` result references. */
 
 
@@ -2365,7 +2365,7 @@ module.exports = isMasked;
 /* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var root = __webpack_require__(36);
+var root = __webpack_require__(37);
 /** Used to detect overreaching core-js shims. */
 
 
@@ -2449,7 +2449,7 @@ module.exports = hashDelete;
 /* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(51);
+var nativeCreate = __webpack_require__(52);
 /** Used to stand-in for `undefined` hash values. */
 
 
@@ -2487,7 +2487,7 @@ module.exports = hashGet;
 /* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(51);
+var nativeCreate = __webpack_require__(52);
 /** Used for built-in method references. */
 
 
@@ -2516,7 +2516,7 @@ module.exports = hashHas;
 /* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var nativeCreate = __webpack_require__(51);
+var nativeCreate = __webpack_require__(52);
 /** Used to stand-in for `undefined` hash values. */
 
 
@@ -2600,7 +2600,7 @@ module.exports = listCacheClear;
 /* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(52);
+var assocIndexOf = __webpack_require__(53);
 /** Used for built-in method references. */
 
 
@@ -2686,7 +2686,7 @@ module.exports = eq;
 /* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(52);
+var assocIndexOf = __webpack_require__(53);
 /**
  * Gets the list cache value for `key`.
  *
@@ -2710,7 +2710,7 @@ module.exports = listCacheGet;
 /* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(52);
+var assocIndexOf = __webpack_require__(53);
 /**
  * Checks if a list cache value for `key` exists.
  *
@@ -2732,7 +2732,7 @@ module.exports = listCacheHas;
 /* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var assocIndexOf = __webpack_require__(52);
+var assocIndexOf = __webpack_require__(53);
 /**
  * Sets the list cache `key` to `value`.
  *
@@ -2766,7 +2766,7 @@ module.exports = listCacheSet;
 /***/ (function(module, exports, __webpack_require__) {
 
 var getNative = __webpack_require__(75),
-    root = __webpack_require__(36);
+    root = __webpack_require__(37);
 /* Built-in method references that are verified to be native. */
 
 
@@ -2777,7 +2777,7 @@ module.exports = Map;
 /* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(53);
+var getMapData = __webpack_require__(54);
 /**
  * Removes `key` and its value from the map.
  *
@@ -2819,7 +2819,7 @@ module.exports = isKeyable;
 /* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(53);
+var getMapData = __webpack_require__(54);
 /**
  * Gets the map value for `key`.
  *
@@ -2841,7 +2841,7 @@ module.exports = mapCacheGet;
 /* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(53);
+var getMapData = __webpack_require__(54);
 /**
  * Checks if a map value for `key` exists.
  *
@@ -2863,7 +2863,7 @@ module.exports = mapCacheHas;
 /* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var getMapData = __webpack_require__(53);
+var getMapData = __webpack_require__(54);
 /**
  * Sets the map `key` to `value`.
  *
@@ -2924,10 +2924,10 @@ module.exports = toString;
 /* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Symbol = __webpack_require__(35),
+var Symbol = __webpack_require__(36),
     arrayMap = __webpack_require__(276),
-    isArray = __webpack_require__(50),
-    isSymbol = __webpack_require__(43);
+    isArray = __webpack_require__(51),
+    isSymbol = __webpack_require__(44);
 /** Used as references for various `Number` constants. */
 
 
@@ -2998,7 +2998,7 @@ module.exports = arrayMap;
 /***/ (function(module, exports, __webpack_require__) {
 
 var baseIsArguments = __webpack_require__(278),
-    isObjectLike = __webpack_require__(45);
+    isObjectLike = __webpack_require__(46);
 /** Used for built-in method references. */
 
 
@@ -3039,8 +3039,8 @@ module.exports = isArguments;
 /* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var baseGetTag = __webpack_require__(44),
-    isObjectLike = __webpack_require__(45);
+var baseGetTag = __webpack_require__(45),
+    isObjectLike = __webpack_require__(46);
 /** `Object#toString` result references. */
 
 
@@ -3128,7 +3128,7 @@ module.exports = isLength;
 /* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var isSymbol = __webpack_require__(43);
+var isSymbol = __webpack_require__(44);
 /** Used as references for various `Number` constants. */
 
 
@@ -3159,7 +3159,7 @@ module.exports = toKey;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return CoreHeading; });
-/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_classCallCheck__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createClass__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
 /* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_inherits__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(6);
 /* harmony import */ var _app_node_modules_babel_preset_react_app_node_modules_babel_runtime_helpers_esm_createSuper__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(5);
@@ -3167,7 +3167,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(19);
 /* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(8);
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(9);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_6__);
 
 
@@ -3370,7 +3370,7 @@ var validators = __webpack_require__(239);
 var defineProperty = __webpack_require__(12);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-var classCallCheck = __webpack_require__(3);
+var classCallCheck = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
 var createClass = __webpack_require__(4);
@@ -3386,7 +3386,7 @@ var react = __webpack_require__(1);
 var react_default = /*#__PURE__*/__webpack_require__.n(react);
 
 // EXTERNAL MODULE: external "wp.editPost"
-var external_wp_editPost_ = __webpack_require__(59);
+var external_wp_editPost_ = __webpack_require__(60);
 
 // EXTERNAL MODULE: external "wp.plugins"
 var external_wp_plugins_ = __webpack_require__(228);
@@ -3398,7 +3398,7 @@ var external_wp_compose_ = __webpack_require__(29);
 var external_wp_data_ = __webpack_require__(25);
 
 // EXTERNAL MODULE: external "wp.components"
-var external_wp_components_ = __webpack_require__(8);
+var external_wp_components_ = __webpack_require__(9);
 
 // EXTERNAL MODULE: external "wp.hooks"
 var external_wp_hooks_ = __webpack_require__(19);
@@ -3922,7 +3922,7 @@ Object(external_wp_hooks_["addFilter"])('editor.BlockEdit', 'trevor/block-edit',
   };
 }, 'trevorBlockEdit'));
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectDestructuringEmpty.js
-var objectDestructuringEmpty = __webpack_require__(47);
+var objectDestructuringEmpty = __webpack_require__(48);
 
 // EXTERNAL MODULE: ./src/plugin/js/main/utils/index.js + 4 modules
 var utils = __webpack_require__(27);
@@ -4102,7 +4102,7 @@ var book_solid_SvgBookSolid = function SvgBookSolid(props) {
 
 /* harmony default export */ var book_solid = (book_solid_SvgBookSolid);
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/objectSpread2.js
-var objectSpread2 = __webpack_require__(9);
+var objectSpread2 = __webpack_require__(8);
 
 // EXTERNAL MODULE: external "jQuery"
 var external_jQuery_ = __webpack_require__(0);
@@ -4190,7 +4190,7 @@ var auto_complete_AutoCompleteField = /*#__PURE__*/function (_React$Component) {
 
 
 // EXTERNAL MODULE: ./src/plugin/js/blocks/misc/post-auto-completer.js
-var post_auto_completer = __webpack_require__(48);
+var post_auto_completer = __webpack_require__(49);
 
 // CONCATENATED MODULE: ./src/plugin/js/blocks/block-glossary_entry/edit.js
 
