@@ -19,6 +19,28 @@ function _classCallCheck(instance, Constructor) {
 
 /***/ }),
 /* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
+function _defineProperties(target, props) {
+  for (var i = 0; i < props.length; i++) {
+    var descriptor = props[i];
+    descriptor.enumerable = descriptor.enumerable || false;
+    descriptor.configurable = true;
+    if ("value" in descriptor) descriptor.writable = true;
+    Object.defineProperty(target, descriptor.key, descriptor);
+  }
+}
+
+function _createClass(Constructor, protoProps, staticProps) {
+  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+  if (staticProps) _defineProperties(Constructor, staticProps);
+  return Constructor;
+}
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(module) {var require;//! moment.js
@@ -5130,28 +5152,6 @@ function _classCallCheck(instance, Constructor) {
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(81)(module)))
 
 /***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _createClass; });
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-/***/ }),
 /* 5 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5184,7 +5184,7 @@ function _isNativeReflectConstruct() {
 var esm_typeof = __webpack_require__(15);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(10);
+var assertThisInitialized = __webpack_require__(11);
 
 // CONCATENATED MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/possibleConstructorReturn.js
 
@@ -5307,20 +5307,6 @@ function _objectSpread2(target) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
-function _assertThisInitialized(self) {
-  if (self === void 0) {
-    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-  }
-
-  return self;
-}
-
-/***/ }),
-/* 11 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, "a", function() { return /* binding */ _toConsumableArray; });
@@ -5350,6 +5336,20 @@ function _nonIterableSpread() {
 
 function _toConsumableArray(arr) {
   return _arrayWithoutHoles(arr) || Object(iterableToArray["a" /* default */])(arr) || Object(unsupportedIterableToArray["a" /* default */])(arr) || _nonIterableSpread();
+}
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _assertThisInitialized; });
+function _assertThisInitialized(self) {
+  if (self === void 0) {
+    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+  }
+
+  return self;
 }
 
 /***/ }),
@@ -5848,7 +5848,7 @@ __webpack_require__.d(__webpack_exports__, "copyToClipboard", function() { retur
 var classCallCheck = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(4);
+var createClass = __webpack_require__(3);
 
 // EXTERNAL MODULE: external "jQuery"
 var external_jQuery_ = __webpack_require__(0);
@@ -9338,7 +9338,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9417,7 +9417,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9554,7 +9554,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9656,7 +9656,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9719,7 +9719,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9839,7 +9839,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -9902,7 +9902,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10010,7 +10010,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10073,7 +10073,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10185,7 +10185,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10324,7 +10324,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10422,7 +10422,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10484,7 +10484,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10605,7 +10605,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10738,7 +10738,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -10861,7 +10861,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11008,7 +11008,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11182,7 +11182,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11273,7 +11273,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11477,7 +11477,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11545,7 +11545,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11630,7 +11630,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11696,7 +11696,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11782,7 +11782,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11865,7 +11865,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -11948,7 +11948,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12029,7 +12029,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12137,7 +12137,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12205,7 +12205,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12267,7 +12267,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12335,7 +12335,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12403,7 +12403,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12465,7 +12465,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12533,7 +12533,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12601,7 +12601,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12672,7 +12672,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12749,7 +12749,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12846,7 +12846,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -12943,7 +12943,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13042,7 +13042,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13140,7 +13140,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13226,7 +13226,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13296,7 +13296,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13406,7 +13406,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13533,7 +13533,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13600,7 +13600,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13664,7 +13664,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13763,7 +13763,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13839,7 +13839,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13921,7 +13921,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -13999,7 +13999,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14072,7 +14072,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14145,7 +14145,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14227,7 +14227,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14360,7 +14360,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14493,7 +14493,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14623,7 +14623,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14726,7 +14726,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -14865,7 +14865,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15045,7 +15045,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15175,7 +15175,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15277,7 +15277,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15364,7 +15364,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15525,7 +15525,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15607,7 +15607,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15681,7 +15681,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15833,7 +15833,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -15920,7 +15920,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16014,7 +16014,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16104,7 +16104,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16214,7 +16214,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16345,7 +16345,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16431,7 +16431,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16540,7 +16540,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16631,7 +16631,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16787,7 +16787,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16859,7 +16859,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -16989,7 +16989,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17094,7 +17094,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17205,7 +17205,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17274,7 +17274,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17370,7 +17370,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17452,7 +17452,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17567,7 +17567,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17798,7 +17798,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17886,7 +17886,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -17973,7 +17973,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18039,7 +18039,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18137,7 +18137,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18205,7 +18205,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18333,7 +18333,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18422,7 +18422,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18509,7 +18509,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18577,7 +18577,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18657,7 +18657,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18785,7 +18785,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -18931,7 +18931,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19001,7 +19001,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19066,7 +19066,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19152,7 +19152,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19345,7 +19345,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19426,7 +19426,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19490,7 +19490,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19565,7 +19565,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19755,7 +19755,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -19957,7 +19957,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20030,7 +20030,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20142,7 +20142,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20253,7 +20253,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20347,7 +20347,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20417,7 +20417,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20480,7 +20480,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20614,7 +20614,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20710,7 +20710,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20778,7 +20778,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20901,7 +20901,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -20973,7 +20973,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21074,7 +21074,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21140,7 +21140,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21265,7 +21265,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21381,7 +21381,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
   // After the year there should be a slash and the amount of years since December 26, 1979 in Roman numerals.
@@ -21477,7 +21477,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21539,7 +21539,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21601,7 +21601,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21718,7 +21718,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21880,7 +21880,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -21961,7 +21961,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22023,7 +22023,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22086,7 +22086,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22171,7 +22171,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22240,7 +22240,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22306,7 +22306,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22441,7 +22441,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22553,7 +22553,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -22664,7 +22664,7 @@ module.exports = _arrayLikeToArray;
 ;
 
 (function (global, factory) {
-   true ? factory(__webpack_require__(3)) : undefined;
+   true ? factory(__webpack_require__(4)) : undefined;
 })(this, function (moment) {
   'use strict'; //! moment.js locale configuration
 
@@ -30986,9 +30986,9 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   /*global define*/
 
   if ( true && module.exports) {
-    module.exports = factory(__webpack_require__(3)); // Node
+    module.exports = factory(__webpack_require__(4)); // Node
   } else if (true) {
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(4)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__)); // AMD
@@ -35362,7 +35362,7 @@ var external_jQuery_default = /*#__PURE__*/__webpack_require__.n(external_jQuery
 var classCallCheck = __webpack_require__(2);
 
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/createClass.js
-var createClass = __webpack_require__(4);
+var createClass = __webpack_require__(3);
 
 // CONCATENATED MODULE: ./src/theme/js/frontend/match-media.js
 var carouselWith3CardsQ = window.matchMedia("screen and (min-width: 415px) and (max-width: 1275px)");
@@ -46858,7 +46858,7 @@ function collapsible($content, options) {
   var controller = new collapsible_Collapsible($content, options);
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/toConsumableArray.js + 2 modules
-var toConsumableArray = __webpack_require__(11);
+var toConsumableArray = __webpack_require__(10);
 
 // CONCATENATED MODULE: ./node_modules/swiper/esm/components/navigation/navigation.js
 function navigation_extends() {
@@ -50355,7 +50355,7 @@ function showAllTiles($showAllBtn) {
   }
 }
 // EXTERNAL MODULE: ./node_modules/babel-preset-react-app/node_modules/@babel/runtime/helpers/esm/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(10);
+var assertThisInitialized = __webpack_require__(11);
 
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/floating-label-input/index.ts
 
@@ -52129,7 +52129,7 @@ function getFiltersByGroup(context, group) {
   });
   return filters;
 }
-function getActiveFilters(context) {
+function filters_getActiveFilters(context) {
   var activeFilters = {};
   external_jQuery_default()(context).find("".concat(SELECTOR, "__navigation__item[aria-checked=\"true\"]")).each(function (index, el) {
     var $item = external_jQuery_default()(el);
@@ -52189,7 +52189,7 @@ var listing_Listing = /*#__PURE__*/function () {
   }, {
     key: "toggleItems",
     value: function toggleItems() {
-      var activeFilters = getActiveFilters(this.$context);
+      var activeFilters = filters_getActiveFilters(this.$context);
       var filterGroupNames = Object.keys(activeFilters);
       this.$context.find("".concat(this.selector, "__item")).each(function (index, element) {
         external_jQuery_default()(element).toggleClass('show', filterGroupNames.every(function (groupName) {
@@ -52337,7 +52337,7 @@ var content_JobsContent = /*#__PURE__*/function (_WithState) {
           department = _this$generateJobItem2[0],
           location = _this$generateJobItem2[1];
 
-      return "\n\t\t\t<div\n\t\t\t\tclass=\"listing__item show\"\n\t\t\t\tdata-departments=".concat(department || '', "\n\t\t\t\tdata-locations=").concat(location || '', "\n\t\t\t\t>\n\t\t\t\t<div class=\"listing__item-inner\">\n\t\t\t\t\t").concat(this.generateEyebrowMarkup(departments, locations), "\n\t\t\t\t\t").concat(this.generateTitleMarkup(item), "\n\t\t\t\t\t<time class=\"listing__item__date\">\n\t\t\t\t\t\t").concat(this.getDateAgo(item.createdAt), "\n\t\t\t\t\t</time>\n\t\t\t\t</div>\n\t\t\t\t").concat((item === null || item === void 0 ? void 0 : item.applyUrl) && "<div class=\"listing__item__cta\">\n\t\t\t\t\t\t\t<a href=\"".concat(item.applyUrl, "\"\n\t\t\t\t\t\t\ttarget=\"_blank\">Apply Now</a>\n\t\t\t\t\t\t</div>") || '', "\n\t\t\t</div>\n\t\t");
+      return "\n\t\t\t<div\n\t\t\t\tclass=\"listing__item show\"\n\t\t\t\tdata-departments=".concat(department || '', "\n\t\t\t\tdata-locations=").concat(location || '', "\n\t\t\t\t>\n\t\t\t\t<div class=\"listing__item-inner\">\n\t\t\t\t\t").concat(this.generateEyebrowMarkup(departments, locations), "\n\t\t\t\t\t").concat(this.generateTitleMarkup(item), "\n\t\t\t\t\t<time class=\"listing__item__date\">\n\t\t\t\t\t\t").concat(this.getDateAgo(item.createdAt), "\n\t\t\t\t\t</time>\n\t\t\t\t</div>\n\t\t\t\t").concat((item === null || item === void 0 ? void 0 : item.hostedUrl) && "<div class=\"listing__item__cta\">\n\t\t\t\t\t\t\t<a href=\"".concat(item.hostedUrl, "\"\n\t\t\t\t\t\t\ttarget=\"_blank\">Apply Now</a>\n\t\t\t\t\t\t</div>") || '', "\n\t\t\t</div>\n\t\t");
     }
   }, {
     key: "getDepartments",
@@ -57239,6 +57239,7 @@ var url_replaceParams = function replaceParams() {
 
 
 
+
 /**
  * FE Dynamic pagination.
  * The markup and styles are based off of template-parts/pagination.php,
@@ -57301,12 +57302,13 @@ var features_pagination_Pagination = /*#__PURE__*/function (_WithState) {
     value: function setTotalPages() {
       var totalPages = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
       var retainCurrentPage = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-      var newOptions = {
+
+      var newOptions = Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, this.options), {}, {
         totalPages: totalPages
-      };
+      });
 
       if (!retainCurrentPage) {
-        newOptions.currentPage = 0;
+        newOptions.currentPage = 1;
       }
 
       this.options = newOptions;
@@ -57466,7 +57468,83 @@ var features_pagination_Pagination = /*#__PURE__*/function (_WithState) {
 }(WithState_WithState);
 
 
+// CONCATENATED MODULE: ./src/theme/js/frontend/features/dropdown-filters/filter-navigation-item.ts
+
+
+
+
+
+var dropdown_filters_filter_navigation_item_FilterNavigationItem = /*#__PURE__*/function () {
+  function FilterNavigationItem(context, options) {
+    Object(classCallCheck["a" /* default */])(this, FilterNavigationItem);
+
+    this.selector = ".filter__navigation";
+    this.options = {};
+    this.context = context;
+    this.$items = external_jQuery_default()(this.context).find("".concat(this.selector, "__item"));
+    this.options = options;
+  }
+
+  Object(createClass["a" /* default */])(FilterNavigationItem, [{
+    key: "init",
+    value: function init() {
+      this.initializeObserver();
+      this.initializeEventHandler();
+    }
+  }, {
+    key: "initializeObserver",
+    value: function initializeObserver() {
+      var _this = this;
+
+      var itemMutationObserver = new MutationObserver(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 1),
+            mutation = _ref2[0];
+
+        if (mutation.attributeName === 'aria-checked') {
+          _this.updateHeader(mutation.target);
+        }
+      });
+      this.$items.each(function (index, el) {
+        itemMutationObserver.observe(el, {
+          attributes: true
+        });
+      });
+    }
+  }, {
+    key: "initializeEventHandler",
+    value: function initializeEventHandler() {
+      var onSelect = this.options.onSelect;
+      this.$items.on('click', function () {
+        var item = this;
+        external_jQuery_default()(item).attr('aria-checked', 'true');
+        external_jQuery_default()(item).siblings().attr('aria-checked', 'false');
+
+        if (typeof onSelect === 'function') {
+          onSelect();
+        }
+      });
+    }
+  }, {
+    key: "updateHeader",
+    value: function updateHeader(item) {
+      var $headerContainer = external_jQuery_default()(item).closest(".filter");
+      var $header = $headerContainer.find(".filter__header");
+      var itemLabel = external_jQuery_default()(item).text();
+      $header.attr('aria-label', itemLabel);
+      $header.find('span').text(itemLabel);
+      $headerContainer.removeClass('filter--expanded');
+    }
+  }]);
+
+  return FilterNavigationItem;
+}();
+
+
 // CONCATENATED MODULE: ./src/theme/js/frontend/features/dropdown-filters/index.ts
+
+
+
+
 
 
 
@@ -57490,6 +57568,7 @@ var dropdown_filters_DropdownFilters = /*#__PURE__*/function (_WithState) {
     _this.fields = void 0;
     _this.headline = void 0;
     _this.options = void 0;
+    _this.filters = {};
     _this.state = {
       activeFilters: {}
     };
@@ -57509,60 +57588,139 @@ var dropdown_filters_DropdownFilters = /*#__PURE__*/function (_WithState) {
     key: "init",
     value: function init() {
       this.render();
+      this.handleOutsideClick();
     }
   }, {
     key: "renderFilterOptions",
-    value: function renderFilterOptions(filterOptions) {
-      var _this2 = this;
+    value: function renderFilterOptions(filterField) {
+      var initialOption = this.options.initialFilters && filterField.id in this.options.initialFilters ? this.options.initialFilters[filterField.id] : ''; // Prepend "All" option
 
-      return Object.entries(filterOptions).map(function (_ref) {
+      var options = [['', filterField.allLabel]].concat(Object(toConsumableArray["a" /* default */])(Object.entries(filterField.options)));
+      return options.map(function (_ref) {
         var _ref2 = _slicedToArray(_ref, 2),
             filterOptionValue = _ref2[0],
             filterOptionLabel = _ref2[1];
 
-        var optionElementHtml = "\n\t\t\t\t\t<li class=\"filter__navigation__item\"\n\t\t\t\t\t\tdata-option-value=\"".concat(filterOptionValue, "\"\n\t\t\t\t\t\trole=\"menuitemcheckbox\"\n\t\t\t\t\t\taria-checked=\"true\">\n\t\t\t\t\t\t").concat(filterOptionLabel, "\n\t\t\t\t\t</li>\n\t\t\t\t\t");
+        var optionElementHtml = "\n\t\t\t\t\t<li class=\"filter__navigation__item\"\n\t\t\t\t\t\tdata-option-value=\"".concat(filterOptionValue, "\"\n\t\t\t\t\t\trole=\"menuitemcheckbox\"\n\t\t\t\t\t\taria-checked=\"").concat(initialOption === filterOptionValue, "\">\n\t\t\t\t\t\t").concat(filterOptionLabel, "\n\t\t\t\t\t</li>\n\t\t\t\t\t");
         var optionElement = Object.assign(document.createElement('template'), {
           innerHTML: optionElementHtml.trim()
         }).content.firstChild;
-        optionElement.addEventListener('click', function (e) {
-          return _this2.onOptionClick(e);
-        });
         return optionElement;
       });
     }
   }, {
     key: "renderFilter",
     value: function renderFilter(filterField) {
-      var html = "\n\t\t<li class=\"filter\" role=\"none\">\n\t\t\t<button class=\"filter__header\"\n\t\t\t\t\trole=\"menuitem\"\n\t\t\t\t\taria-haspopup=\"true\"\n\t\t\t\t\taria-expanded=\"false\"\n\t\t\t\t\taria-label=\"".concat(filterField.allLabel, "\"\n\t\t\t\t\ttype=\"button\">\n\t\t\t\t<span>").concat(filterField.buttonLabel, "</span>\n\t\t\t\t<i class=\"trevor-ti-caret-down\"></i>\n\t\t\t</button>\n\n\t\t\t<div class=\"filter__content\">\n\t\t\t\t<ul class=\"filter__navigation\"\n\t\t\t\t\trole=\"menu\"\n\t\t\t\t\tdata-option-group=\"locations\"\n\t\t\t\t\taria-label=\"Locations\">\n\t\t\t\t\t<li class=\"filter__navigation__item\"\n\t\t\t\t\t\tdata-option-value=\"\"\n\t\t\t\t\t\trole=\"menuitemcheckbox\"\n\t\t\t\t\t\taria-checked=\"true\">\n\t\t\t\t\t\t").concat(filterField.allLabel, "\n\t\t\t\t\t</li>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</li>\n\t\t");
+      var _this$options;
+
+      var hasActiveFilter = (((_this$options = this.options) === null || _this$options === void 0 ? void 0 : _this$options.initialFilters) || {})[filterField.id] ? true : false;
+      var buttonLabel = hasActiveFilter ? filterField.options[(this.options.initialFilters || {})[filterField.id]] : filterField.buttonLabel;
+      var html = "\n\t\t<li class=\"filter\" role=\"none\" data-filter-field=\"".concat(filterField.id, "\">\n\t\t\t<button class=\"filter__header\"\n\t\t\t\t\trole=\"menuitem\"\n\t\t\t\t\taria-haspopup=\"true\"\n\t\t\t\t\taria-expanded=\"false\"\n\t\t\t\t\taria-label=\"").concat(filterField.allLabel, "\"\n\t\t\t\t\ttype=\"button\">\n\t\t\t\t<span>").concat(buttonLabel, "</span>\n\t\t\t\t<i class=\"trevor-ti-caret-down\"></i>\n\t\t\t</button>\n\n\t\t\t<div class=\"filter__content\">\n\t\t\t\t<ul class=\"filter__navigation\"\n\t\t\t\t\trole=\"menu\"\n\t\t\t\t\tdata-option-group=\"").concat(filterField.id, "\"\n\t\t\t\t\taria-label=\"Locations\">\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</li>\n\t\t");
       var filterFieldElement = Object.assign(document.createElement('template'), {
         innerHTML: html.trim()
       }).content.firstChild;
       var filterContent = filterFieldElement.querySelector('.filter__navigation');
-      var filterOptionsElements = this.renderFilterOptions(filterField.options); // Append options
+      var filterOptionsElements = this.renderFilterOptions(filterField); // Append options
 
       filterOptionsElements.forEach(function (optionElement) {
         return filterContent === null || filterContent === void 0 ? void 0 : filterContent.appendChild(optionElement);
-      });
+      }); // Bind filter dropdown
+
+      this.bindFilter(filterFieldElement);
       return filterFieldElement;
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       this.container.appendChild(this.element); // Render each filter
 
       (this.options.fields || []).forEach(function (field) {
-        var fieldElement = _this3.renderFilter(field);
+        var fieldElement = _this2.renderFilter(field);
 
-        _this3.element.appendChild(fieldElement);
+        _this2.element.appendChild(fieldElement);
       });
     }
   }, {
-    key: "onOptionClick",
-    value: function onOptionClick(e) {
-      e.preventDefault();
-      console.log('clicked', e.currentTarget);
+    key: "bindFilter",
+    value: function bindFilter(filterElement) {
+      var _filterElement$datase;
+
+      var filterOptions = filterElement.querySelector(".filter__navigation");
+      var filterButton = filterElement.querySelector(".filter__header");
+      mobileAndTablet(function () {
+        external_jQuery_default()(filterButton).on('click', function (e) {
+          e.stopPropagation();
+          external_jQuery_default()(filterElement).toggleClass('filter--expanded');
+
+          if (external_jQuery_default()(filterElement).siblings('.filter').hasClass('filter--expanded')) {
+            external_jQuery_default()(filterElement).siblings('.filter').removeClass('filter--expanded');
+          }
+        });
+      }, function () {
+        external_jQuery_default()(filterElement).hover(function () {
+          external_jQuery_default()(this).addClass('filter--expanded');
+          filterButton.setAttribute('aria-expanded', filterElement.classList.contains('filter--expanded'));
+        }, function () {
+          external_jQuery_default()(this).removeClass('filter--expanded');
+          filterButton.setAttribute('filter--expanded', false);
+        });
+      });
+      var filterDropdown = new dropdown_filters_filter_navigation_item_FilterNavigationItem(filterOptions, {
+        onSelect: this.onFilterSelect.bind(this)
+      });
+      filterDropdown.init();
+      this.filters[(filterElement === null || filterElement === void 0 ? void 0 : (_filterElement$datase = filterElement.dataset) === null || _filterElement$datase === void 0 ? void 0 : _filterElement$datase.filterField) || ''] = filterDropdown;
+    }
+  }, {
+    key: "handleOutsideClick",
+    value: function handleOutsideClick() {
+      // Handle click outside.
+      mobileAndTablet(function () {
+        external_jQuery_default()(document).click(function (e) {
+          if (external_jQuery_default()('.filter--expanded').length) {
+            var elemClasses = e.target.classList;
+
+            if (!elemClasses.contains('filter') && !elemClasses.contains('filter__navigation__item') && !elemClasses.contains('filter__header') && !elemClasses.contains('trevor-ti-caret-down')) {
+              external_jQuery_default()('.filter--expanded').removeClass('filter--expanded');
+            }
+          }
+        });
+      }, function () {});
+    }
+  }, {
+    key: "getActiveFilters",
+    value: function getActiveFilters() {
+      var activeFilters = {};
+      external_jQuery_default()(this.element).find(".filter__navigation__item[aria-checked=\"true\"]").each(function (index, el) {
+        var $item = external_jQuery_default()(el);
+        var value = $item.data('option-value');
+
+        if (value) {
+          var group = $item.closest(".filter__navigation").data('option-group');
+          activeFilters[group] = [];
+          activeFilters[group].push(value);
+        }
+      });
+      return activeFilters;
+    }
+  }, {
+    key: "onFilterSelect",
+    value: function onFilterSelect() {
+      if (typeof this.options.onChange === 'function') {
+        var activeFilters = {};
+        Object.entries(this.getActiveFilters()).forEach(function (_ref3) {
+          var _ref4 = _slicedToArray(_ref3, 2),
+              key = _ref4[0],
+              values = _ref4[1];
+
+          if (values && values[0]) {
+            activeFilters[key] = values[0];
+          }
+        });
+        this.options.onChange(activeFilters);
+      }
     }
   }]);
 
@@ -57590,6 +57748,29 @@ var dropdown_filters_DropdownFilters = /*#__PURE__*/function (_WithState) {
 var PARAMS_KEY = 'events-grid';
 var PER_PAGE = 9;
 
+var events_grid_extractDataFromUrl = function extractDataFromUrl() {
+  var gridID = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+  var params = getParams();
+
+  if (PARAMS_KEY in params) {
+    var _JSON$parse = JSON.parse(params[PARAMS_KEY]),
+        id = _JSON$parse.id,
+        filters = _JSON$parse.filters,
+        _JSON$parse$page = _JSON$parse.page,
+        page = _JSON$parse$page === void 0 ? 1 : _JSON$parse$page; // Only use filters from params if ID matches
+
+
+    if (id === gridID) {
+      return {
+        activeFilters: filters,
+        page: page
+      };
+    }
+  }
+
+  return null;
+};
+
 var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
   Object(inherits["a" /* default */])(EventsGrid, _Component);
 
@@ -57606,9 +57787,10 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
     _this.dates = [];
     _this.types = [];
     _this.events = [];
-    _this.eventsVisible = [];
+    _this.eventsFiltered = [];
     _this.pagination = void 0;
     _this.filters = void 0;
+    _this.initialized = false;
     _this.state = {
       activeFilters: {
         location: '',
@@ -57617,7 +57799,21 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
       },
       page: 1
     };
-    _this.id = _this.element.id;
+    _this.id = _this.element.id; // Load state from params
+
+    var stateFromParams = events_grid_extractDataFromUrl(_this.id); // Load state from params
+
+    if (stateFromParams) {
+      _this.state.page = (stateFromParams === null || stateFromParams === void 0 ? void 0 : stateFromParams.page) || _this.state.page;
+      Object.entries((stateFromParams === null || stateFromParams === void 0 ? void 0 : stateFromParams.activeFilters) || {}).forEach(function (_ref) {
+        var _ref2 = _slicedToArray(_ref, 2),
+            key = _ref2[0],
+            value = _ref2[1];
+
+        _this.state.activeFilters[key] = value || _this.state.activeFilters[key];
+      });
+    }
+
     return _this;
   }
 
@@ -57625,7 +57821,7 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
     key: "afterInit",
     value: function () {
       var _afterInit = _asyncToGenerator( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
-        var _this$events, _ref, _this$children;
+        var _this$events, _ref3, _this$children;
 
         return regenerator_default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -57636,8 +57832,8 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
 
               case 2:
                 if ((_this$events = this.events) === null || _this$events === void 0 ? void 0 : _this$events.length) {
-                  this.extractFilters();
-                  this.loadStateFromParams();
+                  this.extractFiltersFromEvents();
+                  this.renderGrid();
                   this.initializePagination();
                   this.initializeFilters();
                 } else {
@@ -57645,9 +57841,10 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
                 }
 
                 this.element.classList.remove('events-grid--loading');
-                (_ref = (_this$children = this.children) === null || _this$children === void 0 ? void 0 : _this$children.loading) === null || _ref === void 0 ? void 0 : _ref.classList.add('hidden');
+                (_ref3 = (_this$children = this.children) === null || _this$children === void 0 ? void 0 : _this$children.loading) === null || _ref3 === void 0 ? void 0 : _ref3.classList.add('hidden');
+                this.initialized = true;
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -57700,19 +57897,19 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
       return fetchItems;
     }()
   }, {
-    key: "extractFilters",
-    value: function extractFilters() {
+    key: "extractFiltersFromEvents",
+    value: function extractFiltersFromEvents() {
       var _this2 = this;
 
       // Temporary store for filter values to avoid duplicates
       var locationSlugs = [];
       var dateValues = [];
       var typeValues = [];
-      this.events.forEach(function (_ref2, index) {
-        var city = _ref2.city,
-            state = _ref2.state,
-            type = _ref2.type,
-            startedAt = _ref2.started_at;
+      this.events.forEach(function (_ref4, index) {
+        var city = _ref4.city,
+            state = _ref4.state,
+            type = _ref4.type,
+            startedAt = _ref4.started_at;
         // Build location filter value and label
         var locationName = [city, state].filter(Boolean).join(', ');
         var locationSlug = slugify(locationName);
@@ -57769,7 +57966,7 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
 
       if ((_this$children2 = this.children) === null || _this$children2 === void 0 ? void 0 : _this$children2.pagination) {
         var options = {
-          totalPages: Math.ceil(this.events.length / PER_PAGE),
+          totalPages: Math.ceil(this.eventsFiltered.length / PER_PAGE),
           currentPage: this.state.page,
           onChange: this.onPaginationPageChange.bind(this)
         };
@@ -57784,7 +57981,9 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
 
       if ((_this$children3 = this.children) === null || _this$children3 === void 0 ? void 0 : _this$children3.filters) {
         var options = {
-          fields: this.generateDropdownFilterFields()
+          fields: this.generateDropdownFilterFields(),
+          onChange: this.onDropdownFilterChange.bind(this),
+          initialFilters: this.state.activeFilters
         };
         this.filters = new dropdown_filters_DropdownFilters(this.children.filters, options);
         this.filters.init();
@@ -57812,15 +58011,15 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
       var from = (Number(this.state.page) - 1) * PER_PAGE;
       var to = from + PER_PAGE;
       var gridContainer = (_this$children4 = this.children) === null || _this$children4 === void 0 ? void 0 : _this$children4.grid;
-      var eventsFiltered = this.events.filter(function (_ref3) {
-        var locationFilter = _ref3.locationFilter,
-            dateFilter = _ref3.dateFilter,
-            typeFilter = _ref3.typeFilter;
+      this.eventsFiltered = this.events.filter(function (_ref5) {
+        var locationFilter = _ref5.locationFilter,
+            dateFilter = _ref5.dateFilter,
+            typeFilter = _ref5.typeFilter;
         return [locationFilter, dateFilter, typeFilter].every(function (filterValue, index) {
           return !activeFilterValues[index] || activeFilterValues[index] === filterValue;
         });
       });
-      var eventsPaged = eventsFiltered.slice(from, to);
+      var eventsPaged = this.eventsFiltered.slice(from, to);
       var renderedCards = eventsPaged.map(function (eventData) {
         return _this3.renderEventCard(eventData);
       });
@@ -57842,12 +58041,12 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
           locationFilter = event.locationFilter,
           id = event.id;
 
-      var _ref4 = this.locations.find(function (_ref5) {
-        var value = _ref5.value;
+      var _ref6 = this.locations.find(function (_ref7) {
+        var value = _ref7.value;
         return locationFilter === value;
       }) || {},
-          _ref4$label = _ref4.label,
-          matchedLocation = _ref4$label === void 0 ? '' : _ref4$label;
+          _ref6$label = _ref6.label,
+          matchedLocation = _ref6$label === void 0 ? '' : _ref6$label;
 
       var locationLabel = [address1, matchedLocation].filter(Boolean).join('<span class="event-location__separator"></span>');
       var dateTime = moment_timezone_default()(startDate).tz(timezone || '').format('MMM DD, YYYY, h:MM A z');
@@ -57894,23 +58093,23 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
   }, {
     key: "appendHistory",
     value: function appendHistory() {
-      var params = this.getStateAsParams();
+      var params = this.stateAsParams();
       var url = url_replaceParams(params);
       history.pushState('', '', url);
     }
   }, {
-    key: "getStateAsParams",
-    value: function getStateAsParams() {
-      var filters = Object.entries(this.state.activeFilters).filter(function (_ref6) {
-        var _ref7 = _slicedToArray(_ref6, 2),
-            key = _ref7[0],
-            value = _ref7[1];
-
-        return value;
-      }).reduce(function (validFilters, _ref8) {
+    key: "stateAsParams",
+    value: function stateAsParams() {
+      var filters = Object.entries(this.state.activeFilters).filter(function (_ref8) {
         var _ref9 = _slicedToArray(_ref8, 2),
             key = _ref9[0],
             value = _ref9[1];
+
+        return value;
+      }).reduce(function (validFilters, _ref10) {
+        var _ref11 = _slicedToArray(_ref10, 2),
+            key = _ref11[0],
+            value = _ref11[1];
 
         return Object(objectSpread2["a" /* default */])(Object(objectSpread2["a" /* default */])({}, validFilters), {}, Object(defineProperty["a" /* default */])({}, key, value));
       }, {});
@@ -57922,51 +58121,27 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
       }));
 
       return params;
-    } // Extract filters and pagination from URL params if there is any
-
-  }, {
-    key: "loadStateFromParams",
-    value: function loadStateFromParams() {
-      var params = getParams();
-
-      if (PARAMS_KEY in params) {
-        var _JSON$parse = JSON.parse(params[PARAMS_KEY]),
-            id = _JSON$parse.id,
-            filters = _JSON$parse.filters,
-            _JSON$parse$page = _JSON$parse.page,
-            page = _JSON$parse$page === void 0 ? 1 : _JSON$parse$page; // Only use filters from params if ID matches
-
-
-        if (id === this.id) {
-          this.setState({
-            activeFilters: filters,
-            page: page
-          });
-        }
-      } else {
-        this.renderUpdates();
-      }
     }
   }, {
     key: "generateDropdownFilterFields",
     value: function generateDropdownFilterFields() {
       var fields = [{
-        id: 'event-type',
+        id: 'type',
         buttonLabel: 'Event Type',
         allLabel: 'All Event Types',
-        options: this.types.reduce(function (allOptions, _ref10) {
-          var value = _ref10.value,
-              label = _ref10.label;
+        options: this.types.reduce(function (allOptions, _ref12) {
+          var value = _ref12.value,
+              label = _ref12.label;
           allOptions[value] = label;
           return allOptions;
         }, {})
       }, {
         id: 'location',
-        buttonLabel: 'Loation',
+        buttonLabel: 'Location',
         allLabel: 'All Locations',
-        options: this.locations.reduce(function (allOptions, _ref11) {
-          var value = _ref11.value,
-              label = _ref11.label;
+        options: this.locations.reduce(function (allOptions, _ref13) {
+          var value = _ref13.value,
+              label = _ref13.label;
           allOptions[value] = label;
           return allOptions;
         }, {})
@@ -57974,9 +58149,9 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
         id: 'date',
         buttonLabel: 'Date',
         allLabel: 'All Dates',
-        options: this.dates.reduce(function (allOptions, _ref12) {
-          var value = _ref12.value,
-              label = _ref12.label;
+        options: this.dates.reduce(function (allOptions, _ref14) {
+          var value = _ref14.value,
+              label = _ref14.label;
           allOptions[value] = label;
           return allOptions;
         }, {})
@@ -57987,7 +58162,7 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
     key: "updatePagination",
     value: function updatePagination() {
       if (this.pagination) {
-        var currentParams = this.getStateAsParams();
+        var currentParams = this.stateAsParams();
 
         if (!(PARAMS_KEY in currentParams)) {
           currentParams[PARAMS_KEY] = '{}';
@@ -58002,9 +58177,27 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
   }, {
     key: "renderUpdates",
     value: function renderUpdates() {
-      this.appendHistory();
-      this.renderGrid();
+      var reloadPagination = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+      this.renderGrid(); // Initial render doesn't need history update
+
+      if (this.initialized) {
+        this.appendHistory();
+      }
+
+      if (reloadPagination) {
+        var _this$pagination;
+
+        (_this$pagination = this.pagination) === null || _this$pagination === void 0 ? void 0 : _this$pagination.setTotalPages(Math.ceil(this.eventsFiltered.length / PER_PAGE));
+      }
+
       this.updatePagination();
+    }
+  }, {
+    key: "showEmpty",
+    value: function showEmpty() {
+      var _ref15, _this$children5;
+
+      (_ref15 = (_this$children5 = this.children) === null || _this$children5 === void 0 ? void 0 : _this$children5.empty) === null || _ref15 === void 0 ? void 0 : _ref15.classList.remove('hidden');
     }
   }, {
     key: "onPaginationPageChange",
@@ -58015,16 +58208,17 @@ var events_grid_EventsGrid = /*#__PURE__*/function (_Component) {
       this.element.focus();
     }
   }, {
-    key: "showEmpty",
-    value: function showEmpty() {
-      var _ref13, _this$children5;
-
-      (_ref13 = (_this$children5 = this.children) === null || _this$children5 === void 0 ? void 0 : _this$children5.empty) === null || _ref13 === void 0 ? void 0 : _ref13.classList.remove('hidden');
+    key: "onDropdownFilterChange",
+    value: function onDropdownFilterChange(activeFilters) {
+      this.setState({
+        activeFilters: activeFilters,
+        page: 1
+      });
     }
   }, {
     key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      this.renderUpdates();
+    value: function componentDidUpdate(changedState) {
+      this.renderUpdates('activeFilters' in changedState);
     }
   }]);
 
